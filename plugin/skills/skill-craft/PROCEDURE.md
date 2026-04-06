@@ -134,6 +134,15 @@ Second person ("you should", "you need to", "your role") weakens
 instruction-following because it positions the AI as recipient rather
 than executor.
 
+**Exceptions — second person is correct in:**
+- **User-facing output templates** — text the AI produces FOR the user.
+  "What would you like to build?" is correct because the AI is speaking
+  to a human. The imperative rule applies to instructions for the AI,
+  not to output the AI shows to users.
+- **Quoted speech examples** — examples of phrases to say or not say.
+  "Which do you prefer?" as a bad-pattern example needs to stay in
+  second person to illustrate the anti-pattern accurately.
+
 This layer determines whether the skill's instructions are followed or ignored.
 
 ### Layer 3: Skill architecture (design)
