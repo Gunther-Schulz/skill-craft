@@ -124,7 +124,7 @@ How to organize knowledge across files so the skill produces good results.
 
 - **Observations** — what goes wrong and what works. Evidence from real incidents,
   abstracted to remove project-specific details. Grounds the procedure in reality.
-  Read at skill invocation to calibrate judgment.
+  Not loaded at invocation — read only when improving the skill itself.
 
 - **Vision** (optional) — the philosophical foundation. Why this approach matters.
   The analogy or principle that the procedure derives from. Not every skill needs
@@ -207,49 +207,85 @@ The user decides whether and how to incorporate it.
 
 ---
 
-## Writing rules
+## Writing procedure content
 
-Two paths to writing procedure rules, depending on whether you have real
-incidents to work from.
+Not all skills are the same type. The approach to writing PROCEDURE.md depends
+on what kind of skill it is.
 
-### Path 1: Phenomenon-driven (you have incidents)
+### Skill types
 
-A failure happened. You already know what went wrong. The observation exists
-or is obvious from the incident.
+**Rule-based skills** — checklists, audits, validation procedures. The procedure
+is a set of rules that prevent specific failures. Examples: architecture audit
+(three-layer checks), bildhauer (five checkpoints at transitions).
+
+**Workflow skills** — orchestrate a multi-phase process. The procedure is a flow
+with phases, gates, and routing. Examples: clippy (investigate → implement →
+verify), clawdance (design → decompose → build).
+
+**Domain knowledge skills** — encode expertise for a specific domain. The
+procedure is "when you encounter X, do Y because that's how this domain works."
+Examples: gis-utils (CRS safety, geometry conventions), claude-api (SDK patterns).
+
+**Tooling skills** — thin wrappers around a specific workflow or tool. The
+procedure is a sequence of steps. Examples: ref (clone a reference repo),
+sync-docs (update docs after implementation).
+
+### Writing rule-based procedures
+
+Two paths, depending on whether you have real incidents.
+
+**Path 1: Phenomenon-driven (you have incidents).** A failure happened. The
+observation exists or is obvious.
 
 1. Document the observation (what happened, abstracted)
-2. Derive the procedure rule from the observation (what would prevent it)
+2. Derive the rule from the observation (what would prevent it)
 3. The observation grounds the rule — you can point to why it exists
 
-This is how most effective skills are built. Bildhauer's checkpoints came from
-documented failures. The audit skill's deepening step came from a real audit
-that missed findings. The observation comes first, the rule follows.
+This is how most effective rule-based skills are built. The observation comes
+first, the rule follows.
 
-### Path 2: Blank-slate (no incidents yet)
+**Path 2: Blank-slate (no incidents yet).** You're writing rules for a new
+capability. No failures to learn from. Three techniques:
 
-You're writing rules for a new capability. No failures to learn from. The
-risk is writing rules that sound good but don't prevent real problems.
+- **Phenomenon identification.** Before drafting any rule, describe what
+  actually goes wrong (or could go wrong) and why. A rule must address the
+  root cause, not just one scenario.
 
-Three techniques for writing precise rules without incidents:
+- **Proxy detection.** For each element of a rule, ask: does this represent
+  the actual condition, or an approximation? "Be careful" is a proxy for a
+  specific action. Replace proxies with the precise condition.
 
-**Phenomenon identification.** Before drafting any rule, describe what
-actually goes wrong (or could go wrong) and why. Separate the specific
-scenario from the general pattern. A rule must address the root cause
-across all contexts where it applies, not just one scenario.
+- **Non-firing case enumeration.** List at least two cases where the rule
+  would NOT fire. For each, decide: should it have? If yes, the trigger is
+  too narrow.
 
-**Proxy detection.** For each element of a rule (trigger, condition,
-action, threshold), ask: does this represent the actual condition, or a
-convenient approximation? If any element can be replaced by the precise
-condition it proxies for, rewrite it. "Be careful" is a proxy for a
-specific action. "Complex code" is a proxy for a measurable condition.
+Rules from Path 2 are hypotheses. Validate by use, refine through Path 1.
 
-**Non-firing case enumeration.** List at least two cases where the rule
-would NOT fire, with at least one being a plausible edge case. For each,
-decide: should the rule have applied? If yes, the trigger is too narrow —
-rewrite it to cover the missed case.
+### Writing workflow procedures
 
-Rules written via Path 2 are hypotheses. They should be validated by use
-and refined through Path 1 as real incidents accumulate.
+Define phases, gates between phases, and what triggers transitions. The key
+decisions are: what must be true to advance? What signals completion? What
+happens when the user interrupts?
+
+Workflow procedures benefit from menus (layer 2) more than any other type.
+The menu IS the flow control — it shows the user where they are and what
+they can do next.
+
+### Writing domain knowledge procedures
+
+Encode the expertise as concrete rules with context. Not "be aware of CRS
+issues" but "BEFORE any geometry operation, verify source and target CRS
+match. If they don't, reproject explicitly."
+
+Domain procedures are the most likely to need progressive disclosure — the
+full expertise is too large to load at once. Core rules in PROCEDURE.md,
+detailed reference material in `references/`.
+
+### Writing tooling procedures
+
+Keep them minimal. State the steps, the expected inputs, the expected outputs.
+Tooling skills rarely need observations or evolution — they either work or
+they don't. If the tool changes, update the steps.
 
 ---
 
