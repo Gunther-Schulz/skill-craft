@@ -79,3 +79,18 @@ connection.
 The fix: skills should notice when their own guidance (or the guidance of
 the skill-craft guide itself) is incomplete or contradicted by experience.
 Not automatic changes — suggestions with reasoning, for the user to decide.
+
+---
+
+## 7. Guide existed but wasn't followed during creation
+
+A skill about plugin design included a reference document covering the
+two-layer marketplace/plugin structure. When the skill's own repo was
+created, it used a flat structure (plugin.json at root, no marketplace.json)
+and failed to install. The knowledge was in the guide — it just wasn't
+applied to the guide's own packaging.
+
+The fix: added a "New plugin setup" checklist to the reference — the minimum
+steps from empty repo to installable plugin. Having the knowledge documented
+is not enough; a concrete setup sequence prevents the most common first-time
+mistake.

@@ -151,6 +151,43 @@ Location precedence: project `.claude/plugin-name.local.md` overrides global
 
 ---
 
+## New Plugin Setup
+
+Minimum steps from empty repo to installable plugin:
+
+1. Create the two-layer directory structure:
+   ```
+   mkdir -p .claude-plugin plugin/.claude-plugin plugin/skills/my-skill
+   ```
+
+2. Write `.claude-plugin/marketplace.json` (marketplace catalog):
+   ```json
+   {
+     "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+     "name": "my-marketplace",
+     "owner": { "name": "Your Name" },
+     "plugins": [{ "name": "my-plugin", "source": "./plugin" }]
+   }
+   ```
+
+3. Write `plugin/.claude-plugin/plugin.json` (plugin metadata):
+   ```json
+   { "name": "my-plugin" }
+   ```
+
+4. Write `plugin/skills/my-skill/SKILL.md` (the skill itself)
+
+5. Push to GitHub, then install:
+   ```
+   claude plugin marketplace add owner/repo
+   claude plugin install my-plugin@my-marketplace
+   ```
+
+Do NOT put `plugin.json` at the repo root — it conflicts with
+`marketplace.json`. The most common first-time mistake.
+
+---
+
 ## Installation Flow
 
 ### Publishing
