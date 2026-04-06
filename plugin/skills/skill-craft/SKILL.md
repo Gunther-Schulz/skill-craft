@@ -24,6 +24,8 @@ improving skill-craft itself, not when designing other skills.
 | `PROCEDURE.md` | The skill design method — five layers, anti-patterns, review checklist | First principles + observed patterns | `OBSERVATIONS.md` (observations ground the procedure) |
 | `OBSERVATIONS.md` | Failure patterns from real skill design incidents (improvement journal) | Real usage | `PROCEDURE.md` (new observations may warrant procedure changes) |
 | `references/plugin-engineering.md` | Plugin packaging: marketplace structure, hooks, installation, common mistakes | Battle-tested plugin development | Nothing — standalone reference |
+| `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Nothing — standalone reference |
+| `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |
 
 When updating PROCEDURE.md, check that OBSERVATIONS.md still grounds it. When adding observations, check if the procedure should change.
 

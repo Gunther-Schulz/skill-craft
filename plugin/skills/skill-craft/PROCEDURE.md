@@ -115,6 +115,25 @@ yes, inline it. If no, reference it.
 "component" not "module/class", "contract" not "type/interface", "identifier"
 not "variable/field."
 
+**Imperative writing style.** Write all skill content using imperative/
+infinitive form (verb-first instructions), not second person. Use objective,
+instructional language.
+
+- Correct: "Read the configuration file. Validate input before processing."
+- Incorrect: "You should read the configuration file. You need to validate."
+
+The description in YAML frontmatter uses third-person with specific trigger
+phrases:
+
+- Correct: `description: This skill should be used when the user asks to
+  "create a hook", "add a PreToolUse hook", or mentions hook events.`
+- Incorrect: `description: Use this skill when working with hooks.`
+
+This applies to SKILL.md body, PROCEDURE.md, and all reference files.
+Second person ("you should", "you need to", "your role") weakens
+instruction-following because it positions the AI as recipient rather
+than executor.
+
 This layer determines whether the skill's instructions are followed or ignored.
 
 ### Layer 3: Skill architecture (design)
@@ -296,49 +315,10 @@ they don't. If the tool changes, update the steps.
 
 ## Anti-patterns
 
-### Monolithic SKILL.md
-
-Everything in one file. Works for trivial skills. Fails when the skill grows
-because the AI loads the entire file at invocation, wasting context on guidance
-that isn't needed yet.
-
-**Fix:** Extract reference material to `references/` subdirectory. Keep SKILL.md
-focused on trigger conditions, what to load, and the core method.
-
-### Procedure with project-specific examples
-
-The procedure contains real filenames, service names, or code patterns from a
-specific project. It only makes sense in that project. Porting it to another
-codebase requires rewriting the examples.
-
-**Fix:** Procedure is abstract. Observations contain the real incidents.
-
-### Checklist without deepening
-
-The procedure has a checklist of N items. The AI performs all N and reports
-findings. Issues outside the N categories are not found. The checklist becomes
-the ceiling of the investigation.
-
-**Fix:** After each phase, take each finding and trace its implications. What
-else must be true if this finding exists? The checklist seeds the investigation;
-findings expand it beyond the checklist categories.
-
-### Findings without follow-through
-
-The audit finds a problem and moves to the next checklist item. The implications
-of the finding are never traced. Adjacent issues that the finding predicts are
-never looked for.
-
-**Fix:** Each finding is a lead. Follow it until it stops producing new findings.
-Then move to the next checklist item.
-
-### Skill that never evolves
-
-The skill was written once and never updated. Failures during use are worked
-around rather than incorporated as observations or procedure changes.
-
-**Fix:** Establish the improvement cycle (layer 4). Every failure is a candidate
-observation. Every observation is a candidate procedure change.
+For common skill design mistakes and their fixes, load
+`references/anti-patterns.md`. Key patterns: monolithic SKILL.md,
+project-specific procedures, checklist as ceiling, findings without
+follow-through, skills that never evolve.
 
 ---
 
@@ -376,49 +356,11 @@ and any moment where the skill could either ask "what do you think?" or say
 
 ## Checklist for reviewing a skill
 
-When reviewing an existing skill or designing a new one, verify each item.
-For any item that fails, state what's missing before continuing.
-
-- [ ] **Naming convention.** Are files named per the standard? `SKILL.md` for
-  entry point, `PROCEDURE.md` for the method, `OBSERVATIONS.md` for the journal?
-  - NO → Rename to standard names.
-
-- [ ] **Boundary rule.** Do Category 2 files (OBSERVATIONS, VISION, STRATEGY,
-  ROADMAP) appear in any Category 1 files (SKILL.md, PROCEDURE.md, references)?
-  - YES → Remove. Maintenance files never appear in operational files.
-
-- [ ] **Trigger clarity.** Does the SKILL.md description clearly state when the
-  skill should activate? Would the AI know from the description alone?
-  - NO → SKILL.md description is too vague. Rewrite with explicit trigger phrases.
-
-- [ ] **File separation.** Is the procedure project-agnostic? Are observations
-  grounded in real incidents? Are supporting files not loaded at invocation?
-  - NO → Identify which files mix concerns. Separate procedure from observations.
-
-- [ ] **Dependency graph.** Does SKILL.md document which files depend on which
-  and what to check when a parent changes?
-  - NO → Add dependency table to SKILL.md.
-
-- [ ] **Progressive disclosure.** Does the SKILL.md tell the AI what to load
-  first and what to load on demand? Or does everything load at once?
-  - NO → Extract reference material to `references/`. Keep SKILL.md focused.
-
-- [ ] **Protocol conventions.** Do instructions use forcing functions? Are
-  checkpoints observable? Do menus appear where the user has choices?
-  - NO → Identify advisory instructions that should be gates. Add blocking logic.
-
-- [ ] **Deepening.** After checklist items, does the procedure trace findings
-  to their implications? Or does it stop at the checklist?
-  - NO → Add deepening step after each phase or checklist section.
-
-- [ ] **Evolution path.** Is there a place for observations? Has the skill been
-  updated based on real failures? Or was it written once?
-  - NO → Create OBSERVATIONS.md. If it already exists and is empty, the skill
-    hasn't been maintained.
-
-- [ ] **Reflexivity.** Does the skill notice when its own guidance needs updating?
-  Or does it only apply to the work at hand?
-  - NO → Add reflexivity rule to SKILL.md.
+For the full review checklist with blocking logic, load
+`references/review-checklist.md`. Covers: naming, boundary rule, trigger
+clarity, writing style, word count, file separation, dependency graph,
+progressive disclosure, protocol conventions, deepening, evolution,
+reflexivity.
 
 ---
 

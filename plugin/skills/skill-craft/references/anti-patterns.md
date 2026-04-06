@@ -1,0 +1,50 @@
+# Anti-Patterns
+
+**Load when:** Reviewing a skill for common design mistakes.
+
+---
+
+## Monolithic SKILL.md
+
+Everything in one file. Works for trivial skills. Fails when the skill
+grows because the AI loads the entire file at invocation, wasting context
+on guidance that isn't needed yet.
+
+**Fix:** Extract reference material to `references/` subdirectory. Keep
+SKILL.md focused on trigger conditions, what to load, and the core method.
+
+## Procedure with project-specific examples
+
+The procedure contains real filenames, service names, or code patterns
+from a specific project. It only makes sense in that project. Porting it
+to another codebase requires rewriting the examples.
+
+**Fix:** Procedure is abstract. Observations contain the real incidents.
+
+## Checklist without deepening
+
+The procedure has a checklist of N items. The AI performs all N and
+reports findings. Issues outside the N categories are not found. The
+checklist becomes the ceiling of the investigation.
+
+**Fix:** After each phase, take each finding and trace its implications.
+The checklist seeds the investigation; findings expand it beyond the
+checklist categories.
+
+## Findings without follow-through
+
+The audit finds a problem and moves to the next checklist item. The
+implications of the finding are never traced. Adjacent issues that the
+finding predicts are never looked for.
+
+**Fix:** Each finding is a lead. Follow it until it stops producing new
+findings. Then move to the next checklist item.
+
+## Skill that never evolves
+
+The skill was written once and never updated. Failures during use are
+worked around rather than incorporated as observations or procedure
+changes.
+
+**Fix:** Establish the improvement cycle (layer 4). Every failure is a
+candidate observation. Every observation is a candidate procedure change.
