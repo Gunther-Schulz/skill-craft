@@ -72,7 +72,10 @@ Located at `plugin/.claude-plugin/plugin.json`:
 {
   "name": "my-plugin",
   "version": "1.0.0",
-  "description": "What the plugin does"
+  "description": "What the plugin does",
+  "author": {
+    "name": "Your Name"
+  }
 }
 ```
 
@@ -195,6 +198,9 @@ custom_option: value
 Location precedence: project `.claude/plugin-name.local.md` overrides global
 `~/.claude/plugin-name.local.md`. Add `.local.md` files to `.gitignore`
 (user-specific, not shared).
+
+Reading from hooks: parse the YAML frontmatter with a simple regex in Python
+or `sed -n '/^---$/,/^---$/{...}'` in bash. No external dependencies needed.
 
 ---
 
