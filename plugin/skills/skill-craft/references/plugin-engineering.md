@@ -81,6 +81,53 @@ are available as `/my-plugin:skill-name`.
 
 ---
 
+## Skills
+
+Skills live in `skills/<skill-name>/SKILL.md`. Claude automatically invokes
+them based on the `description` field in the frontmatter.
+
+**Naming convention:** Use descriptive names without the plugin prefix. The
+namespace already provides context (`my-plugin:code-review`, not
+`my-plugin:my-plugin-code-review`). Avoid skill names that share a prefix
+with the plugin name — non-namespaced duplicates appear in autocomplete
+and cluster with the plugin's namespaced entries.
+
+**Description convention:** Use third-person with specific trigger phrases
+in quotes:
+
+```markdown
+---
+name: code-review
+description: This skill should be used when the user asks to "review code",
+  "check this PR", "analyze code quality", or requests feedback on
+  implementation patterns.
+version: 1.0.0
+---
+```
+
+---
+
+## Commands
+
+Commands live in `commands/<name>.md`. They become slash commands namespaced
+under the plugin: `/my-plugin:command-name`.
+
+```markdown
+---
+description: Does something useful
+allowed-tools: Bash, Read
+disable-model-invocation: true
+argument-hint: [option1|option2]
+---
+
+Handle the command. User argument: $ARGUMENTS
+```
+
+`disable-model-invocation: true` means only the user can trigger it (not
+the model).
+
+---
+
 ## Hooks
 
 Hooks live in `hooks/hooks.json`. Plugin hooks require a `"hooks"` wrapper
@@ -222,6 +269,13 @@ claude --plugin-dir ./plugin
 
 Loads the plugin directly. Use `/reload-plugins` to pick up changes.
 
+### Session restart note
+
+After installing or reinstalling a plugin, `/reload-plugins` loads the new
+skills, commands, and hooks. However, hook errors from the previous load may
+persist in the session. If you see stale "hook error" messages after fixing
+an issue, restart Claude Code — a fresh session clears them.
+
 ---
 
 ## When NOT to Use a Plugin
@@ -251,5 +305,7 @@ of the setup, the plugin layer is adding complexity without value.
 | hooks.json without `"hooks"` wrapper | `Hook load failed: expected record, received undefined` | Wrap events under `{"hooks": {...}}` |
 | Hook script writes to stderr | Hook error on every message | Add `exec 2>/dev/null` (bash) or silence stderr (python) |
 | Changed plugin on GitHub but not reinstalled | Old behavior persists | `marketplace update` + uninstall + reinstall |
-| Marketplace and plugin have the same name | Skills appear both namespaced and non-namespaced | Use different names |
-| Archive dirs with SKILL.md in repo | Stale skills appear | Delete or rename SKILL.md files outside `plugin/` |
+| Marketplace and plugin have the same name | Skills appear both namespaced and non-namespaced | Use different names (e.g., marketplace `coding-clippy`, plugin `clippy`) |
+| `directory` source in `extraKnownMarketplaces` | `owner: expected object, received undefined` on install | Use GitHub source (`/plugin marketplace add owner/repo`) instead |
+| `enabledPlugins` in settings.json without `/plugin install` | Plugin doesn't load | Must install via `/plugin install`, not just enable in settings |
+| Archive dirs with SKILL.md in repo | Stale skills appear | Delete or rename SKILL.md files outside `plugin/`; they get cloned into marketplace cache |
