@@ -175,6 +175,10 @@ to read. Reference files load on demand. This matters because context window is
 finite — loading everything at invocation wastes context on guidance that may
 not be needed.
 
+**Word count.** SKILL.md body: 1,500-2,000 words ideal, 5,000 max. If
+exceeding 2,000, move detailed content to `references/`. Each reference
+file can be 2,000-5,000+ words (loaded on demand, not at invocation).
+
 **Dependency graph.** When a skill has multiple files, document which files
 depend on which. When a parent file changes, its dependents should be checked
 for consistency. The SKILL.md is the natural place for this documentation.

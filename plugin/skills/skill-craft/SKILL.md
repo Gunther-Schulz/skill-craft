@@ -7,22 +7,19 @@ license: MIT
 
 # Skill Craft
 
-**Instructions for AI assistant.** Activated when designing, reviewing, or improving Claude Code skills and plugins.
+Activated when designing, reviewing, or improving Claude Code skills and
+plugins.
 
 ## Load this now
 
-Read `PROCEDURE.md` from this skill's directory. It is self-contained — everything
-needed to design, review, or improve a skill is in that one file.
-
-`OBSERVATIONS.md` is the skill-craft improvement journal. Read it only when
-improving skill-craft itself, not when designing other skills.
+Read `PROCEDURE.md` from this skill's directory. Self-contained —
+everything needed to design, review, or improve a skill.
 
 ## File dependencies
 
 | Document | Purpose | Derived from | When changed, also check |
 |---|---|---|---|
-| `PROCEDURE.md` | The skill design method — five layers, anti-patterns, review checklist | First principles + observed patterns | `OBSERVATIONS.md` (observations ground the procedure) |
-| `OBSERVATIONS.md` | Failure patterns from real skill design incidents (improvement journal) | Real usage | `PROCEDURE.md` (new observations may warrant procedure changes) |
+| `PROCEDURE.md` | The skill design method — five layers, protocol conventions, review checklist | First principles + observed patterns | Nothing — it's a leaf |
 | `references/plugin-engineering.md` | Plugin packaging: marketplace structure, hooks, installation, common mistakes | Battle-tested plugin development | Nothing — standalone reference |
 | `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Nothing — standalone reference |
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |
