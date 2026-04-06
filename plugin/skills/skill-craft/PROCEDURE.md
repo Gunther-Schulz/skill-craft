@@ -247,7 +247,7 @@ with phases, gates, and routing. Examples: clippy (investigate → implement →
 verify), clawdance (design → decompose → build).
 
 **Domain knowledge skills** — encode expertise for a specific domain. The
-procedure is "when you encounter X, do Y because that's how this domain works."
+procedure is "when encountering X, do Y because that's how this domain works."
 Examples: gis-utils (CRS safety, geometry conventions), claude-api (SDK patterns).
 
 **Tooling skills** — thin wrappers around a specific workflow or tool. The
@@ -256,14 +256,14 @@ sync-docs (update docs after implementation).
 
 ### Writing rule-based procedures
 
-Two paths, depending on whether you have real incidents.
+Two paths, depending on whether real incidents exist.
 
 **Path 1: Phenomenon-driven (you have incidents).** A failure happened. The
 observation exists or is obvious.
 
 1. Document the observation (what happened, abstracted)
 2. Derive the rule from the observation (what would prevent it)
-3. The observation grounds the rule — you can point to why it exists
+3. The observation grounds the rule — the reason for its existence is traceable
 
 This is how most effective rule-based skills are built. The observation comes
 first, the rule follows.

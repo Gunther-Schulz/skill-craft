@@ -20,7 +20,7 @@ marketplace layer works.
 
 ### Path A: Private GitHub repo (local marketplace)
 
-You host your own marketplace in a GitHub repo. You control distribution.
+Host a marketplace in a GitHub repo. Full control over distribution.
 The plugin can be published to the official marketplace later without
 restructuring.
 
@@ -161,7 +161,7 @@ official repo is the marketplace. No restructuring of the plugin itself.
 
 ## Path B: Official marketplace submission
 
-Submit a PR to the `claude-plugins-official` GitHub repo. Your plugin
+Submit a PR to the `claude-plugins-official` GitHub repo. The plugin
 directory goes under `plugins/my-plugin/` in that repo. No separate
 marketplace.json needed — the official repo handles the catalog.
 

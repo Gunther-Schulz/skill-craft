@@ -42,6 +42,11 @@ Most skill authors get layer 1 right (directory layout) and layer 2 partially ri
 
 ## Reflexivity rule
 
-When this skill is active and you notice — through discussion, through reviewing another skill, or through observing a skill failure — that the guidance in this skill's own files is incomplete, contradicted, or could be improved: say so. Suggest the specific change to PROCEDURE.md or OBSERVATIONS.md with reasoning. Do not make the change silently. The user decides.
+When this skill is active and a gap is noticed — through discussion,
+reviewing another skill, or observing a skill failure — in this skill's
+own files (incomplete, contradicted, or improvable): surface it. Suggest
+the specific change to PROCEDURE.md or OBSERVATIONS.md with reasoning.
+Do not change silently. The user decides.
 
-This applies to all skills, not just this one. If while designing or reviewing any skill you notice that the skill-craft guidance itself has a gap, surface it.
+This applies to all skills, not just this one. If designing or reviewing
+any skill reveals a gap in the skill-craft guidance itself, surface it.
