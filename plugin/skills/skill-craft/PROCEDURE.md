@@ -202,6 +202,22 @@ for consistency. The SKILL.md is the natural place for this documentation.
 
 How a skill improves through use.
 
+**When a skill includes OBSERVATIONS.md, it has evolution behavior.** The
+presence of the file is the signal. SKILL.md must include instructions for
+persisting gaps noticed during use:
+
+1. When a gap is noticed (checkpoint missed, failure not covered, pattern
+   worth capturing) → write the observation to OBSERVATIONS.md
+2. Assess if PROCEDURE.md needs updating based on the new observation
+3. Propose changes with reasoning. Do not change without permission.
+
+This is the write-target rule applied: OBSERVATIONS.md is referenced as a
+destination, not loaded as a source.
+
+Skills WITHOUT OBSERVATIONS.md do not need evolution instructions. The
+user decides at skill creation whether the skill needs an improvement
+journal.
+
 **When a failure becomes an observation.** A failure during skill use reveals a
 gap in the procedure. Before adding it to observations, ask: is this a one-time
 mistake or a pattern? A pattern is worth documenting. A one-time mistake is not

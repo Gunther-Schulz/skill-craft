@@ -48,7 +48,13 @@ missing before continuing.
 
 - [ ] **Evolution path.** Place for observations? Updated based on real
   failures? Or written once?
-  - NO → Create OBSERVATIONS.md.
+  - NO → Create OBSERVATIONS.md if the skill involves judgment.
+
+- [ ] **Evolution instructions (if OBSERVATIONS.md exists).** Does SKILL.md
+  include the evolution behavior? (notice gaps → write to OBSERVATIONS.md
+  → assess procedure change → propose with reasoning)
+  - OBSERVATIONS.md exists but no evolution instructions → Add them.
+  - No OBSERVATIONS.md → N/A.
 
 - [ ] **Reflexivity.** Skill notices when own guidance needs updating?
   - NO → Add reflexivity rule.
