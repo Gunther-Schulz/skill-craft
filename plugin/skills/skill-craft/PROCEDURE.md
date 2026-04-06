@@ -168,6 +168,10 @@ How to organize knowledge across files so the skill produces good results.
 - **Vision** (optional) — the philosophical foundation. Why this approach matters.
   The analogy or principle that the procedure derives from. Not every skill needs
   this; complex skills with non-obvious methodology benefit from it.
+  **When present:** SKILL.md should document the VISION → PROCEDURE derivation
+  (the dependency table). When PROCEDURE.md is updated, validate the change is
+  still covered by VISION.md. If not, either the vision needs expanding or the
+  procedure change isn't grounded — present this to the user for decision.
 
 - **Strategy** (optional) — connects observations to principle. Distills the
   problem being solved and validates that the approach addresses it.
