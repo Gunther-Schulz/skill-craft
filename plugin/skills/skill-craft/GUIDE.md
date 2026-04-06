@@ -1,0 +1,207 @@
+# Skill Design Guide
+
+How to design Claude Code skills that produce good results. Not how to set up
+a plugin directory (see `references/plugin-structure.md`) or how to write
+protocol text (see `references/protocol-conventions.md`). This guide covers
+the architectural decisions that determine whether a skill works well over time.
+
+---
+
+## The five layers
+
+Every effective skill addresses five layers. Most skills get layer 1 right and
+stop. Skills that work well over time address all five.
+
+### Layer 1: Plugin structure (plumbing)
+
+Directory layout, manifest, auto-discovery. The mechanical foundation.
+
+- `SKILL.md` with YAML frontmatter (name, description as trigger condition)
+- Supporting files in `references/` for progressive disclosure
+- Scripts, examples, assets as needed
+- See `references/plugin-structure.md` for the full specification
+
+This layer is well-documented by the official plugin-dev toolkit. Get it right
+once and move on.
+
+### Layer 2: Protocol conventions (engineering)
+
+How to write protocol text that AI actually follows.
+
+- Forcing functions: temporal keywords (FIRST, BEFORE, THEN) mandate sequence
+- Blocking logic: binary checks with evidence requirements ("CANNOT proceed")
+- Observable checkpoints: verify actions taken, not internal states
+- Menus as structural enforcement: shown after every response where user has choices
+- See `references/protocol-conventions.md` for the full specification
+
+This layer determines whether the skill's instructions are followed or ignored.
+A skill with good architecture but poor protocol text will be bypassed by the
+AI's default behavior.
+
+### Layer 3: Skill architecture (design)
+
+How to organize knowledge across files so the skill produces good results.
+
+**File roles.** Each file in a skill serves one of these roles:
+
+- **Procedure** — what to do. The actionable method. Abstract, project-agnostic.
+  Contains checkpoints, phases, verification steps. Never contains project-specific
+  examples or real filenames.
+
+- **Observations** — what goes wrong and what works. Evidence from real incidents,
+  abstracted to remove project-specific details. Grounds the procedure in reality.
+  Read at skill invocation to calibrate judgment.
+
+- **Vision** (optional) — the philosophical foundation. Why this approach matters.
+  The analogy or principle that the procedure derives from. Not every skill needs
+  this; complex skills with non-obvious methodology benefit from it.
+
+- **Strategy** (optional) — connects observations to principle. Distills the
+  problem being solved and validates that the approach addresses it.
+
+- **Roadmap** (optional) — concrete improvement work items grounded in observed
+  failures. Where the skill is going next.
+
+- **References** — detailed guidance loaded on demand, not at invocation.
+  Checklists, examples, schemas. Keeps the main skill focused while making
+  detail available when needed.
+
+**The separation that matters most: procedure from observations.** The procedure
+must be project-agnostic to work in any codebase. The observations must contain
+real incidents to ground the procedure in reality. Mixing them produces a
+procedure that only makes sense for one project, or observations that are too
+abstract to be useful.
+
+**Progressive disclosure.** The SKILL.md loads first and tells the AI what else
+to read. Reference files load on demand. This matters because context window is
+finite — loading everything at invocation wastes context on guidance that may
+not be needed.
+
+**Dependency graph.** When a skill has multiple files, document which files
+depend on which. When a parent file changes, its dependents should be checked
+for consistency. The SKILL.md is the natural place for this documentation.
+
+### Layer 4: Skill evolution (lifecycle)
+
+How a skill improves through use.
+
+**When a failure becomes an observation.** A failure during skill use reveals a
+gap in the procedure. Before adding it to observations, ask: is this a one-time
+mistake or a pattern? A pattern is worth documenting. A one-time mistake is not
+— unless it reveals a class of failures the procedure doesn't address.
+
+**When an observation becomes a procedure change.** An observation describes
+what happened. A procedure change prevents it from happening again. The
+observation should exist before the procedure change — it provides the evidence
+that the change is warranted. Procedure changes without grounding observations
+are guesses about what might go wrong.
+
+**When the procedure is stable.** A procedure stabilizes when new observations
+produce only detail-level findings on content that was already structurally
+validated. This is diminishing returns — the same phenomenon as in Bildhauer
+observation 22. The procedure is refined enough when another pass wouldn't
+change its structure, only its surface.
+
+**The improvement cycle:**
+```
+Use skill → notice failure → abstract to pattern →
+add observation → assess if procedure needs change →
+if yes: update procedure, grounded in observation →
+use skill again
+```
+
+### Layer 5: Skill reflexivity (self-awareness)
+
+The skill should notice when its own guidance needs updating.
+
+**When to suggest a skill update.** During any conversation where a skill is
+being used, designed, or reviewed — if the experience reveals that the
+skill-craft guidance itself is incomplete, contradicted, or could be improved —
+surface it as a suggestion. Not an automatic change. A specific suggestion with
+reasoning, for the user to decide.
+
+**What triggers a reflexivity suggestion:**
+- A skill failure that the guide should have prevented but didn't
+- A design pattern that works well but isn't documented in the guide
+- A convention from one skill that would benefit others
+- A contradiction between the guide's advice and what actually works
+- An observation in one skill that generalizes across skills
+
+**How to surface it:** State the specific gap, the evidence (what happened that
+revealed it), and the proposed change to the guide. Do not make the change.
+The user decides whether and how to incorporate it.
+
+---
+
+## Anti-patterns
+
+### Monolithic SKILL.md
+
+Everything in one file. Works for trivial skills. Fails when the skill grows
+because the AI loads the entire file at invocation, wasting context on guidance
+that isn't needed yet.
+
+**Fix:** Extract reference material to `references/` subdirectory. Keep SKILL.md
+focused on trigger conditions, what to load, and the core method.
+
+### Procedure with project-specific examples
+
+The procedure contains real filenames, service names, or code patterns from a
+specific project. It only makes sense in that project. Porting it to another
+codebase requires rewriting the examples.
+
+**Fix:** Procedure is abstract. Observations contain the real incidents.
+
+### Checklist without deepening
+
+The procedure has a checklist of N items. The AI performs all N and reports
+findings. Issues outside the N categories are not found. The checklist becomes
+the ceiling of the investigation.
+
+**Fix:** After each phase, take each finding and trace its implications. What
+else must be true if this finding exists? The checklist seeds the investigation;
+findings expand it beyond the checklist categories.
+
+### Findings without follow-through
+
+The audit finds a problem and moves to the next checklist item. The implications
+of the finding are never traced. Adjacent issues that the finding predicts are
+never looked for.
+
+**Fix:** Each finding is a lead. Follow it until it stops producing new findings.
+Then move to the next checklist item.
+
+### Skill that never evolves
+
+The skill was written once and never updated. Failures during use are worked
+around rather than incorporated as observations or procedure changes.
+
+**Fix:** Establish the improvement cycle (layer 4). Every failure is a candidate
+observation. Every observation is a candidate procedure change.
+
+---
+
+## Checklist for reviewing a skill
+
+When reviewing an existing skill or designing a new one, check:
+
+1. **Trigger clarity.** Does the SKILL.md description clearly state when the
+   skill should activate? Would the AI know from the description alone?
+
+2. **File separation.** Is the procedure project-agnostic? Are observations
+   grounded in real incidents? Are references loaded on demand?
+
+3. **Progressive disclosure.** Does the SKILL.md tell the AI what to load first
+   and what to load on demand? Or does everything load at once?
+
+4. **Protocol conventions.** Do instructions use forcing functions? Are
+   checkpoints observable? Do menus appear where the user has choices?
+
+5. **Deepening.** After checklist items, does the procedure trace findings
+   to their implications? Or does it stop at the checklist?
+
+6. **Evolution path.** Is there a place for observations? Has the skill been
+   updated based on real failures? Or was it written once?
+
+7. **Reflexivity.** Does the skill notice when its own guidance needs updating?
+   Or does it only apply to the work at hand?
