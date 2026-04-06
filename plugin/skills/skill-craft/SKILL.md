@@ -11,10 +11,11 @@ license: MIT
 
 ## Load this now
 
-Read `GUIDE.md` and `OBSERVATIONS.md` from this skill's directory. The guide defines how to design effective skills. The observations document what goes wrong when skills are poorly designed — read them to calibrate judgment before advising.
+Read `GUIDE.md` from this skill's directory. It defines how to design effective skills.
 
 For plugin directory layout and manifest details, see `references/plugin-structure.md`.
 For protocol text conventions (forcing functions, blocking logic, checkpoints), see `references/protocol-conventions.md`.
+For the skill-craft improvement journal (failure patterns that informed the guide), see `OBSERVATIONS.md` — read this only when improving skill-craft itself, not when designing other skills.
 
 ## File dependencies
 
