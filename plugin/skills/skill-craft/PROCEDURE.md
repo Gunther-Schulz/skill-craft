@@ -409,6 +409,7 @@ For any item that fails, state what's missing before continuing.
 ## Diminishing returns signal
 
 After each invocation, state whether this pass surfaced anything new or
-substantial. If it didn't, say so: "This pass did not surface new findings."
-The user decides whether to invoke again or move on. The skill does not
-decide for them — it provides the honest signal.
+substantial, and recommend whether another pass is warranted. If the pass
+found structural issues, recommend another round. If it found only minor
+issues or nothing new, say so and recommend moving on. The user decides —
+the skill provides the honest signal with a recommendation.
