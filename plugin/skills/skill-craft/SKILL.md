@@ -11,7 +11,7 @@ license: MIT
 
 ## Load this now
 
-Read `GUIDE.md` from this skill's directory. It is self-contained — everything
+Read `PROCEDURE.md` from this skill's directory. It is self-contained — everything
 needed to design, review, or improve a skill is in that one file.
 
 `OBSERVATIONS.md` is the skill-craft improvement journal. Read it only when
@@ -21,14 +21,14 @@ improving skill-craft itself, not when designing other skills.
 
 | Document | Purpose | Derived from | When changed, also check |
 |---|---|---|---|
-| `GUIDE.md` | The skill design method — self-contained, five layers, anti-patterns, review checklist | First principles + observed patterns | `OBSERVATIONS.md` (observations ground the guide) |
-| `OBSERVATIONS.md` | Failure patterns from real skill design incidents (improvement journal) | Real usage | `GUIDE.md` (new observations may warrant guide changes) |
+| `PROCEDURE.md` | The skill design method — self-contained, five layers, anti-patterns, review checklist | First principles + observed patterns | `OBSERVATIONS.md` (observations ground the guide) |
+| `OBSERVATIONS.md` | Failure patterns from real skill design incidents (improvement journal) | Real usage | `PROCEDURE.md` (new observations may warrant guide changes) |
 
-When updating GUIDE.md, check that OBSERVATIONS.md still grounds it. When adding observations, check if the guide should change.
+When updating PROCEDURE.md, check that OBSERVATIONS.md still grounds it. When adding observations, check if the procedure should change.
 
 ## When advising on skill design
 
-Apply all five layers from the guide:
+Apply all five layers from the procedure:
 1. Plugin structure (plumbing)
 2. Protocol conventions (engineering)
 3. Skill architecture (design)
@@ -39,6 +39,6 @@ Most skill authors get layer 1 right (directory layout) and layer 2 partially ri
 
 ## Reflexivity rule
 
-When this skill is active and you notice — through discussion, through reviewing another skill, or through observing a skill failure — that the guidance in this skill's own files is incomplete, contradicted, or could be improved: say so. Suggest the specific change to GUIDE.md or OBSERVATIONS.md with reasoning. Do not make the change silently. The user decides.
+When this skill is active and you notice — through discussion, through reviewing another skill, or through observing a skill failure — that the guidance in this skill's own files is incomplete, contradicted, or could be improved: say so. Suggest the specific change to PROCEDURE.md or OBSERVATIONS.md with reasoning. Do not make the change silently. The user decides.
 
 This applies to all skills, not just this one. If while designing or reviewing any skill you notice that the skill-craft guidance itself has a gap, surface it.

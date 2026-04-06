@@ -1,8 +1,44 @@
-# Skill Design Guide
+# Skill Design Procedure
 
 How to design Claude Code skills that produce good results. Covers plugin
 structure, protocol conventions, skill architecture, evolution, and
 reflexivity — everything needed to build a skill that works well over time.
+
+---
+
+## File naming convention
+
+Standard file names enforce consistency across all skills. Use these exact
+names when the role exists.
+
+**Mandatory:**
+- `SKILL.md` — entry point. Trigger conditions, what to load, dependency
+  graph. Every skill has this.
+- `PROCEDURE.md` — the core method. The self-contained document with the
+  skill's actual instructions. SKILL.md tells the AI to load this.
+
+**Optional (standard names):**
+- `OBSERVATIONS.md` — improvement journal. Failure patterns from real use.
+  Not loaded during normal skill operation — exists for maintaining the
+  skill itself.
+- `VISION.md` — philosophical foundation. Only for complex skills with
+  non-obvious methodology.
+- `STRATEGY.md` — connects observations to principle. Rare.
+- `ROADMAP.md` — concrete improvement work items. Rare.
+- `references/` — detail files loaded on demand by PROCEDURE.md.
+
+**Self-containment rule:** PROCEDURE.md does not reference other files. Load
+it and you have everything needed to use the skill. SKILL.md references
+PROCEDURE.md. PROCEDURE.md references nothing.
+
+**Exception:** Orchestrator skills (like a composer that delegates to
+sub-skills) reference their sub-skills by design. This is the only case
+where PROCEDURE.md references other files.
+
+**Supporting files are never loaded at invocation.** OBSERVATIONS.md,
+VISION.md, STRATEGY.md, ROADMAP.md exist alongside for skill maintenance
+and evolution. They are not referenced by PROCEDURE.md and not loaded when
+the skill is used. They are read only when improving the skill itself.
 
 ---
 
@@ -240,12 +276,20 @@ and any moment where the skill could either ask "what do you think?" or say
 When reviewing an existing skill or designing a new one, verify each item.
 For any item that fails, state what's missing before continuing.
 
+- [ ] **Naming convention.** Are files named per the standard? `SKILL.md` for
+  entry point, `PROCEDURE.md` for the method, `OBSERVATIONS.md` for the journal?
+  - NO → Rename to standard names.
+
+- [ ] **Self-containment.** Is PROCEDURE.md self-contained? Does it reference
+  no other files (unless this is an orchestrator skill)?
+  - NO → Inline referenced content into PROCEDURE.md or move to SKILL.md.
+
 - [ ] **Trigger clarity.** Does the SKILL.md description clearly state when the
   skill should activate? Would the AI know from the description alone?
   - NO → SKILL.md description is too vague. Rewrite with explicit trigger phrases.
 
 - [ ] **File separation.** Is the procedure project-agnostic? Are observations
-  grounded in real incidents? Are references loaded on demand?
+  grounded in real incidents? Are supporting files not loaded at invocation?
   - NO → Identify which files mix concerns. Separate procedure from observations.
 
 - [ ] **Dependency graph.** Does SKILL.md document which files depend on which
