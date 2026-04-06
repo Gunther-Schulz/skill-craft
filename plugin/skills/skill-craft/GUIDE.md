@@ -1,9 +1,8 @@
 # Skill Design Guide
 
-How to design Claude Code skills that produce good results. Not how to set up
-a plugin directory (see `references/plugin-structure.md`) or how to write
-protocol text (see `references/protocol-conventions.md`). This guide covers
-the architectural decisions that determine whether a skill works well over time.
+How to design Claude Code skills that produce good results. Covers plugin
+structure, protocol conventions, skill architecture, evolution, and
+reflexivity — everything needed to build a skill that works well over time.
 
 ---
 
@@ -16,27 +15,66 @@ stop. Skills that work well over time address all five.
 
 Directory layout, manifest, auto-discovery. The mechanical foundation.
 
-- `SKILL.md` with YAML frontmatter (name, description as trigger condition)
-- Supporting files in `references/` for progressive disclosure
-- Scripts, examples, assets as needed
-- See `references/plugin-structure.md` for the full specification
+```
+plugin-name/
+├── .claude-plugin/
+│   └── plugin.json          # Required: {"name": "plugin-name"}
+├── plugin/
+│   └── skills/
+│       └── skill-name/
+│           ├── SKILL.md     # Required: trigger + instructions
+│           └── references/  # Optional: loaded on demand
+├── commands/                # Optional: slash commands (.md)
+├── agents/                  # Optional: subagent definitions (.md)
+└── hooks/                   # Optional: event handlers
+```
+
+Key rules:
+- SKILL.md must be named exactly `SKILL.md`
+- The `description` field in YAML frontmatter is the trigger condition — be
+  specific about trigger phrases
+- Component directories go at plugin root, not inside `.claude-plugin/`
+- Use `${CLAUDE_PLUGIN_ROOT}` for portable path references in scripts
+- Skills auto-discover: any `SKILL.md` in a `skills/` subdirectory loads
 
 This layer is well-documented by the official plugin-dev toolkit. Get it right
 once and move on.
 
 ### Layer 2: Protocol conventions (engineering)
 
-How to write protocol text that AI actually follows.
+How to write protocol text that AI actually follows. AI does not self-enforce.
+Instructions without structural enforcement are suggestions.
 
-- Forcing functions: temporal keywords (FIRST, BEFORE, THEN) mandate sequence
-- Blocking logic: binary checks with evidence requirements ("CANNOT proceed")
-- Observable checkpoints: verify actions taken, not internal states
-- Menus as structural enforcement: shown after every response where user has choices
-- See `references/protocol-conventions.md` for the full specification
+**Forcing functions.** Temporal keywords mandate sequence:
+- **FIRST** — mandates initial action
+- **BEFORE** — creates prerequisite
+- **THEN** — defines sequence
+
+**Blocking logic.** Binary checks with evidence requirements:
+```
+- [ ] [Check]?
+  - NO → CANNOT proceed. [Alternative].
+  - YES → Evidence: [Must state HOW verified]
+```
+Key: "CANNOT proceed" (not "should"), evidence requirement, alternative action.
+
+**Observable checkpoints.** Verify actions taken, not internal states.
+- Observable (works): "Searched codebase?" → Evidence: [locations found]
+- Introspective (fails): "Feeling confident?" → AI cannot detect own states
+
+**Menus as structural enforcement.** Show menu after every response where user
+has choices. Menu is always last element. Without it, user cannot control flow.
+
+**Conceptual vs procedural rules.** Conceptual rules (principles) are
+referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
+even if repeated. Test: must I follow this step-by-step without judgment? If
+yes, inline it. If no, reference it.
+
+**Language agnosticism.** All terminology must be paradigm-neutral. Use
+"component" not "module/class", "contract" not "type/interface", "identifier"
+not "variable/field."
 
 This layer determines whether the skill's instructions are followed or ignored.
-A skill with good architecture but poor protocol text will be bypassed by the
-AI's default behavior.
 
 ### Layer 3: Skill architecture (design)
 
