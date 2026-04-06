@@ -344,6 +344,22 @@ observation. Every observation is a candidate procedure change.
 
 ## Communication rules
 
+### Findings drive action, not reports
+
+A skill that produces actionable findings should act on cheap ones within
+the same invocation, not defer them for the user to track. An audit that
+lists fixable issues without fixing them is half a skill. A review that
+identifies gaps and says "address later" when "later" means "5 minutes
+from now" is wasting the user's attention on tracking instead of doing.
+
+Severity classifies impact, not urgency. A low-impact fix that takes
+minutes is still worth doing now — deferring it costs more (remembering,
+tracking, context-switching) than doing it. Defer only what requires
+out-of-scope structural work.
+
+Present all findings with equal clarity. Do not bury low-severity findings
+or signal they can be ignored.
+
 ### Questions always carry a recommendation
 
 When a skill presents a decision to the user, it must include the skill's
