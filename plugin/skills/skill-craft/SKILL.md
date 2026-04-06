@@ -16,6 +16,17 @@ Read `GUIDE.md` and `OBSERVATIONS.md` from this skill's directory. The guide def
 For plugin directory layout and manifest details, see `references/plugin-structure.md`.
 For protocol text conventions (forcing functions, blocking logic, checkpoints), see `references/protocol-conventions.md`.
 
+## File dependencies
+
+| Document | Purpose | Derived from | When changed, also check |
+|---|---|---|---|
+| `GUIDE.md` | The skill design method — five layers, anti-patterns, review checklist | First principles + observed patterns | `OBSERVATIONS.md` (observations ground the guide) |
+| `OBSERVATIONS.md` | Failure patterns from real skill design incidents | Real usage | `GUIDE.md` (new observations may warrant guide changes) |
+| `references/plugin-structure.md` | Plugin directory layout and manifest reference | Official plugin-dev docs | Nothing — summary of external source |
+| `references/protocol-conventions.md` | Protocol text conventions reference | Clippy CONVENTIONS.md | Nothing — summary of external source |
+
+When updating GUIDE.md, check that OBSERVATIONS.md still grounds it. When adding observations, check if the guide should change.
+
 ## When advising on skill design
 
 Apply all five layers from the guide:

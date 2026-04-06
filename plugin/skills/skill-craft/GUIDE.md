@@ -181,27 +181,56 @@ observation. Every observation is a candidate procedure change.
 
 ---
 
+## Communication rules
+
+### Questions always carry a recommendation
+
+When a skill presents a decision to the user, it must include the skill's
+recommendation alongside the question. Never present a naked question without
+a take on the answer. The user may disagree — that's the point. But the skill
+should do the analysis and commit to a position, giving the user something to
+react to rather than an open-ended evaluation to perform.
+
+This applies to design decisions during skill use, options during investigation,
+and any moment where the skill could either ask "what do you think?" or say
+"I recommend X because Y — does that work?"
+
+---
+
 ## Checklist for reviewing a skill
 
-When reviewing an existing skill or designing a new one, check:
+When reviewing an existing skill or designing a new one, verify each item.
+For any item that fails, state what's missing before continuing.
 
-1. **Trigger clarity.** Does the SKILL.md description clearly state when the
-   skill should activate? Would the AI know from the description alone?
+- [ ] **Trigger clarity.** Does the SKILL.md description clearly state when the
+  skill should activate? Would the AI know from the description alone?
+  - NO → SKILL.md description is too vague. Rewrite with explicit trigger phrases.
 
-2. **File separation.** Is the procedure project-agnostic? Are observations
-   grounded in real incidents? Are references loaded on demand?
+- [ ] **File separation.** Is the procedure project-agnostic? Are observations
+  grounded in real incidents? Are references loaded on demand?
+  - NO → Identify which files mix concerns. Separate procedure from observations.
 
-3. **Progressive disclosure.** Does the SKILL.md tell the AI what to load first
-   and what to load on demand? Or does everything load at once?
+- [ ] **Dependency graph.** Does SKILL.md document which files depend on which
+  and what to check when a parent changes?
+  - NO → Add dependency table to SKILL.md.
 
-4. **Protocol conventions.** Do instructions use forcing functions? Are
-   checkpoints observable? Do menus appear where the user has choices?
+- [ ] **Progressive disclosure.** Does the SKILL.md tell the AI what to load
+  first and what to load on demand? Or does everything load at once?
+  - NO → Extract reference material to `references/`. Keep SKILL.md focused.
 
-5. **Deepening.** After checklist items, does the procedure trace findings
-   to their implications? Or does it stop at the checklist?
+- [ ] **Protocol conventions.** Do instructions use forcing functions? Are
+  checkpoints observable? Do menus appear where the user has choices?
+  - NO → Identify advisory instructions that should be gates. Add blocking logic.
 
-6. **Evolution path.** Is there a place for observations? Has the skill been
-   updated based on real failures? Or was it written once?
+- [ ] **Deepening.** After checklist items, does the procedure trace findings
+  to their implications? Or does it stop at the checklist?
+  - NO → Add deepening step after each phase or checklist section.
 
-7. **Reflexivity.** Does the skill notice when its own guidance needs updating?
-   Or does it only apply to the work at hand?
+- [ ] **Evolution path.** Is there a place for observations? Has the skill been
+  updated based on real failures? Or was it written once?
+  - NO → Create OBSERVATIONS.md. If it already exists and is empty, the skill
+    hasn't been maintained.
+
+- [ ] **Reflexivity.** Does the skill notice when its own guidance needs updating?
+  Or does it only apply to the work at hand?
+  - NO → Add reflexivity rule to SKILL.md.
