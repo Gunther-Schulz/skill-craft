@@ -24,7 +24,8 @@ everything needed to design, review, or improve a skill.
 | `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Nothing — standalone reference |
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |
 
-When updating PROCEDURE.md, check that OBSERVATIONS.md still grounds it. When adding observations, check if the procedure should change.
+When updating PROCEDURE.md, check that its grounding observations still
+hold. When adding observations, check if the procedure should change.
 
 ## When advising on skill design
 
@@ -42,7 +43,7 @@ Most skill authors get layer 1 right (directory layout) and layer 2 partially ri
 When this skill is active and a gap is noticed — through discussion,
 reviewing another skill, or observing a skill failure — in this skill's
 own files (incomplete, contradicted, or improvable): surface it. Suggest
-the specific change to PROCEDURE.md or OBSERVATIONS.md with reasoning.
+the specific change to the relevant file with reasoning.
 Do not change silently. The user decides.
 
 This applies to all skills, not just this one. If designing or reviewing
