@@ -311,7 +311,7 @@ of the setup, the plugin layer is adding complexity without value.
 | hooks.json without `"hooks"` wrapper | `Hook load failed: expected record, received undefined` | Wrap events under `{"hooks": {...}}` |
 | Hook script writes to stderr | Hook error on every message | Add `exec 2>/dev/null` (bash) or silence stderr (python) |
 | Changed plugin on GitHub but not reinstalled | Old behavior persists | `marketplace update` + uninstall + reinstall |
-| Marketplace and plugin have the same name | Skills appear both namespaced and non-namespaced | Use different names (e.g., marketplace `coding-clippy`, plugin `clippy`) |
+| Marketplace and plugin have the same name | May cause duplicate entries in autocomplete (cosmetic, not functional) | Use different names if possible (e.g., marketplace `coding-clippy`, plugin `clippy`) |
 | `directory` source in `extraKnownMarketplaces` | `owner: expected object, received undefined` on install | Use GitHub source (`/plugin marketplace add owner/repo`) instead |
 | `enabledPlugins` in settings.json without `/plugin install` | Plugin doesn't load | Must install via `/plugin install`, not just enable in settings |
 | Archive dirs with SKILL.md in repo | Stale skills appear | Delete or rename SKILL.md files outside `plugin/`; they get cloned into marketplace cache |
