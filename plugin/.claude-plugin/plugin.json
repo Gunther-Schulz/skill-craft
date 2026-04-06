@@ -1,5 +1,8 @@
 {
   "name": "skill-craft",
   "version": "1.0.0",
-  "description": "Guide for designing effective Claude Code skills and plugins"
+  "description": "Guide for designing effective Claude Code skills and plugins",
+  "author": {
+    "name": "Gunther Schulz"
+  }
 }
