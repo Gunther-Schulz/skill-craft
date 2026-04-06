@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "skill-craft-marketplace",
+  "description": "Guide for designing effective Claude Code skills and plugins",
+  "owner": {
+    "name": "Gunther Schulz"
+  },
+  "plugins": [
+    {
+      "name": "skill-craft",
+      "description": "Skill design procedure, plugin engineering, naming conventions",
+      "source": "./plugin"
+    }
+  ]
+}
