@@ -8,37 +8,40 @@ reflexivity — everything needed to build a skill that works well over time.
 
 ## File naming convention
 
-Standard file names enforce consistency across all skills. Use these exact
-names when the role exists.
+Skill files fall into two categories. The boundary between them is the
+central naming rule.
 
-**Mandatory:**
+### Category 1: Operational files — loaded during skill use
+
 - `SKILL.md` — entry point. Trigger conditions, what to load, dependency
-  graph. Every skill has this.
-- `PROCEDURE.md` — the core method. The self-contained document with the
-  skill's actual instructions. SKILL.md tells the AI to load this.
+  graph. Every skill has this. Always loaded.
+- `PROCEDURE.md` — the core method. Loaded by SKILL.md.
+- `references/` — supplementary detail loaded on demand during use.
+- Sub-skill files for orchestrators (e.g., Clippy's four SKILL.md files).
 
-**Optional (standard names):**
+The shape of operational files is unconstrained. A skill can have one
+PROCEDURE.md or four sub-skills with references directories. The convention
+doesn't prescribe how many operational files a skill needs.
+
+### Category 2: Maintenance files — never loaded during skill use
+
+Standard names, used only during skill development and improvement:
+
 - `OBSERVATIONS.md` — improvement journal. Failure patterns from real use.
-  Not loaded during normal skill operation — exists for maintaining the
-  skill itself.
-- `VISION.md` — philosophical foundation. Only for complex skills with
-  non-obvious methodology.
-- `STRATEGY.md` — connects observations to principle. Rare.
-- `ROADMAP.md` — concrete improvement work items. Rare.
-- `references/` — detail files loaded on demand by PROCEDURE.md.
+- `VISION.md` — philosophical foundation. Why the approach matters.
+- `STRATEGY.md` — connects observations to principle.
+- `ROADMAP.md` — concrete improvement work items.
 
-**Self-containment rule:** PROCEDURE.md never references maintenance files
-(OBSERVATIONS.md, VISION.md, STRATEGY.md, ROADMAP.md). The improvement
-journal must not pollute the method. These files exist for skill maintenance
-and evolution — they are read only when improving the skill itself, never
-loaded at invocation.
+### The boundary rule
 
-PROCEDURE.md may reference `references/` files for supplementary technical
-detail that isn't needed every invocation (e.g., plugin engineering, detailed
-checklists). This is progressive disclosure, not a self-containment violation.
+**Category 2 files never appear in Category 1 files.** PROCEDURE.md never
+references OBSERVATIONS.md. SKILL.md's "Load this now" section never includes
+maintenance files. Maintenance files can reference each other and can
+reference operational files. The reverse never happens.
 
-**Orchestrator exception:** Orchestrator skills (like a composer that delegates
-to sub-skills) reference their sub-skills by design.
+This prevents the improvement journal from polluting the method. When the
+skill is invoked, only operational files are loaded. When the skill is being
+improved, maintenance files are read alongside operational files for context.
 
 ---
 
@@ -364,10 +367,9 @@ For any item that fails, state what's missing before continuing.
   entry point, `PROCEDURE.md` for the method, `OBSERVATIONS.md` for the journal?
   - NO → Rename to standard names.
 
-- [ ] **Self-containment.** Does PROCEDURE.md avoid referencing maintenance
-  files (OBSERVATIONS.md, VISION.md, STRATEGY.md, ROADMAP.md)? References
-  to `references/` for supplementary detail are acceptable.
-  - NO → Remove maintenance file references from PROCEDURE.md.
+- [ ] **Boundary rule.** Do Category 2 files (OBSERVATIONS, VISION, STRATEGY,
+  ROADMAP) appear in any Category 1 files (SKILL.md, PROCEDURE.md, references)?
+  - YES → Remove. Maintenance files never appear in operational files.
 
 - [ ] **Trigger clarity.** Does the SKILL.md description clearly state when the
   skill should activate? Would the AI know from the description alone?
