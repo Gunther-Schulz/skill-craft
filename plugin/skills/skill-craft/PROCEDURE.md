@@ -27,18 +27,18 @@ names when the role exists.
 - `ROADMAP.md` — concrete improvement work items. Rare.
 - `references/` — detail files loaded on demand by PROCEDURE.md.
 
-**Self-containment rule:** PROCEDURE.md does not reference other files. Load
-it and you have everything needed to use the skill. SKILL.md references
-PROCEDURE.md. PROCEDURE.md references nothing.
+**Self-containment rule:** PROCEDURE.md never references maintenance files
+(OBSERVATIONS.md, VISION.md, STRATEGY.md, ROADMAP.md). The improvement
+journal must not pollute the method. These files exist for skill maintenance
+and evolution — they are read only when improving the skill itself, never
+loaded at invocation.
 
-**Exception:** Orchestrator skills (like a composer that delegates to
-sub-skills) reference their sub-skills by design. This is the only case
-where PROCEDURE.md references other files.
+PROCEDURE.md may reference `references/` files for supplementary technical
+detail that isn't needed every invocation (e.g., plugin engineering, detailed
+checklists). This is progressive disclosure, not a self-containment violation.
 
-**Supporting files are never loaded at invocation.** OBSERVATIONS.md,
-VISION.md, STRATEGY.md, ROADMAP.md exist alongside for skill maintenance
-and evolution. They are not referenced by PROCEDURE.md and not loaded when
-the skill is used. They are read only when improving the skill itself.
+**Orchestrator exception:** Orchestrator skills (like a composer that delegates
+to sub-skills) reference their sub-skills by design.
 
 ---
 
@@ -73,8 +73,10 @@ Key rules:
 - Use `${CLAUDE_PLUGIN_ROOT}` for portable path references in scripts
 - Skills auto-discover: any `SKILL.md` in a `skills/` subdirectory loads
 
-This layer is well-documented by the official plugin-dev toolkit. Get it right
-once and move on.
+For plugin packaging details (marketplace vs plugin separation, hooks pitfalls,
+installation flow, common mistakes), see `references/plugin-engineering.md`.
+
+This layer is mechanical. Get it right once and move on.
 
 ### Layer 2: Protocol conventions (engineering)
 
@@ -362,9 +364,10 @@ For any item that fails, state what's missing before continuing.
   entry point, `PROCEDURE.md` for the method, `OBSERVATIONS.md` for the journal?
   - NO → Rename to standard names.
 
-- [ ] **Self-containment.** Is PROCEDURE.md self-contained? Does it reference
-  no other files (unless this is an orchestrator skill)?
-  - NO → Inline referenced content into PROCEDURE.md or move to SKILL.md.
+- [ ] **Self-containment.** Does PROCEDURE.md avoid referencing maintenance
+  files (OBSERVATIONS.md, VISION.md, STRATEGY.md, ROADMAP.md)? References
+  to `references/` for supplementary detail are acceptable.
+  - NO → Remove maintenance file references from PROCEDURE.md.
 
 - [ ] **Trigger clarity.** Does the SKILL.md description clearly state when the
   skill should activate? Would the AI know from the description alone?
