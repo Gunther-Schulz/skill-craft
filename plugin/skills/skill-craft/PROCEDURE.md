@@ -29,7 +29,6 @@ Standard names, used only during skill development and improvement:
 
 - `OBSERVATIONS.md` — improvement journal. Failure patterns from real use.
 - `VISION.md` — philosophical foundation. Why the approach matters.
-- `STRATEGY.md` — connects observations to principle.
 - `ROADMAP.md` — concrete improvement work items.
 
 ### The boundary rule
@@ -172,9 +171,6 @@ How to organize knowledge across files so the skill produces good results.
   (the dependency table). When PROCEDURE.md is updated, validate the change is
   still covered by VISION.md. If not, either the vision needs expanding or the
   procedure change isn't grounded — present this to the user for decision.
-
-- **Strategy** (optional) — connects observations to principle. Distills the
-  problem being solved and validates that the approach addresses it.
 
 - **Roadmap** (optional) — concrete improvement work items grounded in observed
   failures. Where the skill is going next.
