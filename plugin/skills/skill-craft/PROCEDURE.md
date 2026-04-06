@@ -34,14 +34,20 @@ Standard names, used only during skill development and improvement:
 
 ### The boundary rule
 
-**Category 2 files never appear in Category 1 files.** PROCEDURE.md never
-references OBSERVATIONS.md. SKILL.md's "Load this now" section never includes
-maintenance files. Maintenance files can reference each other and can
-reference operational files. The reverse never happens.
+**Category 2 files are never LOADED by Category 1 files.** PROCEDURE.md
+never reads from OBSERVATIONS.md. SKILL.md's "Load this now" section never
+includes maintenance files. Maintenance files can reference each other and
+can reference operational files. The reverse never happens for reading.
 
-This prevents the improvement journal from polluting the method. When the
-skill is invoked, only operational files are loaded. When the skill is being
-improved, maintenance files are read alongside operational files for context.
+**Category 2 files CAN be referenced as write targets.** When a gap is
+noticed during skill use, the observation needs a destination. SKILL.md
+can say "write new observation to OBSERVATIONS.md" — that's a write
+target, not a read dependency. The distinction:
+- "Read OBSERVATIONS.md" — loads content, violates boundary
+- "Write observation to OBSERVATIONS.md" — write target, acceptable
+
+This prevents the improvement journal from polluting the method while
+enabling the evolution cycle (Layer 4) to operate during skill use.
 
 ---
 
