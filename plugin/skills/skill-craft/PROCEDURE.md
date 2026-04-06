@@ -403,3 +403,12 @@ For any item that fails, state what's missing before continuing.
 - [ ] **Reflexivity.** Does the skill notice when its own guidance needs updating?
   Or does it only apply to the work at hand?
   - NO → Add reflexivity rule to SKILL.md.
+
+---
+
+## Diminishing returns signal
+
+After each invocation, state whether this pass surfaced anything new or
+substantial. If it didn't, say so: "This pass did not surface new findings."
+The user decides whether to invoke again or move on. The skill does not
+decide for them — it provides the honest signal.
