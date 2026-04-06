@@ -207,6 +207,52 @@ The user decides whether and how to incorporate it.
 
 ---
 
+## Writing rules
+
+Two paths to writing procedure rules, depending on whether you have real
+incidents to work from.
+
+### Path 1: Phenomenon-driven (you have incidents)
+
+A failure happened. You already know what went wrong. The observation exists
+or is obvious from the incident.
+
+1. Document the observation (what happened, abstracted)
+2. Derive the procedure rule from the observation (what would prevent it)
+3. The observation grounds the rule — you can point to why it exists
+
+This is how most effective skills are built. Bildhauer's checkpoints came from
+documented failures. The audit skill's deepening step came from a real audit
+that missed findings. The observation comes first, the rule follows.
+
+### Path 2: Blank-slate (no incidents yet)
+
+You're writing rules for a new capability. No failures to learn from. The
+risk is writing rules that sound good but don't prevent real problems.
+
+Three techniques for writing precise rules without incidents:
+
+**Phenomenon identification.** Before drafting any rule, describe what
+actually goes wrong (or could go wrong) and why. Separate the specific
+scenario from the general pattern. A rule must address the root cause
+across all contexts where it applies, not just one scenario.
+
+**Proxy detection.** For each element of a rule (trigger, condition,
+action, threshold), ask: does this represent the actual condition, or a
+convenient approximation? If any element can be replaced by the precise
+condition it proxies for, rewrite it. "Be careful" is a proxy for a
+specific action. "Complex code" is a proxy for a measurable condition.
+
+**Non-firing case enumeration.** List at least two cases where the rule
+would NOT fire, with at least one being a plausible edge case. For each,
+decide: should the rule have applied? If yes, the trigger is too narrow —
+rewrite it to cover the missed case.
+
+Rules written via Path 2 are hypotheses. They should be validated by use
+and refined through Path 1 as real incidents accumulate.
+
+---
+
 ## Anti-patterns
 
 ### Monolithic SKILL.md
