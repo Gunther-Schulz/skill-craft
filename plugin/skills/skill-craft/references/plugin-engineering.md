@@ -1,15 +1,79 @@
 # Plugin Engineering Reference
 
-Practical guide to packaging Claude Code plugins. Covers the pitfalls the
-official docs don't mention.
+Practical guide to packaging and distributing Claude Code plugins. Covers
+what the official `plugin-dev` does not: distribution paths, marketplace
+workflow, battle-tested gotchas, and operational knowledge.
+
+For skill formatting, writing style, hooks, commands, MCP servers, agents,
+progressive disclosure, and plugin settings (.local.md), see the official
+`plugin-dev` plugin (`plugin-dev@claude-plugins-official`).
 
 ---
 
-## Two-Layer Structure
+## Distribution: ask the user first
 
-A plugin distributed through a marketplace needs two separate layers: the
-marketplace (a catalog) and the plugin (the actual extension). Their
-`.claude-plugin/` directories must never be mixed.
+Before creating a plugin, ask: **will this be published to the official
+Claude Code marketplace, or distributed via a private GitHub repo?**
+
+Both paths use the same plugin structure. The difference is how the
+marketplace layer works.
+
+### Path A: Private GitHub repo (local marketplace)
+
+You host your own marketplace in a GitHub repo. You control distribution.
+The plugin can be published to the official marketplace later without
+restructuring.
+
+Use this when: the plugin is personal, for a team, or not ready for public
+release.
+
+### Path B: Official Claude Code marketplace
+
+You submit a PR to the official `claude-plugins-official` repo. Anthropic
+reviews and merges. The plugin is available to all Claude Code users.
+
+Use this when: the plugin is polished, general-purpose, and ready for
+public use.
+
+### What's the same in both paths
+
+The plugin itself is identical. Same directory structure:
+
+```
+plugin/
+├── .claude-plugin/
+│   └── plugin.json
+├── skills/
+│   └── my-skill/
+│       └── SKILL.md
+├── commands/
+├── agents/
+└── hooks/
+```
+
+Same `plugin.json`:
+
+```json
+{
+  "name": "my-plugin",
+  "version": "1.0.0",
+  "description": "What the plugin does",
+  "author": {
+    "name": "Your Name"
+  }
+}
+```
+
+Only `name` is required. The name determines the skill namespace — skills
+are available as `/my-plugin:skill-name`.
+
+---
+
+## Path A: Private marketplace setup
+
+A private marketplace needs two layers in one repo: the marketplace
+(catalog) and the plugin (extension). Their `.claude-plugin/` directories
+must never be mixed.
 
 ```
 repo-root/                         # ← marketplace root
@@ -18,26 +82,14 @@ repo-root/                         # ← marketplace root
 ├── plugin/                        # ← plugin root
 │   ├── .claude-plugin/
 │   │   └── plugin.json            # plugin definition ONLY
-│   ├── commands/
 │   ├── skills/
 │   │   └── my-skill/
 │   │       └── SKILL.md
-│   ├── hooks/
-│   │   ├── hooks.json
-│   │   └── scripts/
-│   └── agents/
-├── install.sh                     # optional setup helper
+│   └── ...
 └── README.md
 ```
 
-When both `plugin.json` and `marketplace.json` exist in the same
-`.claude-plugin/` directory, Claude Code reads the wrong one and fails with
-a misleading schema validation error (`owner: expected object, received
-undefined`).
-
----
-
-## marketplace.json
+### marketplace.json
 
 Located at `.claude-plugin/marketplace.json` in the repo root:
 
@@ -64,97 +116,77 @@ Required fields: `name`, `owner` (with `name`), `plugins` array. Each plugin
 entry needs `name` and `source`. The `source` is a relative path starting
 with `./`.
 
-## plugin.json
-
-Located at `plugin/.claude-plugin/plugin.json`:
-
-```json
-{
-  "name": "my-plugin",
-  "version": "1.0.0",
-  "description": "What the plugin does",
-  "author": {
-    "name": "Your Name"
-  }
-}
-```
-
-Only `name` is required. The name determines the skill namespace — skills
-are available as `/my-plugin:skill-name`.
-
-For skill formatting, writing style, hooks, commands, MCP servers, agents,
-progressive disclosure, and plugin settings (.local.md), see the official
-`plugin-dev` plugin (`plugin-dev@claude-plugins-official`).
-
-The rest of this document covers what the official plugin-dev does NOT:
-marketplace workflow, battle-tested gotchas, and operational knowledge.
-
----
-
-## New Plugin Setup
-
-Minimum steps from empty repo to installable plugin:
+### Step-by-step setup
 
 1. Create the two-layer directory structure:
    ```
    mkdir -p .claude-plugin plugin/.claude-plugin plugin/skills/my-skill
    ```
 
-2. Write `.claude-plugin/marketplace.json` (marketplace catalog):
-   ```json
-   {
-     "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-     "name": "my-marketplace",
-     "owner": { "name": "Your Name" },
-     "plugins": [{ "name": "my-plugin", "source": "./plugin" }]
-   }
-   ```
+2. Write `.claude-plugin/marketplace.json` (marketplace catalog)
 
-3. Write `plugin/.claude-plugin/plugin.json` (plugin metadata):
-   ```json
-   { "name": "my-plugin" }
-   ```
+3. Write `plugin/.claude-plugin/plugin.json` (plugin metadata)
 
-4. Write `plugin/skills/my-skill/SKILL.md` (the skill itself)
+4. Write `plugin/skills/my-skill/SKILL.md` (the skill)
 
 5. Push to GitHub, then install:
    ```
    claude plugin marketplace add owner/repo
    claude plugin install my-plugin@my-marketplace
+   /reload-plugins
    ```
 
 Do NOT put `plugin.json` at the repo root — it conflicts with
 `marketplace.json`. The most common first-time mistake.
 
----
-
-## Installation Flow
-
-### Publishing
-
-Push your repo to GitHub with `.claude-plugin/marketplace.json` at the root.
-
-### Installing
-
-```
-/plugin marketplace add owner/repo
-/plugin install my-plugin@my-marketplace
-/reload-plugins
-```
-
 ### Updating after changes
 
 ```
-/plugin marketplace update my-marketplace
-/plugin uninstall my-plugin@my-marketplace
-/plugin install my-plugin@my-marketplace
-/reload-plugins
+claude plugin marketplace update my-marketplace
+claude plugin uninstall my-plugin@my-marketplace
+claude plugin install my-plugin@my-marketplace
 ```
 
-`marketplace update` pulls the latest marketplace.json but does NOT update
-already-installed plugins. Must uninstall and reinstall.
+Then `/reload-plugins`. Note: `marketplace update` pulls the latest
+marketplace.json but does NOT update installed plugins. Must uninstall
+and reinstall.
 
-### Local development
+### Publishing later to official marketplace
+
+When ready to publish, submit a PR to `claude-plugins-official` with your
+`plugin/` directory. The marketplace.json wrapper is not needed — the
+official repo is the marketplace. No restructuring of the plugin itself.
+
+---
+
+## Path B: Official marketplace submission
+
+Submit a PR to the `claude-plugins-official` GitHub repo. Your plugin
+directory goes under `plugins/my-plugin/` in that repo. No separate
+marketplace.json needed — the official repo handles the catalog.
+
+```
+claude-plugins-official/
+├── .claude-plugin/
+│   └── marketplace.json           # Anthropic maintains this
+└── plugins/
+    └── my-plugin/                 # ← your PR adds this
+        ├── .claude-plugin/
+        │   └── plugin.json
+        ├── skills/
+        └── ...
+```
+
+After merge, users install with:
+```
+claude plugin install my-plugin@claude-plugins-official
+```
+
+---
+
+## Local development (both paths)
+
+Test without the marketplace cycle:
 
 ```bash
 claude --plugin-dir ./plugin
@@ -164,10 +196,9 @@ Loads the plugin directly. Use `/reload-plugins` to pick up changes.
 
 ### Session restart note
 
-After installing or reinstalling a plugin, `/reload-plugins` loads the new
-skills, commands, and hooks. However, hook errors from the previous load may
-persist in the session. If you see stale "hook error" messages after fixing
-an issue, restart Claude Code — a fresh session clears them.
+After installing or reinstalling, `/reload-plugins` loads new skills and
+hooks. However, hook errors from the previous load may persist. If stale
+"hook error" messages appear after fixing an issue, restart Claude Code.
 
 ---
 
@@ -182,8 +213,7 @@ an issue, restart Claude Code — a fresh session clears them.
 - System utilities needing a CLI binary in `$PATH`
 - Tools that configure `statusLine` (plugins can only set the `agent` key)
 - Scripts with heavy external state that must survive reinstalls
-- Tools where hooks just call an external binary — the plugin adds
-  indirection without benefit
+- Tools where hooks just call an external binary
 
 **The test:** If after converting to a plugin, install.sh still handles most
 of the setup, the plugin layer is adding complexity without value.
@@ -198,7 +228,7 @@ of the setup, the plugin layer is adding complexity without value.
 | hooks.json without `"hooks"` wrapper | `Hook load failed: expected record, received undefined` | Wrap events under `{"hooks": {...}}` |
 | Hook script writes to stderr | Hook error on every message | Add `exec 2>/dev/null` (bash) or silence stderr (python) |
 | Changed plugin on GitHub but not reinstalled | Old behavior persists | `marketplace update` + uninstall + reinstall |
-| Marketplace and plugin have the same name | May cause duplicate entries in autocomplete (cosmetic, not functional) | Use different names if possible (e.g., marketplace `coding-clippy`, plugin `clippy`) |
-| `directory` source in `extraKnownMarketplaces` | `owner: expected object, received undefined` on install | Use GitHub source (`/plugin marketplace add owner/repo`) instead |
-| `enabledPlugins` in settings.json without `/plugin install` | Plugin doesn't load | Must install via `/plugin install`, not just enable in settings |
-| Archive dirs with SKILL.md in repo | Stale skills appear | Delete or rename SKILL.md files outside `plugin/`; they get cloned into marketplace cache |
+| Marketplace and plugin have the same name | May cause duplicate autocomplete entries (cosmetic) | Use different names if possible |
+| `directory` source in `extraKnownMarketplaces` | `owner: expected object, received undefined` | Use GitHub source (`/plugin marketplace add owner/repo`) |
+| `enabledPlugins` in settings.json without `/plugin install` | Plugin doesn't load | Must install via `/plugin install`, not just enable |
+| Archive dirs with SKILL.md in repo | Stale skills appear | Delete SKILL.md files outside `plugin/`; they get cloned into cache |
