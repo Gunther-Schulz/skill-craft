@@ -267,6 +267,22 @@ observation should exist before the procedure change — it provides the evidenc
 that the change is warranted. Procedure changes without grounding observations
 are guesses about what might go wrong.
 
+**Before applying a patch, check for drift.** Each observation-driven change
+is correct locally but may degrade the procedure globally. Before adding
+guidance to a checkpoint:
+
+1. Re-read the target checkpoint as it currently stands
+2. Ask: does this addition make the checkpoint clearer or heavier?
+3. If heavier: the addition belongs in `references/`, not inline
+4. If the checkpoint already has 2+ "when X, also check Y" additions,
+   it has likely accumulated case-specific guidance — consider whether
+   the checkpoint needs consolidating rather than another patch
+
+This catches drift at the moment it happens. A vision document helps
+re-derive the procedure when drift has already accumulated, but this
+check prevents the accumulation in the first place. Works whether or
+not the skill has a VISION.md.
+
 **When the procedure is stable.** A procedure stabilizes when new observations
 produce only detail-level findings on content that was already structurally
 validated. This is diminishing returns — the procedure is refined enough when
