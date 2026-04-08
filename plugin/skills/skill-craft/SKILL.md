@@ -39,8 +39,15 @@ When building or scaffolding a plugin, use both:
 - Plugin-dev skills for **formatting** and **Claude Code conventions**
 
 If plugin-dev is installed, invoke its relevant sub-skills alongside
-skill-craft guidance. If not installed, `references/plugin-engineering.md`
-covers the essential mechanics.
+skill-craft guidance. If not installed, suggest installation:
+
+```
+claude plugin install plugin-dev@claude-plugins-official
+```
+
+Offer to run this for the user if they agree. The official plugin
+provides authoritative guidance on Claude Code conventions that
+skill-craft's `references/plugin-engineering.md` covers only partially.
 
 ## When advising on skill design
 
