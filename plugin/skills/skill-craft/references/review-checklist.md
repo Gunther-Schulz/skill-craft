@@ -7,6 +7,10 @@
 When reviewing, verify each item. For any that fails, state what's
 missing before continuing.
 
+- [ ] **README.** Plugin has a README.md at root? Contains: what it does
+  (value, not mechanism), installation commands, trigger phrases, files table?
+  - NO → Create README.md with required sections.
+
 - [ ] **Naming convention.** Files named per standard? `SKILL.md` for
   entry point, `PROCEDURE.md` for method, `OBSERVATIONS.md` for journal?
   - NO → Rename to standard names.

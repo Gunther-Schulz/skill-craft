@@ -57,7 +57,32 @@ stop. Skills that work well over time address all five.
 
 ### Layer 1: Plugin structure (plumbing)
 
-Directory layout, manifest, auto-discovery. The mechanical foundation.
+Directory layout, manifest, auto-discovery, README. The mechanical foundation.
+
+**README.md** sits at the plugin root — the first thing a potential user
+sees. It serves a different audience than SKILL.md (which is for the AI).
+The README is for humans deciding whether to install.
+
+Required sections:
+1. **What it does** — one paragraph explaining the value. Lead with the
+   problem it solves or the before/after difference, not the mechanism.
+   "Enforces investigation before implementation" not "provides a
+   multi-phase workflow with tracker."
+2. **Installation** — the marketplace add + install + reload-plugins
+   commands, copy-pasteable.
+3. **Usage** — trigger phrases and/or slash command. How to invoke it.
+4. **Files** — table of plugin files and their roles (operational vs
+   maintenance, loaded at invocation vs on demand).
+
+Optional but valuable:
+- **Origin story** — why the skill was created. One real incident that
+  motivated it. This grounds the README in reality and explains why
+  someone should care.
+- **Phases/features** — brief description of what the skill does at each
+  step. Not the full procedure — just enough to set expectations.
+
+The README does NOT replace SKILL.md. SKILL.md is AI instructions.
+README is human documentation. Different audiences, different content.
 
 ```
 plugin-name/
