@@ -269,9 +269,18 @@ are guesses about what might go wrong.
 
 **When the procedure is stable.** A procedure stabilizes when new observations
 produce only detail-level findings on content that was already structurally
-validated. This is diminishing returns — the same phenomenon as in Bildhauer
-observation 22. The procedure is refined enough when another pass wouldn't
-change its structure, only its surface.
+validated. This is diminishing returns — the procedure is refined enough when
+another pass wouldn't change its structure, only its surface.
+
+**When the procedure needs a rewrite, not a patch.** After many incremental
+patches, the procedure may drift from its vision. Each patch is correct but
+the aggregate document no longer reads like the founding principle. Symptoms:
+procedure exceeds 200 lines, tone becomes adversarial, specialized guidance
+sits inline with core principles, multiple paragraphs say the same thing.
+The fix is not another patch — it's re-deriving the procedure from the vision.
+State each checkpoint in 3-5 sentences. Move specialized guidance to
+`references/`. See anti-patterns → "Procedure drift through incremental
+patches."
 
 **The improvement cycle:**
 ```
