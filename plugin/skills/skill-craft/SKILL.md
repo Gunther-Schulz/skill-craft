@@ -27,6 +27,21 @@ everything needed to design, review, or improve a skill.
 When updating PROCEDURE.md, check that its grounding observations still
 hold. When adding observations, check if the procedure should change.
 
+## Companion: official plugin-dev
+
+Skill-craft covers design methodology (five layers, protocol conventions,
+evolution). The official `plugin-dev` plugin (`plugin-dev@claude-plugins-official`)
+covers mechanics (frontmatter format, hooks syntax, agent definitions,
+skill-development structure, plugin settings).
+
+When building or scaffolding a plugin, use both:
+- Skill-craft for **what** to build and **how to structure** it
+- Plugin-dev skills for **formatting** and **Claude Code conventions**
+
+If plugin-dev is installed, invoke its relevant sub-skills alongside
+skill-craft guidance. If not installed, `references/plugin-engineering.md`
+covers the essential mechanics.
+
 ## When advising on skill design
 
 Apply all five layers from the procedure:
