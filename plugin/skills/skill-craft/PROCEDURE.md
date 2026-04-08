@@ -81,6 +81,14 @@ Optional but valuable:
 - **Phases/features** — brief description of what the skill does at each
   step. Not the full procedure — just enough to set expectations.
 
+Required for plugins with contributors:
+5. **Development** — how to make changes and test them locally. Include:
+   the edit → commit → reinstall cycle (uninstall + install, since
+   `update` won't pick up same-version changes), how to reload
+   (`/reload-plugins`), and how to bump version for releases. This
+   section prevents the most common contributor friction: "I changed
+   the file but nothing happened."
+
 The README does NOT replace SKILL.md. SKILL.md is AI instructions.
 README is human documentation. Different audiences, different content.
 
