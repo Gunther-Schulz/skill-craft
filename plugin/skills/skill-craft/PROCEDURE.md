@@ -107,6 +107,11 @@ Key: "CANNOT proceed" (not "should"), evidence requirement, alternative action.
 **Observable checkpoints.** Verify actions taken, not internal states.
 - Observable (works): "Searched codebase?" → Evidence: [locations found]
 - Introspective (fails): "Feeling confident?" → AI cannot detect own states
+- Self-reported completion (fragile): "Checked all edge cases?" → AI says
+  yes, but evidence is unfalsifiable. Fix: require the evidence to enumerate
+  what was checked. Not "checked edge cases" but "checked these specific
+  cases: [list]. Results: [list]." The enumeration is observable; the claim
+  of completeness is not.
 
 **Menus as structural enforcement.** Show menu after every response where user
 has choices. Menu is always last element. Without it, user cannot control flow.
@@ -265,12 +270,17 @@ revealed it), and the proposed change to the guide. Do not make the change.
 The user decides whether and how to incorporate it.
 
 **Abstraction check — BEFORE proposing any change to a skill's procedure or
-reference files:** Would this checkpoint/rule make sense in a codebase that has
-nothing to do with the current project? If the examples or terminology are
-domain-specific, abstract them. A checkpoint about "substring collisions in
-keyword matching" is project-specific. A checkpoint about "inputs at decision
-boundaries for any decision logic" is project-agnostic. The latter belongs in
-a skill; the former belongs in an observation.
+reference files:**
+
+- [ ] Proposed change makes sense in an unrelated codebase?
+  - NO → CANNOT add to procedure or references. Rephrase in domain-independent
+    terms, or move to observations (where project-specific content belongs).
+  - YES → Evidence: [State the domain-independent version of the rule/checkpoint]
+
+A checkpoint about "substring collisions in keyword matching" is project-specific.
+A checkpoint about "inputs at decision boundaries for any decision logic" is
+project-agnostic. The latter belongs in a skill; the former belongs in an
+observation.
 
 ---
 
@@ -337,6 +347,13 @@ happens when the user interrupts?
 Workflow procedures benefit from menus (layer 2) more than any other type.
 The menu IS the flow control — it shows the user where they are and what
 they can do next.
+
+**Decision logic within workflow phases.** When a workflow phase produces
+design decisions that contain decision logic (classification, matching,
+filtering, scoring, routing), apply Path 2 techniques to that logic:
+phenomenon identification, proxy detection, and non-firing case enumeration.
+A workflow skill's design phase proposing a heuristic is creating an
+internal rule — validate it as one, not just as a workflow step.
 
 ### Writing domain knowledge procedures
 

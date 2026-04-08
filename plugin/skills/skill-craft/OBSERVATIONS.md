@@ -109,7 +109,43 @@ during agentplane project work.*
 
 ---
 
-## 8. Guide existed but wasn't followed during creation
+## 8. Workflow skills create internal rules that need rule-based validation
+
+A workflow skill (Clippy investigate-design) proposed heuristic matching
+logic during its design phase. The workflow procedure defined phases,
+gates, and transitions — but the heuristic within one phase was not
+validated with Path 2 techniques (non-firing case enumeration). The
+"Writing workflow procedures" section and "Writing rule-based procedures"
+section were separate categories with no connection.
+
+The fix: added a bridge paragraph to "Writing workflow procedures" —
+when a workflow phase produces decision logic, apply Path 2 techniques
+to that logic. A heuristic proposed inside a workflow phase is an
+internal rule.
+
+*Observed: 8 April 2026. Same incident as observation 7.*
+
+---
+
+## 9. Self-reported completion passes observable checkpoint but is unfalsifiable
+
+A blocking check asked "verified all assumptions?" The AI answered yes
+with evidence "all verified." This passed the observable checkpoint test
+(it's an action, not a feeling). But the evidence was unfalsifiable —
+there was no way to tell if "all" actually meant all, or just the ones
+the AI thought of. The missing edge case was discovered post-implementation.
+
+The fix: added self-reported completion as a third category in Layer 2's
+observable checkpoints. Evidence must enumerate what was checked, not
+just claim completeness. "Checked these 3 cases: [list]" is observable.
+"Checked all cases" is not.
+
+*Observed: 8 April 2026. Clippy readiness check reported [READY] but
+keyword matching edge cases were not enumerated.*
+
+---
+
+## 10. Guide existed but wasn't followed during creation
 
 A skill about plugin design included a reference document covering the
 two-layer marketplace/plugin structure. When the skill's own repo was

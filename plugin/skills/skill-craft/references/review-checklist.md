@@ -58,3 +58,8 @@ missing before continuing.
 
 - [ ] **Reflexivity.** Skill notices when own guidance needs updating?
   - NO → Add reflexivity rule.
+
+- [ ] **Abstraction level.** Procedure and reference content project-agnostic?
+  Checkpoints use domain-independent language? Examples abstract, not from a
+  specific codebase?
+  - NO → Rephrase abstractly or move project-specific content to observations.
