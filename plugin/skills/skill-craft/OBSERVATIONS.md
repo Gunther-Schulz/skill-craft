@@ -82,7 +82,34 @@ Not automatic changes — suggestions with reasoning, for the user to decide.
 
 ---
 
-## 7. Guide existed but wasn't followed during creation
+## 7. Abstraction level not self-verified during skill updates
+
+When adding a checkpoint to another skill (Clippy's investigate-design),
+the initial proposal was domain-specific: "test for substring collisions,
+boundary conditions in string matching." A human had to challenge: "is
+this sufficiently abstract for any project?" The revised version — "test
+inputs at decision boundaries for any decision logic" — was correct and
+project-agnostic, but the AI didn't self-check the abstraction level.
+
+Skill-craft's procedure says procedures must be "project-agnostic to work
+in any codebase." But there's no checkpoint that fires during skill
+updates asking "is this proposed rule/checkpoint abstract enough?" The
+principle exists (Layer 3: procedure from observations separation) but
+there's no forcing function that prevents domain-specific checkpoints
+from slipping into another skill's procedure.
+
+The fix: when proposing changes to any skill's procedure or reference
+files, self-check abstraction before presenting: "Would this checkpoint
+make sense in a codebase that has nothing to do with the current project?
+If the examples are domain-specific, abstract them." This is a reflexivity
+improvement — skill-craft applying its own principles to itself.
+
+*Observed: 8 April 2026. Discovered while updating Clippy investigate-design
+during agentplane project work.*
+
+---
+
+## 8. Guide existed but wasn't followed during creation
 
 A skill about plugin design included a reference document covering the
 two-layer marketplace/plugin structure. When the skill's own repo was

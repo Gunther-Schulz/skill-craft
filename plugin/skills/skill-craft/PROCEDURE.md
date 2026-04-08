@@ -264,6 +264,14 @@ reasoning, for the user to decide.
 revealed it), and the proposed change to the guide. Do not make the change.
 The user decides whether and how to incorporate it.
 
+**Abstraction check — BEFORE proposing any change to a skill's procedure or
+reference files:** Would this checkpoint/rule make sense in a codebase that has
+nothing to do with the current project? If the examples or terminology are
+domain-specific, abstract them. A checkpoint about "substring collisions in
+keyword matching" is project-specific. A checkpoint about "inputs at decision
+boundaries for any decision logic" is project-agnostic. The latter belongs in
+a skill; the former belongs in an observation.
+
 ---
 
 ## Writing procedure content
