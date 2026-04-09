@@ -158,8 +158,12 @@ information in an on-demand reference is not available during routine
 use, so actionable content may need to exist in both places. Fluff
 includes: provenance (where a rule came from), restated content (same
 idea in different words without different availability), named examples
-of existing skills, and motivational framing ("this is important
-because").
+of existing skills, motivational framing ("this is important because"),
+hedging ("in most cases", "generally speaking", "it's worth noting"),
+meta-commentary ("this section covers", "the purpose of this skill is"),
+and transition sentences ("now let's look at", "as mentioned above").
+Exception: version lines serve the human maintainer, not the AI — keep
+them despite failing the test.
 
 **Language agnosticism.** All terminology must be paradigm-neutral. Use
 "component" not "module/class", "contract" not "type/interface", "identifier"
