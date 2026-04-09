@@ -77,3 +77,28 @@ files. The procedure should fit on a screen.
 observations. A rewrite that restored vision alignment cut it to 148
 lines, moving specialized patterns to `references/patterns.md`. No
 substance was lost — only inline detail that diluted the core principles.
+
+## Information loss at skill boundaries
+
+Orchestrated workflows (A invokes B, B invokes C) lose data at every
+handoff. Skill A's output is compressed into skill B's prompt, dropping
+fields that skill C needs later. Or a retry invocation includes only the
+failure details, not the original design context. Or counters tracked in
+conversation are lost when context compacts.
+
+**Symptoms:**
+- Downstream skill re-discovers what upstream already found
+- Retry produces different (often worse) results than original
+- Session recovery loses progress or quality signals
+- Reviewer re-verifies what executor already proved
+
+**Fix:** For each handoff point, audit: does the receiver get everything
+it needs? Is the data passed explicitly (in prompt or on disk), or does
+it rely on conversation context that can be compacted? See "Information
+flow in orchestrated workflows" in the main procedure.
+
+**Evidence:** Clippy autopilot audit found 16 information-flow gaps
+across 13 handoff points. Executor retry prompt lacked original design
+context. Coherence check lacked dependency graph. Decompose overwrote
+investigation constraints. Reviewer re-verified executor-proven criteria
+(~80% overhead). All fixable by explicit data passing.

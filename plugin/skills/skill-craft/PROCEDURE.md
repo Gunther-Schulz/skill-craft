@@ -413,6 +413,48 @@ phenomenon identification, proxy detection, and non-firing case enumeration.
 A workflow skill's design phase proposing a heuristic is creating an
 internal rule — validate it as one, not just as a workflow step.
 
+### Information flow in orchestrated workflows
+
+When a workflow skill invokes other skills or agents in sequence (A → B
+→ C), data crosses boundaries at each handoff. These boundaries are
+where information gets lost. For each handoff point, verify:
+
+**1. Sender produces what receiver needs.** List every piece of data the
+receiver requires. Confirm the sender's output or disk artifacts contain
+all of it. If the receiver assumes data exists that the sender does not
+guarantee — that is a gap.
+
+**2. Data is explicitly passed or explicitly referenced.** Information
+that exists on disk but is not mentioned in the invocation prompt is
+invisible to the receiver. Either pass it inline in the prompt or tell
+the receiver where to read it (file path).
+
+**3. Format matches.** If the sender writes YAML and the receiver
+expects JSON, or if field names differ between producer and consumer,
+the data is lost at the boundary even though it exists.
+
+**4. Prompt compression preserves essentials.** When an orchestrator
+compresses one skill's output into another skill's prompt (e.g.,
+investigation results compressed into an executor prompt), verify that
+downstream consumers (reviewer, coherence check) still have access to
+what was compressed away — either via disk artifacts or by receiving
+the original data separately.
+
+**5. Retry/recovery has full context.** When a step fails and retries,
+the retry invocation must include the same context as the original —
+not just the failure details. Fresh-context agents lose everything
+from the original invocation unless it is re-provided.
+
+**6. State survives compaction.** Any information that must persist
+across context compaction boundaries must be written to disk. Counters,
+status flags, and progress tracked only in conversation context are
+lost on compaction.
+
+Common gap pattern: skill A writes results to disk, orchestrator reads
+them and builds a prompt for skill B, but drops fields that skill C
+(invoked later) will need. The fix: either persist the full data on
+disk where C can read it, or include it in C's prompt explicitly.
+
 ### Writing domain knowledge procedures
 
 Encode the expertise as concrete rules with context. Not "be aware of CRS
