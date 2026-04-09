@@ -21,7 +21,8 @@ state what's missing before continuing.
   references/ loaded on demand? Every sentence changes AI behavior
   (no provenance, restated content, hedging, meta-commentary,
   transitions)? Consider load-time availability before removing
-  apparent duplicates.
+  apparent duplicates. Rules covering the same concern merged into
+  fewer, sharper items?
 
 - [ ] **Abstraction.** Passes all seven tests (five exclusion, two
   inclusion)? At the same level as surrounding content? Uses abstract
