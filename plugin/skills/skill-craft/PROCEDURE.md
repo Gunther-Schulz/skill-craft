@@ -278,6 +278,12 @@ observation should exist before the procedure change — it provides the evidenc
 that the change is warranted. Procedure changes without grounding observations
 are guesses about what might go wrong.
 
+**Before adding a new section, check if existing rules cover it.** A new
+gate or checkpoint may be an amendment to an existing rule rather than a
+new section. Widen an existing trigger, add a clause to an existing gate,
+or extend an existing evidence requirement. This prevents section
+proliferation and keeps the procedure dense.
+
 **Before applying a patch, check for drift.** Each observation-driven change
 is correct locally but may degrade the procedure globally. Before adding
 guidance to a checkpoint:
