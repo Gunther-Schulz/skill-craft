@@ -482,6 +482,31 @@ reflexivity.
 
 ---
 
+## After creating or modifying a skill
+
+Every skill edit must reach the user's session. Editing a file without
+deploying it is incomplete work. After any change to skill files
+(SKILL.md, PROCEDURE.md, references/, OBSERVATIONS.md, plugin.json):
+
+1. **Commit and push** the source repo. Stage only the changed files.
+   Use a descriptive commit message.
+2. **Update the marketplace clone.** Pull the latest into the marketplace
+   directory under `~/.claude/plugins/marketplaces/`. This is the copy
+   Claude Code actually loads from.
+3. **Tell the user** to run `/reload-plugins` to pick up changes in
+   their current session.
+
+Finding the marketplace clone: check
+`~/.claude/plugins/marketplaces/` for a directory whose git remote
+matches the source repo. Pull from the correct branch.
+
+This applies to both new skills and edits to existing skills. Do not
+consider the work done until the marketplace clone is updated. The user
+should only need to run `/reload-plugins` — everything else is handled
+before that point.
+
+---
+
 ## Diminishing returns signal
 
 After each invocation, state whether this pass surfaced anything new or
