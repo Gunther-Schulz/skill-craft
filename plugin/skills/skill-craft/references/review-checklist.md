@@ -31,6 +31,11 @@ missing before continuing.
   content in references/?
   - NO → Move heavy content to references/. Keep SKILL.md lean.
 
+- [ ] **Behavior-change test.** Every sentence changes AI behavior? No
+  provenance, restated content, named examples, or motivational framing?
+  - NO → Remove sentences that fail the test. Consider load-time
+    availability before removing apparent duplicates.
+
 - [ ] **File separation.** Procedure project-agnostic? Observations
   grounded in real incidents? Supporting files not loaded at invocation?
   - NO → Separate procedure from observations.
