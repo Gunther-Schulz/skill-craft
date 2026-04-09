@@ -335,12 +335,14 @@ reference files:**
 - [ ] Proposed change makes sense in an unrelated codebase?
   - NO → CANNOT add to procedure or references. Rephrase in domain-independent
     terms, or move to observations (where project-specific content belongs).
-  - YES → Evidence: [State the domain-independent version of the rule/checkpoint]
+  - YES → Continue to abstraction level check.
 
-A checkpoint about "substring collisions in keyword matching" is project-specific.
-A checkpoint about "inputs at decision boundaries for any decision logic" is
-project-agnostic. The latter belongs in a skill; the former belongs in an
-observation.
+- [ ] Proposed change at the same abstraction level as surrounding content?
+  Could it be stated more abstractly without losing actionability?
+  - NO (more specific than surroundings) → Rephrase at the same level.
+    "Configurable timeouts" is domain-independent but more specific than
+    "configurable values" — use the more abstract form.
+  - YES → Evidence: [State the domain-independent version of the rule/checkpoint]
 
 ---
 
