@@ -215,7 +215,9 @@ How to organize knowledge across files so the skill produces good results.
 
 - **References** — detailed guidance loaded on demand, not at invocation.
   Checklists, examples, schemas. Keeps the main skill focused while making
-  detail available when needed.
+  detail available when needed. Reference content is project-agnostic like
+  procedures — no project-specific evidence. The pattern and fix are
+  sufficient; the AI does not need provenance to apply the guidance.
 
 **The separation that matters most: procedure from observations.** The procedure
 must be project-agnostic to work in any codebase. The observations must contain
