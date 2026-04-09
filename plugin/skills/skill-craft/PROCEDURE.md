@@ -153,11 +153,13 @@ yes, inline it. If no, reference it.
 **Every sentence must change behavior.** Before writing a sentence into
 a skill, procedure, or reference, apply the test: if this sentence were
 deleted, would the AI do something different? If no, the sentence is
-fluff — remove it. This covers: provenance (where a rule came from),
-restated content (same idea in different words), named examples of
-existing skills, and motivational framing ("this is important because").
-The rule itself is sufficient; the AI does not need to know why it
-exists or which project demonstrated it.
+fluff — remove it. Consider when the content is encountered — the same
+information in an on-demand reference is not available during routine
+use, so actionable content may need to exist in both places. Fluff
+includes: provenance (where a rule came from), restated content (same
+idea in different words without different availability), named examples
+of existing skills, and motivational framing ("this is important
+because").
 
 **Language agnosticism.** All terminology must be paradigm-neutral. Use
 "component" not "module/class", "contract" not "type/interface", "identifier"
