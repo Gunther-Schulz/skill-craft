@@ -332,7 +332,7 @@ The user decides whether and how to incorporate it.
 **Abstraction check — BEFORE proposing any change to a skill's procedure or
 reference files:**
 
-- [ ] Proposed change passes all five abstraction tests?
+- [ ] Proposed change passes exclusion tests?
   1. No specific language mentioned
   2. No paradigm assumed (OOP, functional, procedural)
   3. No architecture assumed (pipeline, MVC, REST, microservices)
@@ -342,10 +342,20 @@ reference files:**
     not "module/class", "contract" not "type/interface", "identifier"
     not "variable/field", "component boundary" not "API". Move
     project-specific content to observations.
-  - YES → Continue to abstraction level check.
+  - YES → Continue.
 
-- [ ] Proposed change at the same abstraction level as surrounding content?
-  Could it be stated more abstractly without losing actionability?
+- [ ] Proposed change passes inclusion tests?
+  6. States a relationship between abstract entities (producer/consumer,
+     source/destination, earlier/later) — not a specific scenario
+  7. Composes with existing rules to cover cases neither addresses
+     alone — if it stands alone, it may be a specific instance of a
+     more general rule that should be amended instead
+  - NO → Extract the underlying pattern. A rule about a scenario
+    ("configurable value exceeds ceiling") becomes a rule about a
+    relationship ("value constrained by external factors").
+  - YES → Continue.
+
+- [ ] At the same abstraction level as surrounding content?
   - NO → Rephrase at the same level.
   - YES → Evidence: [State the abstract version of the rule/checkpoint]
 
