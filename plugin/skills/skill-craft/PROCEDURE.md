@@ -332,17 +332,22 @@ The user decides whether and how to incorporate it.
 **Abstraction check — BEFORE proposing any change to a skill's procedure or
 reference files:**
 
-- [ ] Proposed change makes sense in an unrelated codebase?
-  - NO → CANNOT add to procedure or references. Rephrase in domain-independent
-    terms, or move to observations (where project-specific content belongs).
+- [ ] Proposed change passes all five abstraction tests?
+  1. No specific language mentioned
+  2. No paradigm assumed (OOP, functional, procedural)
+  3. No architecture assumed (pipeline, MVC, REST, microservices)
+  4. Works across diverse languages and runtimes
+  5. Applies to diverse problem domains
+  - NO → CANNOT add. Rephrase using abstract terminology: "component"
+    not "module/class", "contract" not "type/interface", "identifier"
+    not "variable/field", "component boundary" not "API". Move
+    project-specific content to observations.
   - YES → Continue to abstraction level check.
 
 - [ ] Proposed change at the same abstraction level as surrounding content?
   Could it be stated more abstractly without losing actionability?
-  - NO (more specific than surroundings) → Rephrase at the same level.
-    "Configurable timeouts" is domain-independent but more specific than
-    "configurable values" — use the more abstract form.
-  - YES → Evidence: [State the domain-independent version of the rule/checkpoint]
+  - NO → Rephrase at the same level.
+  - YES → Evidence: [State the abstract version of the rule/checkpoint]
 
 ---
 
