@@ -73,11 +73,6 @@ recognize? If not, the checkpoint has accumulated implementation detail
 that belongs in `references/`. Move specialized guidance to reference
 files. The procedure should fit on a screen.
 
-**Evidence:** Bildhauer procedure grew from ~100 to 301 lines over 25
-observations. A rewrite that restored vision alignment cut it to 148
-lines, moving specialized patterns to `references/patterns.md`. No
-substance was lost — only inline detail that diluted the core principles.
-
 ## Information loss at skill boundaries
 
 Orchestrated workflows (A invokes B, B invokes C) lose data at every
@@ -96,9 +91,3 @@ conversation are lost when context compacts.
 it needs? Is the data passed explicitly (in prompt or on disk), or does
 it rely on conversation context that can be compacted? See "Information
 flow in orchestrated workflows" in the main procedure.
-
-**Evidence:** Clippy autopilot audit found 16 information-flow gaps
-across 13 handoff points. Executor retry prompt lacked original design
-context. Coherence check lacked dependency graph. Decompose overwrote
-investigation constraints. Reviewer re-verified executor-proven criteria
-(~80% overhead). All fixable by explicit data passing.
