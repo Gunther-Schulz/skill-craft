@@ -288,6 +288,9 @@ re-derive the procedure when drift has already accumulated, but this
 check prevents the accumulation in the first place. Works whether or
 not the skill has a VISION.md.
 
+Signs that consolidation is overdue: procedure exceeds 200 lines,
+tone is adversarial, or multiple paragraphs say the same thing.
+
 **When the procedure is stable.** A procedure stabilizes when new observations
 produce only detail-level findings on content that was already structurally
 validated. This is diminishing returns — the procedure is refined enough when
