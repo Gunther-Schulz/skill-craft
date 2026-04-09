@@ -17,11 +17,7 @@ central naming rule.
   graph. Every skill has this. Always loaded.
 - `PROCEDURE.md` — the core method. Loaded by SKILL.md.
 - `references/` — supplementary detail loaded on demand during use.
-- Sub-skill files for orchestrators (e.g., Clippy's four SKILL.md files).
-
-The shape of operational files is unconstrained. A skill can have one
-PROCEDURE.md or four sub-skills with references directories. The convention
-doesn't prescribe how many operational files a skill needs.
+- Sub-skill files for orchestrators with multiple phases.
 
 ### Category 2: Maintenance files — never loaded during skill use
 
@@ -154,6 +150,15 @@ referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
 even if repeated. Test: must I follow this step-by-step without judgment? If
 yes, inline it. If no, reference it.
 
+**Every sentence must change behavior.** Before writing a sentence into
+a skill, procedure, or reference, apply the test: if this sentence were
+deleted, would the AI do something different? If no, the sentence is
+fluff — remove it. This covers: provenance (where a rule came from),
+restated content (same idea in different words), named examples of
+existing skills, and motivational framing ("this is important because").
+The rule itself is sufficient; the AI does not need to know why it
+exists or which project demonstrated it.
+
 **Language agnosticism.** All terminology must be paradigm-neutral. Use
 "component" not "module/class", "contract" not "type/interface", "identifier"
 not "variable/field."
@@ -185,8 +190,6 @@ than executor.
 - **Quoted speech examples** — examples of phrases to say or not say.
   "Which do you prefer?" as a bad-pattern example needs to stay in
   second person to illustrate the anti-pattern accurately.
-
-This layer determines whether the skill's instructions are followed or ignored.
 
 ### Layer 3: Skill architecture (design)
 
@@ -290,24 +293,6 @@ produce only detail-level findings on content that was already structurally
 validated. This is diminishing returns — the procedure is refined enough when
 another pass wouldn't change its structure, only its surface.
 
-**When the procedure needs a rewrite, not a patch.** After many incremental
-patches, the procedure may drift from its vision. Each patch is correct but
-the aggregate document no longer reads like the founding principle. Symptoms:
-procedure exceeds 200 lines, tone becomes adversarial, specialized guidance
-sits inline with core principles, multiple paragraphs say the same thing.
-The fix is not another patch — it's re-deriving the procedure from the vision.
-State each checkpoint in 3-5 sentences. Move specialized guidance to
-`references/`. See anti-patterns → "Procedure drift through incremental
-patches."
-
-**The improvement cycle:**
-```
-Use skill → notice failure → abstract to pattern →
-add observation → assess if procedure needs change →
-if yes: update procedure, grounded in observation →
-use skill again
-```
-
 ### Layer 5: Skill reflexivity (self-awareness)
 
 The skill should notice when its own guidance needs updating.
@@ -352,20 +337,16 @@ on what kind of skill it is.
 ### Skill types
 
 **Rule-based skills** — checklists, audits, validation procedures. The procedure
-is a set of rules that prevent specific failures. Examples: architecture audit
-(three-layer checks), bildhauer (five checkpoints at transitions).
+is a set of rules that prevent specific failures.
 
 **Workflow skills** — orchestrate a multi-phase process. The procedure is a flow
-with phases, gates, and routing. Examples: clippy (investigate → implement →
-verify), clawdance (design → decompose → build).
+with phases, gates, and routing.
 
 **Domain knowledge skills** — encode expertise for a specific domain. The
 procedure is "when encountering X, do Y because that's how this domain works."
-Examples: gis-utils (CRS safety, geometry conventions), claude-api (SDK patterns).
 
 **Tooling skills** — thin wrappers around a specific workflow or tool. The
-procedure is a sequence of steps. Examples: ref (clone a reference repo),
-sync-docs (update docs after implementation).
+procedure is a sequence of steps.
 
 ### Writing rule-based procedures
 
@@ -451,11 +432,6 @@ from the original invocation unless it is re-provided.
 across context compaction boundaries must be written to disk. Counters,
 status flags, and progress tracked only in conversation context are
 lost on compaction.
-
-Common gap pattern: skill A writes results to disk, orchestrator reads
-them and builds a prompt for skill B, but drops fields that skill C
-(invoked later) will need. The fix: either persist the full data on
-disk where C can read it, or include it in C's prompt explicitly.
 
 ### Writing domain knowledge procedures
 
@@ -557,8 +533,5 @@ before that point.
 
 ## Diminishing returns signal
 
-After each invocation, state whether this pass surfaced anything new or
-substantial, and recommend whether another pass is warranted. If the pass
-found structural issues, recommend another round. If it found only minor
-issues or nothing new, say so and recommend moving on. The user decides —
-the skill provides the honest signal with a recommendation.
+After each invocation, state whether this pass surfaced anything new.
+Recommend another pass or moving on.
