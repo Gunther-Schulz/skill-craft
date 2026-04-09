@@ -4,71 +4,41 @@
 
 ---
 
-When reviewing, verify each item. For any that fails, state what's
-missing before continuing.
+Apply after creating or modifying any skill. For any item that fails,
+state what's missing before continuing.
 
-- [ ] **README.** Plugin has a README.md at root? Contains: what it does
-  (value, not mechanism), installation commands, trigger phrases, files table?
-  - NO → Create README.md with required sections.
+- [ ] **Structure.** SKILL.md entry point, standard file names, README
+  at root, dependency graph for multi-file skills?
 
-- [ ] **Naming convention.** Files named per standard? `SKILL.md` for
-  entry point, `PROCEDURE.md` for method, `OBSERVATIONS.md` for journal?
-  - NO → Rename to standard names.
+- [ ] **Boundary rule.** Maintenance files (OBSERVATIONS, VISION,
+  ROADMAP) never loaded by operational files? Only referenced as
+  write targets?
 
-- [ ] **Boundary rule.** Category 2 files (OBSERVATIONS, VISION, STRATEGY,
-  ROADMAP) appear in any Category 1 files (SKILL.md, PROCEDURE.md, references)?
-  - YES → Remove. Maintenance files never appear in operational files.
+- [ ] **Trigger clarity.** SKILL.md description states specific trigger
+  phrases in third person?
 
-- [ ] **Trigger clarity.** SKILL.md description clearly states when to
-  activate? Third-person with specific trigger phrases?
-  - NO → Rewrite with explicit trigger phrases.
+- [ ] **Density.** SKILL.md under 2,000 words? Detailed content in
+  references/ loaded on demand? Every sentence changes AI behavior
+  (no provenance, restated content, hedging, meta-commentary,
+  transitions)? Consider load-time availability before removing
+  apparent duplicates.
 
-- [ ] **Writing style.** Imperative/infinitive form throughout? No second
-  person ("you should", "your role")?
-  - NO → Rewrite to imperative form.
+- [ ] **Abstraction.** Passes all seven tests (five exclusion, two
+  inclusion)? At the same level as surrounding content? Uses abstract
+  terminology (component/contract/identifier)?
 
-- [ ] **Word count.** SKILL.md body under 2,000 words (5k max)? Detailed
-  content in references/?
-  - NO → Move heavy content to references/. Keep SKILL.md lean.
+- [ ] **Protocol conventions.** Gates use blocking logic (CANNOT +
+  evidence)? Checkpoints observable (not introspective)? Menus where
+  user has choices?
 
-- [ ] **Behavior-change test.** Every sentence changes AI behavior? No
-  provenance, restated content, named examples, or motivational framing?
-  - NO → Remove sentences that fail the test. Consider load-time
-    availability before removing apparent duplicates.
+- [ ] **Deepening.** Findings traced to implications beyond the
+  checklist? Checklist is floor, not ceiling?
 
-- [ ] **File separation.** Procedure project-agnostic? Observations
-  grounded in real incidents? Supporting files not loaded at invocation?
-  - NO → Separate procedure from observations.
+- [ ] **Evolution.** OBSERVATIONS.md exists for skills involving
+  judgment? SKILL.md includes evolution instructions (notice gap →
+  write observation → propose change)? Skill notices when own
+  guidance needs updating?
 
-- [ ] **Dependency graph.** SKILL.md documents which files depend on which?
-  - NO → Add dependency table.
-
-- [ ] **Progressive disclosure.** SKILL.md tells what to load first and
-  what to load on demand? Or everything loads at once?
-  - NO → Extract to `references/`. Keep SKILL.md focused.
-
-- [ ] **Protocol conventions.** Instructions use forcing functions?
-  Checkpoints observable? Menus where user has choices?
-  - NO → Add blocking logic for advisory instructions.
-
-- [ ] **Deepening.** After checklist items, procedure traces findings to
-  implications? Or stops at the checklist?
-  - NO → Add deepening step.
-
-- [ ] **Evolution path.** Place for observations? Updated based on real
-  failures? Or written once?
-  - NO → Create OBSERVATIONS.md if the skill involves judgment.
-
-- [ ] **Evolution instructions (if OBSERVATIONS.md exists).** Does SKILL.md
-  include the evolution behavior? (notice gaps → write to OBSERVATIONS.md
-  → assess procedure change → propose with reasoning)
-  - OBSERVATIONS.md exists but no evolution instructions → Add them.
-  - No OBSERVATIONS.md → N/A.
-
-- [ ] **Reflexivity.** Skill notices when own guidance needs updating?
-  - NO → Add reflexivity rule.
-
-- [ ] **Abstraction level.** Procedure and reference content project-agnostic?
-  Checkpoints use domain-independent language? Examples abstract, not from a
-  specific codebase?
-  - NO → Rephrase abstractly or move project-specific content to observations.
+- [ ] **Information flow (orchestrated skills only).** Every handoff
+  passes what the receiver needs? Data explicit in prompt or on disk?
+  Format matches? State survives compaction?

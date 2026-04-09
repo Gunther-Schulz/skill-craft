@@ -526,11 +526,10 @@ and any moment where the skill could either ask "what do you think?" or say
 
 ## Checklist for reviewing a skill
 
-For the full review checklist with blocking logic, load
-`references/review-checklist.md`. Covers: naming, boundary rule, trigger
-clarity, writing style, word count, file separation, dependency graph,
-progressive disclosure, protocol conventions, deepening, evolution,
-reflexivity.
+Run after creating or modifying any skill — not optional. Load
+`references/review-checklist.md` and verify all 9 items: structure,
+boundary rule, trigger clarity, density, abstraction, protocol
+conventions, deepening, evolution, information flow.
 
 ---
 
