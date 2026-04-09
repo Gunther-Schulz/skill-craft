@@ -27,9 +27,9 @@ state what's missing before continuing.
   inclusion)? At the same level as surrounding content? Uses abstract
   terminology (component/contract/identifier)?
 
-- [ ] **Protocol conventions.** Gates use blocking logic (CANNOT +
-  evidence)? Checkpoints observable (not introspective)? Menus where
-  user has choices?
+- [ ] **Protocol conventions.** Imperative form throughout (no second
+  person)? Gates use blocking logic (CANNOT + evidence)? Checkpoints
+  observable (not introspective)? Menus where user has choices?
 
 - [ ] **Deepening.** Findings traced to implications beyond the
   checklist? Checklist is floor, not ceiling?
