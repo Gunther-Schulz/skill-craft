@@ -133,6 +133,11 @@ Instructions without structural enforcement are suggestions.
 ```
 Key: "CANNOT proceed" (not "should"), evidence requirement, alternative action.
 
+Blocking logic is the right tool for **workflow skills** where the
+sequence matters and skipping a step is always wrong. For **judgment
+skills** (audits, reflective reviews), use evidence-backed principles
+instead — see "Writing judgment procedures" below.
+
 **Observable checkpoints.** Verify actions taken, not internal states.
 - Observable (works): "Searched codebase?" → Evidence: [locations found]
 - Introspective (fails): "Feeling confident?" → AI cannot detect own states
@@ -377,6 +382,11 @@ with phases, gates, and routing.
 **Domain knowledge skills** — encode expertise for a specific domain. The
 procedure is "when encountering X, do Y because that's how this domain works."
 
+**Judgment skills** — require assessment, not execution. Architecture
+audits, reflective reviews, design critiques. The procedure defines what
+to examine and what constitutes a finding, but the analysis requires
+understanding, not step-following.
+
 **Tooling skills** — thin wrappers around a specific workflow or tool. The
 procedure is a sequence of steps.
 
@@ -464,6 +474,43 @@ from the original invocation unless it is re-provided.
 across context compaction boundaries must be written to disk. Counters,
 status flags, and progress tracked only in conversation context are
 lost on compaction.
+
+### Writing judgment procedures
+
+Judgment skills assess rather than execute. The procedure defines what
+to examine and what constitutes a finding, but cannot be reduced to a
+checklist that produces correct results when followed mechanically.
+
+**Principles with evidence requirements, not blocking checkpoints.**
+A judgment skill states: "two passes minimum" (principle) and "each
+finding must have: code location, impact, classification" (evidence
+requirement). Not: "- [ ] Two passes completed? NO → CANNOT proceed"
+(blocking checkpoint). The distinction matters: a blocking checkpoint
+can be satisfied mechanically without understanding. A principle with
+evidence requirements forces the output to demonstrate the principle
+was applied.
+
+The test: "can this check be satisfied mechanically without
+understanding?" If yes, it belongs in a workflow skill. If no, it
+belongs in a judgment skill.
+
+**Layers, not steps.** Judgment procedures examine the same system
+from multiple angles (e.g., structural shape, boundary agreements,
+error paths). Each layer produces different findings. Unlike workflow
+phases, layers don't gate each other — findings from any layer can
+inform analysis in other layers.
+
+**Deepening is mandatory.** Every finding predicts adjacent issues.
+A judgment procedure must instruct: trace each finding's implications.
+A swallowed error in one function predicts swallowed errors in similar
+functions. A missing abstraction in one area predicts missing
+abstractions in adjacent areas. Without deepening, the skill produces
+a checklist of surface findings instead of structural insight.
+
+**The output demonstrates the analysis.** For each finding: specific
+location, impact if unfixed, classification (severity). The findings
+themselves are the evidence that the judgment was applied. A judgment
+skill that says "looks good" without findings is a protocol violation.
 
 ### Writing domain knowledge procedures
 

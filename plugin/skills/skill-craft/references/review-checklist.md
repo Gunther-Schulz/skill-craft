@@ -29,8 +29,11 @@ state what's missing before continuing.
   terminology (component/contract/identifier)?
 
 - [ ] **Protocol conventions.** Imperative form throughout (no second
-  person)? Gates use blocking logic (CANNOT + evidence)? Checkpoints
-  observable (not introspective)? Menus where user has choices?
+  person)? Workflow skills: gates use blocking logic (CANNOT + evidence),
+  checkpoints observable, menus where user has choices? Judgment skills:
+  principles with evidence requirements, deepening mandatory, output
+  demonstrates analysis?
+  - NO → Add blocking logic (workflow) or evidence requirements (judgment).
 
 - [ ] **Deepening.** Findings traced to implications beyond the
   checklist? Checklist is floor, not ceiling?
