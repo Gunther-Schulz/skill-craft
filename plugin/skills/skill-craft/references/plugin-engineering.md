@@ -194,6 +194,34 @@ claude --plugin-dir ./plugin
 
 Loads the plugin directly. Use `/reload-plugins` to pick up changes.
 
+### Edit the source repo, not the cache
+
+Installed plugins exist in three locations:
+
+- **Source repo** — the Git repository (e.g., `~/dev/user/my-plugin/`).
+  This is where edits belong.
+- **Marketplace copy** — `~/.claude/plugins/marketplaces/my-marketplace/`.
+  Cloned from the source repo. Read-only in practice — changes here are
+  overwritten by `marketplace update`.
+- **Cache copy** — `~/.claude/plugins/cache/my-marketplace/my-plugin/`.
+  Copied from the marketplace on `plugin install`. Read-only — changes
+  here are overwritten by reinstall.
+
+**BEFORE editing any plugin file:** Verify the file path points to the
+source repo, not the marketplace or cache copy. Edits to cache or
+marketplace files are silently lost on the next update/reinstall cycle.
+
+When reviewing or improving a plugin during a conversation, the AI
+reads from cache (that's what's loaded). But all writes must go to
+the source repo. After editing, commit in the source repo, then:
+
+```
+claude plugin marketplace update my-marketplace
+claude plugin uninstall my-plugin@my-marketplace
+claude plugin install my-plugin@my-marketplace
+/reload-plugins
+```
+
 ### Session restart note
 
 After installing or reinstalling, `/reload-plugins` loads new skills and
