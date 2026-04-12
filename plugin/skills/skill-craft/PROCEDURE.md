@@ -120,6 +120,34 @@ This layer is mechanical. Get it right once and move on.
 How to write protocol text that AI actually follows. AI does not self-enforce.
 Instructions without structural enforcement are suggestions.
 
+**Judgment calls as design risk.** Any decision in a skill's flow — "is
+this trivial?", "does this qualify?", "should this skip?", "what
+severity?", "which category?" — that lacks mechanical criteria or
+structural enforcement is a latent failure. Three mitigations, in
+preference order:
+
+1. **Mechanical criteria.** Compute the decision from observable
+   evidence: counts, presence checks, field values, cross-references.
+   No AI judgment needed. Example: classify a change as lightweight-track
+   only if file count ≤ 2, line delta ≤ 20, and no new public interfaces.
+   Any missing criterion → not lightweight-track.
+
+2. **Structural enforcement.** Blocking logic with enumerated evidence.
+   Judgment stays, but the AI must show its work in auditable form.
+   Example: "- [ ] Which edge cases checked? Evidence: [list with
+   expected vs actual]." The enumeration is verifiable; a claim of
+   completeness is not.
+
+3. **Safety net.** Accept the decision will sometimes be wrong. Add a
+   fail-loud check downstream: smoke test, batch review, reversion
+   path. Use only when (1) and (2) are impossible. Document that the
+   judgment is unreliable so later readers know to audit.
+
+Never leave a decision point naked. Forcing functions, blocking logic,
+and observable checkpoints (below) are techniques for applying these
+mitigations. Select the technique that implements the chosen mitigation,
+not the one that feels familiar.
+
 **Forcing functions.** Temporal keywords mandate sequence:
 - **FIRST** — mandates initial action
 - **BEFORE** — creates prerequisite
@@ -155,6 +183,14 @@ referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
 even if repeated. Test: must I follow this step-by-step without judgment? If
 yes, inline it. If no, reference it.
 
+**Who reads this file.** Skill files have one reader: the AI in
+mid-execution. Not a human maintainer. Not a reviewer. Not a future
+self. Every sentence must serve that reader. Documentation —
+rationale, provenance, design context, cross-references, failure-mode
+narration, motivational framing — goes in OBSERVATIONS.md, commit
+messages, README.md, or VISION.md. Those files are not loaded during
+skill execution.
+
 **Every sentence must change behavior.** Before writing a sentence into
 a skill, procedure, or reference, apply the test: if this sentence were
 deleted, would the AI do something different? If no, the sentence is
@@ -173,6 +209,14 @@ them despite failing the test.
 **Language agnosticism.** All terminology must be paradigm-neutral. Use
 "component" not "module/class", "contract" not "type/interface", "identifier"
 not "variable/field."
+
+**Domain-independence check.** BEFORE writing any rule, example, or
+checkpoint into procedure or reference files, enumerate at least two
+domains outside the current project where the content must apply. If
+it only works in one domain, it is contaminated. Rewrite using
+domain-independent terms, or move the content to observations where
+project-specific incidents belong. This fires at write time — the
+Layer 5 abstraction check fires at review time as a second net.
 
 **Imperative writing style.** Write all skill content using imperative/
 infinitive form (verb-first instructions), not second person. Use objective,
@@ -436,7 +480,10 @@ design decisions that contain decision logic (classification, matching,
 filtering, scoring, routing), apply Path 2 techniques to that logic:
 phenomenon identification, proxy detection, and non-firing case enumeration.
 A workflow skill's design phase proposing a heuristic is creating an
-internal rule — validate it as one, not just as a workflow step.
+internal rule — validate it as one, not just as a workflow step. This
+is a specific case of the Layer 2 principle "Judgment calls as design
+risk" — classification inside a workflow phase is that same decision at
+finer grain.
 
 ### Information flow in orchestrated workflows
 
@@ -593,13 +640,19 @@ After any change to skill files:
 
 1. **Edit in the source repo.** All file writes target the source repo,
    not the marketplace clone.
-2. **Commit and push** the source repo. Stage only the changed files.
+2. **Run the review checklist against the changes.** Load
+   `references/review-checklist.md` and verify all 9 items against what
+   was just edited. State which items pass and which fail, with
+   file:line evidence for each failed item. CANNOT proceed to commit
+   until all items pass or failures are explicitly accepted with
+   reasoning stated.
+3. **Commit and push** the source repo. Stage only the changed files.
    Use a descriptive commit message.
-3. **Update the marketplace clone.** Find the matching directory under
+4. **Update the marketplace clone.** Find the matching directory under
    `~/.claude/plugins/marketplaces/` (its git remote matches the source
    repo) and pull from the correct branch. This is the copy Claude Code
    loads from.
-4. **Tell the user** to run `/reload-plugins` to pick up changes in
+5. **Tell the user** to run `/reload-plugins` to pick up changes in
    their current session.
 
 This applies to both new skills and edits to existing skills. Do not

@@ -157,3 +157,110 @@ The fix: added a "New plugin setup" checklist to the reference — the minimum
 steps from empty repo to installable plugin. Having the knowledge documented
 is not enough; a concrete setup sequence prevents the most common first-time
 mistake.
+
+---
+
+## 11. Judgment call left naked in skill flow
+
+A workflow skill (Clippy autopilot) applied the same per-unit ceremony
+— investigate subagent, executor subagent, reviewer subagent, checkpoint
+file — to every unit regardless of complexity. Observed session: 4 units,
+2 trivial (4-6 lines of line-replacement, log-swallow fixes), 2 nontrivial
+(70-line new function with parameter threading, 400-line test suite).
+Trivial units absorbed the same cost as nontrivial ones. The user flagged
+the disproportion.
+
+The underlying issue was not ceremony size. It was that "is this unit
+trivial or nontrivial?" was a decision point in the skill's flow with no
+mechanical criteria behind it. Any resolution at runtime would have been
+AI judgment — inconsistent across runs, and potentially missing adjacent
+bugs. In this session, unit-001 was a 4-line fix sitting next to a
+related bug (a ghost-doc race) that the full investigation caught.
+Self-classification as "trivial" would have skipped the investigation
+that found it.
+
+This generalizes beyond workflow skills. Any skill with a control-flow
+decision point — fast path vs normal, include vs skip, defer vs act,
+what severity, which category — that lacks mechanical criteria leaves a
+naked judgment call in the flow. Observation 9 addressed the VERIFICATION
+analog (self-reported completion with unfalsifiable evidence). This is
+the DECISION analog: don't let the AI decide, give it criteria.
+
+The fix: added a named "Judgment calls as design risk" principle at the
+start of Layer 2, before forcing functions. Added a "Naked judgment call"
+anti-pattern to references/anti-patterns.md. Extended the existing
+"Decision logic within workflow phases" paragraph (itself grounded in
+observation 8) to reference the new principle as the general case.
+
+On post-edit review (user-prompted), the review caught project-specific
+contamination ("fast-path", "contracts_produced") and restatement fluff
+in the first drafts. This revealed that skill-craft's own "run the
+review checklist" rule was stated as a standalone section but not
+structurally bound into any workflow — the review happened because the
+user asked for it, not because the skill enforced it. Two further fixes
+followed: Fix A bound the review checklist into "After creating or
+modifying a skill" as a required pre-commit step with blocking logic;
+Fix B added a "Domain-independence check" in Layer 2 that fires at
+write time, as an earlier net than the Layer 5 abstraction check. The
+meta-lesson: a rule stated in isolation is not an enforced rule — it
+is a hope.
+
+*Observed: 12 April 2026. Clippy autopilot session implementing a
+harness resume bug fix. Unit-001 (4-line checkpoint.py fix) and unit-002
+(6-line silent-swallow fix) each triggered the full per-unit protocol
+including a per-unit re-investigation cycle that duplicated evidence
+already present in the parent tracker.*
+
+---
+
+## 12. Mental model drift — skill files drafted as documentation
+
+An AI implementing a skill-craft-governed change drafted 6 files of
+procedure and reference content. The drafts passed the mandatory
+post-edit review checklist on density — by the same AI that wrote them.
+A human reader then pointed at one closing paragraph and asked whether
+it was aligned. It wasn't — it was pure documentation (cross-reference
+to another skill, restated imported principle, motivational framing).
+Scanning the rest of the implementation revealed the same pattern
+everywhere: Purpose sections explaining why files existed, Rationale
+paragraphs explaining why thresholds were chosen, Failure-mode
+paragraphs narrating what each step prevented, Summary sections
+restating content already present above. Roughly half of the content
+by line was documentation for a human reader who does not exist during
+skill execution.
+
+The rule "Every sentence must change behavior" covers this in theory.
+In practice, the drafter rationalized each documentation category
+individually (this is context, this is provenance for future
+maintainers, this is a cross-reference that helps the reader) and the
+fluff list was read as exceptions to justify rather than as patterns
+to delete. The underlying rule that catches all categories at once is
+the reader model: the only reader of a skill file is the AI in
+mid-execution, and documentation belongs in files that are not loaded
+during execution.
+
+This is the second self-review failure in the same session. The first
+caught project-specific contamination (observation 11, Fix A) because
+contamination is mechanical — a wrong field name is easy to audit
+against "is this generic?" The second missed documentation drift
+because drift looks "reasonable" to the drafter and each paragraph has
+a defensible-sounding justification. Self-review by the drafting
+context is strong against mechanical violations and weak against
+register drift. A separate review context (subagent or human) catches
+both.
+
+The fix: add the reader model to Layer 2's density guidance as an
+explicit paragraph before "Every sentence must change behavior", and
+add a matching preamble to `references/anti-patterns.md` so a reviewer
+loading anti-patterns starts with the same lens. With the reader model
+stated up front, a drafter auditing their own work can ask one
+question — "does this sentence serve the executing AI?" — instead of
+enumerating the fluff list category by category and rationalizing past
+each. The test is faster, harder to rationalize past, and catches
+documentation drift at the time of writing rather than at the time of
+review.
+
+*Observed: 12 April 2026. Clippy plugin, PR 2 of the fast-path
+classification implementation. The drafting AI could not see the
+register drift on self-review; a human reader caught it. Same session
+as observation 11.*

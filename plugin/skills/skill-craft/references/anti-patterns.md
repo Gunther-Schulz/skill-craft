@@ -2,6 +2,12 @@
 
 **Load when:** Reviewing a skill for common design mistakes.
 
+**Reader model.** A skill file's only reader is the AI in mid-execution.
+Every anti-pattern below is a failure mode where content ends up in a
+skill file but does not serve that reader. The fix is to move the
+content to a maintenance file (OBSERVATIONS.md, commit messages,
+README.md, VISION.md) or delete it.
+
 ---
 
 ## Monolithic SKILL.md
@@ -72,6 +78,43 @@ checkpoint, ask: can I state this in 3-5 sentences that a sculptor would
 recognize? If not, the checkpoint has accumulated implementation detail
 that belongs in `references/`. Move specialized guidance to reference
 files. The procedure should fit on a screen.
+
+## Naked judgment call
+
+The procedure asks the AI to decide something without providing
+mechanical criteria or structural enforcement. Reads reasonable —
+"assess severity", "identify critical items", "classify as trivial",
+"determine if qualifies" — but none of those verbs have a computation
+behind them. The AI answers confidently and consistently-wrong because
+there is nothing to correct against.
+
+**Symptoms:**
+- Evaluative verbs (assess, classify, identify, determine, qualify)
+  appear in the procedure without a defined computation
+- The decision affects control flow: which path taken, whether to
+  skip, which category a finding goes in
+- The same input produces different classifications in different runs
+- Errors in the decision are caught downstream (during review or after
+  shipping), not at the decision point
+- Procedure uses phrases like "use judgment", "as appropriate",
+  "when warranted" — these are proxies for a specific rule the author
+  didn't write down
+
+**Fix:** For every decision point in the skill's flow, name the decision
+explicitly, then answer: can this be computed from observable evidence?
+- **Fully computable** → define the computation in the procedure. No
+  judgment. Example: "classify an incident as auto-resolvable only if
+  affected users < 10, severity != critical, and no dependent services
+  impacted."
+- **Partially computable** → blocking logic with required evidence
+  enumeration. Judgment stays, but is auditable. The AI must list what
+  it checked, not claim completeness.
+- **Not computable** → add a downstream safety net (smoke check, batch
+  review, reversion path) AND document that the judgment is unreliable
+  so later maintainers know to audit it.
+
+Never leave the decision naked. See "Judgment calls as design risk" in
+PROCEDURE.md Layer 2 for the general principle and preference order.
 
 ## Information loss at skill boundaries
 
