@@ -264,3 +264,99 @@ review.
 classification implementation. The drafting AI could not see the
 register drift on self-review; a human reader caught it. Same session
 as observation 11.*
+
+---
+
+## 13. Seeded observations — a skill can be born with a notebook
+
+The evolution model in PROCEDURE.md (Layer 4) describes observations
+as reactive: a failure happens during skill use, the failure is
+abstracted into an observation, the observation informs procedure
+refinement. "Use skill → notice failure → abstract → observe →
+refine → use again."
+
+This misses a legitimate mode: a skill can be born with observations
+already in place, seeded from the work that produced the skill. When
+a practitioner recognizes a pattern that worked in real experience
+and crystallizes it into a new skill, the evidence motivating the
+skill's procedure is already on hand. Discarding it and waiting for
+the skill's first invocation-failure to re-derive the same evidence
+wastes what the practitioner knows.
+
+The pattern was observed when designing a skill called `titrate`
+(empirical iteration for non-deterministic systems). The skill's
+OBSERVATIONS.md launched with seven observations extracted from a
+multi-day iteration session that produced the titration pattern —
+not from the skill's own use, but from the work that motivated the
+skill. The seeded observations grounded the procedure's checkpoints
+from invocation zero instead of leaving the skill's first several
+uses to rediscover them.
+
+Constraints for valid seeding:
+- Observations must still be abstracted — no project-specific
+  filenames or domain examples in the procedure itself, and
+  observations themselves should use generalized language where
+  possible (while retaining the incident as grounding).
+- Seeded observations must correspond to actual incidents, not
+  hypothetical ones. A seeded observation "invented" to justify a
+  checkpoint is a fabricated ground — it lies.
+- The seeded observations should be marked as such (an explicit
+  note that they came from the founding work), so the first
+  non-seeded observation is distinguishable.
+
+The fix to skill-craft: Layer 4's evolution cycle should explicitly
+acknowledge seeding as a legitimate mode. The current flow reads as
+the only valid path; it is one of two.
+
+*Observed: 21 April 2026. During the design of the `titrate` skill.
+The practitioner asked for observations to be seeded from the
+originating LLM-pipeline iteration session; the resulting
+OBSERVATIONS.md had seven entries before the skill was ever invoked.
+The framing suggested an amendment to skill-craft's own guidance
+rather than a private choice inside titrate.*
+
+---
+
+## 14. Plugin reinstall friction during heavy iteration
+
+When a plugin's skills are under active development with many edits per
+session, the standard install/uninstall cycle becomes a friction point.
+Every cache refresh requires either bumping the version in plugin.json
+(making the git history noisy with version-only commits) or running
+uninstall+install (round-trip through the marketplace clone, multiple
+seconds per cycle).
+
+The marketplace+cache architecture is designed for distribution, not
+for the plugin author's dev loop. The cache is a real copy of the
+plugin folder under
+`~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`, and
+Claude Code reads from it directly.
+
+The fix is to replace the cache copy with a symlink to the source
+plugin folder for the duration of active development:
+
+```
+rm -rf ~/.claude/plugins/cache/<mp>/<plugin>/<version>
+ln -s /path/to/repo/plugin \
+      ~/.claude/plugins/cache/<mp>/<plugin>/<version>
+```
+
+After this, edits to the source plugin folder are visible to Claude
+Code on `/reload-plugins` alone — no version bump, no reinstall. The
+standard flow returns whenever the user runs `claude plugin uninstall`
+or bumps the version (the cache path includes the version).
+
+This is a development-time optimization, not a distribution mechanism.
+End users still install normally via the marketplace.
+
+The fix to skill-craft: `references/plugin-engineering.md` should
+document the symlink technique under "Local development" as an option
+alongside the standard reinstall workflow, with a small idempotent
+shell template authors can drop into their plugin repos.
+
+*Observed: 28 April 2026. During scaffolding of the `pbs-bureau`
+plugin. Iterating on a master orchestrator skill required many small
+edits per session; the bump-and-reinstall cycle became visible
+friction. A `dev-link.sh` was added to the plugin repo that creates
+the cache symlink, reading name/version from manifests for safety.
+After symlinking, `/reload-plugins` alone picks up edits.*

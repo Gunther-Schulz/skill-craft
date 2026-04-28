@@ -222,6 +222,49 @@ claude plugin install my-plugin@my-marketplace
 /reload-plugins
 ```
 
+### Fast iteration: symlink the cache
+
+The reinstall flow above is correct for distribution but slow for heavy
+iteration on a plugin's own skills. The cache is a real copy of the
+plugin folder; Claude Code reads from it directly. Replace the copy
+with a symlink to the source plugin folder to pick up edits without
+reinstalling:
+
+```bash
+rm -rf ~/.claude/plugins/cache/<mp>/<plugin>/<version>
+ln -s /path/to/repo/plugin \
+      ~/.claude/plugins/cache/<mp>/<plugin>/<version>
+```
+
+After this, edits to source files are visible to Claude Code on
+`/reload-plugins` alone — no version bump, no reinstall.
+
+Idempotent dev-link script template (drop into the plugin repo as
+`dev-link.sh`):
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+REPO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SRC_PLUGIN="$REPO_DIR/plugin"
+VERSION=$(jq -r .version "$SRC_PLUGIN/.claude-plugin/plugin.json")
+PLUGIN_NAME=$(jq -r .name "$SRC_PLUGIN/.claude-plugin/plugin.json")
+MARKETPLACE_NAME=$(jq -r .name "$REPO_DIR/.claude-plugin/marketplace.json")
+CACHE_DIR="$HOME/.claude/plugins/cache/$MARKETPLACE_NAME/$PLUGIN_NAME/$VERSION"
+mkdir -p "$(dirname "$CACHE_DIR")"
+rm -rf "$CACHE_DIR"
+ln -s "$SRC_PLUGIN" "$CACHE_DIR"
+```
+
+Reads name and version from the manifests so it stays in sync if either
+changes. Re-run after `claude plugin uninstall` or after bumping the
+version in `plugin.json` (the cache path includes the version).
+
+The standard reinstall flow takes over again whenever uninstall runs
+or version bumps. The symlink is a dev-mode override, not a
+distribution mechanism — end users install normally via the
+marketplace.
+
 ### Session restart note
 
 After installing or reinstalling, `/reload-plugins` loads new skills and
