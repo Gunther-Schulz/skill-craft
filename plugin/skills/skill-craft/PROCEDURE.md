@@ -463,6 +463,16 @@ capability. No failures to learn from. Three techniques:
   would NOT fire. For each, decide: should it have? If yes, the trigger is
   too narrow.
 
+- **Widen by principle, not enumeration.** When a trigger is too narrow,
+  abstract upward to the underlying principle that catches all variants
+  — including ones not enumerated — and restate the rule at that level.
+  A rule that grows by appending "...or X, or Y, or Z" is brittle: the
+  next failure shape not in the list slips through. The fix is upward
+  (abstract to the principle), not outward (list more cases). Applies
+  equally when refining an existing rule based on a new incident: a
+  Path 1 observation that exposes a gap should produce a sharper
+  principle, not a longer list.
+
 Rules from Path 2 are hypotheses. Validate by use, refine through Path 1.
 
 ### Writing workflow procedures
