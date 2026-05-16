@@ -449,7 +449,10 @@ This is how most effective rule-based skills are built. The observation comes
 first, the rule follows.
 
 **Path 2: Blank-slate (no incidents yet).** You're writing rules for a new
-capability. No failures to learn from. Three techniques:
+capability. No failures to learn from. Each technique below is a way to find
+or hold the right abstraction level — broad enough to apply across variants,
+specific enough to discriminate. Wrong abstraction is the common root of
+every failure mode these techniques address.
 
 - **Phenomenon identification.** Before drafting any rule, describe what
   actually goes wrong (or could go wrong) and why. A rule must address the
@@ -459,9 +462,13 @@ capability. No failures to learn from. Three techniques:
   the actual condition, or an approximation? "Be careful" is a proxy for a
   specific action. Replace proxies with the precise condition.
 
-- **Non-firing case enumeration.** List at least two cases where the rule
-  would NOT fire. For each, decide: should it have? If yes, the trigger is
-  too narrow.
+- **Bidirectional trigger check.** Every rule has two failure modes:
+  too narrow (misses cases the principle should catch) and too fuzzy
+  (covers cases it shouldn't, or fails to discriminate). Refining
+  toward one risks the other. List at least two cases where the rule
+  WOULD fire and at least two where it WOULDN'T. For each, decide
+  whether the firing/non-firing matches the intended principle.
+  Misses → too narrow; spurious fires → too fuzzy.
 
 - **Widen by principle, not enumeration.** When a trigger is too narrow,
   abstract upward to the underlying principle that catches all variants
