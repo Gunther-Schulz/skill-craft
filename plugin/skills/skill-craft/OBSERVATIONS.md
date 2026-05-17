@@ -389,10 +389,14 @@ plan against the standing recommendation; silent swap blocked). The
 broader skill-craft implication: skills that produce recommendations
 or stated positions across cycles need an explicit "no silent
 revision" check at every phase boundary where the position could be
-redrawn. The existing Path 2 transcribe-verbatim technique covers one
-slice (skill-text porting); the broader principle is general — but
-whether it warrants its own procedure rule, vs being absorbed by
-widening the Path 2 technique, is open until more incidents accumulate.
+redrawn.
+
+**Promoted to procedure rule in v1.0.4** — added as a Layer 2 principle
+"Commitment consistency across phase boundaries". The Path 2 technique
+"Refine by removal; transcribe verbatim or surface every change"
+remains the author-side discipline (writing rule text); the new Layer 2
+principle is the runtime-side discipline (skills producing commitments
+across phases).
 
 *Observed: 17 May 2026, beat-the-books project, Clippy investigation
-of a txn-poison fix. Mitigation landed in coding-clippy v0.5.2 (pending).*
+of a txn-poison fix. Mitigation landed in coding-clippy v0.5.2.*

@@ -178,6 +178,16 @@ instead — see "Writing judgment procedures" below.
 **Menus as structural enforcement.** Show menu after every response where user
 has choices. Menu is always last element. Without it, user cannot control flow.
 
+**Commitment consistency across phase boundaries.** When a skill spans phases
+(cycles, hand-offs, mode transitions) and a phase produces output another phase
+reads as a commitment (recommendation, decision, approved text, locked design,
+named option), encode a structural gate at each boundary where the commitment
+could be silently revised. Two valid paths through the gate: (a) faithful
+execution of the prior commitment, or (b) explicit surface of the change
+("Switching from X to Y because Z — confirm?") with operator response required
+before proceeding. Silent revision between phases is a discipline violation
+regardless of which artifact carries the commitment.
+
 **Conceptual vs procedural rules.** Conceptual rules (principles) are
 referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
 even if repeated. Test: must I follow this step-by-step without judgment? If
