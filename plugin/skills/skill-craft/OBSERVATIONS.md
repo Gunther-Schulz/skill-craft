@@ -360,3 +360,39 @@ edits per session; the bump-and-reinstall cycle became visible
 friction. A `dev-link.sh` was added to the plugin repo that creates
 the cache symlink, reading name/version from manifests for safety.
 After symlinking, `/reload-plugins` alone picks up edits.*
+
+---
+
+## 15. Silent revision of standing commitments across cycles
+
+A coding-clippy session showed AI recommendations drift between cycles
+without explicit surface. Cycles 3-5 of an investigation consistently
+recommended Option G-1. At "i" entry (implementation activation), the
+AI silently switched to "Option B alone" — a narrower alternative not
+surfaced as a recommendation in any prior cycle. The switch happened
+with internally-plausible reasoning ("more surgical") but no flag that
+the AI was changing its own prior standing recommendation. The
+operator pressed "i" expecting G-1 and got B.
+
+This is the same shape as Path 2 technique "Refine by removal;
+transcribe verbatim or surface every change" — the silent-augmentation
+discipline applied to skill-text porting — but extended to a different
+artifact: the AI's own prior recommendation, not operator-approved
+text. The general pattern: AI commitments persist across cycles, files,
+and phases. Any change requires explicit surface. Silent revision is a
+discipline violation regardless of which artifact carries the
+commitment.
+
+The fix in this incident landed as a structural gate in the consumer
+skill (coding-clippy's composer "i" routing checks the implementation
+plan against the standing recommendation; silent swap blocked). The
+broader skill-craft implication: skills that produce recommendations
+or stated positions across cycles need an explicit "no silent
+revision" check at every phase boundary where the position could be
+redrawn. The existing Path 2 transcribe-verbatim technique covers one
+slice (skill-text porting); the broader principle is general — but
+whether it warrants its own procedure rule, vs being absorbed by
+widening the Path 2 technique, is open until more incidents accumulate.
+
+*Observed: 17 May 2026, beat-the-books project, Clippy investigation
+of a txn-poison fix. Mitigation landed in coding-clippy v0.5.2 (pending).*

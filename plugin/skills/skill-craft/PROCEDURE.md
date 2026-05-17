@@ -327,11 +327,18 @@ observation should exist before the procedure change — it provides the evidenc
 that the change is warranted. Procedure changes without grounding observations
 are guesses about what might go wrong.
 
-**Before adding a new section, check if existing rules cover it.** A new
-gate or checkpoint may be an amendment to an existing rule rather than a
-new section. Widen an existing trigger, add a clause to an existing gate,
-or extend an existing evidence requirement. This prevents section
-proliferation and keeps the procedure dense.
+**Amendment discipline.** When a new failure pattern surfaces and warrants
+codifying, prefer revising existing rules over adding new ones. Decision
+sequence: (1) existing rule already addresses it? Revise in place. (2)
+Pattern absorbable by extending an existing rule's scope? Extend. (3)
+Existing rule becomes redundant? Reduce / merge. (4) Only if none: add a
+new sub-section.
+
+When extending (step 2): widen an existing trigger, add a clause to an
+existing gate, or extend an existing evidence requirement. This prevents
+section proliferation and keeps the procedure dense. The drift check
+below is the second pass that catches over-patching at the amendment
+level.
 
 **Before applying a patch, check for drift.** Each observation-driven change
 is correct locally but may degrade the procedure globally. Before adding
