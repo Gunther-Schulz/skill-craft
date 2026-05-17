@@ -400,3 +400,42 @@ across phases).
 
 *Observed: 17 May 2026, beat-the-books project, Clippy investigation
 of a txn-poison fix. Mitigation landed in coding-clippy v0.5.2.*
+
+---
+
+## 16. Rule proposals over-broad without operator pushback
+
+During a Clippy roadmap update, an "output discipline vs digestibility
+tension" entry was drafted as a broad framework with three resolution
+patterns including a generic operator-override shortcut. Two rounds of
+operator pushback narrowed it: first round revealed the underlying
+incident was rule-violation (AI shortcut existing strict rules), not
+rule-gap; second round revealed 5 existing Clippy rules already
+covered most of the surface-vs-internal boundary the framework was
+trying to design. Final framing: 3 narrow clarifications plus an
+explicit withdrawal of the operator-override as a generic shortcut
+shape.
+
+Without the pushback, the broad framework would have shipped. The AI
+applied the amendment discipline 4-step ("check if existing rules
+cover it") once, classified the incident as rule-gap, and stopped.
+The single pass missed sub-parts of the proposal that further
+enumeration would have shown were already covered.
+
+This reveals a gap in how the amendment discipline is APPLIED, not in
+its content. The 4-step gives the static framework. What was missing
+is iteration — re-applying the 4-step to each narrowing as new
+existing-rule overlap surfaces. Without iteration, the AI ships the
+first-pass framing even when most of it overlaps with existing rules.
+
+The fix is a new Layer 4 sub-section ("Iterative narrowing of rule
+proposals") with explicit steps for re-examining incident
+classification, enumerating existing rules, subtracting overlap, and
+re-applying iteratively until the proposal cannot be narrowed further
+without losing content no existing rule covers. Composes with the
+existing amendment discipline rather than replacing it.
+
+*Observed: 17 May 2026, coding-clippy roadmap update session. P11
+"output discipline" entry narrowed from broad framework to 3 specific
+edge cases over two operator-pushback rounds. Iterative narrowing
+rule landed in skill-craft v1.0.5.*

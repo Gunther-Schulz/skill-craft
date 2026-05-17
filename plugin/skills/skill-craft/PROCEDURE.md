@@ -350,6 +350,32 @@ section proliferation and keeps the procedure dense. The drift check
 below is the second pass that catches over-patching at the amendment
 level.
 
+**Iterative narrowing of rule proposals.** Draft rules rarely land at
+minimum-viable scope on the first pass — the draft-time pull is toward
+broader framework framing. Apply the 4-step amendment discipline above
+iteratively:
+
+1. Re-examine the grounding incident — was the failure a rule-violation
+   (existing rule would have prevented if followed) or a rule-gap (no
+   existing rule covers)?
+2. Enumerate existing rules in the surface area being proposed against.
+3. Subtract overlap — strike content already covered by existing rules.
+4. If rule-violation: drop the proposed addition entirely; the remaining
+   work is enforcement (structural gate, observable checkpoint), not
+   new rule content.
+5. If rule-gap: identify the MINIMUM novel content. Distinguish the
+   "framework I imagined" from "what's actually not covered."
+6. Re-apply steps 1-5 to the narrowed proposal. A single pass often
+   misses sub-parts that further enumeration reveals.
+
+Sign that narrowing is complete: further narrowing would lose content
+no existing rule covers.
+
+Applies to any rule-writing context — skill files, protocol docs,
+planning entries — not just skill-internal evolution. The amendment
+discipline 4-step above gives the static decision framework; this
+section gives the iterative application.
+
 **Before applying a patch, check for drift.** Each observation-driven change
 is correct locally but may degrade the procedure globally. Before adding
 guidance to a checkpoint:
