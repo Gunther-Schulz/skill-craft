@@ -385,12 +385,14 @@ minimum-viable scope on the first pass — the draft-time pull is toward
 broader framework framing. Apply the 4-step amendment discipline above
 iteratively:
 
-1. Re-examine the grounding incident — classify the failure three
-   ways: **rule-gap** (no existing rule covers it), **unloaded** (a
-   rule exists but was never loaded into context), or
-   **loaded-but-inert** (a rule exists, was loaded, and still didn't
-   fire). All three produce an identical observable failure but have
-   different fixes.
+1. Re-examine the proposal's basis. If it is grounded in an observed
+   failure, classify the failure three ways: **rule-gap** (no existing
+   rule covers it), **unloaded** (a rule exists but was never loaded
+   into context), or **loaded-but-inert** (a rule exists, was loaded,
+   and still didn't fire) — all three look identical from outside but
+   have different fixes. If the proposal is forward-looking with no
+   incident yet (a Path 2 hypothesis), the failure classification does
+   not apply; proceed to step 2.
 2. Enumerate existing rules in the surface area being proposed against.
 3. Subtract overlap — strike content already covered by existing rules.
 4. If unloaded: the fix is the loading mechanism (a load gate — see
