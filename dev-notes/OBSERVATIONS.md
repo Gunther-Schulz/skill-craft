@@ -518,9 +518,13 @@ failure diagnosis, the two-way split proved too coarse —
 - The rule existed but was never loaded into context — the AI could
   not follow a rule it never read. Fix: the loading mechanism (a load
   gate — Observation 17).
-- The rule existed, was loaded, and still didn't fire — the AI had it
-  in context but the trigger or articulation was too weak. Fix:
-  refine the trigger or sharpen the wording.
+- The rule existed, was loaded, and still didn't fire. Two sub-cases:
+  the trigger or articulation was too weak (fix: sharpen it), or the
+  rule was clear and unambiguous but skippable because nothing
+  structurally enforced it (fix: convert the prose imperative to a
+  blocking gate or verifiable-artifact requirement). A clear rule
+  that is simply not done is the second sub-case — an enforcement
+  problem, not a wording problem.
 
 Both produce an identical observable failure, but the fixes are
 unrelated — a loading gate does nothing for a loaded-but-inert rule,
@@ -534,7 +538,11 @@ step 4 split accordingly.
 
 *Observed: 20 May 2026, coding-clippy session. Operator caveat that
 observed plugin failures could trace to rules never loaded rather
-than rules missing. Extension landed in skill-craft v1.0.7.*
+than rules missing. Extension landed in skill-craft v1.0.7. Refined
+v1.0.10: loaded-but-inert split into two sub-cases (weak articulation
+vs clear-but-unenforced) after an incident where a clearly-worded
+"mandatory minimum" rule was simply never run — an enforcement gap,
+not a wording gap.*
 
 ---
 

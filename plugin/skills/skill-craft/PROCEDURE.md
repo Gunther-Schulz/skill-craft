@@ -407,9 +407,13 @@ iteratively:
 3. Subtract overlap — strike content already covered by existing rules.
 4. If unloaded: the fix is the loading mechanism (a load gate — see
    "Reference loading is a blocking gate"), not new rule content. If
-   loaded-but-inert: the fix is refining the existing rule's trigger
-   or articulation, not new rule content. In both cases drop the
-   proposed addition — the rule already exists.
+   loaded-but-inert: the fix makes the existing rule fire reliably —
+   sharpen its trigger or articulation if those are weak, OR add
+   structural enforcement if the rule is clear but skippable (convert
+   a prose imperative to a blocking gate or verifiable-artifact
+   requirement). A clear, unambiguous rule that is simply not done
+   needs enforcement, not rewording. Not new rule content. In both
+   cases drop the proposed addition — the rule already exists.
 5. If rule-gap: identify the MINIMUM novel content. Distinguish the
    "framework I imagined" from "what's actually not covered."
 6. Re-apply steps 1-5 to the narrowed proposal. A single pass often
