@@ -66,7 +66,9 @@ When a gap is noticed during use — through discussion, reviewing another
 skill, or observing a failure — in this skill's own guidance (incomplete,
 contradicted, or improvable):
 
-1. Write the observation to the improvement journal (OBSERVATIONS.md)
+1. Write the observation to the improvement journal
+   (`dev-notes/OBSERVATIONS.md` in the skill-craft source repo —
+   maintainer-side, outside the plugin payload)
 2. Suggest the specific change to PROCEDURE.md or references/ with reasoning
 3. Do not change silently. The user decides.
 

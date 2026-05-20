@@ -12,7 +12,8 @@ state what's missing before continuing.
 
 - [ ] **Boundary rule.** Maintenance files (OBSERVATIONS, VISION,
   ROADMAP) never loaded by operational files? Only referenced as
-  write targets?
+  write targets? Located outside the plugin payload, not in the
+  skill directory?
 
 - [ ] **Trigger clarity.** SKILL.md description states specific trigger
   phrases in third person?

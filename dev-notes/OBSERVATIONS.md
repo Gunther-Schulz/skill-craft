@@ -535,3 +535,41 @@ step 4 split accordingly.
 *Observed: 20 May 2026, coding-clippy session. Operator caveat that
 observed plugin failures could trace to rules never loaded rather
 than rules missing. Extension landed in skill-craft v1.0.7.*
+
+---
+
+## 20. Skill-craft's own guidance assumed skill-craft's context
+
+An audit of PROCEDURE.md — prompted by a v1.0.8 fix where one rule
+assumed a grounding incident always exists — found the same shape in
+several other places. Skill-craft's guidance carried assumptions valid
+only for skill-craft itself, not for the general skill-builder the
+guidance is written to serve:
+
+- The Layer 5 reflexivity rule said "if the experience reveals that
+  the skill-craft guidance itself is incomplete" — written from
+  skill-craft's self-improvement viewpoint, though Layer 5 is meant to
+  teach any skill-builder to make their own skill reflexive.
+- An example path in the post-edit procedure hardcoded the
+  maintainer's home directory.
+- Skill-craft's own OBSERVATIONS.md sat inside the plugin payload
+  (`plugin/skills/skill-craft/`), so the distributable carried
+  skill-craft's development journal — including project names from the
+  maintainer's own work.
+- Separately, "When an observation becomes a procedure change" stated
+  that procedure changes without grounding observations "are guesses,"
+  contradicting Path 2, which legitimizes blank-slate rules as
+  hypotheses.
+
+The unifying pattern: skill-craft is both a methodology and a skill
+that applies the methodology to itself. Without care the two roles
+blur — self-improvement machinery and project-specific content leak
+into the distributable teaching. The fix keeps the distributable (the
+plugin payload) purely the methodology, and keeps skill-craft's own
+maintenance artifacts at the source-repo level.
+
+*Observed: 20 May 2026, coding-clippy session, audit of skill-craft
+PROCEDURE.md. Fixes landed in v1.0.9: maintenance files moved outside
+the plugin payload; Layer 5 phrasing made generic; hardcoded path
+genericized; observation-vs-Path-2 contradiction resolved; a placement
+rule added to the Category 2 taxonomy.*

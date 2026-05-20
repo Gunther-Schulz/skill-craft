@@ -27,6 +27,13 @@ Standard names, used only during skill development and improvement:
 - `VISION.md` — philosophical foundation. Why the approach matters.
 - `ROADMAP.md` — concrete improvement work items.
 
+**Placement.** Maintenance files live outside the plugin payload — the
+directory tree that ships as the installed skill. Keep them at the
+source-repo level, not in the skill directory. They are part of the
+project, not the distributable: a user installing the skill should see
+only operational files. The source repo carries both; the installed
+skill carries only Category 1.
+
 ### The boundary rule
 
 **Category 2 files are never LOADED by Category 1 files.** PROCEDURE.md
@@ -362,10 +369,13 @@ mistake or a pattern? A pattern is worth documenting. A one-time mistake is not
 — unless it reveals a class of failures the procedure doesn't address.
 
 **When an observation becomes a procedure change.** An observation describes
-what happened. A procedure change prevents it from happening again. The
-observation should exist before the procedure change — it provides the evidence
-that the change is warranted. Procedure changes without grounding observations
-are guesses about what might go wrong.
+what happened. A procedure change prevents it from happening again. For Path 1
+(phenomenon-driven) changes, the observation exists before the procedure change
+— it provides the evidence that the change is warranted. Path 2 (blank-slate)
+changes have no incident yet; they are valid as explicitly-marked hypotheses,
+validated by use. What is not valid is an unmarked guess — a change presented
+as grounded when it is neither incident-backed nor flagged as a Path 2
+hypothesis.
 
 **Amendment discipline.** When a new failure pattern surfaces and warrants
 codifying, prefer revising existing rules over adding new ones. Decision
@@ -442,10 +452,10 @@ another pass wouldn't change its structure, only its surface.
 The skill should notice when its own guidance needs updating.
 
 **When to suggest a skill update.** During any conversation where a skill is
-being used, designed, or reviewed — if the experience reveals that the
-skill-craft guidance itself is incomplete, contradicted, or could be improved —
-surface it as a suggestion. Not an automatic change. A specific suggestion with
-reasoning, for the user to decide.
+being used, designed, or reviewed — if the experience reveals that the skill's
+own guidance is incomplete, contradicted, or could be improved — surface it as
+a suggestion. Not an automatic change. A specific suggestion with reasoning,
+for the user to decide.
 
 **What triggers a reflexivity suggestion:**
 - A skill failure that the guide should have prevented but didn't
@@ -728,8 +738,8 @@ conventions, deepening, evolution, information flow.
 
 **The source repo is the single source of truth.** All edits — skill
 files, observations, references, plugin.json — happen in the source
-repo (e.g., `~/dev/Gunther-Schulz/my-plugin/`). Never edit files in
-the marketplace clone directly. The marketplace clone under
+repo (e.g., `~/dev/<org>/<plugin>/`). Never edit files in the
+marketplace clone directly. The marketplace clone under
 `~/.claude/plugins/marketplaces/` is a read-only mirror that gets
 updated by pulling from GitHub.
 

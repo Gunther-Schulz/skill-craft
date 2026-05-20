@@ -25,5 +25,5 @@ Triggers on: "create a skill", "design a plugin", "write a protocol",
 |------|------|--------|
 | `SKILL.md` | Entry point, trigger conditions, dependency graph | At invocation |
 | `PROCEDURE.md` | The skill design method (self-contained) | At invocation |
-| `OBSERVATIONS.md` | Improvement journal (failure patterns) | Only when improving skill-craft |
+| `dev-notes/OBSERVATIONS.md` | Improvement journal (failure patterns) — maintainer-side, outside the plugin payload | Never (not part of the installed skill) |
 | `references/plugin-engineering.md` | Plugin packaging and distribution | On demand |
