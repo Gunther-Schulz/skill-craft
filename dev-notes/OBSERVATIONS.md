@@ -581,3 +581,32 @@ PROCEDURE.md. Fixes landed in v1.0.9: maintenance files moved outside
 the plugin payload; Layer 5 phrasing made generic; hardcoded path
 genericized; observation-vs-Path-2 contradiction resolved; a placement
 rule added to the Category 2 taxonomy.*
+
+---
+
+## 21. The un-fakeable-artifact principle is stated twice, never named
+
+Layer 2 states one principle in two places without consolidating it.
+"Observable checkpoints" says self-reported completion is fragile —
+"the enumeration is observable; the claim of completeness is not."
+"Structural enforcement" says blocking logic needs enumerated
+evidence — "the enumeration is verifiable; a claim of completeness is
+not." It is one principle stated twice: a mechanism's check must rest
+on an artifact that cannot be produced without doing the work the
+mechanism represents. Diffused across two entries and never named, it
+is harder to invoke as one thing and easier to half-apply.
+
+Suggested, not yet applied — for the maintainer to decide:
+consolidate the two into one named principle, the
+*un-fakeable-artifact principle* — a mechanism's output must be an
+artifact that cannot be produced without doing the work it
+represents; a form check ("N items present," "a sample exists") is
+satisfiable whether or not the work happened. A named principle is
+easier to reference — from the per-type guidance and from reviews —
+than the diffused version.
+
+*Observed: 21 May 2026, coding-clippy session. The Clippy spec names
+this crisply as "the un-fakeable-artifact rule" (`core.md` §2.3); a
+cross-level review of skill-craft against the spec surfaced that
+skill-craft holds the same principle, diffused. Not yet actioned —
+recorded for a future skill-craft maintenance pass.*
