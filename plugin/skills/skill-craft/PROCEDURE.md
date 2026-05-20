@@ -244,6 +244,18 @@ domain-independent terms, or move the content to observations where
 project-specific incidents belong. This fires at write time — the
 Layer 5 abstraction check fires at review time as a second net.
 
+**Context-independence check.** Domain-independence verifies the rule
+*content* is abstract. This verifies the runtime *behavior* assumes
+nothing ambient. A skill must behave correctly regardless of the
+user's ambient context — global instruction files, tool settings,
+prior-session memory. Test: would this rule still produce correct
+behavior for a user whose global configuration is empty? If it
+depends on conventions, defaults, or instructions that live outside
+the skill, either inline what it needs or make the dependency
+explicit and optional. A rule can be fully domain-independent in
+wording yet still assume context that exists only for the user who
+built it.
+
 **Imperative writing style.** Write all skill content using imperative/
 infinitive form (verb-first instructions), not second person. Use objective,
 instructional language.
@@ -373,14 +385,19 @@ minimum-viable scope on the first pass — the draft-time pull is toward
 broader framework framing. Apply the 4-step amendment discipline above
 iteratively:
 
-1. Re-examine the grounding incident — was the failure a rule-violation
-   (existing rule would have prevented if followed) or a rule-gap (no
-   existing rule covers)?
+1. Re-examine the grounding incident — classify the failure three
+   ways: **rule-gap** (no existing rule covers it), **unloaded** (a
+   rule exists but was never loaded into context), or
+   **loaded-but-inert** (a rule exists, was loaded, and still didn't
+   fire). All three produce an identical observable failure but have
+   different fixes.
 2. Enumerate existing rules in the surface area being proposed against.
 3. Subtract overlap — strike content already covered by existing rules.
-4. If rule-violation: drop the proposed addition entirely; the remaining
-   work is enforcement (structural gate, observable checkpoint), not
-   new rule content.
+4. If unloaded: the fix is the loading mechanism (a load gate — see
+   "Reference loading is a blocking gate"), not new rule content. If
+   loaded-but-inert: the fix is refining the existing rule's trigger
+   or articulation, not new rule content. In both cases drop the
+   proposed addition — the rule already exists.
 5. If rule-gap: identify the MINIMUM novel content. Distinguish the
    "framework I imagined" from "what's actually not covered."
 6. Re-apply steps 1-5 to the narrowed proposal. A single pass often

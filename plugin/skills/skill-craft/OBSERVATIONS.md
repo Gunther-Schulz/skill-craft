@@ -476,3 +476,62 @@ Measured ~0% activation-load rate for verification-layer reference
 files (roadmap P21). Fix landed in skill-craft v1.0.6 as a Layer 2
 sub-section. Path 2 — promotes to Path 1 when the consuming plugin's
 load rate measurably improves after gating ships.*
+
+---
+
+## 18. Skill behavior depends on ambient user context
+
+A skill's portability rules — domain-independence, language
+agnosticism, the Layer 5 abstraction check — all verify the skill's
+rule CONTENT is abstract. None verifies the skill's runtime BEHAVIOR
+is independent of the user's ambient environment: global instruction
+files, tool settings, prior-session memory. A skill can pass every
+content-abstraction check yet still assume context that exists only
+for the user who built it. "Follow the user's testing conventions"
+is domain-neutral in wording but assumes such conventions exist
+somewhere ambient — the content-abstraction checks green-light it.
+
+A skill installed by any user must behave correctly regardless of
+what global instructions, settings, or memory that user has.
+Context-independence is a distinct portability axis from content
+abstraction.
+
+The fix is a sibling rule in Layer 2 alongside domain-independence:
+a context-independence check at write time.
+
+*Observed: 20 May 2026, coding-clippy session. A consuming plugin
+maintained a standing rule that it must "perform correctly without
+assuming any particular global CLAUDE.md exists." The principle
+generalizes to any skill — landed in skill-craft v1.0.7 as a Layer 2
+sibling to domain-independence.*
+
+---
+
+## 19. "Rule-violation" conflates two failure classes with different fixes
+
+The iterative-narrowing rule (Observation 16, Layer 4) distinguishes
+rule-violation (an existing rule would have prevented the failure if
+followed) from rule-gap (no existing rule covers it). Applied to real
+failure diagnosis, the two-way split proved too coarse —
+"rule-violation" hides two distinct classes:
+
+- The rule existed but was never loaded into context — the AI could
+  not follow a rule it never read. Fix: the loading mechanism (a load
+  gate — Observation 17).
+- The rule existed, was loaded, and still didn't fire — the AI had it
+  in context but the trigger or articulation was too weak. Fix:
+  refine the trigger or sharpen the wording.
+
+Both produce an identical observable failure, but the fixes are
+unrelated — a loading gate does nothing for a loaded-but-inert rule,
+and a trigger refinement does nothing for an unloaded one. Collapsing
+them into one "rule-violation → add enforcement" bucket sends the
+wrong fix.
+
+The fix extends iterative-narrowing step 1 from a two-way to a
+three-way distinction: rule-gap / unloaded / loaded-but-inert, with
+step 4 split accordingly.
+
+*Observed: 20 May 2026, coding-clippy session. Operator caveat that
+observed plugin failures could trace to rules never loaded rather
+than rules missing. Extension landed in skill-craft v1.0.7.*
