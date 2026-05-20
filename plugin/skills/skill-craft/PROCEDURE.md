@@ -166,6 +166,22 @@ sequence matters and skipping a step is always wrong. For **judgment
 skills** (audits, reflective reviews), use evidence-backed principles
 instead — see "Writing judgment procedures" below.
 
+**Reference loading is a blocking gate, not a pointer.** A skill that
+depends on reference files for correct execution must gate their
+loading. Soft pointers in the skill body ("for details see X", "load
+X for Y") are read as informational — the AI proceeds without loading
+and the output looks identical, so hit rate is low. Use one
+consolidated load gate at skill activation:
+```
+- [ ] All load-bearing references loaded this session?
+  - NO → CANNOT proceed. Load each now.
+  - YES → Evidence: [files + sections read]
+```
+One activation-time gate, not N inline pointers — the failure is
+files unloaded at activation, so the gate belongs there. Applies only
+to references load-bearing for correct execution; genuinely optional
+references stay on-demand per progressive disclosure (Layer 3).
+
 **Observable checkpoints.** Verify actions taken, not internal states.
 - Observable (works): "Searched codebase?" → Evidence: [locations found]
 - Introspective (fails): "Feeling confident?" → AI cannot detect own states
@@ -296,7 +312,9 @@ abstract to be useful.
 **Progressive disclosure.** The SKILL.md loads first and tells the AI what else
 to read. Reference files load on demand. This matters because context window is
 finite — loading everything at invocation wastes context on guidance that may
-not be needed.
+not be needed. Qualifier: references load-bearing for correct execution are
+gated at activation (Layer 2, "Reference loading is a blocking gate"); only
+genuinely-optional references load purely on demand.
 
 **Word count.** SKILL.md body: 1,500-2,000 words ideal, 5,000 max. If
 exceeding 2,000, move detailed content to `references/`. Each reference

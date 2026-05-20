@@ -439,3 +439,40 @@ existing amendment discipline rather than replacing it.
 "output discipline" entry narrowed from broad framework to 3 specific
 edge cases over two operator-pushback rounds. Iterative narrowing
 rule landed in skill-craft v1.0.5.*
+
+---
+
+## 17. Soft "load X" pointers treated as informational, not imperative
+
+A skill listed reference files as dependencies and instructed loading
+them via prose pointers scattered through the skill body ("for full
+checklists, load X", "for detailed rules, see Y"). Measurement found
+~0% of load-bearing reference files were actually loaded at skill
+activation — the AI read the prose pointers as informational ("there
+is a reference doc") rather than imperative ("execute a Read now"),
+proceeded without loading, and substituted pattern-memory of past
+sessions for the actual file content. Output looked spec-compliant
+because the AI reproduced the expected shape from memory; it diverged
+from the current reference files silently.
+
+The root cause is format. Prose imperatives produce no observable
+artifact — the AI can skip the load and the output looks identical.
+This is the same failure shape Observation 9 identified for
+self-reported completion: a claim with no verifiable evidence behind
+it. Blocking logic already solves it for workflow steps; reference
+loading is structurally the same — a step that, skipped, is always
+wrong, with no visible failure.
+
+The fix extends "Blocking logic" (Layer 2) to cover reference
+loading: one consolidated load gate at skill activation requiring a
+loaded-references manifest (files + sections read) as evidence,
+rather than N soft pointers through the body. It also qualifies
+"Progressive disclosure" (Layer 3) — progressive disclosure correctly
+keeps genuinely-optional references on-demand, but load-bearing
+references must be gated, not pointed at.
+
+*Observed: 20 May 2026, coding-clippy spec-load investigation.
+Measured ~0% activation-load rate for verification-layer reference
+files (roadmap P21). Fix landed in skill-craft v1.0.6 as a Layer 2
+sub-section. Path 2 — promotes to Path 1 when the consuming plugin's
+load rate measurably improves after gating ships.*
