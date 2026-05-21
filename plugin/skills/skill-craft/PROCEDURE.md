@@ -333,7 +333,9 @@ for consistency. The SKILL.md is the natural place for this documentation.
 
 ### Layer 4: Skill evolution (lifecycle)
 
-How a skill improves through use.
+How a skill improves through use — the OBSERVATIONS.md cycle and the
+disciplines for making each change well. Layer 4 is the machinery of
+change; Layer 5 is the noticing that triggers it.
 
 **When a skill includes OBSERVATIONS.md, it has evolution behavior.** The
 presence of the file is the signal. SKILL.md must include instructions for
@@ -379,41 +381,29 @@ below is the second pass that catches over-patching at the amendment
 level.
 
 **Iterative narrowing of rule proposals.** Draft rules rarely land at
-minimum-viable scope on the first pass — the draft-time pull is toward
-broader framework framing. Apply the 4-step amendment discipline above
-iteratively:
+minimum scope on the first pass — the draft-time pull is toward broad
+framework framing. Before adding any rule:
 
-1. Re-examine the proposal's basis. If it is grounded in an observed
-   failure, classify the failure three ways: **rule-gap** (no existing
-   rule covers it), **unloaded** (a rule exists but was never loaded
-   into context), or **loaded-but-inert** (a rule exists, was loaded,
-   and still didn't fire) — all three look identical from outside but
-   have different fixes. If the proposal is forward-looking with no
-   incident yet (a Path 2 hypothesis), the failure classification does
-   not apply; proceed to step 2.
-2. Enumerate existing rules in the surface area being proposed against.
-3. Subtract overlap — strike content already covered by existing rules.
-4. If unloaded: the fix is the loading mechanism (a load gate — see
-   "Reference loading is a blocking gate"), not new rule content. If
-   loaded-but-inert: the fix makes the existing rule fire reliably —
-   sharpen its trigger or articulation if those are weak, OR add
-   structural enforcement if the rule is clear but skippable (convert
-   a prose imperative to a blocking gate or verifiable-artifact
-   requirement). A clear, unambiguous rule that is simply not done
-   needs enforcement, not rewording. Not new rule content. In both
-   cases drop the proposed addition — the rule already exists.
-5. If rule-gap: identify the MINIMUM novel content. Distinguish the
-   "framework I imagined" from "what's actually not covered."
-6. Re-apply steps 1-5 to the narrowed proposal. A single pass often
-   misses sub-parts that further enumeration reveals.
+1. **Classify the failure** (a Path 2 hypothesis with no incident yet
+   skips this): **rule-gap** (no existing rule covers it), **unloaded**
+   (a rule exists but was never loaded into context), or
+   **loaded-but-inert** (a rule exists, was loaded, still didn't
+   fire). All three look identical from outside; the fixes differ.
+2. **Enumerate** existing rules in the surface area, and **subtract**
+   what they already cover.
+3. **Fix per class.** *unloaded* → fix the loading mechanism (a load
+   gate), not new rule content. *loaded-but-inert* → sharpen the
+   rule's trigger or articulation if weak, or add structural
+   enforcement if it is clear but skippable — not new rule content.
+   *rule-gap* → identify the minimum novel content; distinguish "the
+   framework I imagined" from "what's actually not covered."
+4. **Re-apply** — a single pass misses sub-parts further enumeration
+   reveals.
 
-Sign that narrowing is complete: further narrowing would lose content
-no existing rule covers.
-
-Applies to any rule-writing context — skill files, protocol docs,
-planning entries — not just skill-internal evolution. The amendment
-discipline 4-step above gives the static decision framework; this
-section gives the iterative application.
+Narrowing is complete when further narrowing would lose content no
+existing rule covers. Applies to any rule-writing context — skill
+files, protocol docs, planning entries — not just skill-internal
+evolution.
 
 **Before applying a patch, check for drift.** Each observation-driven change
 is correct locally but may degrade the procedure globally. Before adding
@@ -441,7 +431,11 @@ another pass wouldn't change its structure, only its surface.
 
 ### Layer 5: Skill reflexivity (self-awareness)
 
-The skill should notice when its own guidance needs updating.
+Noticing — during any use, design, or review of a skill — that
+guidance itself needs updating, and surfacing it as a suggestion.
+Layer 5 is the trigger for change; Layer 4 is the machinery that
+makes it. Reflexivity reaches the skill's own guidance, conventions
+that would help other skills, and skill-craft itself.
 
 **When to suggest a skill update.** During any conversation where a skill is
 being used, designed, or reviewed — if the experience reveals that the skill's
