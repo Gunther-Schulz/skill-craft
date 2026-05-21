@@ -1,7 +1,7 @@
 ---
 name: skill-craft
 description: This skill should be used when the user asks to "create a skill", "design a plugin", "write a protocol", "review a skill", "improve a skill", or discusses skill architecture, plugin structure, protocol conventions, or how to make skills effective. Also activate when discussing failures in existing skills that suggest the skill itself needs updating.
-version: 1.0.11
+version: 1.0.12
 license: MIT
 ---
 
