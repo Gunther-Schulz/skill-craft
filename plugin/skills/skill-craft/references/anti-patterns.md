@@ -27,24 +27,16 @@ to another codebase requires rewriting the examples.
 
 **Fix:** Procedure is abstract. Observations contain the real incidents.
 
-## Checklist without deepening
+## Checklist as ceiling
 
-The procedure has a checklist of N items. The AI performs all N and
-reports findings. Issues outside the N categories are not found. The
-checklist becomes the ceiling of the investigation.
+The procedure has a checklist of N items. The AI performs all N,
+reports findings, and stops — neither tracing each finding's
+implications nor looking past the N categories. Issues outside the
+checklist, and adjacent issues a finding predicts, go unfound.
 
-**Fix:** After each phase, take each finding and trace its implications.
-The checklist seeds the investigation; findings expand it beyond the
-checklist categories.
-
-## Findings without follow-through
-
-The audit finds a problem and moves to the next checklist item. The
-implications of the finding are never traced. Adjacent issues that the
-finding predicts are never looked for.
-
-**Fix:** Each finding is a lead. Follow it until it stops producing new
-findings. Then move to the next checklist item.
+**Fix:** The checklist seeds the investigation, it does not bound it.
+Trace each finding's implications — follow each as a lead until it
+stops producing new findings — and look beyond the N categories.
 
 ## Skill that never evolves
 
@@ -100,21 +92,10 @@ there is nothing to correct against.
   "when warranted" — these are proxies for a specific rule the author
   didn't write down
 
-**Fix:** For every decision point in the skill's flow, name the decision
-explicitly, then answer: can this be computed from observable evidence?
-- **Fully computable** → define the computation in the procedure. No
-  judgment. Example: "classify an incident as auto-resolvable only if
-  affected users < 10, severity != critical, and no dependent services
-  impacted."
-- **Partially computable** → blocking logic with required evidence
-  enumeration. Judgment stays, but is auditable. The AI must list what
-  it checked, not claim completeness.
-- **Not computable** → add a downstream safety net (smoke check, batch
-  review, reversion path) AND document that the judgment is unreliable
-  so later maintainers know to audit it.
-
-Never leave the decision naked. See "Judgment calls as design risk" in
-PROCEDURE.md Layer 2 for the general principle and preference order.
+**Fix:** Name the decision explicitly, then apply one of the three
+mitigations — mechanical criteria, structural enforcement, or a safety
+net — per "Judgment calls as design risk" (PROCEDURE.md Layer 2).
+Never leave the decision naked.
 
 ## Information loss at skill boundaries
 

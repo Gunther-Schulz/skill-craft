@@ -421,8 +421,8 @@ re-derive the procedure when drift has already accumulated, but this
 check prevents the accumulation in the first place. Works whether or
 not the skill has a VISION.md.
 
-Signs that consolidation is overdue: procedure exceeds 200 lines,
-tone is adversarial, or multiple paragraphs say the same thing.
+Signs that consolidation is overdue are the "Procedure drift"
+anti-pattern (`references/anti-patterns.md`).
 
 **When the procedure is stable.** A procedure stabilizes when new observations
 produce only detail-level findings on content that was already structurally
@@ -675,10 +675,8 @@ they don't. If the tool changes, update the steps.
 
 ## Anti-patterns
 
-For common skill design mistakes and their fixes, load
-`references/anti-patterns.md`. Key patterns: monolithic SKILL.md,
-project-specific procedures, checklist as ceiling, findings without
-follow-through, skills that never evolve.
+For common skill design mistakes — each with the symptoms that spot
+it and the fix — load `references/anti-patterns.md`.
 
 ---
 
