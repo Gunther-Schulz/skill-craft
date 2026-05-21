@@ -606,7 +606,9 @@ easier to reference — from the per-type guidance and from reviews —
 than the diffused version.
 
 *Observed: 21 May 2026, coding-clippy session. The Clippy spec names
-this crisply as "the un-fakeable-artifact rule" (`core.md` §2.3); a
-cross-level review of skill-craft against the spec surfaced that
-skill-craft holds the same principle, diffused. Not yet actioned —
-recorded for a future skill-craft maintenance pass.*
+this crisply as "the un-fakeable-artifact rule"; a cross-level review
+of skill-craft against the spec surfaced that skill-craft holds the
+same principle, diffused. Actioned 2026-05-21 in the skill-craft
+review (Layer 2 pass): the principle is now named in `PROCEDURE.md`
+Layer 2 — "The un-fakeable-artifact principle" — and the two diffused
+statements reference it.*

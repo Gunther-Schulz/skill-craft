@@ -114,6 +114,14 @@ This layer is mechanical. Get it right once and move on.
 How to write protocol text that AI actually follows. AI does not self-enforce.
 Instructions without structural enforcement are suggestions.
 
+**The un-fakeable-artifact principle.** A check's evidence must be an
+artifact that cannot be produced without doing the work the check
+represents. An enumeration — "the cases checked: [list]; results:
+[list]" — requires having done the checking; a bare claim — "checked
+all edge cases" — is satisfiable whether or not the work happened.
+Every enforcement technique below rests on this: require the
+un-fakeable artifact, not the claim.
+
 **Judgment calls as design risk.** Any decision in a skill's flow — "is
 this trivial?", "does this qualify?", "should this skip?", "what
 severity?", "which category?" — that lacks mechanical criteria or
@@ -126,11 +134,10 @@ preference order:
    only if file count ≤ 2, line delta ≤ 20, and no new public interfaces.
    Any missing criterion → not lightweight-track.
 
-2. **Structural enforcement.** Blocking logic with enumerated evidence.
-   Judgment stays, but the AI must show its work in auditable form.
+2. **Structural enforcement.** Blocking logic with enumerated evidence
+   — the AI shows its work as an un-fakeable artifact. Judgment stays.
    Example: "- [ ] Which edge cases checked? Evidence: [list with
-   expected vs actual]." The enumeration is verifiable; a claim of
-   completeness is not.
+   expected vs actual]."
 
 3. **Safety net.** Accept the decision will sometimes be wrong. Add a
    fail-loud check downstream: smoke test, batch review, reversion
@@ -180,10 +187,9 @@ references stay on-demand per progressive disclosure (Layer 3).
 - Observable (works): "Searched codebase?" → Evidence: [locations found]
 - Introspective (fails): "Feeling confident?" → AI cannot detect own states
 - Self-reported completion (fragile): "Checked all edge cases?" → AI says
-  yes, but evidence is unfalsifiable. Fix: require the evidence to enumerate
-  what was checked. Not "checked edge cases" but "checked these specific
-  cases: [list]. Results: [list]." The enumeration is observable; the claim
-  of completeness is not.
+  yes, but evidence is unfalsifiable. Fix: require the enumeration —
+  "checked these specific cases: [list]. Results: [list]" — the
+  un-fakeable artifact, not the claim.
 
 **Menus as structural enforcement.** Show menu after every response where user
 has choices. Menu is always last element. Without it, user cannot control flow.
@@ -203,32 +209,27 @@ referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
 even if repeated. Test: must I follow this step-by-step without judgment? If
 yes, inline it. If no, reference it.
 
-**Who reads this file.** Skill files have one reader: the AI in
-mid-execution. Not a human maintainer. Not a reviewer. Not a future
-self. Every sentence must serve that reader. Documentation —
-rationale, provenance, design context, cross-references, failure-mode
-narration, motivational framing — goes in OBSERVATIONS.md, commit
-messages, README.md, or VISION.md. Those files are not loaded during
-skill execution.
-
-**Every sentence must change behavior.** Before writing a sentence into
-a skill, procedure, or reference, apply the test: if this sentence were
-deleted, would the AI do something different? If no, the sentence is
-fluff — remove it. Consider when the content is encountered — the same
+**Every sentence must change behavior.** Skill files have one reader:
+the AI in mid-execution — not a human maintainer, not a reviewer, not
+a future self. Before writing a sentence, apply the test: if it were
+deleted, would the AI do something different? If no, it is fluff —
+remove it. Consider when the content is encountered — the same
 information in an on-demand reference is not available during routine
-use, so actionable content may need to exist in both places. Fluff
-includes: provenance (where a rule came from), restated content (same
-idea in different words without different availability), named examples
-of existing skills, motivational framing ("this is important because"),
-hedging ("in most cases", "generally speaking", "it's worth noting"),
-meta-commentary ("this section covers", "the purpose of this skill is"),
-and transition sentences ("now let's look at", "as mentioned above").
-Exception: version lines serve the human maintainer, not the AI — keep
+use, so actionable content may need to exist in both places.
+
+Fluff includes: provenance (where a rule came from), restated content
+(same idea reworded without different availability), named examples
+of existing skills, motivational framing ("this is important
+because"), hedging ("in most cases", "generally speaking"),
+meta-commentary ("this section covers"), and transition sentences
+("now let's look at"). It belongs elsewhere — OBSERVATIONS.md, commit
+messages, README.md, or VISION.md — none of which load during skill
+execution. Exception: version lines serve the human maintainer — keep
 them despite failing the test.
 
 **Language agnosticism.** All terminology must be paradigm-neutral. Use
-"component" not "module/class", "contract" not "type/interface", "identifier"
-not "variable/field."
+"component" not "module/class", "contract" not "type/interface",
+"identifier" not "variable/field", "component boundary" not "API."
 
 **Domain-independence check.** BEFORE writing any rule, example, or
 checkpoint into procedure or reference files, enumerate at least two
@@ -468,10 +469,9 @@ reference files:**
   3. No architecture assumed (pipeline, MVC, REST, microservices)
   4. Works across diverse languages and runtimes
   5. Applies to diverse problem domains
-  - NO → CANNOT add. Rephrase using abstract terminology: "component"
-    not "module/class", "contract" not "type/interface", "identifier"
-    not "variable/field", "component boundary" not "API". Move
-    project-specific content to observations.
+  - NO → CANNOT add. Rephrase using paradigm-neutral terminology
+    (Layer 2, "Language agnosticism"). Move project-specific content
+    to observations.
   - YES → Continue.
 
 - [ ] Proposed change passes inclusion tests?
