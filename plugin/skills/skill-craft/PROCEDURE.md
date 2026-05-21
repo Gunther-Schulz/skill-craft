@@ -6,10 +6,10 @@ reflexivity — everything needed to build a skill that works well over time.
 
 ---
 
-## File naming convention
+## File categories and the loading boundary
 
-Skill files fall into two categories. The boundary between them is the
-central naming rule.
+Skill files fall into two categories. The boundary — which files load
+during skill use — is the central rule.
 
 ### Category 1: Operational files — loaded during skill use
 
@@ -62,38 +62,25 @@ stop. Skills that work well over time address all five.
 
 Directory layout, manifest, auto-discovery, README. The mechanical foundation.
 
-**README.md** sits at the plugin root — the first thing a potential user
-sees. It serves a different audience than SKILL.md (which is for the AI).
-The README is for humans deciding whether to install.
+**README.md** sits at the plugin root — for humans deciding whether to
+install (a different audience than SKILL.md, which is the AI's
+instructions).
 
 Required sections:
-1. **What it does** — one paragraph explaining the value. Lead with the
-   problem it solves or the before/after difference, not the mechanism.
-   "Enforces investigation before implementation" not "provides a
-   multi-phase workflow with tracker."
-2. **Installation** — the marketplace add + install + reload-plugins
-   commands, copy-pasteable.
-3. **Usage** — trigger phrases and/or slash command. How to invoke it.
-4. **Files** — table of plugin files and their roles (operational vs
-   maintenance, loaded at invocation vs on demand).
+- **What it does** — the value in one paragraph. Lead with the problem
+  solved, not the mechanism.
+- **Installation** — the marketplace add + install + reload-plugins
+  commands, copy-pasteable.
+- **Usage** — trigger phrases and/or slash command.
+- **Files** — a table of plugin files and their roles.
 
-Optional but valuable:
-- **Origin story** — why the skill was created. One real incident that
-  motivated it. This grounds the README in reality and explains why
-  someone should care.
-- **Phases/features** — brief description of what the skill does at each
-  step. Not the full procedure — just enough to set expectations.
+Optional: an **origin story** (the real incident that motivated the
+skill) and a brief **phases/features** overview.
 
-Required for plugins with contributors:
-5. **Development** — how to make changes and test them locally. Include:
-   the edit → commit → reinstall cycle (uninstall + install, since
-   `update` won't pick up same-version changes), how to reload
-   (`/reload-plugins`), and how to bump version for releases. This
-   section prevents the most common contributor friction: "I changed
-   the file but nothing happened."
-
-The README does NOT replace SKILL.md. SKILL.md is AI instructions.
-README is human documentation. Different audiences, different content.
+A plugin with contributors also needs a **Development** section — the
+edit → commit → reinstall cycle, `/reload-plugins`, and version bumps
+— which prevents the "I changed the file but nothing happened"
+friction.
 
 ```
 plugin-name/
