@@ -49,3 +49,10 @@ state what's missing before continuing.
 - [ ] **Information flow (orchestrated skills only).** Every handoff
   passes what the receiver needs? Data explicit in prompt or on disk?
   Format matches? State survives compaction?
+
+- [ ] **Rendering fidelity (skills that derive content from a source
+  spec, framework, or standards doc).** Every load-bearing clause of
+  the source survived into the skill text? Structurally-enforced
+  source mechanisms render as structural mechanisms, not flattened to
+  prose? Verified by a clause-level diff against the source — not by
+  re-reading the rendered text?

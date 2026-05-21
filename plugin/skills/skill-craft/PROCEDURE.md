@@ -137,11 +137,16 @@ all edge cases" — is satisfiable whether or not the work happened.
 Every enforcement technique below rests on this: require the
 un-fakeable artifact, not the claim.
 
-**Judgment calls as design risk.** Any decision in a skill's flow — "is
-this trivial?", "does this qualify?", "should this skip?", "what
-severity?", "which category?" — that lacks mechanical criteria or
-structural enforcement is a latent failure. Three mitigations, in
-preference order:
+**Judgment calls as design risk.** Two things fail latently without
+structural backing. One — a **decision** the AI must make ("is this
+trivial?", "does this qualify?", "what severity?", "which category?")
+— left without mechanical criteria. Two — a **load-bearing rule** the
+AI must follow ("always self-resolve", "never pose a menu", "verify
+before asserting") — left as soft prose. A rule is load-bearing when
+its violation breaks a core value of the skill; such a rule stated as
+prose is a suggestion, not a rule. Both fail the same way: the AI acts
+confidently and inconsistently, and the error surfaces downstream.
+Three mitigations, in preference order:
 
 1. **Mechanical criteria.** Compute the decision from observable
    evidence: counts, presence checks, field values, cross-references.
@@ -159,9 +164,9 @@ preference order:
    path. Use only when (1) and (2) are impossible. Document that the
    judgment is unreliable so later readers know to audit.
 
-Never leave a decision point naked. Forcing functions, blocking logic,
-and observable checkpoints (below) are techniques for applying these
-mitigations. Select the technique that implements the chosen mitigation,
+Never leave a decision point or a load-bearing rule naked. Forcing
+functions, blocking logic, and observable checkpoints (below) are
+techniques for applying these mitigations. Select the technique that implements the chosen mitigation,
 not the one that feels familiar.
 
 **Forcing functions.** Temporal keywords mandate sequence:
@@ -275,6 +280,19 @@ the skill, either inline what it needs or make the dependency
 explicit and optional. A rule can be fully domain-independent in
 wording yet still assume context that exists only for the user who
 built it.
+
+**Rendering from a source.** A skill's content is sometimes derived
+from a higher source — a framework spec, a standards document, a
+parent methodology a domain instance is built from. The rendering is
+lossy by default: paraphrase silently drops clauses, and a
+structurally-enforced rule in the source flattens into a soft
+principle in the skill — both read plausibly afterward. When rendering
+a source rule or mechanism into skill text: every load-bearing clause
+of the source survives, and a structurally-enforced source mechanism
+renders *as* a structural mechanism (a forcing function, a blocking
+gate), never as prose. Verify by a clause-level diff against the
+source — not by re-reading the rendered text. The renderer is blind
+to its own flattening; fidelity needs the source held alongside.
 
 **Imperative writing style.** Write all skill content using imperative/
 infinitive form (verb-first instructions), not second person. Use objective,

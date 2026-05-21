@@ -73,8 +73,9 @@ files. The procedure should fit on a screen.
 
 ## Naked judgment call
 
-The procedure asks the AI to decide something without providing
-mechanical criteria or structural enforcement. Reads reasonable —
+The procedure asks the AI to decide something — or to follow a
+load-bearing rule — without mechanical criteria or structural
+enforcement behind it. Reads reasonable —
 "assess severity", "identify critical items", "classify as trivial",
 "determine if qualifies" — but none of those verbs have a computation
 behind them. The AI answers confidently and consistently-wrong because

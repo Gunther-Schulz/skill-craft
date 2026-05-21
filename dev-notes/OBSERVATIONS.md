@@ -687,3 +687,42 @@ the volatile mechanics.
 *Observed: 2026-05-21, coding-clippy. Discovered during the
 skill-craft review and a Claude Code plugin-docs check while
 rewriting the Clippy plugin. Fix landed in skill-craft v1.0.12.*
+
+---
+
+## 24. A framework rule lost its structural enforcement in the rendering to an instance
+
+The Clippy plugin is rendered from the diligence-framework spec. A
+load-bearing behavioral rule — the AI self-resolves design decisions
+and does not pose them to the operator as choices (framework
+`core.md` §1) — was rendered into the plugin's investigate-design
+phase file as "self-resolve and record," dropping the "does not pose
+as choices" clause and the rule's structural framing. The first
+empirical run posed three design decisions to the operator as
+questions.
+
+Two skill-craft failures compounded:
+
+- **The rendering was an unverified lossy paraphrase.** A load-bearing
+  clause silently dropped; what survived flattened from a structural
+  rule to a soft principle. Nothing verified the rendered text against
+  the source — and the renderer's own review missed it, because the
+  drafting context is blind to its own flattening (observation 12).
+- **The structural-enforcement mandate did not fire.** "Judgment
+  calls as design risk" (Layer 2) was framed around classification
+  decision-points; a standing behavioral rule phrased as a positive
+  instruction did not trip its trigger, so the renderer treated
+  "self-resolve" as a principle to state, not a rule to enforce.
+
+The fix to skill-craft: a new Layer 2 sub-section, "Rendering from a
+source" — render faithfully, structural-as-structural, verified by a
+clause-diff against the source — plus a matching review-checklist
+item. And "Judgment calls as design risk" widened: its trigger now
+covers any load-bearing rule, not classification decision-points
+alone. The framework-side root causes (the un-fakeable-artifact rule
+generalized to behavioral rules, the design-decision definition, the
+closed cycle-boundary output, the prescription-discipline split)
+landed in the diligence-framework spec.
+
+*Observed: 2026-05-21, coding-clippy. The first empirical run of the
+rewritten Clippy plugin. Fixes landed in skill-craft v1.0.13.*
