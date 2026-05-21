@@ -104,6 +104,21 @@ Key rules:
 - Use `${CLAUDE_PLUGIN_ROOT}` for portable path references in scripts
 - Skills auto-discover: any `SKILL.md` in a `skills/` subdirectory loads
 
+**Multiple skills, and shared content.** A plugin can hold several
+skills — each its own `skills/<name>/SKILL.md` directory. Reference
+files are **skill-local**: a `SKILL.md` loads files from its own skill
+directory, and the plugin root has only the recognized component
+directories above — an invented plugin-root `references/` is not a
+supported home for shared content. So when several skills would share
+the same reference material, there is a structural choice: make it
+**one skill** — the orchestrator as `SKILL.md`, the other phases as
+sub-files under it, references skill-local — or accept a duplicated
+copy per skill. Prefer one skill when the shared material is
+load-bearing for all of them; duplicated copies drift. The exact path
+mechanics for referencing bundled files belong to the official
+`plugin-dev` plugin and the Claude Code docs — confirm there rather
+than inventing layout.
+
 For plugin packaging details (marketplace vs plugin separation, hooks pitfalls,
 installation flow, common mistakes), see `references/plugin-engineering.md`.
 
@@ -234,13 +249,20 @@ terms: "component" not "module/class", "contract" not
 "type/interface", "identifier" not "variable/field", "component
 boundary" not "API."
 
-**Domain-independence check.** BEFORE writing any rule, example, or
-checkpoint into procedure or reference files, enumerate at least two
-domains outside the current project where the content must apply. If
-it only works in one domain, it is contaminated. Rewrite using
-domain-independent terms, or move the content to observations where
-project-specific incidents belong. This fires at write time — the
-Layer 5 abstraction check fires at review time as a second net.
+**Domain-independence check.** Abstraction is judged against the
+skill's intended **scope** — the range it is meant to serve. A
+domain-specific skill (a coding skill, a GIS skill, or one that
+instantiates a framework for a single domain) is correctly bound to
+its domain; only a domain-general methodology skill — skill-craft, a
+framework — must reach across unrelated domains. BEFORE writing any
+rule, example, or checkpoint into procedure or reference files,
+confirm the content holds everywhere within that scope — across at
+least two unrelated contexts in it (two projects, two paradigms; two
+domains for a domain-general skill) — not only for the project where
+it was developed. If it is narrower than the scope, rewrite using
+terms abstract within the scope, or move the content to observations
+where project-specific incidents belong. This fires at write time —
+the Layer 5 abstraction check fires at review time as a second net.
 
 **Context-independence check.** Domain-independence verifies the rule
 *content* is abstract. This verifies the runtime *behavior* assumes
@@ -314,7 +336,8 @@ How to organize knowledge across files so the skill produces good results.
   sufficient; the AI does not need provenance to apply the guidance.
 
 **The separation that matters most: procedure from observations.** The procedure
-must be domain-independent, usable in any project whatever its domain. The observations must contain
+must be abstract within the skill's intended scope — usable across every project
+in that scope, free of any one project's specifics. The observations must contain
 real incidents to ground the procedure in reality. Mixing them produces a
 procedure that only makes sense for one project, or observations that are too
 abstract to be useful.
@@ -458,7 +481,10 @@ revealed it), and the proposed change to the guide. Do not make the change.
 The user decides whether and how to incorporate it.
 
 **Abstraction check — BEFORE proposing any change to a skill's procedure or
-reference files:**
+reference files.** Judge every test below against the skill's intended **scope**
+(Layer 2, "Domain-independence check"): for a domain-specific skill, "diverse"
+means diverse *within its domain*; only a domain-general methodology skill must
+clear the tests across unrelated domains.
 
 - [ ] Proposed change passes exclusion tests?
   1. No specific language mentioned

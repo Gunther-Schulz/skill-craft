@@ -612,3 +612,78 @@ same principle, diffused. Actioned 2026-05-21 in the skill-craft
 review (Layer 2 pass): the principle is now named in `PROCEDURE.md`
 Layer 2 — "The un-fakeable-artifact principle" — and the two diffused
 statements reference it.*
+
+---
+
+## 22. Abstraction guidance conflated within-domain abstraction with cross-domain universality
+
+skill-craft's review checklist (item 5, abstraction) and the Layer 5
+abstraction check were applied to a skill — Clippy — that is
+deliberately the *coding instance* of a domain-general framework (the
+Diligence framework). The checks read as demanding cross-domain
+universality: the Layer 5 exclusion tests ask whether a change
+"applies to diverse problem domains" and "works across diverse
+languages and runtimes," and the Layer 2 domain-independence check
+said to "enumerate at least two domains outside the current project
+... if it only works in one domain, it is contaminated." Clippy is
+correctly coding-specific — it uses "codebase," "file," "symbol,"
+"grep." Read literally, the tests flag those as contamination.
+
+The guidance was internally inconsistent. Layer 2's terminology
+agnosticism already accepted domain-specific skills — "for a coding
+skill that means paradigm-neutral terms" — while the domain-
+independence check and the Layer 5 abstraction check demanded
+cross-domain reach. A skill can legitimately be domain-specific: most
+skills are (a coding skill, a GIS skill), and a skill that
+instantiates a domain-general framework for one domain is bound to
+that domain by design. What every skill must avoid is contamination
+by one *project's* specifics and one *paradigm's* variant terms — not
+domain-specificity itself.
+
+The fix: abstraction is judged against the skill's intended **scope**.
+A domain-specific skill is abstract within its domain and
+domain-specific overall — correct. Only a domain-general methodology
+skill (skill-craft, a framework) must reach across domains. The Layer
+2 domain-independence check, the Layer 3 procedure/observations
+separation, the Layer 5 abstraction check, and review-checklist item
+5 were reworded to make the scope explicit.
+
+*Observed: 2026-05-21, coding-clippy. Surfaced in the skill-craft
+review of the rewritten Clippy plugin — Clippy being the coding
+instance of the Diligence framework. Fix landed in skill-craft
+v1.0.12.*
+
+---
+
+## 23. Layer 1 had no guidance for multi-skill plugins or shared content
+
+A plugin was built as five skills that shared a set of reference
+files, placed in a `references/` directory at the plugin root. The
+Claude Code plugin documentation documents skill reference files as
+**skill-local** — referenced from a `SKILL.md` relative to its own
+skill directory — and the plugin root has a fixed set of recognized
+component directories (`skills/`, `commands/`, `agents/`, `hooks/`); a
+plugin-root `references/` is not one of them and is not a supported
+home for shared content. The layout was off-pattern and the
+cross-directory reference from each skill to the shared files was
+fragile. It forced a restructure: the five skills collapsed into one,
+the others becoming sub-files and the references skill-local.
+
+Layer 1 showed only a single-skill directory diagram and said nothing
+about plugins with multiple skills or about shared reference content.
+The off-pattern layout passed every existing check because no check
+addressed it.
+
+The fix: a Layer 1 paragraph on multiple skills and shared content —
+reference files are skill-local; the plugin root has no `references/`
+component; when several skills would share reference material the
+structural choice is one skill (orchestrator plus sub-files) versus
+duplicated per-skill copies, and one skill is preferred when the
+material is load-bearing for all of them. The exact path mechanics for
+bundled-file references belong to the official `plugin-dev` plugin and
+the Claude Code docs — skill-craft owns the architecture lesson, not
+the volatile mechanics.
+
+*Observed: 2026-05-21, coding-clippy. Discovered during the
+skill-craft review and a Claude Code plugin-docs check while
+rewriting the Clippy plugin. Fix landed in skill-craft v1.0.12.*

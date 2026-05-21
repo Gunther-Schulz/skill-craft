@@ -25,9 +25,11 @@ state what's missing before continuing.
   apparent duplicates. Rules covering the same concern merged into
   fewer, sharper items?
 
-- [ ] **Abstraction.** Passes all seven tests (five exclusion, two
-  inclusion)? At the same level as surrounding content? Uses abstract
-  terminology (component/contract/identifier)?
+- [ ] **Abstraction.** Judged against the skill's intended scope — a
+  domain-specific skill is correctly domain-bound; only a
+  domain-general skill must clear the tests across domains. Passes all
+  seven tests (five exclusion, two inclusion)? At the same level as
+  surrounding content? Uses terminology abstract within that scope?
 
 - [ ] **Protocol conventions.** Imperative form throughout (no second
   person)? Workflow skills: gates use blocking logic (CANNOT + evidence),
