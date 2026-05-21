@@ -359,11 +359,11 @@ mistake or a pattern? A pattern is worth documenting. A one-time mistake is not
 — unless it reveals a class of failures the procedure doesn't address.
 
 **When an observation becomes a procedure change.** An observation describes
-what happened. A procedure change prevents it from happening again. For Path 1
-(phenomenon-driven) changes, the observation exists before the procedure change
-— it provides the evidence that the change is warranted. Path 2 (blank-slate)
-changes have no incident yet; they are valid as explicitly-marked hypotheses,
-validated by use. What is not valid is an unmarked guess — a change presented
+what happened. A procedure change prevents it from happening again. A change is
+either Path 1 — grounded in an observed incident, which provides the
+evidence the change is warranted — or Path 2, a blank-slate
+hypothesis, valid only when explicitly marked and validated by use
+("Writing rule-based procedures" defines both). What is not valid is an unmarked guess — a change presented
 as grounded when it is neither incident-backed nor flagged as a Path 2
 hypothesis.
 
@@ -508,6 +508,10 @@ understanding, not step-following.
 
 **Tooling skills** — thin wrappers around a specific workflow or tool. The
 procedure is a sequence of steps.
+
+An audit fits whichever type matches its checks: mechanical checks
+that need no understanding make it rule-based; checks that require
+assessment make it a judgment skill.
 
 ### Writing rule-based procedures
 
