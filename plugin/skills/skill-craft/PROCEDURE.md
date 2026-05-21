@@ -23,9 +23,9 @@ during skill use — is the central rule.
 
 Standard names, used only during skill development and improvement:
 
-- `OBSERVATIONS.md` — improvement journal. Failure patterns from real use.
-- `VISION.md` — philosophical foundation. Why the approach matters.
-- `ROADMAP.md` — concrete improvement work items.
+- `OBSERVATIONS.md` — improvement journal.
+- `VISION.md` — philosophical foundation.
+- `ROADMAP.md` — improvement work items.
 
 **Placement.** Maintenance files live outside the plugin payload — the
 directory tree that ships as the installed skill. Keep them at the
@@ -285,7 +285,7 @@ How to organize knowledge across files so the skill produces good results.
 
 **File roles.** Each file in a skill serves one of these roles:
 
-- **Procedure** — what to do. The actionable method. Abstract, project-agnostic.
+- **Procedure** — what to do. The actionable method. Abstract, domain-independent.
   Contains checkpoints, phases, verification steps. Never contains project-specific
   examples or real filenames.
 
@@ -306,12 +306,12 @@ How to organize knowledge across files so the skill produces good results.
 
 - **References** — detailed guidance loaded on demand, not at invocation.
   Checklists, examples, schemas. Keeps the main skill focused while making
-  detail available when needed. Reference content is project-agnostic like
+  detail available when needed. Reference content is domain-independent like
   procedures — no project-specific evidence. The pattern and fix are
   sufficient; the AI does not need provenance to apply the guidance.
 
 **The separation that matters most: procedure from observations.** The procedure
-must be project-agnostic to work in any codebase. The observations must contain
+must be domain-independent to work in any codebase. The observations must contain
 real incidents to ground the procedure in reality. Mixing them produces a
 procedure that only makes sense for one project, or observations that are too
 abstract to be useful.
