@@ -21,9 +21,9 @@ SKILL.md focused on trigger conditions, what to load, and the core method.
 
 ## Procedure with project-specific examples
 
-The procedure contains real filenames, service names, or code patterns
-from a specific project. It only makes sense in that project. Porting it
-to another codebase requires rewriting the examples.
+The procedure contains concrete names, examples, or patterns from a
+specific project. It only makes sense in that project. Porting it to
+another project requires rewriting the examples.
 
 **Fix:** Procedure is abstract. Observations contain the real incidents.
 

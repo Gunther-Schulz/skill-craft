@@ -184,7 +184,7 @@ to references load-bearing for correct execution; genuinely optional
 references stay on-demand per progressive disclosure (Layer 3).
 
 **Observable checkpoints.** Verify actions taken, not internal states.
-- Observable (works): "Searched codebase?" → Evidence: [locations found]
+- Observable (works): "Searched the sources?" → Evidence: [locations found]
 - Introspective (fails): "Feeling confident?" → AI cannot detect own states
 - Self-reported completion (fragile): "Checked all edge cases?" → AI says
   yes, but evidence is unfalsifiable. Fix: require the enumeration —
@@ -227,9 +227,12 @@ messages, README.md, or VISION.md — none of which load during skill
 execution. Exception: version lines serve the human maintainer — keep
 them despite failing the test.
 
-**Language agnosticism.** All terminology must be paradigm-neutral. Use
-"component" not "module/class", "contract" not "type/interface",
-"identifier" not "variable/field", "component boundary" not "API."
+**Terminology agnosticism.** A procedure must not bake in terms
+specific to one variant of the skill's domain — terms that would not
+carry to another. For a coding skill that means paradigm-neutral
+terms: "component" not "module/class", "contract" not
+"type/interface", "identifier" not "variable/field", "component
+boundary" not "API."
 
 **Domain-independence check.** BEFORE writing any rule, example, or
 checkpoint into procedure or reference files, enumerate at least two
@@ -287,7 +290,7 @@ How to organize knowledge across files so the skill produces good results.
 
 - **Procedure** — what to do. The actionable method. Abstract, domain-independent.
   Contains checkpoints, phases, verification steps. Never contains project-specific
-  examples or real filenames.
+  examples or concrete names.
 
 - **Observations** — what goes wrong and what works. Evidence from real incidents,
   abstracted to remove project-specific details. Grounds the procedure in reality.
@@ -311,7 +314,7 @@ How to organize knowledge across files so the skill produces good results.
   sufficient; the AI does not need provenance to apply the guidance.
 
 **The separation that matters most: procedure from observations.** The procedure
-must be domain-independent to work in any codebase. The observations must contain
+must be domain-independent, usable in any project whatever its domain. The observations must contain
 real incidents to ground the procedure in reality. Mixing them produces a
 procedure that only makes sense for one project, or observations that are too
 abstract to be useful.
@@ -463,9 +466,9 @@ reference files:**
   3. No architecture assumed (pipeline, MVC, REST, microservices)
   4. Works across diverse languages and runtimes
   5. Applies to diverse problem domains
-  - NO → CANNOT add. Rephrase using paradigm-neutral terminology
-    (Layer 2, "Language agnosticism"). Move project-specific content
-    to observations.
+  - NO → CANNOT add. Rephrase using variant-neutral terminology
+    (Layer 2, "Terminology agnosticism"). Move project-specific
+    content to observations.
   - YES → Continue.
 
 - [ ] Proposed change passes inclusion tests?
