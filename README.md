@@ -27,3 +27,7 @@ Triggers on: "create a skill", "design a plugin", "write a protocol",
 | `PROCEDURE.md` | The skill design method (self-contained) | At invocation |
 | `dev-notes/OBSERVATIONS.md` | Improvement journal (failure patterns) — maintainer-side, outside the plugin payload | Never (not part of the installed skill) |
 | `references/plugin-engineering.md` | Plugin packaging and distribution | On demand |
+
+## Development
+
+skill-craft, the [Diligence framework](https://github.com/Gunther-Schulz/diligence-framework), and the framework's instances are evolved under a shared process — see [`development-process.md`](https://github.com/Gunther-Schulz/diligence-framework/blob/main/development-process.md) in the framework repo.
