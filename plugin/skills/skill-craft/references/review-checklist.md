@@ -50,6 +50,12 @@ state what's missing before continuing.
   passes what the receiver needs? Data explicit in prompt or on disk?
   Format matches? State survives compaction?
 
+- [ ] **Cross-skill consistency (multi-skill plugins).** Every
+  assumption one skill encodes about another — field names, file
+  paths, schemas, status values, invocation syntax — matches the
+  other skill's actual contract? Checked against the other skill,
+  not recalled?
+
 - [ ] **Rendering fidelity (skills that derive content from a source
   spec, framework, or standards doc).** Every load-bearing clause of
   the source survived into the skill text? Structurally-enforced
