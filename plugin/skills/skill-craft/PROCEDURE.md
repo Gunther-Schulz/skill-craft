@@ -178,26 +178,22 @@ Use for workflow skills where sequence matters; for judgment
 skills use evidence-backed principles instead (see
 `references/writing-by-skill-type.md`).
 
-**Reference loading is a blocking gate, not a pointer.** A skill that
-depends on reference files for correct execution must gate their
-loading. Soft pointers in the skill body ("for details see X", "load
-X for Y") are read as informational — the AI proceeds without loading
-and the output looks identical, so hit rate is low. Use one
-consolidated load gate at skill activation:
+**Reference loading is a blocking gate, not a pointer.** A skill
+that depends on reference files for correct execution must gate
+their loading. Use one consolidated load gate at skill activation:
 ```
 - [ ] All load-bearing references loaded this session?
   - NO → CANNOT proceed. Load each now.
   - YES → Evidence: [files + sections read]
 ```
-One activation-time gate, not N inline pointers — the failure is
-files unloaded at activation, so the gate belongs there. Applies only
-to references load-bearing for correct execution; genuinely optional
-references stay on-demand per progressive disclosure (Layer 3).
+Applies only to references load-bearing for correct execution;
+genuinely-optional references stay on-demand (Layer 3 progressive
+disclosure).
 
 **Observable checkpoints.** Verify actions taken, not internal
-states. Require the un-fakeable artifact (enumeration of what was
-checked + results), not the claim ("checked all edge cases" is
-unfalsifiable).
+states. A claim like "checked all edge cases" is unfalsifiable;
+**Fix:** require enumeration of what was checked + results — the
+un-fakeable artifact.
 
 #### Output discipline
 
