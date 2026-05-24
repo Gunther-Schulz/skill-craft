@@ -74,71 +74,39 @@ recognize? If not, the checkpoint has accumulated implementation detail
 that belongs in `references/`. Move specialized guidance to reference
 files. The procedure should fit on a screen.
 
-## Naked judgment in rule statements
+## Rule elaboration creep
 
-A load-bearing rule asks the AI to do something, judge something,
-or check something — but the test rests on the AI's own judgment
-rather than on an observable property. The AI reads the rule,
-pattern-completes the missing criterion from whatever the
-conversational context suggests, and answers confidently and
-consistently-wrong because there is nothing to correct against.
-Errors are caught downstream (during review or after shipping),
-not at the decision point.
-
-Two failure shapes share this root — same problem, different parts
-of speech:
-
-**Shape 1: Evaluative verbs.** The rule uses an evaluative verb
-without a defined computation. Reads reasonable — "assess
-severity," "identify critical items," "classify as trivial,"
-"determine if qualifies" — but none have a computation behind them.
-
-**Shape 2: Judgment-coded nouns and adjectives.** The rule uses a
-term whose meaning rests on the AI's own judgment. Three
-sub-shapes (illustrative, not exhaustive — the test is the
-principle below, not the example term):
-
-- **Moralistic** — terms implying moral or normative judgment
-  without anchored criteria. *Example shape:* "proper-X", "right-X",
-  "appropriate-X."
-- **Vague positive valence** — descriptors carrying approval
-  without specifying the property approved. *Example shape:*
-  "good-X", "clean-X", "natural-X", "elegant-X."
-- **AI-judgment-coded** — terms whose meaning requires the AI to
-  assess its own state or context. *Example shape:* "best by your
-  judgment", "as appropriate", "when warranted", "use judgment."
-
-**The test, not the term-match.** Any term or verb in a load-bearing
-rule that requires AI judgment rather than observable
-property-check falls under this anti-pattern, whether or not the
-specific word matches an example above. The principle is *no
-anchored criterion*; the examples illustrate but do not exhaust.
+A load-bearing rule grows beyond principle + test + fix. Each
+addition is locally justified but aggregate creates narrowing
+bias and conflict risk. ("Procedure drift" at the rule level.)
 
 **Symptoms:**
-- A verb, term, or phrase in a load-bearing rule has no explicit
-  criterion for what makes something instance-of-X
-- The decision affects control flow: which path taken, whether to
-  skip, which category a finding goes in
-- The same input produces different classifications in different
-  runs
-- Errors in the decision are caught downstream (during review or
-  after shipping), not at the decision point
-- The rule uses phrases like "use judgment", "as appropriate",
-  "when warranted" — proxies for a specific rule the author didn't
-  write down
-- Reasonable readers could interpret the term or verb differently
-- The term encodes approval/disapproval without grounding
-- Replacement candidates exist that describe properties or
-  processes observably
+- Body exceeds principle + test + fix
+- Examples enumerated within the rule
+- Sub-shapes elaborate the same principle
+- Motivational prose appears alongside the test
 
-**Fix:** Name the test explicitly, then apply one of the three
-mitigations — mechanical criteria, structural enforcement, or a
-safety net — per "Judgment calls as design risk" (PROCEDURE.md
-Layer 2). Where a property is meant (e.g., thorough,
-scope-bounded), name the property. Where a process is meant
-(e.g., verified, search-established), name the process. Where a
-comparison is meant (e.g., lowest-cost), name what's being
-compared and against what. Never leave the test naked.
+**Fix:** Compress to principle + test + fix. Drop enumeration,
+sub-categorization, motivational framing.
+
+## Naked judgment in rule statements
+
+A load-bearing rule's test rests on the AI's own judgment rather
+than on an observable property. The AI pattern-completes the
+missing criterion and answers consistently-wrong; the error
+surfaces downstream.
+
+**Symptoms:**
+- The rule has no explicit criterion for what constitutes correct
+  application
+- The decision affects control flow (path taken, skip taken,
+  category assigned)
+- The rule directs the AI to apply "judgment" without naming the
+  observable criterion
+
+**Fix:** Apply one of three mitigations — mechanical criteria,
+structural enforcement, or safety net — per "Judgment calls as
+design risk" (PROCEDURE.md Layer 2). Never leave the test naked.
 
 ## Information loss at skill boundaries
 
@@ -161,69 +129,40 @@ flow in orchestrated workflows" in the main procedure.
 
 ## Soft load pointers
 
-A skill lists reference files as dependencies and points at them
-with prose ("for full checklists, load X", "for detailed rules,
-see Y"). The AI reads the prose pointer as informational ("there is
-a reference doc") rather than imperative ("execute a Read now"),
-proceeds without loading, and substitutes pattern-memory of past
-sessions for the actual file content. Output looks spec-compliant
-because the AI reproduces the expected shape from memory; it
-diverges from the current reference files silently.
+A skill points at load-bearing reference files with prose
+("for X, see Y") instead of an imperative load gate. The AI reads
+it as informational, skips the load, substitutes pattern-memory;
+output looks spec-compliant but diverges from current references
+silently.
 
 **Symptoms:**
-- Reference file is named in prose ("see X for details", "consult
-  Y", "load Z if needed") without an observable load step
-- No loaded-references manifest at skill activation enumerating
-  what was actually read
-- Skill output matches the reference's shape but is not traceable
-  to specific reference content
-- Re-runs of the same skill produce inconsistent output as
-  pattern-memory drifts
-- Reference files are load-bearing (skipping them produces wrong
-  output) but loading is not gated
+- Reference named in prose without an observable load step
+- No loaded-references manifest at skill activation
+- Skipping the reference would produce wrong output yet loading
+  is not gated
 
 **Fix:** Convert load-bearing reference loads to a blocking gate
-at skill activation — one consolidated step requiring a
-loaded-references manifest (files + sections read) as evidence
-before the skill body executes. Discriminator: a reference is
-**load-bearing** if skipping it produces wrong output;
-**genuinely-optional** if the skill works correctly when it is not
-loaded. Load-bearing references must be
-gated; genuinely-optional ones may remain on-demand (progressive
-disclosure, Layer 3). See "Blocking logic" (PROCEDURE.md Layer 2)
-— reference loading is structurally the same shape as a workflow
-gate.
+at skill activation requiring a loaded-references manifest as
+evidence. Discriminator: load-bearing = skipping produces wrong
+output; genuinely-optional = skill works correctly when not loaded
+(genuinely-optional may remain on-demand per Layer 3). See
+"Blocking logic" (PROCEDURE.md Layer 2).
 
 ## Unverified render from source
 
-A skill is rendered from a source spec (framework, standard, parent
-methodology) by paraphrase. Paraphrase silently flattens — "must"
-becomes "should," structural rules become soft principles,
-load-bearing clauses drop. The renderer's own review misses this
-because the drafting context is blind to its own flattening: it
-reads its output as faithful to what it intended, not as a diff
-against the source. The rendered skill ships with structural
-enforcement degraded to advisory prose, and the first real run
-exposes the gap.
+A skill rendered from a source spec by paraphrase silently flattens
+structural rules to prose ("must" → "should") and drops load-bearing
+clauses. The renderer is blind to its own flattening — re-reading
+the render reads as faithful.
 
 **Symptoms:**
-- Skill text was written by paraphrasing a source spec or parent
-  document
-- No clause-level diff against the source was performed by a
-  separate context
-- The skill's enforcement language is softer than the source
-  ("must" → "should", "CANNOT proceed" → "consider whether")
-- Structural mechanisms in the source (gates, mandates, blocking
-  logic) render as prose principles in the skill
-- Load-bearing clauses in the source have no corresponding text
-  in the skill
-- Verification artifact (if any) references re-reading the render,
-  not a clause-by-clause comparison against the source
+- Skill text was written by paraphrasing a source spec
+- No clause-level diff against the source by a separate context
+- Enforcement language is softer than the source
+- Load-bearing clauses in the source have no corresponding text in
+  the skill
 
-**Fix:** Render verification is a separate-context job. The
-context that produced the render never verifies it — paraphrase
-blindness means the renderer reads its own output as faithful. A
-fresh subagent (or another party) diffs clause-by-clause: every
-load-bearing clause of the source must appear in the render;
-structural mechanisms must render as structural, not flattened to
-prose. See "Rendering from a source" (PROCEDURE.md Layer 2).
+**Fix:** A fresh subagent (not the renderer) diffs clause-by-clause
+against the source: every load-bearing clause appears in the
+render; structural mechanisms render as structural, not flattened
+to prose. See "Rendering from a source" (PROCEDURE.md Layer 2).
