@@ -131,6 +131,15 @@ This layer is mechanical. Get it right once and move on.
 How to write protocol text that AI actually follows. AI does not self-enforce.
 Instructions without structural enforcement are suggestions.
 
+Layer 2 groups into five disciplines: **Enforcement mechanics**
+(the foundations — un-fakeable artifacts, judgment-call mitigation,
+gates), **Output discipline** (menus, communication),
+**Boundary discipline** (cross-phase + cross-skill state),
+**Authoring discipline** (writing the procedure itself), and
+**Portability discipline** (terms, domains, context, rendering).
+
+#### Enforcement mechanics
+
 **The un-fakeable-artifact principle.** A check's evidence must be an
 artifact that cannot be produced without doing the work the check
 represents. An enumeration — "the cases checked: [list]; results:
@@ -215,6 +224,8 @@ references stay on-demand per progressive disclosure (Layer 3).
   "checked these specific cases: [list]. Results: [list]" — the
   un-fakeable artifact, not the claim.
 
+#### Output discipline
+
 **Menus as structural enforcement.** Show menu after every response where user
 has choices. Menu is always last element. Without it, user cannot control flow.
 
@@ -237,6 +248,8 @@ alongside the question. Never present a naked question without a
 take. The user may disagree — that's the point. The skill does the
 analysis and commits; the user reacts to something concrete rather
 than performing an open-ended evaluation.
+
+#### Boundary discipline
 
 **Commitment consistency across phase boundaries.** When a skill spans phases
 (cycles, hand-offs, mode transitions) and a phase produces output another phase
@@ -287,6 +300,8 @@ information gets lost. For each handoff point, verify:
    to disk. Counters, status flags, and progress tracked only in
    conversation context are lost on compaction.
 
+#### Authoring discipline
+
 **Conceptual vs procedural rules.** Conceptual rules (principles) are
 referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
 even if repeated. Test: must I follow this step-by-step without judgment? If
@@ -309,6 +324,36 @@ meta-commentary ("this section covers"), and transition sentences
 messages, README.md, or VISION.md — none of which load during skill
 execution. Exception: version lines serve the human maintainer — keep
 them despite failing the test.
+
+**Imperative writing style.** Write all skill content using imperative/
+infinitive form (verb-first instructions), not second person. Use objective,
+instructional language.
+
+- Correct: "Read the configuration file. Validate input before processing."
+- Incorrect: "You should read the configuration file. You need to validate."
+
+The description in YAML frontmatter uses third-person with specific trigger
+phrases:
+
+- Correct: `description: This skill should be used when the user asks to
+  "create a hook", "add a PreToolUse hook", or mentions hook events.`
+- Incorrect: `description: Use this skill when working with hooks.`
+
+This applies to SKILL.md body, PROCEDURE.md, and all reference files.
+Second person ("you should", "you need to", "your role") weakens
+instruction-following because it positions the AI as recipient rather
+than executor.
+
+**Exceptions — second person is correct in:**
+- **User-facing output templates** — text the AI produces FOR the user.
+  "What would you like to build?" is correct because the AI is speaking
+  to a human. The imperative rule applies to instructions for the AI,
+  not to output the AI shows to users.
+- **Quoted speech examples** — examples of phrases to say or not say.
+  "Which do you prefer?" as a bad-pattern example needs to stay in
+  second person to illustrate the anti-pattern accurately.
+
+#### Portability discipline
 
 **Terminology agnosticism.** A procedure must not bake in terms
 specific to one variant of the skill's domain — terms that would not
@@ -351,34 +396,6 @@ renders *as* a structural mechanism (a forcing function, a blocking
 gate), never as prose. Verify by a clause-level diff against the
 source — not by re-reading the rendered text. The renderer is blind
 to its own flattening; fidelity needs the source held alongside.
-
-**Imperative writing style.** Write all skill content using imperative/
-infinitive form (verb-first instructions), not second person. Use objective,
-instructional language.
-
-- Correct: "Read the configuration file. Validate input before processing."
-- Incorrect: "You should read the configuration file. You need to validate."
-
-The description in YAML frontmatter uses third-person with specific trigger
-phrases:
-
-- Correct: `description: This skill should be used when the user asks to
-  "create a hook", "add a PreToolUse hook", or mentions hook events.`
-- Incorrect: `description: Use this skill when working with hooks.`
-
-This applies to SKILL.md body, PROCEDURE.md, and all reference files.
-Second person ("you should", "you need to", "your role") weakens
-instruction-following because it positions the AI as recipient rather
-than executor.
-
-**Exceptions — second person is correct in:**
-- **User-facing output templates** — text the AI produces FOR the user.
-  "What would you like to build?" is correct because the AI is speaking
-  to a human. The imperative rule applies to instructions for the AI,
-  not to output the AI shows to users.
-- **Quoted speech examples** — examples of phrases to say or not say.
-  "Which do you prefer?" as a bad-pattern example needs to stay in
-  second person to illustrate the anti-pattern accurately.
 
 ### Layer 3: Skill architecture (design)
 
