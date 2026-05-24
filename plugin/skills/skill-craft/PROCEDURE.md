@@ -424,24 +424,29 @@ section proliferation and keeps the procedure dense. The drift check
 below is the second pass that catches over-patching at the amendment
 level.
 
-**Self-review mandate.** Any substantive change to skill-craft's own
-canonical files (`PROCEDURE.md`, `references/*.md`) is followed by a
+**Self-review mandate.** Every commit to skill-craft's canonical
+files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers a
 self-review dispatched to a fresh-context subagent. The subagent
-loads skill-craft (via the Skill tool), reads the changed file
-freshly, and applies skill-craft's discipline to the change —
-specifically: recursive consistency (does the change comply with the
-discipline it teaches?), format consistency with adjacent entries,
-overlap or conflict with existing rules, coverage of the failure
-shape the change targets, and substance of any Fix prescription.
-Findings ranked blocking / notable / nit; surface to the operator
-for amendment decision. The self-review is unconditional —
-committing an amendment without the subagent review is the same
-shape as the "Procedure drift through incremental patches"
-anti-pattern (incremental patches not re-derived). This compounds
-with the render-fidelity check (clause-level diff in separate
-context, "Rendering from a source" above) — both are fresh-context
-separate-checker disciplines applied at different layers (render
-fidelity vs. source-of-rule quality).
+loads skill-craft, reads the changed file freshly, and applies
+these checks:
+
+1. **Recursive consistency** — does the change comply with the
+   discipline it teaches (the load-bearing test)?
+2. **Format consistency** — does the change match adjacent entries'
+   format?
+3. **Overlap or conflict** — with existing rules; is the
+   relationship articulated?
+4. **Coverage** — does the change catch what it targets?
+5. **Substance of any Fix prescription** — is it actionable?
+
+Findings ranked blocking / notable / nit. Recovery path: blocking →
+revert the commit; notable → surface for operator amend decision
+(next-commit fix or accept-with-rationale); nit → surface for
+optional address. The mandate is unconditional — committing without
+dispatching the subagent is the same shape as the "Procedure drift
+through incremental patches" anti-pattern. Compounds with
+"Rendering from a source" (above) at a different layer: render
+fidelity vs. source-of-rule quality.
 
 **Iterative narrowing of rule proposals.** Draft rules rarely land at
 minimum scope on the first pass — the draft-time pull is toward broad
