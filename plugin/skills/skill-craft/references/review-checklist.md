@@ -69,3 +69,8 @@ state what's missing before continuing.
   source mechanisms render as structural mechanisms, not flattened to
   prose? Verified by a clause-level diff against the source — not by
   re-reading the rendered text?
+
+---
+
+**After running this checklist:** State whether this pass surfaced
+anything new. Recommend another pass or moving on.

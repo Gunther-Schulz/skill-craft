@@ -176,13 +176,15 @@ not the one that feels familiar.
 - **BEFORE** — creates prerequisite
 - **THEN** — defines sequence
 
-**Blocking logic.** Binary checks with evidence requirements:
+**Blocking logic.** Binary checks with an un-fakeable artifact as
+evidence (per "The un-fakeable-artifact principle" above):
 ```
 - [ ] [Check]?
   - NO → CANNOT proceed. [Alternative].
   - YES → Evidence: [Must state HOW verified]
 ```
-Key: "CANNOT proceed" (not "should"), evidence requirement, alternative action.
+Key: "CANNOT proceed" (not "should"), un-fakeable artifact required,
+alternative action.
 
 Blocking logic is the right tool for **workflow skills** where the
 sequence matters and skipping a step is always wrong. For **judgment
@@ -215,6 +217,26 @@ references stay on-demand per progressive disclosure (Layer 3).
 
 **Menus as structural enforcement.** Show menu after every response where user
 has choices. Menu is always last element. Without it, user cannot control flow.
+
+**Communication discipline.** Two rules govern how a skill's
+output reaches the user:
+
+*Findings drive action, not reports.* A skill that produces
+actionable findings acts on cheap ones within the same invocation,
+not defer them for the user to track. An audit that lists fixable
+issues without fixing them is half a skill. Severity classifies
+impact, not urgency: a low-impact fix that takes minutes is still
+worth doing now — deferring costs more (remembering, tracking,
+context-switching) than doing. Defer only what requires
+out-of-scope structural work. Present all findings with equal
+clarity; do not bury low-severity findings.
+
+*Questions always carry a recommendation.* When a skill presents
+a decision to the user, it must include the skill's recommendation
+alongside the question. Never present a naked question without a
+take. The user may disagree — that's the point. The skill does the
+analysis and commits; the user reacts to something concrete rather
+than performing an open-ended evaluation.
 
 **Commitment consistency across phase boundaries.** When a skill spans phases
 (cycles, hand-offs, mode transitions) and a phase produces output another phase
@@ -261,15 +283,10 @@ skill's intended **scope** — the range it is meant to serve. A
 domain-specific skill (a coding skill, a GIS skill, or one that
 instantiates a framework for a single domain) is correctly bound to
 its domain; only a domain-general methodology skill — skill-craft, a
-framework — must reach across unrelated domains. BEFORE writing any
-rule, example, or checkpoint into procedure or reference files,
-confirm the content holds everywhere within that scope — across at
-least two unrelated contexts in it (two projects, two paradigms; two
-domains for a domain-general skill) — not only for the project where
-it was developed. If it is narrower than the scope, rewrite using
-terms abstract within the scope, or move the content to observations
-where project-specific incidents belong. This fires at write time —
-the Layer 5 abstraction check fires at review time as a second net.
+framework — must reach across unrelated domains. The Layer 4
+"Abstraction check" operationalizes this principle as a 7-test
+checkpoint before any rule, example, or checkpoint is committed to
+procedure or reference files.
 
 **Context-independence check.** Domain-independence verifies the rule
 *content* is abstract. This verifies the runtime *behavior* assumes
@@ -506,11 +523,12 @@ not the skill has a VISION.md.
 Signs that consolidation is overdue are the "Procedure drift"
 anti-pattern (`references/anti-patterns.md`).
 
-**Abstraction check — BEFORE proposing any change to a skill's procedure or
-reference files.** Judge every test below against the skill's intended **scope**
-(Layer 2, "Domain-independence check"): for a domain-specific skill, "diverse"
-means diverse *within its domain*; only a domain-general methodology skill must
-clear the tests across unrelated domains.
+**Abstraction check — BEFORE proposing any change to a skill's
+procedure or reference files.** Operational test of the Layer 2
+"Domain-independence check" principle (scope definition and
+domain-specific vs domain-general distinction are stated there).
+"Diverse" below means diverse within the skill's scope as defined
+in Layer 2.
 
 - [ ] Proposed change passes exclusion tests?
   1. No specific language mentioned
@@ -767,38 +785,6 @@ it and the fix — load `references/anti-patterns.md`.
 
 ---
 
-## Communication rules
-
-### Findings drive action, not reports
-
-A skill that produces actionable findings should act on cheap ones within
-the same invocation, not defer them for the user to track. An audit that
-lists fixable issues without fixing them is half a skill. A review that
-identifies gaps and says "address later" when "later" means "5 minutes
-from now" is wasting the user's attention on tracking instead of doing.
-
-Severity classifies impact, not urgency. A low-impact fix that takes
-minutes is still worth doing now — deferring it costs more (remembering,
-tracking, context-switching) than doing it. Defer only what requires
-out-of-scope structural work.
-
-Present all findings with equal clarity. Do not bury low-severity findings
-or signal they can be ignored.
-
-### Questions always carry a recommendation
-
-When a skill presents a decision to the user, it must include the skill's
-recommendation alongside the question. Never present a naked question without
-a take on the answer. The user may disagree — that's the point. But the skill
-should do the analysis and commit to a position, giving the user something to
-react to rather than an open-ended evaluation to perform.
-
-This applies to design decisions during skill use, options during investigation,
-and any moment where the skill could either ask "what do you think?" or say
-"I recommend X because Y — does that work?"
-
----
-
 ## Checklist for reviewing a skill
 
 Run after creating or modifying any skill — not optional. Load
@@ -842,9 +828,3 @@ consider the work done until the marketplace clone is updated. The user
 should only need to run `/reload-plugins` — everything else is handled
 before that point.
 
----
-
-## Diminishing returns signal
-
-After each invocation, state whether this pass surfaced anything new.
-Recommend another pass or moving on.
