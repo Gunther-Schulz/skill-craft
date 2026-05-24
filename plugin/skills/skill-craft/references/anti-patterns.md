@@ -78,7 +78,9 @@ files. The procedure should fit on a screen.
 
 A load-bearing rule grows beyond principle + test + fix. Each
 addition is locally justified but aggregate creates narrowing
-bias and conflict risk. ("Procedure drift" at the rule level.)
+bias and conflict risk. ("Procedure drift" at rule level;
+"Checklist as ceiling" applied to rule text rather than
+execution.)
 
 **Symptoms:**
 - Body exceeds principle + test + fix
