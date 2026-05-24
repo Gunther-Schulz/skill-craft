@@ -531,13 +531,15 @@ and applies these checks:
 5. **Substance of any Fix prescription** — does it specify a
    concrete next action?
 6. **Iteration pattern** — run `git log --oneline -5 -- <each
-   changed canonical file>`. If the same file appears in 3 or more
-   of the prior 5 commits (counting this one), examine whether the
-   commits modify the same content (same rule, same section, same
-   anti-pattern). If yes, flag as notable: the rule design itself
-   may be the problem, not just the latest fix. Each individual
-   fix can look principled while the aggregate pattern signals the
-   rule is hard to express or the approach is wrong.
+   changed canonical file>` and inspect those commits' diffs
+   (`git show -U0 <hash> -- <file>`). If the named region modified
+   in this commit (identified by H3/H4 heading or anti-pattern
+   name) ALSO appears in the diffs of 2 or more of the prior 4
+   commits, flag as notable: the rule design itself may be the
+   problem, not just the latest fix. Each individual fix can look
+   principled while the aggregate pattern signals the rule is hard
+   to express or the approach is wrong. (Checks #1-5 read one
+   commit in isolation; #6 reads lineage.)
 
 Findings ranked blocking / notable / nit. Recovery path: blocking
 → revert the commit; notable → surface for operator amend decision
