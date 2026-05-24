@@ -186,9 +186,9 @@ diverges from the current reference files silently.
 at skill activation — one consolidated step requiring a
 loaded-references manifest (files + sections read) as evidence
 before the skill body executes. Discriminator: a reference is
-**load-bearing** if skipping it produces wrong output (per
-Symptoms above); **genuinely-optional** if the skill works
-correctly when it is not loaded. Load-bearing references must be
+**load-bearing** if skipping it produces wrong output;
+**genuinely-optional** if the skill works correctly when it is not
+loaded. Load-bearing references must be
 gated; genuinely-optional ones may remain on-demand (progressive
 disclosure, Layer 3). See "Blocking logic" (PROCEDURE.md Layer 2)
 — reference loading is structurally the same shape as a workflow
