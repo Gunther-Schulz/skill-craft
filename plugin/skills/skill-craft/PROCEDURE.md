@@ -148,57 +148,35 @@ all edge cases" — is satisfiable whether or not the work happened.
 Every enforcement technique below rests on this: require the
 un-fakeable artifact, not the claim.
 
-**Judgment calls as design risk.** Two things fail latently without
-structural backing. One — a **decision** the AI must make ("is this
-trivial?", "does this qualify?", "what severity?", "which category?")
-— left without mechanical criteria. Two — a **load-bearing rule** the
-AI must follow ("always self-resolve", "never pose a menu", "verify
-before asserting") — left as soft prose. A rule is load-bearing when
-its violation breaks a core value of the skill; such a rule stated as
-prose is a suggestion, not a rule. Both fail the same way: the AI acts
-confidently and inconsistently, and the error surfaces downstream.
-Three mitigations, in preference order:
+**Judgment calls as design risk.** A decision or load-bearing
+rule the AI must apply, left without structural backing, fails
+latently — the AI acts confidently and inconsistently, error
+surfaces downstream. Three mitigations, preference-ordered:
 
-1. **Mechanical criteria.** Compute the decision from observable
-   evidence: counts, presence checks, field values, cross-references.
-   No AI judgment needed. Example: classify a change as lightweight-track
-   only if file count ≤ 2, line delta ≤ 20, and no new public interfaces.
-   Any missing criterion → not lightweight-track.
+1. **Mechanical criteria.** Compute from observable evidence
+   (counts, presence checks, field values, cross-references).
+2. **Structural enforcement.** Blocking logic with un-fakeable
+   artifact as evidence (judgment stays).
+3. **Safety net.** Fail-loud downstream check. Use only when
+   (1) and (2) are impossible; document unreliability.
 
-2. **Structural enforcement.** Blocking logic with enumerated evidence
-   — the AI shows its work as an un-fakeable artifact. Judgment stays.
-   Example: "- [ ] Which edge cases checked? Evidence: [list with
-   expected vs actual]."
-
-3. **Safety net.** Accept the decision will sometimes be wrong. Add a
-   fail-loud check downstream: smoke test, batch review, reversion
-   path. Use only when (1) and (2) are impossible. Document that the
-   judgment is unreliable so later readers know to audit.
-
-Never leave a decision point or a load-bearing rule naked. Forcing
-functions, blocking logic, and observable checkpoints (below) are
-techniques for applying these mitigations. Select the technique that implements the chosen mitigation,
-not the one that feels familiar.
+Never leave a decision or load-bearing rule naked.
 
 **Forcing functions.** Temporal keywords mandate sequence:
 - **FIRST** — mandates initial action
 - **BEFORE** — creates prerequisite
 - **THEN** — defines sequence
 
-**Blocking logic.** Binary checks with an un-fakeable artifact as
+**Blocking logic.** Binary checks with un-fakeable artifact as
 evidence (per "The un-fakeable-artifact principle" above):
 ```
 - [ ] [Check]?
   - NO → CANNOT proceed. [Alternative].
   - YES → Evidence: [Must state HOW verified]
 ```
-Key: "CANNOT proceed" (not "should"), un-fakeable artifact required,
-alternative action.
-
-Blocking logic is the right tool for **workflow skills** where the
-sequence matters and skipping a step is always wrong. For **judgment
-skills** (audits, reflective reviews), use evidence-backed principles
-instead — see "Writing judgment procedures" below.
+Use for workflow skills where sequence matters; for judgment
+skills use evidence-backed principles instead (see
+`references/writing-by-skill-type.md`).
 
 **Reference loading is a blocking gate, not a pointer.** A skill that
 depends on reference files for correct execution must gate their
@@ -216,38 +194,21 @@ files unloaded at activation, so the gate belongs there. Applies only
 to references load-bearing for correct execution; genuinely optional
 references stay on-demand per progressive disclosure (Layer 3).
 
-**Observable checkpoints.** Verify actions taken, not internal states.
-- Observable (works): "Searched the sources?" → Evidence: [locations found]
-- Introspective (fails): "Feeling confident?" → AI cannot detect own states
-- Self-reported completion (fragile): "Checked all edge cases?" → AI says
-  yes, but evidence is unfalsifiable. Fix: require the enumeration —
-  "checked these specific cases: [list]. Results: [list]" — the
-  un-fakeable artifact, not the claim.
+**Observable checkpoints.** Verify actions taken, not internal
+states. Require the un-fakeable artifact (enumeration of what was
+checked + results), not the claim ("checked all edge cases" is
+unfalsifiable).
 
 #### Output discipline
 
 **Menus as structural enforcement.** Show menu after every response where user
 has choices. Menu is always last element. Without it, user cannot control flow.
 
-**Communication discipline.** Two rules govern how a skill's
-output reaches the user:
-
-*Findings drive action, not reports.* A skill that produces
-actionable findings acts on cheap ones within the same invocation,
-not defer them for the user to track. An audit that lists fixable
-issues without fixing them is half a skill. Severity classifies
-impact, not urgency: a low-impact fix that takes minutes is still
-worth doing now — deferring costs more (remembering, tracking,
-context-switching) than doing. Defer only what requires
-out-of-scope structural work. Present all findings with equal
-clarity; do not bury low-severity findings.
-
-*Questions always carry a recommendation.* When a skill presents
-a decision to the user, it must include the skill's recommendation
-alongside the question. Never present a naked question without a
-take. The user may disagree — that's the point. The skill does the
-analysis and commits; the user reacts to something concrete rather
-than performing an open-ended evaluation.
+**Communication discipline.** A skill acts on actionable findings
+within the same invocation rather than deferring them for the user
+to track; defer only what requires out-of-scope structural work.
+When presenting a decision, include the skill's recommendation
+alongside the question — never a naked question without a take.
 
 #### Boundary discipline
 
@@ -261,44 +222,15 @@ execution of the prior commitment, or (b) explicit surface of the change
 before proceeding. Silent revision between phases is a discipline violation
 regardless of which artifact carries the commitment.
 
-**Information flow in orchestrated workflows.** When a workflow
-skill invokes other skills or agents in sequence (A → B → C), data
-crosses boundaries at each handoff. These boundaries are where
-information gets lost. For each handoff point, verify:
-
-1. **Sender produces what receiver needs.** List every piece of
-   data the receiver requires. Confirm the sender's output or disk
-   artifacts contain all of it. If the receiver assumes data
-   exists that the sender does not guarantee — that is a gap.
-
-2. **Data is explicitly passed or explicitly referenced.**
-   Information that exists on disk but is not mentioned in the
-   invocation prompt is invisible to the receiver. Either pass it
-   inline in the prompt or tell the receiver where to read it
-   (file path).
-
-3. **Format matches.** If the sender writes YAML and the receiver
-   expects JSON, or if field names differ between producer and
-   consumer, the data is lost at the boundary even though it
-   exists.
-
-4. **Prompt compression preserves essentials.** When an
-   orchestrator compresses one skill's output into another skill's
-   prompt (e.g., investigation results compressed into an executor
-   prompt), verify that downstream consumers (reviewer, coherence
-   check) still have access to what was compressed away — either
-   via disk artifacts or by receiving the original data separately.
-
-5. **Retry/recovery has full context.** When a step fails and
-   retries, the retry invocation must include the same context as
-   the original — not just the failure details. Fresh-context
-   agents lose everything from the original invocation unless it
-   is re-provided.
-
-6. **State survives compaction.** Any information that must
-   persist across context compaction boundaries must be written
-   to disk. Counters, status flags, and progress tracked only in
-   conversation context are lost on compaction.
+**Information flow in orchestrated workflows.** At every handoff
+between skills/agents, data is lost unless verified. For each
+handoff point, the receiver must get everything it needs: sender
+produces all required data; data passed inline or explicitly
+referenced by path; formats match (schema + field names); prompt
+compression preserves what downstream consumers need; retries
+re-provide the original context, not just the failure details;
+persistent state goes to disk (compaction loses
+conversation-only state).
 
 #### Authoring discipline
 
@@ -307,60 +239,27 @@ referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
 even if repeated. Test: must I follow this step-by-step without judgment? If
 yes, inline it. If no, reference it.
 
-**Every sentence must change behavior.** Skill files have one reader:
-the AI in mid-execution — not a human maintainer, not a reviewer, not
-a future self. Before writing a sentence, apply the test: if it were
-deleted, would the AI do something different? If no, it is fluff —
-remove it. Consider when the content is encountered — the same
-information in an on-demand reference is not available during routine
-use, so actionable content may need to exist in both places.
+**Every sentence must change behavior.** Skill files have one
+reader: the AI in mid-execution. Test: if the sentence were
+deleted, would the AI do something different? If no, it is fluff
+and belongs elsewhere (OBSERVATIONS.md, commit messages,
+README.md). Actionable content may need to exist in both routine
+use and on-demand references when load-bearing for routine use.
 
-Fluff includes: provenance (where a rule came from), restated content
-(same idea reworded without different availability), named examples
-of existing skills, motivational framing ("this is important
-because"), hedging ("in most cases", "generally speaking"),
-meta-commentary ("this section covers"), and transition sentences
-("now let's look at"). It belongs elsewhere — OBSERVATIONS.md, commit
-messages, README.md, or VISION.md — none of which load during skill
-execution. Exception: version lines serve the human maintainer — keep
-them despite failing the test.
-
-**Imperative writing style.** Write all skill content using imperative/
-infinitive form (verb-first instructions), not second person. Use objective,
-instructional language.
-
-- Correct: "Read the configuration file. Validate input before processing."
-- Incorrect: "You should read the configuration file. You need to validate."
-
-The description in YAML frontmatter uses third-person with specific trigger
-phrases:
-
-- Correct: `description: This skill should be used when the user asks to
-  "create a hook", "add a PreToolUse hook", or mentions hook events.`
-- Incorrect: `description: Use this skill when working with hooks.`
-
-This applies to SKILL.md body, PROCEDURE.md, and all reference files.
-Second person ("you should", "you need to", "your role") weakens
-instruction-following because it positions the AI as recipient rather
-than executor.
-
-**Exceptions — second person is correct in:**
-- **User-facing output templates** — text the AI produces FOR the user.
-  "What would you like to build?" is correct because the AI is speaking
-  to a human. The imperative rule applies to instructions for the AI,
-  not to output the AI shows to users.
-- **Quoted speech examples** — examples of phrases to say or not say.
-  "Which do you prefer?" as a bad-pattern example needs to stay in
-  second person to illustrate the anti-pattern accurately.
+**Imperative writing style.** Write skill content in imperative
+form (verb-first instructions), not second person. Correct: "Read
+the configuration file." Incorrect: "You should read the
+configuration file." Exception in YAML frontmatter:
+`description` uses third-person trigger phrases. Second person
+remains correct in user-facing output templates (text the AI
+produces FOR the user) and quoted-speech examples.
 
 #### Portability discipline
 
 **Terminology agnosticism.** A procedure must not bake in terms
-specific to one variant of the skill's domain — terms that would not
-carry to another. For a coding skill that means paradigm-neutral
-terms: "component" not "module/class", "contract" not
-"type/interface", "identifier" not "variable/field", "component
-boundary" not "API."
+specific to one variant of the skill's domain. Use scope-neutral
+terms rather than variant-specific ones (e.g., for a coding skill,
+paradigm-neutral terms across OOP/functional/procedural variants).
 
 **Domain-independence check.** Abstraction is judged against the
 skill's intended **scope** — the range it is meant to serve. A
@@ -384,18 +283,13 @@ explicit and optional. A rule can be fully domain-independent in
 wording yet still assume context that exists only for the user who
 built it.
 
-**Rendering from a source.** A skill's content is sometimes derived
-from a higher source — a framework spec, a standards document, a
-parent methodology a domain instance is built from. The rendering is
-lossy by default: paraphrase silently drops clauses, and a
-structurally-enforced rule in the source flattens into a soft
-principle in the skill — both read plausibly afterward. When rendering
-a source rule or mechanism into skill text: every load-bearing clause
-of the source survives, and a structurally-enforced source mechanism
-renders *as* a structural mechanism (a forcing function, a blocking
-gate), never as prose. Verify by a clause-level diff against the
-source — not by re-reading the rendered text. The renderer is blind
-to its own flattening; fidelity needs the source held alongside.
+**Rendering from a source.** When skill text is derived from a
+higher source (framework spec, standards document, parent
+methodology), every load-bearing clause of the source must
+survive, and structurally-enforced source mechanisms must render
+as structural mechanisms (not flattened to prose). Verify by
+clause-level diff against the source — not by re-reading the
+render (the renderer is blind to its own flattening).
 
 ### Layer 3: Skill architecture (design)
 
@@ -488,18 +382,13 @@ What is not valid is an unmarked guess — a change presented as
 grounded when it is neither incident-backed nor flagged as a
 Path 2 hypothesis.
 
-**Amendment discipline.** When a new failure pattern surfaces and warrants
-codifying, prefer revising existing rules over adding new ones. Decision
-sequence: (1) existing rule already addresses it? Revise in place. (2)
-Pattern absorbable by extending an existing rule's scope? Extend. (3)
-Existing rule becomes redundant? Reduce / merge. (4) Only if none: add a
-new sub-section.
-
-When extending (step 2): widen an existing trigger, add a clause to an
-existing gate, or extend an existing evidence requirement. This prevents
-section proliferation and keeps the procedure dense. The drift check
-below is the second pass that catches over-patching at the amendment
-level.
+**Amendment discipline.** When codifying a new failure pattern,
+prefer revising existing rules over adding new ones. Decision
+sequence: (1) existing rule already addresses it? Revise in place.
+(2) Absorbable by extending an existing rule's scope? Extend
+(widen trigger, add gate clause, extend evidence requirement).
+(3) Existing rule becomes redundant? Reduce / merge. (4) Only if
+none: add a new sub-section.
 
 **Two reflexivity mechanisms — different stages.** Layer 5 "How to
 surface it" governs Mechanism 1: AI notices a gap, proposes a
@@ -533,82 +422,50 @@ Findings ranked blocking / notable / nit. Recovery path: blocking
 (next-commit fix or accept-with-rationale); nit → surface for
 optional address.
 
-**Iterative narrowing of rule proposals.** Draft rules rarely land at
-minimum scope on the first pass — the draft-time pull is toward broad
-framework framing. Before adding any rule:
+**Iterative narrowing of rule proposals.** Before adding any
+rule:
 
-1. **Classify the failure** (a Path 2 hypothesis with no incident yet
-   skips this): **rule-gap** (no existing rule covers it), **unloaded**
-   (a rule exists but was never loaded into context), or
-   **loaded-but-inert** (a rule exists, was loaded, still didn't
-   fire). All three look identical from outside; the fixes differ.
-2. **Enumerate** existing rules in the surface area, and **subtract**
-   what they already cover.
-3. **Fix per class.** *unloaded* → fix the loading mechanism (a load
-   gate), not new rule content. *loaded-but-inert* → sharpen the
-   rule's trigger or articulation if weak, or add structural
-   enforcement if it is clear but skippable — not new rule content.
-   *rule-gap* → identify the minimum novel content; distinguish "the
-   framework I imagined" from "what's actually not covered."
-4. **Re-apply** — a single pass misses sub-parts further enumeration
-   reveals.
+1. **Classify the failure**: *rule-gap* (no existing rule
+   covers), *unloaded* (rule exists, never loaded), or
+   *loaded-but-inert* (loaded, didn't fire). Fixes differ:
+   unloaded → fix loading mechanism; loaded-but-inert → sharpen
+   trigger or add structural enforcement; rule-gap → minimum
+   novel content.
+2. **Enumerate** existing rules in the surface area; subtract
+   what they cover.
+3. **Re-apply** — single pass misses sub-parts.
 
-Narrowing is complete when further narrowing would lose content no
-existing rule covers. Applies to any rule-writing context — skill
-files, protocol docs, planning entries — not just skill-internal
-evolution.
+Complete when further narrowing would lose content no existing
+rule covers.
 
-**Before applying a patch, check for drift.** Each observation-driven change
-is correct locally but may degrade the procedure globally. Before adding
-guidance to a checkpoint:
+**Before applying a patch, check for drift.** Before adding
+guidance to a checkpoint: re-read the checkpoint; ask whether the
+addition makes it clearer or heavier. If heavier, the addition
+belongs in `references/`. If the checkpoint already has 2+ "when
+X, also check Y" additions, consolidate rather than patch.
 
-1. Re-read the target checkpoint as it currently stands
-2. Ask: does this addition make the checkpoint clearer or heavier?
-3. If heavier: the addition belongs in `references/`, not inline
-4. If the checkpoint already has 2+ "when X, also check Y" additions,
-   it has likely accumulated case-specific guidance — consider whether
-   the checkpoint needs consolidating rather than another patch
+**Abstraction check — BEFORE proposing any change.** Operational
+test of Layer 2 "Domain-independence". The change must pass all
+of these against the skill's scope:
 
-This catches drift at the moment it happens. A vision document helps
-re-derive the procedure when drift has already accumulated, but this
-check prevents the accumulation in the first place. Works whether or
-not the skill has a VISION.md.
+Exclusion (none of these baked into the change):
+1. Specific language
+2. Specific paradigm (OOP, functional, procedural)
+3. Specific architecture (pipeline, MVC, REST)
+4. Single language/runtime
+5. Single problem domain
 
-Signs that consolidation is overdue are the "Procedure drift"
-anti-pattern (`references/anti-patterns.md`).
+Inclusion (must hold):
+6. States an abstract relationship between entities, not a
+   specific scenario
+7. Composes with existing rules (if standalone, may be a specific
+   instance of a more general rule that should be amended instead)
 
-**Abstraction check — BEFORE proposing any change to a skill's
-procedure or reference files.** Operational test of the Layer 2
-"Domain-independence check" principle (scope definition and
-domain-specific vs domain-general distinction are stated there).
-"Diverse" below means diverse within the skill's scope as defined
-in Layer 2.
+Plus: at the same abstraction level as surrounding content.
 
-- [ ] Proposed change passes exclusion tests?
-  1. No specific language mentioned
-  2. No paradigm assumed (OOP, functional, procedural)
-  3. No architecture assumed (pipeline, MVC, REST, microservices)
-  4. Works across diverse languages and runtimes
-  5. Applies to diverse problem domains
-  - NO → CANNOT add. Rephrase using variant-neutral terminology
-    (Layer 2, "Terminology agnosticism"). Move project-specific
-    content to observations.
-  - YES → Continue.
-
-- [ ] Proposed change passes inclusion tests?
-  6. States a relationship between abstract entities (producer/consumer,
-     source/destination, earlier/later) — not a specific scenario
-  7. Composes with existing rules to cover cases neither addresses
-     alone — if it stands alone, it may be a specific instance of a
-     more general rule that should be amended instead
-  - NO → Extract the underlying pattern. A rule about a scenario
-    ("configurable value exceeds ceiling") becomes a rule about a
-    relationship ("value constrained by external factors").
-  - YES → Continue.
-
-- [ ] At the same abstraction level as surrounding content?
-  - NO → Rephrase at the same level.
-  - YES → Evidence: [State the abstract version of the rule/checkpoint]
+**Fix:** rephrase using scope-neutral terminology; if
+scenario-shaped, extract the underlying relationship; if
+project-specific, move to observations.
 
 **Signal that consolidation may be done.** Two consecutive review
 cycles surface only minor wording fixes (typos, phrasing tweaks)
