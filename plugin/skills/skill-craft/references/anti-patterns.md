@@ -67,12 +67,23 @@ principles it started as.
   instead of stating principles
 - Multiple paragraphs say the same thing with different emphasis
 - A VISION.md exists but reading the procedure doesn't feel like the vision
+- **WHY-explanation prose padding the rule** — rationale text the AI
+  can infer from anchored cross-references (`§X.Y`, `file.md`), or
+  restating-with-different-emphasis filler. Skills target AI
+  consumption; human-style explanation is bloat when the anchor
+  carries the meaning.
 
 **Fix:** Periodically re-derive the procedure from the vision. For each
 checkpoint, ask: can I state this in 3-5 sentences that a sculptor would
 recognize? If not, the checkpoint has accumulated implementation detail
 that belongs in `references/`. Move specialized guidance to reference
 files. The procedure should fit on a screen.
+
+**AI-tightness check** (per-edit): a new clause whose word-count is
+dominated by explanation rather than rule is malformed. Cross-references
+substitute for explanation; the AI follows the anchor when context is
+needed. Rule-words first, anchors second, explanation only when no
+anchor exists.
 
 ## Rule elaboration creep
 

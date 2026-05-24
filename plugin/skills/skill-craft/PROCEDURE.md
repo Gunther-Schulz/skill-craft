@@ -386,6 +386,17 @@ sequence: (1) existing rule already addresses it? Revise in place.
 (3) Existing rule becomes redundant? Reduce / merge. (4) Only if
 none: add a new sub-section.
 
+For **multi-file rule corpora** (a spec rendered into multiple
+files, or a framework with instance renders), the decision
+sequence applies across ALL homes the concept exists in — a rule
+restated in N files with different framings is the reduce/merge
+case in (3), not a clean parallel structure. Scan every home
+before adding a new sub-section anywhere; fragmenting the same
+rule across multiple homes with restated emphasis is its own
+failure shape (cross-file fragmentation). On amendment to a rule
+in a multi-file corpus, audit each home for stale or now-redundant
+restatement.
+
 **Two reflexivity mechanisms — different stages.** Layer 5 "How to
 surface it" governs Mechanism 1: AI notices a gap, proposes a
 change, user decides. The Self-review mandate below governs
