@@ -1,8 +1,10 @@
 # Skill Design Procedure
 
-How to design Claude Code skills that produce good results. Covers plugin
+How to design Claude Code skills the AI reliably follows. Covers plugin
 structure, protocol conventions, skill architecture, evolution, and
-reflexivity — everything needed to build a skill that works well over time.
+reflexivity — everything needed to build a skill that holds together
+across many invocations and the AI failure modes catalogued in
+`references/anti-patterns.md`.
 
 ---
 
@@ -324,7 +326,8 @@ than executor.
 
 ### Layer 3: Skill architecture (design)
 
-How to organize knowledge across files so the skill produces good results.
+How to organize knowledge across files so the skill remains followable
+by the AI as it grows.
 
 **File roles.** Each file in a skill serves one of these roles:
 
