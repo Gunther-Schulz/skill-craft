@@ -439,12 +439,9 @@ freshly, and applies these checks:
    discipline it teaches (the load-bearing test)? *When the changed
    file is `anti-patterns.md` or `PROCEDURE.md`, additionally apply
    the cross-pattern test:* for each anti-pattern in
-   `anti-patterns.md`, check whether the changed text — a new
-   anti-pattern body, a sharpened PROCEDURE rule, a new
-   definition — itself exhibits that anti-pattern's shape. A new
-   anti-pattern that violates a different anti-pattern in the same
-   file is a blocking finding. (Skill-craft is reflexive by design:
-   its rules must pass its own anti-patterns.)
+   `anti-patterns.md`, test the changed text against that
+   anti-pattern's Symptoms list. A match on any Symptom is a
+   blocking finding.
 2. **Format consistency** — does the change match adjacent entries'
    format?
 3. **Overlap or conflict** — with existing rules; is the
