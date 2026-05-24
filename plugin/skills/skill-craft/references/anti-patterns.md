@@ -116,3 +116,33 @@ conversation are lost when context compacts.
 it needs? Is the data passed explicitly (in prompt or on disk), or does
 it rely on conversation context that can be compacted? See "Information
 flow in orchestrated workflows" in the main procedure.
+
+## Moralistic, vague, or AI-judgment-coded terminology in rule statements
+
+Rule statements use terms that imply moral judgment ("proper",
+"right", "appropriate"), vague positive valence ("good", "clean",
+"natural"), or implicit AI judgment ("best by your judgment"). The
+AI reading the rule chases the term as if it were a defined anchor,
+but the term has no objective grounding — the AI's pattern-completion
+fills the gap with whatever the conversational context suggests,
+which is exactly the failure mode of "Naked judgment call" applied
+to nouns and adjectives rather than verbs.
+
+**Symptoms:**
+- Terms like "proper-X", "best-X", "appropriate-X", "natural-X",
+  "clean-X" appear in load-bearing rules without explicit criteria
+  for what makes something X
+- The term invokes a judgment the AI cannot mechanically check
+- Reasonable readers could interpret the term differently
+- The term smuggles approval/disapproval without grounding
+- Replacement candidates exist that describe properties or processes
+  objectively
+
+**Fix:** Replace with descriptive, criteria-anchored terms. Where a
+property is meant (thorough, complete, scope-appropriate), name the
+property. Where a process is meant (verified, evidence-grounded,
+search-established), name the process. Where a comparison is meant
+(best-available, lowest-cost), name what's being compared and against
+what. If no replacement is possible without losing the rule's
+substance, the rule itself may be naked-judgment-shaped (see "Naked
+judgment call" above).
