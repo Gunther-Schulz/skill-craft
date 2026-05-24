@@ -426,9 +426,9 @@ level.
 
 **Self-review mandate.** Every commit to skill-craft's canonical
 files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers a
-self-review dispatched to a fresh-context subagent. The subagent
-loads skill-craft, reads the changed file freshly, and applies
-these checks:
+self-review. The committing AI dispatches a fresh-context subagent
+immediately after the commit. The subagent loads skill-craft, reads
+the changed file freshly, and applies these checks:
 
 1. **Recursive consistency** — does the change comply with the
    discipline it teaches (the load-bearing test)?
@@ -437,7 +437,8 @@ these checks:
 3. **Overlap or conflict** — with existing rules; is the
    relationship articulated?
 4. **Coverage** — does the change catch what it targets?
-5. **Substance of any Fix prescription** — is it actionable?
+5. **Substance of any Fix prescription** — does it specify a
+   concrete next action?
 
 Findings ranked blocking / notable / nit. Recovery path: blocking →
 revert the commit; notable → surface for operator amend decision
