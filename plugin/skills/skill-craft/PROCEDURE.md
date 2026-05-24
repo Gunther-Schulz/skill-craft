@@ -516,30 +516,17 @@ dispatches a fresh-context subagent immediately after the commit.
 The subagent loads skill-craft, reads the changed files freshly,
 and applies these checks:
 
-1. **Recursive consistency** — does the change comply with the
-   discipline it teaches (the load-bearing test)? *When the changed
-   file is `anti-patterns.md` or `PROCEDURE.md`, additionally apply
-   the cross-pattern test:* for each anti-pattern in
-   `anti-patterns.md`, test the changed text against that
-   anti-pattern's Symptoms list. A match on any Symptom is a
-   blocking finding.
-2. **Format consistency** — does the change match adjacent entries'
-   format?
+1. **Universal rule application** — for each canonical rule in
+   skill-craft (Layer 2 principles, Layer 4 disciplines,
+   anti-patterns), test the changed text against it. A violation
+   is a blocking finding.
+2. **Format consistency** — does the change match adjacent
+   entries' format?
 3. **Overlap or conflict** — with existing rules; is the
    relationship articulated?
 4. **Coverage** — does the change catch what it targets?
 5. **Substance of any Fix prescription** — does it specify a
    concrete next action?
-6. **Iteration pattern** — run `git log --oneline -5 -- <each
-   changed canonical file>` and inspect those commits' diffs
-   (`git show -U0 <hash> -- <file>`). If the named region modified
-   in this commit (identified by H3/H4 heading or anti-pattern
-   name) ALSO appears in the diffs of 2 or more of the prior 4
-   commits, flag as notable: the rule design itself may be the
-   problem, not just the latest fix. Each individual fix can look
-   principled while the aggregate pattern signals the rule is hard
-   to express or the approach is wrong. (Checks #1-5 read one
-   commit in isolation; #6 reads lineage.)
 
 Findings ranked blocking / notable / nit. Recovery path: blocking
 → revert the commit; notable → surface for operator amend decision
