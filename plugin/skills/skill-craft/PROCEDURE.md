@@ -391,7 +391,7 @@ persisting gaps noticed during use:
 1. When a gap is noticed (checkpoint missed, failure not covered, pattern
    worth capturing) → write the observation to OBSERVATIONS.md
 2. Assess if PROCEDURE.md needs updating based on the new observation
-3. Propose changes with reasoning. Do not change without permission.
+3. Propose changes per Layer 5 "How to surface it" below.
 
 This is the write-target rule applied: OBSERVATIONS.md is referenced as a
 destination, not loaded as a source.
@@ -427,13 +427,20 @@ section proliferation and keeps the procedure dense. The drift check
 below is the second pass that catches over-patching at the amendment
 level.
 
+**Two reflexivity mechanisms — different stages.** Layer 5 "How to
+surface it" governs Mechanism 1: AI notices a gap, proposes a
+change, user decides. The Self-review mandate below governs
+Mechanism 2: AI dispatches a subagent to verify already-committed
+changes against the existing ruleset; AI executes recovery on
+blocking findings, because the action being corrected is its own
+commit, not a proposed rule.
+
 **Self-review mandate.** Every commit to skill-craft's canonical
 files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers one
-self-review per commit (regardless of how many files the commit
-touches; one subagent reads all changed files together). The
-committing AI dispatches a fresh-context subagent immediately after
-the commit. The subagent loads skill-craft, reads the changed files
-freshly, and applies these checks:
+self-review — one subagent for the whole commit. The committing AI
+dispatches a fresh-context subagent immediately after the commit.
+The subagent loads skill-craft, reads the changed files freshly,
+and applies these checks:
 
 1. **Recursive consistency** — does the change comply with the
    discipline it teaches (the load-bearing test)? *When the changed
@@ -450,14 +457,10 @@ freshly, and applies these checks:
 5. **Substance of any Fix prescription** — does it specify a
    concrete next action?
 
-Findings ranked blocking / notable / nit. Recovery path: blocking →
-revert the commit; notable → surface for operator amend decision
+Findings ranked blocking / notable / nit. Recovery path: blocking
+→ revert the commit; notable → surface for operator amend decision
 (next-commit fix or accept-with-rationale); nit → surface for
-optional address. The mandate is unconditional — committing without
-dispatching the subagent is the same shape as the "Procedure drift
-through incremental patches" anti-pattern. Compounds with
-"Rendering from a source" (above) at a different layer: render
-fidelity vs. source-of-rule quality.
+optional address.
 
 **Iterative narrowing of rule proposals.** Draft rules rarely land at
 minimum scope on the first pass — the draft-time pull is toward broad
@@ -503,36 +506,6 @@ not the skill has a VISION.md.
 Signs that consolidation is overdue are the "Procedure drift"
 anti-pattern (`references/anti-patterns.md`).
 
-**When the procedure is stable.** A procedure stabilizes when new observations
-produce only detail-level findings on content that was already structurally
-validated. This is diminishing returns — the procedure is refined enough when
-another pass wouldn't change its structure, only its surface.
-
-### Layer 5: Skill reflexivity (self-awareness)
-
-Noticing — during any use, design, or review of a skill — that
-guidance itself needs updating, and surfacing it as a suggestion.
-Layer 5 is the trigger for change; Layer 4 is the machinery that
-makes it. Reflexivity reaches the skill's own guidance, conventions
-that would help other skills, and skill-craft itself.
-
-**When to suggest a skill update.** During any conversation where a skill is
-being used, designed, or reviewed — if the experience reveals that the skill's
-own guidance is incomplete, contradicted, or could be improved — surface it as
-a suggestion. Not an automatic change. A specific suggestion with reasoning,
-for the user to decide.
-
-**What triggers a reflexivity suggestion:**
-- A skill failure that the guide should have prevented but didn't
-- A design pattern that works well but isn't documented in the guide
-- A convention from one skill that would benefit others
-- A contradiction between the guide's advice and what actually works
-- An observation in one skill that generalizes across skills
-
-**How to surface it:** State the specific gap, the evidence (what happened that
-revealed it), and the proposed change to the guide. Do not make the change.
-The user decides whether and how to incorporate it.
-
 **Abstraction check — BEFORE proposing any change to a skill's procedure or
 reference files.** Judge every test below against the skill's intended **scope**
 (Layer 2, "Domain-independence check"): for a domain-specific skill, "diverse"
@@ -564,6 +537,36 @@ clear the tests across unrelated domains.
 - [ ] At the same abstraction level as surrounding content?
   - NO → Rephrase at the same level.
   - YES → Evidence: [State the abstract version of the rule/checkpoint]
+
+**When the procedure is stable.** A procedure stabilizes when new observations
+produce only detail-level findings on content that was already structurally
+validated. This is diminishing returns — the procedure is refined enough when
+another pass wouldn't change its structure, only its surface.
+
+### Layer 5: Skill reflexivity (self-awareness)
+
+Noticing — during any use, design, or review of a skill — that
+guidance itself needs updating, and surfacing it as a suggestion.
+Layer 5 is the trigger for change; Layer 4 is the machinery that
+makes it. Reflexivity reaches the skill's own guidance, conventions
+that would help other skills, and skill-craft itself.
+
+**When to suggest a skill update.** During any conversation where a
+skill is being used, designed, or reviewed — if the experience reveals
+that the skill's own guidance is incomplete, contradicted, or could be
+improved — surface it (see "How to surface it" below).
+
+**What triggers a reflexivity suggestion:**
+- A skill failure that the guide should have prevented but didn't
+- A design pattern that works well but isn't documented in the guide
+- A convention from one skill that would benefit others
+- A contradiction between the guide's advice and what actually works
+- An observation in one skill that generalizes across skills
+
+**How to surface it.** State the specific gap, the evidence (what
+happened that revealed it), and the proposed change to the guide.
+Do not make the change. The user decides whether and how to
+incorporate it.
 
 ---
 
@@ -797,9 +800,10 @@ and any moment where the skill could either ask "what do you think?" or say
 ## Checklist for reviewing a skill
 
 Run after creating or modifying any skill — not optional. Load
-`references/review-checklist.md` and verify all 9 items: structure,
+`references/review-checklist.md` and verify all 11 items: structure,
 boundary rule, trigger clarity, density, abstraction, protocol
-conventions, deepening, evolution, information flow.
+conventions, deepening, evolution, information flow, cross-skill
+consistency, rendering fidelity.
 
 ---
 
@@ -817,7 +821,7 @@ After any change to skill files:
 1. **Edit in the source repo.** All file writes target the source repo,
    not the marketplace clone.
 2. **Run the review checklist against the changes.** Load
-   `references/review-checklist.md` and verify all 9 items against what
+   `references/review-checklist.md` and verify all 11 items against what
    was just edited. State which items pass and which fail, with
    file:line evidence for each failed item. CANNOT proceed to commit
    until all items pass or failures are explicitly accepted with

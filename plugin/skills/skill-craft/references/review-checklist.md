@@ -2,6 +2,13 @@
 
 **Load when:** Reviewing an existing skill or validating a new one.
 
+**Scope.** This checklist applies when reviewing any skill — including
+skill-craft itself. The Self-review mandate (`PROCEDURE.md` Layer 4) is
+a separate, finer-grained mechanism: it runs on every commit to
+skill-craft's canonical files and adds a cross-pattern test against
+`anti-patterns.md` Symptoms. The two compose; this checklist does not
+subsume or replace the mandate.
+
 ---
 
 Apply after creating or modifying any skill. For any item that fails,
