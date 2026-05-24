@@ -436,7 +436,15 @@ the commit. The subagent loads skill-craft, reads the changed files
 freshly, and applies these checks:
 
 1. **Recursive consistency** — does the change comply with the
-   discipline it teaches (the load-bearing test)?
+   discipline it teaches (the load-bearing test)? *When the changed
+   file is `anti-patterns.md` or `PROCEDURE.md`, additionally apply
+   the cross-pattern test:* for each anti-pattern in
+   `anti-patterns.md`, check whether the changed text — a new
+   anti-pattern body, a sharpened PROCEDURE rule, a new
+   definition — itself exhibits that anti-pattern's shape. A new
+   anti-pattern that violates a different anti-pattern in the same
+   file is a blocking finding. (Skill-craft is reflexive by design:
+   its rules must pass its own anti-patterns.)
 2. **Format consistency** — does the change match adjacent entries'
    format?
 3. **Overlap or conflict** — with existing rules; is the
