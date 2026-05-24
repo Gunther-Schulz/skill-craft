@@ -538,10 +538,12 @@ clear the tests across unrelated domains.
   - NO → Rephrase at the same level.
   - YES → Evidence: [State the abstract version of the rule/checkpoint]
 
-**When the procedure is stable.** A procedure stabilizes when new observations
-produce only detail-level findings on content that was already structurally
-validated. This is diminishing returns — the procedure is refined enough when
-another pass wouldn't change its structure, only its surface.
+**Signal that consolidation may be done.** Two consecutive review
+cycles surface only minor wording fixes (typos, phrasing tweaks)
+and no structural reorganization (new sub-sections, layer
+reshuffling, anti-pattern additions). At that point another
+consolidation pass returns diminishing returns; subsequent
+observations are deferred until a structural finding surfaces.
 
 ### Layer 5: Skill reflexivity (self-awareness)
 
