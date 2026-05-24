@@ -248,6 +248,45 @@ execution of the prior commitment, or (b) explicit surface of the change
 before proceeding. Silent revision between phases is a discipline violation
 regardless of which artifact carries the commitment.
 
+**Information flow in orchestrated workflows.** When a workflow
+skill invokes other skills or agents in sequence (A → B → C), data
+crosses boundaries at each handoff. These boundaries are where
+information gets lost. For each handoff point, verify:
+
+1. **Sender produces what receiver needs.** List every piece of
+   data the receiver requires. Confirm the sender's output or disk
+   artifacts contain all of it. If the receiver assumes data
+   exists that the sender does not guarantee — that is a gap.
+
+2. **Data is explicitly passed or explicitly referenced.**
+   Information that exists on disk but is not mentioned in the
+   invocation prompt is invisible to the receiver. Either pass it
+   inline in the prompt or tell the receiver where to read it
+   (file path).
+
+3. **Format matches.** If the sender writes YAML and the receiver
+   expects JSON, or if field names differ between producer and
+   consumer, the data is lost at the boundary even though it
+   exists.
+
+4. **Prompt compression preserves essentials.** When an
+   orchestrator compresses one skill's output into another skill's
+   prompt (e.g., investigation results compressed into an executor
+   prompt), verify that downstream consumers (reviewer, coherence
+   check) still have access to what was compressed away — either
+   via disk artifacts or by receiving the original data separately.
+
+5. **Retry/recovery has full context.** When a step fails and
+   retries, the retry invocation must include the same context as
+   the original — not just the failure details. Fresh-context
+   agents lose everything from the original invocation unless it
+   is re-provided.
+
+6. **State survives compaction.** Any information that must
+   persist across context compaction boundaries must be written
+   to disk. Counters, status flags, and progress tracked only in
+   conversation context are lost on compaction.
+
 **Conceptual vs procedural rules.** Conceptual rules (principles) are
 referenced by ID. Procedural rules (step-by-step) are inlined at point of use,
 even if repeated. Test: must I follow this step-by-step without judgment? If
@@ -427,9 +466,10 @@ what happened. A procedure change prevents it from happening again. A change is
 either Path 1 — grounded in an observed incident, which provides the
 evidence the change is warranted — or Path 2, a blank-slate
 hypothesis, valid only when explicitly marked and validated by use
-("Writing rule-based procedures" defines both). What is not valid is an unmarked guess — a change presented
-as grounded when it is neither incident-backed nor flagged as a Path 2
-hypothesis.
+(full Path 2 techniques in `references/writing-by-skill-type.md`).
+What is not valid is an unmarked guess — a change presented as
+grounded when it is neither incident-backed nor flagged as a
+Path 2 hypothesis.
 
 **Amendment discipline.** When a new failure pattern surfaces and warrants
 codifying, prefer revising existing rules over adding new ones. Decision
@@ -590,191 +630,17 @@ incorporate it.
 
 ---
 
-## Writing procedure content
+## When designing a new skill
 
-Not all skills are the same type. The approach to writing PROCEDURE.md depends
-on what kind of skill it is.
-
-### Skill types
-
-**Rule-based skills** — checklists, audits, validation procedures. The procedure
-is a set of rules that prevent specific failures.
-
-**Workflow skills** — orchestrate a multi-phase process. The procedure is a flow
-with phases, gates, and routing.
-
-**Domain knowledge skills** — encode expertise for a specific domain. The
-procedure is "when encountering X, do Y because that's how this domain works."
-
-**Judgment skills** — require assessment, not execution. Architecture
-audits, reflective reviews, design critiques. The procedure defines what
-to examine and what constitutes a finding, but the analysis requires
-understanding, not step-following.
-
-**Tooling skills** — thin wrappers around a specific workflow or tool. The
-procedure is a sequence of steps.
-
-An audit fits whichever type matches its checks: mechanical checks
-that need no understanding make it rule-based; checks that require
-assessment make it a judgment skill.
-
-### Writing rule-based procedures
-
-Two paths, depending on whether real incidents exist.
-
-**Path 1: Phenomenon-driven (you have incidents).** A failure happened. The
-observation exists or is obvious.
-
-1. Document the observation (what happened, abstracted)
-2. Derive the rule from the observation (what would prevent it)
-3. The observation grounds the rule — the reason for its existence is traceable
-
-This is how most effective rule-based skills are built. The observation comes
-first, the rule follows.
-
-**Path 2: Blank-slate (no incidents yet).** You're writing rules for a new
-capability. No failures to learn from. Each technique below is a way to find
-or hold the right abstraction level — broad enough to apply across variants,
-specific enough to discriminate. Wrong abstraction is the common root of
-every failure mode these techniques address.
-
-- **Phenomenon identification.** Before drafting any rule, describe what
-  actually goes wrong (or could go wrong) and why. A rule must address the
-  root cause, not just one scenario.
-
-- **Proxy detection.** For each element of a rule, ask: does this represent
-  the actual condition, or an approximation? "Be careful" is a proxy for a
-  specific action. Replace proxies with the precise condition.
-
-- **Bidirectional trigger check.** Every rule has two failure modes:
-  too narrow (misses cases the principle should catch) and too fuzzy
-  (covers cases it shouldn't, or fails to discriminate). Refining
-  toward one risks the other. List at least two cases where the rule
-  WOULD fire and at least two where it WOULDN'T. For each, decide
-  whether the firing/non-firing matches the intended principle.
-  Misses → too narrow; spurious fires → too fuzzy.
-
-- **Widen by principle, not enumeration.** When a trigger is too narrow,
-  abstract upward to the underlying principle that catches all variants
-  — including ones not enumerated — and restate the rule at that level.
-  A rule that grows by appending "...or X, or Y, or Z" is brittle: the
-  next failure shape not in the list slips through. The fix is upward
-  (abstract to the principle), not outward (list more cases). Applies
-  equally when refining an existing rule based on a new incident: a
-  Path 1 observation that exposes a gap should produce a sharper
-  principle, not a longer list.
-
-Rules from Path 2 are hypotheses. Validate by use, refine through Path 1.
-
-### Writing workflow procedures
-
-Define phases, gates between phases, and what triggers transitions. The key
-decisions are: what must be true to advance? What signals completion? What
-happens when the user interrupts?
-
-Workflow procedures benefit from menus (layer 2) more than any other type.
-The menu IS the flow control — it shows the user where they are and what
-they can do next.
-
-**Decision logic within workflow phases.** When a workflow phase produces
-design decisions that contain decision logic (classification, matching,
-filtering, scoring, routing), apply Path 2 techniques to that logic:
-phenomenon identification, proxy detection, and non-firing case enumeration.
-A workflow skill's design phase proposing a heuristic is creating an
-internal rule — validate it as one, not just as a workflow step. This
-is a specific case of the Layer 2 principle "Judgment calls as design
-risk" — classification inside a workflow phase is that same decision at
-finer grain.
-
-### Information flow in orchestrated workflows
-
-When a workflow skill invokes other skills or agents in sequence (A → B
-→ C), data crosses boundaries at each handoff. These boundaries are
-where information gets lost. For each handoff point, verify:
-
-**1. Sender produces what receiver needs.** List every piece of data the
-receiver requires. Confirm the sender's output or disk artifacts contain
-all of it. If the receiver assumes data exists that the sender does not
-guarantee — that is a gap.
-
-**2. Data is explicitly passed or explicitly referenced.** Information
-that exists on disk but is not mentioned in the invocation prompt is
-invisible to the receiver. Either pass it inline in the prompt or tell
-the receiver where to read it (file path).
-
-**3. Format matches.** If the sender writes YAML and the receiver
-expects JSON, or if field names differ between producer and consumer,
-the data is lost at the boundary even though it exists.
-
-**4. Prompt compression preserves essentials.** When an orchestrator
-compresses one skill's output into another skill's prompt (e.g.,
-investigation results compressed into an executor prompt), verify that
-downstream consumers (reviewer, coherence check) still have access to
-what was compressed away — either via disk artifacts or by receiving
-the original data separately.
-
-**5. Retry/recovery has full context.** When a step fails and retries,
-the retry invocation must include the same context as the original —
-not just the failure details. Fresh-context agents lose everything
-from the original invocation unless it is re-provided.
-
-**6. State survives compaction.** Any information that must persist
-across context compaction boundaries must be written to disk. Counters,
-status flags, and progress tracked only in conversation context are
-lost on compaction.
-
-### Writing judgment procedures
-
-Judgment skills assess rather than execute. The procedure defines what
-to examine and what constitutes a finding, but cannot be reduced to a
-checklist that produces correct results when followed mechanically.
-
-**Principles with evidence requirements, not blocking checkpoints.**
-A judgment skill states: "two passes minimum" (principle) and "each
-finding must have: code location, impact, classification" (evidence
-requirement). Not: "- [ ] Two passes completed? NO → CANNOT proceed"
-(blocking checkpoint). The distinction matters: a blocking checkpoint
-can be satisfied mechanically without understanding. A principle with
-evidence requirements forces the output to demonstrate the principle
-was applied.
-
-The test: "can this check be satisfied mechanically without
-understanding?" If yes, it belongs in a workflow skill. If no, it
-belongs in a judgment skill.
-
-**Layers, not steps.** Judgment procedures examine the same system
-from multiple angles (e.g., structural shape, boundary agreements,
-error paths). Each layer produces different findings. Unlike workflow
-phases, layers don't gate each other — findings from any layer can
-inform analysis in other layers.
-
-**Deepening is mandatory.** Every finding predicts adjacent issues.
-A judgment procedure must instruct: trace each finding's implications.
-A swallowed error in one function predicts swallowed errors in similar
-functions. A missing abstraction in one area predicts missing
-abstractions in adjacent areas. Without deepening, the skill produces
-a checklist of surface findings instead of structural insight.
-
-**The output demonstrates the analysis.** For each finding: specific
-location, impact if unfixed, classification (severity). The findings
-themselves are the evidence that the judgment was applied. A judgment
-skill that says "looks good" without findings is a protocol violation.
-
-### Writing domain knowledge procedures
-
-Encode the expertise as concrete rules with context. Not "be aware of CRS
-issues" but "BEFORE any geometry operation, verify source and target CRS
-match. If they don't, reproject explicitly."
-
-Domain procedures are the most likely to need progressive disclosure — the
-full expertise is too large to load at once. Core rules in PROCEDURE.md,
-detailed reference material in `references/`.
-
-### Writing tooling procedures
-
-Keep them minimal. State the steps, the expected inputs, the expected outputs.
-Tooling skills rarely need observations or evolution — they either work or
-they don't. If the tool changes, update the steps.
+Identify the skill type (rule-based, workflow, domain knowledge,
+judgment, tooling). Then load
+`references/writing-by-skill-type.md` for type-specific authoring
+guidance — full Path 2 techniques (phenomenon identification, proxy
+detection, bidirectional trigger check, widen by principle),
+workflow-phase decision logic, judgment-procedure structure
+(principles with evidence requirements, layers, deepening),
+domain-knowledge progressive disclosure, and tooling minimalism.
+Not needed for reviewing or iterating existing skills.
 
 ---
 

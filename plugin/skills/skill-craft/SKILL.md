@@ -1,7 +1,6 @@
 ---
 name: skill-craft
 description: This skill should be used when the user asks to "create a skill", "design a plugin", "write a protocol", "review a skill", "improve a skill", or discusses skill architecture, plugin structure, protocol conventions, or how to make skills effective. Also activate when discussing failures in existing skills that suggest the skill itself needs updating.
-version: 1.0.24
 license: MIT
 ---
 
@@ -23,6 +22,7 @@ everything needed to design, review, or improve a skill.
 | `references/plugin-engineering.md` | Plugin packaging: marketplace structure, hooks, installation, common mistakes | Battle-tested plugin development | Nothing — standalone reference |
 | `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Read at validation time by PROCEDURE.md Self-review mandate (cross-pattern test against Symptoms lists) |
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |
+| `references/writing-by-skill-type.md` | Type-specific authoring guidance for new skills (Path 2 techniques, judgment/workflow/domain-knowledge/tooling procedures) | Skill type patterns | Loaded on demand when designing a new skill |
 
 When updating PROCEDURE.md, check that its grounding observations still
 hold. When adding observations, check if the procedure should change.
