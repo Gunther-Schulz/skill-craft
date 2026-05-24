@@ -424,6 +424,25 @@ section proliferation and keeps the procedure dense. The drift check
 below is the second pass that catches over-patching at the amendment
 level.
 
+**Self-review mandate.** Any substantive change to skill-craft's own
+canonical files (`PROCEDURE.md`, `references/*.md`) is followed by a
+self-review dispatched to a fresh-context subagent. The subagent
+loads skill-craft (via the Skill tool), reads the changed file
+freshly, and applies skill-craft's discipline to the change —
+specifically: recursive consistency (does the change comply with the
+discipline it teaches?), format consistency with adjacent entries,
+overlap or conflict with existing rules, coverage of the failure
+shape the change targets, and substance of any Fix prescription.
+Findings ranked blocking / notable / nit; surface to the operator
+for amendment decision. The self-review is unconditional —
+committing an amendment without the subagent review is the same
+shape as the "Procedure drift through incremental patches"
+anti-pattern (incremental patches not re-derived). This compounds
+with the render-fidelity check (clause-level diff in separate
+context, "Rendering from a source" above) — both are fresh-context
+separate-checker disciplines applied at different layers (render
+fidelity vs. source-of-rule quality).
+
 **Iterative narrowing of rule proposals.** Draft rules rarely land at
 minimum scope on the first pass — the draft-time pull is toward broad
 framework framing. Before adding any rule:
