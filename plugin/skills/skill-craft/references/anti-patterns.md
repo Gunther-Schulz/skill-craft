@@ -134,12 +134,12 @@ to nouns and adjectives rather than verbs.
   for what makes something X
 - The term invokes a judgment the AI cannot mechanically check
 - Reasonable readers could interpret the term differently
-- The term smuggles approval/disapproval without grounding
+- The term encodes approval/disapproval without grounding
 - Replacement candidates exist that describe properties or processes
   objectively
 
 **Fix:** Replace with descriptive, criteria-anchored terms. Where a
-property is meant (thorough, complete, scope-appropriate), name the
+property is meant (thorough, complete, scope-bounded), name the
 property. Where a process is meant (verified, evidence-grounded,
 search-established), name the process. Where a comparison is meant
 (best-available, lowest-cost), name what's being compared and against
