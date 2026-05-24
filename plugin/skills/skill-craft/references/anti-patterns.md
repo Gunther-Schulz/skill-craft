@@ -185,11 +185,14 @@ diverges from the current reference files silently.
 **Fix:** Convert load-bearing reference loads to a blocking gate
 at skill activation — one consolidated step requiring a
 loaded-references manifest (files + sections read) as evidence
-before the skill body executes. Genuinely-optional references
-(progressive disclosure, Layer 3) can remain on-demand;
-load-bearing ones cannot. See "Blocking logic" (PROCEDURE.md
-Layer 2) — reference loading is structurally the same shape as a
-workflow gate.
+before the skill body executes. Discriminator: a reference is
+**load-bearing** if skipping it produces wrong output (per
+Symptoms above); **genuinely-optional** if the skill works
+correctly when it is not loaded. Load-bearing references must be
+gated; genuinely-optional ones may remain on-demand (progressive
+disclosure, Layer 3). See "Blocking logic" (PROCEDURE.md Layer 2)
+— reference loading is structurally the same shape as a workflow
+gate.
 
 ## Unverified render from source
 
@@ -214,8 +217,8 @@ exposes the gap.
   logic) render as prose principles in the skill
 - Load-bearing clauses in the source have no corresponding text
   in the skill
-- The renderer claims fidelity from re-reading the render, not
-  from diffing against the source
+- Verification artifact (if any) references re-reading the render,
+  not a clause-by-clause comparison against the source
 
 **Fix:** Render verification is a separate-context job. The
 context that produced the render never verifies it — paraphrase
