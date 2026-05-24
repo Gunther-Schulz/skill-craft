@@ -425,10 +425,12 @@ below is the second pass that catches over-patching at the amendment
 level.
 
 **Self-review mandate.** Every commit to skill-craft's canonical
-files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers a
-self-review. The committing AI dispatches a fresh-context subagent
-immediately after the commit. The subagent loads skill-craft, reads
-the changed file freshly, and applies these checks:
+files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers one
+self-review per commit (regardless of how many files the commit
+touches; one subagent reads all changed files together). The
+committing AI dispatches a fresh-context subagent immediately after
+the commit. The subagent loads skill-craft, reads the changed files
+freshly, and applies these checks:
 
 1. **Recursive consistency** — does the change comply with the
    discipline it teaches (the load-bearing test)?
