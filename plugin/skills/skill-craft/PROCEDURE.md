@@ -133,7 +133,7 @@ Instructions without structural enforcement are suggestions.
 
 Layer 2 groups into five disciplines: **Enforcement mechanics**
 (the foundations — un-fakeable artifacts, judgment-call mitigation,
-gates), **Output discipline** (menus, communication),
+gates), **Output discipline** (communication),
 **Boundary discipline** (cross-phase + cross-skill state),
 **Authoring discipline** (writing the procedure itself), and
 **Portability discipline** (terms, domains, context, rendering).
@@ -196,9 +196,6 @@ states. A claim like "checked all edge cases" is unfalsifiable;
 un-fakeable artifact.
 
 #### Output discipline
-
-**Menus as structural enforcement.** Show menu after every response where user
-has choices. Menu is always last element. Without it, user cannot control flow.
 
 **Communication discipline.** A skill acts on actionable findings
 within the same invocation rather than deferring them for the user

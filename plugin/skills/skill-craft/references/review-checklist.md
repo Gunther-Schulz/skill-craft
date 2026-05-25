@@ -40,7 +40,8 @@ state what's missing before continuing.
 
 - [ ] **Protocol conventions.** Imperative form throughout (no second
   person)? Workflow skills: gates use blocking logic (CANNOT + evidence),
-  checkpoints observable, menus where user has choices? Judgment skills:
+  checkpoints observable, choice points surfaced where user has flow
+  control? Judgment skills:
   principles with evidence requirements, deepening mandatory, output
   demonstrates analysis?
   - NO → Add blocking logic (workflow) or evidence requirements (judgment).

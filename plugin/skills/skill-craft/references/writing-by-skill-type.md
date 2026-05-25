@@ -93,9 +93,11 @@ Define phases, gates between phases, and what triggers transitions.
 The key decisions are: what must be true to advance? What signals
 completion? What happens when the user interrupts?
 
-Workflow procedures benefit from menus (PROCEDURE.md Layer 2) more
-than any other type. The menu IS the flow control — it shows the
-user where they are and what they can do next.
+Workflow procedures benefit from explicit choice-surfacing at phase
+boundaries more than any other type — the surfaced choice IS the
+flow control, showing the user where they are and what they can do
+next. Specific patterns (persistent menus, inline questions, etc.)
+are skill-specific.
 
 **Decision logic within workflow phases.** When a workflow phase
 produces design decisions that contain decision logic
