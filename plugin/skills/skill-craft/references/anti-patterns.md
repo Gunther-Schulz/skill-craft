@@ -179,9 +179,7 @@ first, evaluate after. Mechanical inapplicability conditions
 (observable from artifact / diff / document state) are the only
 acceptable skip; judgment-shaped escape is insufficient. See
 `PROCEDURE.md` Layer 2 "Un-fakeable artifact principle"
-(N/A-escape extension). Operational instance:
-`diligence-framework/development-process.md` Step 5 doubt-voicing
-clause.
+(N/A-escape extension).
 
 ## Naked judgment in rule statements
 

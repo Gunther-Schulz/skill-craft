@@ -417,9 +417,8 @@ files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers one
 self-review — one subagent for the whole change — **before
 commit**. The authoring AI dispatches a fresh-context subagent
 against the proposed changes (working tree, staged diff, or
-inline-described diff in the brief). The subagent loads
-skill-craft, reads the changed text freshly, and applies these
-checks:
+inline-described in brief). The subagent loads skill-craft, reads
+the changed text freshly, and applies these checks:
 
 1. **Universal rule application** — for each canonical rule in
    skill-craft (Layer 2 principles, Layer 4 disciplines,
@@ -434,11 +433,23 @@ checks:
    concrete next action?
 
 Findings ranked blocking / notable / nit. Recovery path:
-**blocking → don't commit; fix the change first** (re-dispatch
-review on the fix). **Notable** → operator amend decision before
-commit (fix-now or accept-with-rationale). **Nit** → operator
-decides whether to address before commit. Reviewing before commit
-keeps git history clean — bad commits never enter the record.
+
+1. **Blocking** — AI fixes (or reverts the change) without operator
+   round-trip.
+2. **Notable / nit** — AI surfaces each finding to the operator with
+   a recommendation (fix-shape proposed). Operator decides per
+   finding: fix-now, accept-with-rationale, or defer-to-
+   observations. AI does not self-classify or auto-fix.
+
+For accept-with-rationale decisions, AI adds an `Accepted-finding:`
+line in the commit message body citing the finding's file:line and
+the operator's reason; commit-body-only because the audit trail must
+live in git history permanently. For defer-to-observations, AI logs
+to the relevant OBSERVATIONS.md (of the corpus the finding cites).
+AI commits only after every finding has a recorded disposition.
+
+Reviewing before commit keeps git history clean — bad commits never
+enter the record.
 
 **Iterative narrowing of rule proposals.** Before adding any
 rule:
