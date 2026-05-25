@@ -164,15 +164,6 @@ this," "redundant here," "in-context is enough," "applying an
 existing recommendation."* Discipline gets skipped; gap surfaces
 later — often via operator catch.
 
-The pattern: when the AI generates a justification for *not* doing
-something it's obligated to do, the justification-construction
-itself is the signal that the obligation applies. A clear-cut
-inapplicability doesn't require justification — the state speaks
-for itself ("no file under <path> changed; cite paths").
-Rationale-shaped escape is the failure mode. Symmetric to bare
-claims as evidence: same recall-pool / self-attest shape applied
-to escape clauses instead of check artifacts.
-
 **Symptoms:**
 - AI voices doubt in prose about whether a discipline applies
 - AI cites discretion-shaped reasons: "small change," "redundant,"

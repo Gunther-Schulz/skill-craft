@@ -412,12 +412,14 @@ changes against the existing ruleset; AI executes recovery on
 blocking findings, because the action being corrected is its own
 commit, not a proposed rule.
 
-**Self-review mandate.** Every commit to skill-craft's canonical
+**Self-review mandate.** Every change to skill-craft's canonical
 files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers one
-self-review — one subagent for the whole commit. The committing AI
-dispatches a fresh-context subagent immediately after the commit.
-The subagent loads skill-craft, reads the changed files freshly,
-and applies these checks:
+self-review — one subagent for the whole change — **before
+commit**. The authoring AI dispatches a fresh-context subagent
+against the proposed changes (working tree, staged diff, or
+inline-described diff in the brief). The subagent loads
+skill-craft, reads the changed text freshly, and applies these
+checks:
 
 1. **Universal rule application** — for each canonical rule in
    skill-craft (Layer 2 principles, Layer 4 disciplines,
@@ -431,10 +433,12 @@ and applies these checks:
 5. **Substance of any Fix prescription** — does it specify a
    concrete next action?
 
-Findings ranked blocking / notable / nit. Recovery path: blocking
-→ revert the commit; notable → surface for operator amend decision
-(next-commit fix or accept-with-rationale); nit → surface for
-optional address.
+Findings ranked blocking / notable / nit. Recovery path:
+**blocking → don't commit; fix the change first** (re-dispatch
+review on the fix). **Notable** → operator amend decision before
+commit (fix-now or accept-with-rationale). **Nit** → operator
+decides whether to address before commit. Reviewing before commit
+keeps git history clean — bad commits never enter the record.
 
 **Iterative narrowing of rule proposals.** Before adding any
 rule:
