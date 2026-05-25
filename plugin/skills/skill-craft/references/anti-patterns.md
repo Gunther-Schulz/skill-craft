@@ -95,6 +95,12 @@ to discriminator when ambiguous** — under-stating is recoverable;
 restating inflates. Standalone-all-negative AND discriminator-with-
 positive-lead are both malformed.
 
+**Edit-as-Pareto-improvement** (per-edit): a rule edit must show
+either fewer words OR more coverage (ideally both). Pure addition
+without coverage gain is the bloat path. Before commit, name what
+the edit removed or consolidated; if nothing, the addition is
+suspect.
+
 ## Rule elaboration creep
 
 A load-bearing rule grows beyond principle + test + fix. Each
@@ -111,6 +117,22 @@ execution.)
 
 **Fix:** Compress to principle + test + fix. Drop enumeration,
 sub-categorization, motivational framing.
+
+## Additive reflex
+
+When working on a rule corpus, AI tendency is to propose additions
+even when restraint or subtraction is correct. The failure surfaces
+at the AI's proposal moment; cumulative effect is bloat (parallels
+"Procedure drift" at corpus accretion).
+
+**Symptoms:**
+- Proposed responses to bloat are themselves rule-additions
+- Multi-option menus when "do nothing" is the right option
+- Refactoring that grows total content
+- Rule-additions to police rule-additions
+
+**Fix:** apply "Edit-as-Pareto-improvement" (above). Default
+disposition on ambiguous rule-need: do nothing.
 
 ## Naked judgment in rule statements
 

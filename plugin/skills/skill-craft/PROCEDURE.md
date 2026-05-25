@@ -376,12 +376,13 @@ grounded when it is neither incident-backed nor flagged as a
 Path 2 hypothesis.
 
 **Amendment discipline.** When codifying a new failure pattern,
-prefer revising existing rules over adding new ones. Decision
-sequence: (1) existing rule already addresses it? Revise in place.
-(2) Absorbable by extending an existing rule's scope? Extend
-(widen trigger, add gate clause, extend evidence requirement).
-(3) Existing rule becomes redundant? Reduce / merge. (4) Only if
-none: add a new sub-section.
+look first for what can be reduced or merged; only then consider
+extending; only then adding. Decision sequence: (1) existing rule
+already addresses it? Revise in place. (2) Existing content
+becomes redundant or mergeable? Reduce / merge. (3) Absorbable by
+extending an existing rule's scope? Extend (widen trigger, add
+gate clause, extend evidence requirement). (4) Only if none: add
+a new sub-section.
 
 For **multi-file rule corpora** (a spec rendered into multiple
 files, or a framework with instance renders), the decision
