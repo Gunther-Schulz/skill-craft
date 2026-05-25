@@ -87,9 +87,13 @@ anchor exists.
 
 **Positive-form-first for definitional rules** (per-edit): a rule
 defining what a thing IS leads with the positive shape ("X is A + B");
-the negative form ("X is not Y") follows only as discriminator against
-an anti-shape. Prohibition-only rules (e.g., "don't do Z") legitimately
-stay negative; a definitional rule that is all negative is malformed.
+negative form follows only as discriminator. **Classification test:**
+when a parent rule (a discipline's lead, an enclosing definition)
+already states the positive shape, this rule is a **discriminator** —
+keep it negative; otherwise, lead with the positive shape. **Default
+to discriminator when ambiguous** — under-stating is recoverable;
+restating inflates. Standalone-all-negative AND discriminator-with-
+positive-lead are both malformed.
 
 ## Rule elaboration creep
 
