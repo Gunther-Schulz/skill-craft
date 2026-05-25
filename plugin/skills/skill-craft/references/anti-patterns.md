@@ -85,33 +85,36 @@ substitute for explanation; the AI follows the anchor when context is
 needed. Rule-words first, anchors second, explanation only when no
 anchor exists.
 
-**Positive-form-first for definitional rules** (per-edit): a rule
-defining what a thing IS leads with the positive shape ("X is A + B");
-negative form follows only as discriminator. **Classification test:**
-when a parent rule (a discipline's lead, an enclosing definition)
-already states the positive shape, this rule is a **discriminator** —
-keep it negative; otherwise, lead with the positive shape. **Default
-to discriminator when ambiguous** — under-stating is recoverable;
-restating inflates. Standalone-all-negative AND discriminator-with-
-positive-lead are both malformed.
+**Form choice for rules** (per-edit): pick positive vs negative form
+based on rule class. Classification tests apply in order; first match
+wins:
 
-**Form choice for non-definitional rules** (per-edit): positive-form-
-first above scopes to definitional rules. Other rule classes pick
-form by what makes the rule fire clearly against its target failure:
-- **Mechanical rules** (backed by un-fakeable artifact): positive
-  default — the artifact is observable; "produce X" is more
-  checkable than "don't fake X."
-- **Anti-patterns** (named failure shapes the AI defaults to):
-  negative — the named shape IS the rule; pattern-match against
-  the shape. This is why this file is negative-form throughout.
-- **Judgment rules with multiple correct paths**: negative refusal
-  of the wrong behavior, leaving room for legitimate variations.
-  Positive form here over-constrains.
+1. **Definitional** — rule defines what a thing IS ("X is A + B").
+   Lead with positive shape; negative form only as discriminator.
+   Discriminator test: a parent rule (a discipline's lead, an
+   enclosing definition) already states the positive shape →
+   this rule is a discriminator, keep it negative. Default to
+   discriminator when ambiguous; under-stating is recoverable,
+   restating inflates. Standalone-all-negative AND discriminator-
+   with-positive-lead are both malformed.
 
-Form is secondary to the mechanical-vs-judgment axis (PROCEDURE.md
-"Judgment calls as design risk"). Mechanical rules preferred
-regardless of form; if a rule must be judgment-shaped, form follows
-what surfaces the target failure most clearly.
+2. **Mechanical** — rule backed by an un-fakeable artifact
+   (file:line citation, count, list, observable check). Positive
+   default — "produce X" is more checkable than "don't fake X";
+   the artifact carries the check.
+
+3. **Anti-pattern** — rule names a failure shape the AI defaults
+   to (Symptoms + Fix structure). Negative form — the named shape
+   IS the rule; pattern-match against the shape. This file is
+   negative-form by this rule.
+
+4. **Judgment with multiple correct paths** — none of the above
+   apply, and positive form would over-constrain the situation.
+   Negative refusal of the wrong behavior, leaving room for
+   legitimate variations.
+
+Form is secondary to mechanical-vs-judgment (PROCEDURE.md "Judgment
+calls as design risk"). Mechanical preferred regardless of form.
 
 **Edit-as-Pareto-improvement** (per-edit): a rule edit must show
 either fewer words OR more coverage (ideally both). Pure addition
