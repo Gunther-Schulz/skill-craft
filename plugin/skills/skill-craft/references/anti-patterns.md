@@ -85,6 +85,12 @@ substitute for explanation; the AI follows the anchor when context is
 needed. Rule-words first, anchors second, explanation only when no
 anchor exists.
 
+**Positive-form-first for definitional rules** (per-edit): a rule
+defining what a thing IS leads with the positive shape ("X is A + B");
+the negative form ("X is not Y") follows only as discriminator against
+an anti-shape. Prohibition-only rules (e.g., "don't do Z") legitimately
+stay negative; a definitional rule that is all negative is malformed.
+
 ## Rule elaboration creep
 
 A load-bearing rule grows beyond principle + test + fix. Each
