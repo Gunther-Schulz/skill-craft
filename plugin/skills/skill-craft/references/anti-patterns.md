@@ -155,6 +155,43 @@ at the AI's proposal moment; cumulative effect is bloat (parallels
 **Fix:** apply "Edit-as-Pareto-improvement" (above). Default
 disposition on ambiguous rule-need: do nothing.
 
+## Skip-rationalization
+
+The AI is about to apply a discipline (a review, a check, a gate
+honoring, a subagent dispatch) and constructs a rationalization for
+skipping it: *"this is a small change," "prior reviewer covers
+this," "redundant here," "in-context is enough," "applying an
+existing recommendation."* Discipline gets skipped; gap surfaces
+later — often via operator catch.
+
+The pattern: when the AI generates a justification for *not* doing
+something it's obligated to do, the justification-construction
+itself is the signal that the obligation applies. A clear-cut
+inapplicability doesn't require justification — the state speaks
+for itself ("no file under <path> changed; cite paths").
+Rationale-shaped escape is the failure mode. Symmetric to bare
+claims as evidence: same recall-pool / self-attest shape applied
+to escape clauses instead of check artifacts.
+
+**Symptoms:**
+- AI voices doubt in prose about whether a discipline applies
+- AI cites discretion-shaped reasons: "small change," "redundant,"
+  "prior coverage," "trivial," "obviously inapplicable"
+- AI proceeds without the discipline
+- Pattern recurs across commits with new escape rationalizations
+- Recovery is reactive (retroactive dispatch on operator catch)
+  rather than preventive
+
+**Fix:** The rationalization-construction IS the dispatch signal —
+the doubt itself is evidence the discipline applies. Dispatch
+first, evaluate after. Mechanical inapplicability conditions
+(observable from artifact / diff / document state) are the only
+acceptable skip; judgment-shaped escape is insufficient. See
+`PROCEDURE.md` Layer 2 "Un-fakeable artifact principle"
+(N/A-escape extension). Operational instance:
+`diligence-framework/development-process.md` Step 5 doubt-voicing
+clause.
+
 ## Naked judgment in rule statements
 
 A load-bearing rule's test rests on the AI's own judgment rather

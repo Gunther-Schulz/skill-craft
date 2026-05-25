@@ -148,6 +148,16 @@ all edge cases" — is satisfiable whether or not the work happened.
 Every enforcement technique below rests on this: require the
 un-fakeable artifact, not the claim.
 
+*N/A escapes need un-fakeable conditions too.* When a check carries
+an N/A clause ("skip if X"), the X condition must itself be
+mechanically verifiable from observable state (the diff, the
+document, the artifact). Judgment-based N/A conditions ("if small
+enough," "if prior coverage applies," "if I judge it redundant") are
+fakeable claims — they let the AI escape the check via prose
+self-attest. Same shape as the bare-claim failure mode above,
+applied to escape clauses; surfaces as the *Skip-rationalization*
+anti-pattern (`references/anti-patterns.md`).
+
 **Judgment calls as design risk.** A decision or load-bearing
 rule the AI must apply, left without structural backing, fails
 latently — the AI acts confidently and inconsistently, error
