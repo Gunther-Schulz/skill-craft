@@ -601,11 +601,13 @@ After any change to skill files:
 5. **Run `claude plugin update <plugin>@<marketplace>`** to bump the
    installed pin in `~/.claude/plugins/installed_plugins.json`. The
    marketplace pull alone does not change which version is active.
-6. **Tell the user to restart Claude Code** if the change involved a
-   version bump — see `references/plugin-engineering.md` "Activation".
+6. **Tell the user to run `/reload-plugins`** to re-read the
+   installed pin and activate the change — see
+   `references/plugin-engineering.md` "Activation". Same handoff
+   for same-version edits and version bumps; session restart only
+   needed if hook errors from a prior load persist.
 
 This applies to both new skills and edits to existing skills. Do not
 consider the work done until both the marketplace clone is pulled and
-the installed pin is bumped. Operator handoff: restart (version bump)
-or `/reload-plugins` (same-version skill/hook/setting changes).
+the installed pin is bumped. Operator handoff: `/reload-plugins`.
 

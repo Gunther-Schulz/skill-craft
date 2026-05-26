@@ -146,8 +146,8 @@ claude plugin marketplace update my-marketplace
 claude plugin update my-plugin@my-marketplace
 ```
 
-Then restart Claude Code. See "Activation" below for the two-pin
-model and when `/reload-plugins` is enough.
+Then `/reload-plugins`. See "Activation" below for the two-pin
+model.
 
 ### Publishing later to official marketplace
 
@@ -218,8 +218,7 @@ claude plugin marketplace update my-marketplace
 claude plugin update my-plugin@my-marketplace
 ```
 
-Then restart Claude Code. See "Activation" for when `/reload-plugins`
-alone suffices.
+Then `/reload-plugins`. See "Activation" for the two-pin model.
 
 ### Fast iteration: symlink the cache
 
@@ -279,16 +278,27 @@ Three activation actions, each with a different reach:
 
 | Action | Picks up |
 |---|---|
-| `/reload-plugins` | Same-version skill/hook/setting changes. Re-reads the installed pin but does not bump it. |
-| `claude plugin update` + `/reload-plugins` | Bumps the pin, but the CLI itself prints "Restart to apply changes" after `plugin update`. Treat this combination as insufficient for version bumps. |
-| `claude plugin update` + **restart Claude Code** | Full activation of a new version. Required after any `plugin.json` version bump. |
+| `/reload-plugins` (alone) | Same-version skill/hook/setting changes at the currently-pinned version. Re-reads the installed pin but does not bump it. |
+| `claude plugin update` + `/reload-plugins` | Version-bump activation. `update` bumps the pin; `/reload-plugins` re-reads the pin so subsequent skill invocations resolve to the new installPath. (Ignore the CLI's "Restart to apply changes" message — conservative guidance; `/reload-plugins` is the activation step.) |
+| Session restart | Equivalent to `/reload-plugins` for pin re-reads. Use when hook errors from a prior load persist (those don't clear on `/reload-plugins`) or when a fresh process is otherwise desired. |
 
-So: for same-version edits visible via a cache symlink (dev-link
-pattern above), `/reload-plugins` suffices. For a version bump
-shipped via the marketplace, restart is required — there is no
-in-session activation path.
+So: both same-version edits and version bumps activate via
+`/reload-plugins` once the respective on-disk change is in place
+(cache symlink update for dev-link, `claude plugin update` for
+pin bump). The pin is the resolution point — changing it and
+then re-reading via `/reload-plugins` activates the new version
+in the running session.
 
-Hook errors from a previous load may also persist across
+Caveat (unverified this session; expected behavior per the
+pin-resolution model): skills already invoked in the current
+session may have loaded reference files into their working
+context before the bump. `/reload-plugins` re-reads the pin but
+is not expected to retroactively re-resolve already-loaded
+references. Fresh skill invocations after `/reload-plugins`
+should load from the new pin; in-flight skill work may carry
+stale content from the prior version until next invocation.
+
+Hook errors from a previous load also persist across
 `/reload-plugins`; restart clears them.
 
 ---
