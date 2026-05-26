@@ -195,10 +195,18 @@ surfaces downstream.
   category assigned)
 - The rule directs the AI to apply "judgment" without naming the
   observable criterion
+- The rule's test uses a common-word qualifier (e.g.,
+  "verbatim," "sufficient," "minimal," "reasonable,"
+  "appropriate") without an operational definition that
+  constrains its reading
 
 **Fix:** Apply one of three mitigations — mechanical criteria,
 structural enforcement, or safety net — per "Judgment calls as
 design risk" (PROCEDURE.md Layer 2). Never leave the test naked.
+For common-word qualifiers, the mitigation is usually inline
+operational definition (e.g., "minimal verbatim content from
+the cited range that grounds the claim") or replacement with
+mechanical criteria.
 
 ## Information loss at skill boundaries
 

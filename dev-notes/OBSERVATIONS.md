@@ -726,3 +726,49 @@ landed in the diligence-framework spec.
 
 *Observed: 2026-05-21, coding-clippy. The first empirical run of the
 rewritten Clippy plugin. Fixes landed in skill-craft v1.0.13.*
+
+---
+
+## 25. Subagent-introduced speculative-cruft — caught by CI tier, not by lens set
+
+A coding-clippy unit-14 implement-phase subagent (U5) imported
+`ProviderMarketData` from `services.market_broker` as part of typing
+context for its per-position max_bet work, but the final code path only
+used the sibling type `AggregatedMarket`. The unused import survived
+the implement-phase self-check (the Coupled-change / Branch-coverage /
+Failure-path lenses don't inspect imports) and was caught by the
+verify-phase mechanical CI check (`ruff check --select F821,F401,F811`).
+
+The failure shape: **speculative-cruft** — symbols introduced from the
+subagent's reasoning context during exploration but not load-bearing
+in the final code. Distinct from semantic gaps (which the lens set
+catches); fundamentally lint-tier mechanical-tool territory.
+
+Considered a framework rule: extend the implement-phase self-check to
+require running the project's CI-tier gate on the diff before commit,
+shifting the catch from verify (cost: 1 commit + delta verify pass,
+~5 min) to pre-commit (cost: ~30 sec gate run per unit). The proposal
+was drafted and shipped to `core.md` §4.2 + clippy + daneel implement
+renders. A bildhauer pass on the shipped artifact surfaced thin Pareto
+justification at n=1:
+
+- Verify-phase already catches this — practice 8's "operator catch
+  remains" disposition covers failure shapes not tractable for upfront
+  codification.
+- "Extends verify" framing was the Pareto-justification, but on
+  inspection the extension was duplication-shifted-earlier rather than
+  coverage-gained.
+- Instance-binding brittleness: the rule needs each project to have a
+  recognizable CI gate, which becomes naked-judgment for projects
+  without one.
+
+The shipped edits were reverted. Verify-phase backstop remains the
+design intent. The observation is preserved here so that if
+speculative-cruft incidents recur and the verify-catch cost
+accumulates, the framework rule earns its place at n≥2.
+
+*Observed: 2026-05-26, coding-clippy unit-14 verify-phase pass 2
+surfaced single F401 (commit c6346b33 closed it). Codification
+considered, drafted, shipped, then reverted after operator-triggered
+bildhauer pass exposed thin Pareto justification. No fix shipped to
+spec; pattern documented here for future-incidence escalation.*

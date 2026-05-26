@@ -441,6 +441,16 @@ Findings ranked blocking / notable / nit. Recovery path:
    finding: fix-now, accept-with-rationale, or defer-to-
    observations. AI does not self-classify or auto-fix.
 
+**Discipline-citation in recommendations.** When a reviewer finding
+cites a discipline (Edit-as-Pareto-improvement / Naked-judgment
+anti-pattern / Skip-rationalization anti-pattern / no-theater /
+equivalent framework practices), the AI's recommendation cites the
+discipline and names its verdict. Classifiable structural-enforcement
+candidate → ship-now (n=1). Undefendable alternative per no-theater
+→ cut. A proposed AI deviation produces an additional
+`operator-decision-required` line citing the alternative — the
+deviation surfaces explicitly, not as an equal-weight option.
+
 For accept-with-rationale decisions, AI adds an `Accepted-finding:`
 line in the commit message body citing the finding's file:line and
 the operator's reason; commit-body-only because the audit trail must
@@ -451,21 +461,23 @@ AI commits only after every finding has a recorded disposition.
 Reviewing before commit keeps git history clean — bad commits never
 enter the record.
 
-**Iterative narrowing of rule proposals.** Before adding any
-rule:
+**Iterative narrowing of rule or mechanism proposals.** Before
+adding any rule, mechanism (subagent, hook, artifact form,
+check step), or other corpus addition:
 
-1. **Classify the failure**: *rule-gap* (no existing rule
-   covers), *unloaded* (rule exists, never loaded), or
+1. **Classify the failure**: *gap* (no existing rule/mechanism
+   covers), *unloaded* (exists, never loaded), or
    *loaded-but-inert* (loaded, didn't fire). Fixes differ:
-   unloaded → fix loading mechanism; loaded-but-inert → sharpen
-   trigger or add structural enforcement; rule-gap → minimum
-   novel content.
-2. **Enumerate** existing rules in the surface area; subtract
-   what they cover.
+   unloaded → fix loading; loaded-but-inert → sharpen trigger
+   or add structural enforcement; gap → minimum novel content.
+2. **Enumerate** existing rules/mechanisms in the surface area;
+   for each, name what would be lost by extending it to cover
+   the failure shape. If the answer is "nothing load-bearing,"
+   extend rather than add. Subtract what's covered.
 3. **Re-apply** — single pass misses sub-parts.
 
 Complete when further narrowing would lose content no existing
-rule covers.
+rule or mechanism covers.
 
 **Before applying a patch, check for drift.** Before adding
 guidance to a checkpoint: re-read the checkpoint; ask whether the
@@ -584,13 +596,16 @@ After any change to skill files:
    Use a descriptive commit message.
 4. **Update the marketplace clone.** Find the matching directory under
    `~/.claude/plugins/marketplaces/` (its git remote matches the source
-   repo) and pull from the correct branch. This is the copy Claude Code
-   loads from.
-5. **Tell the user** to run `/reload-plugins` to pick up changes in
-   their current session.
+   repo) and pull from the correct branch. This is the catalog Claude
+   Code reads available versions from.
+5. **Run `claude plugin update <plugin>@<marketplace>`** to bump the
+   installed pin in `~/.claude/plugins/installed_plugins.json`. The
+   marketplace pull alone does not change which version is active.
+6. **Tell the user to restart Claude Code** if the change involved a
+   version bump — see `references/plugin-engineering.md` "Activation".
 
 This applies to both new skills and edits to existing skills. Do not
-consider the work done until the marketplace clone is updated. The user
-should only need to run `/reload-plugins` — everything else is handled
-before that point.
+consider the work done until both the marketplace clone is pulled and
+the installed pin is bumped. Operator handoff: restart (version bump)
+or `/reload-plugins` (same-version skill/hook/setting changes).
 

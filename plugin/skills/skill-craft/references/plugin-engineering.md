@@ -143,13 +143,11 @@ Do NOT put `plugin.json` at the repo root — it conflicts with
 
 ```
 claude plugin marketplace update my-marketplace
-claude plugin uninstall my-plugin@my-marketplace
-claude plugin install my-plugin@my-marketplace
+claude plugin update my-plugin@my-marketplace
 ```
 
-Then `/reload-plugins`. Note: `marketplace update` pulls the latest
-marketplace.json but does NOT update installed plugins. Must uninstall
-and reinstall.
+Then restart Claude Code. See "Activation" below for the two-pin
+model and when `/reload-plugins` is enough.
 
 ### Publishing later to official marketplace
 
@@ -217,10 +215,11 @@ the source repo. After editing, commit in the source repo, then:
 
 ```
 claude plugin marketplace update my-marketplace
-claude plugin uninstall my-plugin@my-marketplace
-claude plugin install my-plugin@my-marketplace
-/reload-plugins
+claude plugin update my-plugin@my-marketplace
 ```
+
+Then restart Claude Code. See "Activation" for when `/reload-plugins`
+alone suffices.
 
 ### Fast iteration: symlink the cache
 
@@ -265,11 +264,32 @@ or version bumps. The symlink is a dev-mode override, not a
 distribution mechanism — end users install normally via the
 marketplace.
 
-### Session restart note
+### Activation
 
-After installing or reinstalling, `/reload-plugins` loads new skills and
-hooks. However, hook errors from the previous load may persist. If stale
-"hook error" messages appear after fixing an issue, restart Claude Code.
+Two pins govern what version Claude Code actually runs:
+
+- **Marketplace clone** (`~/.claude/plugins/marketplaces/<mp>/`) —
+  the catalog of available versions. Updated by `claude plugin
+  marketplace update` or a direct `git pull` in the clone.
+- **Installed pin** (`~/.claude/plugins/installed_plugins.json`) —
+  the version Claude Code reads on load. Updated by `claude plugin
+  update <plugin>@<mp>`.
+
+Three activation actions, each with a different reach:
+
+| Action | Picks up |
+|---|---|
+| `/reload-plugins` | Same-version skill/hook/setting changes. Re-reads the installed pin but does not bump it. |
+| `claude plugin update` + `/reload-plugins` | Bumps the pin, but the CLI itself prints "Restart to apply changes" after `plugin update`. Treat this combination as insufficient for version bumps. |
+| `claude plugin update` + **restart Claude Code** | Full activation of a new version. Required after any `plugin.json` version bump. |
+
+So: for same-version edits visible via a cache symlink (dev-link
+pattern above), `/reload-plugins` suffices. For a version bump
+shipped via the marketplace, restart is required — there is no
+in-session activation path.
+
+Hook errors from a previous load may also persist across
+`/reload-plugins`; restart clears them.
 
 ---
 
