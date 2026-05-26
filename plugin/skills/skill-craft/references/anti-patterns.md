@@ -16,7 +16,7 @@ loading boundary).
 ## Monolithic SKILL.md
 
 Everything in one file. Works for trivial skills. Fails when the skill
-grows because the AI loads the entire file at invocation, wasting context
+grows because the AI loads the entire file at activation, wasting context
 on guidance that isn't needed yet.
 
 **Fix:** Extract reference material to `references/` subdirectory. Keep

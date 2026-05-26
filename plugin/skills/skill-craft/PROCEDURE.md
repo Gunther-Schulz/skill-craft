@@ -259,10 +259,16 @@ produces FOR the user) and quoted-speech examples.
 
 #### Portability discipline
 
-**Terminology agnosticism.** A procedure must not bake in terms
-specific to one variant of the skill's domain. Use scope-neutral
-terms rather than variant-specific ones (e.g., for a coding skill,
-paradigm-neutral terms across OOP/functional/procedural variants).
+**Terminology discipline.** (1) Use scope-neutral terms — not
+variant-specific ones (e.g., paradigm-neutral across
+OOP/functional/procedural for coding skills). (2) Once a term is
+chosen for a concept, use it across all files in the corpus where
+the concept is named. Drift is grep-checkable: if a referent (a
+lifecycle moment, artifact, or operation) is named by different
+terms in different files, pick one canonical term and apply
+uniformly. Distinct from rule-level multi-file restate (Amendment
+discipline — multi-file rule corpora extension, Layer 4); this
+addresses term-level synonym, not rule restatement.
 
 **Domain-independence check.** Abstraction is judged against the
 skill's intended **scope** — the range it is meant to serve. A
@@ -307,7 +313,7 @@ by the AI as it grows.
 
 - **Observations** — what goes wrong and what works. Evidence from real incidents,
   abstracted to remove project-specific details. Grounds the procedure in reality.
-  Not loaded at invocation — read only when improving the skill itself.
+  Not loaded at activation — read only when improving the skill itself.
 
 - **Vision** (optional) — the philosophical foundation. Why this approach matters.
   The analogy or principle that the procedure derives from. Not every skill needs
@@ -320,7 +326,7 @@ by the AI as it grows.
 - **Roadmap** (optional) — concrete improvement work items grounded in observed
   failures. Where the skill is going next.
 
-- **References** — detailed guidance loaded on demand, not at invocation.
+- **References** — detailed guidance loaded on demand, not at activation.
   Checklists, examples, schemas. Keeps the main skill focused while making
   detail available when needed. Reference content is domain-independent like
   procedures — no project-specific evidence. The pattern and fix are
@@ -335,14 +341,14 @@ abstract to be useful.
 
 **Progressive disclosure.** The SKILL.md loads first and tells the AI what else
 to read. Reference files load on demand. This matters because context window is
-finite — loading everything at invocation wastes context on guidance that may
+finite — loading everything at activation wastes context on guidance that may
 not be needed. Qualifier: references load-bearing for correct execution are
 gated at activation (Layer 2, "Reference loading is a blocking gate"); only
 genuinely-optional references load purely on demand.
 
 **Word count.** SKILL.md body: 1,500-2,000 words ideal, 5,000 max. If
 exceeding 2,000, move detailed content to `references/`. Each reference
-file can be 2,000-5,000+ words (loaded on demand, not at invocation).
+file can be 2,000-5,000+ words (loaded on demand, not at activation).
 
 **Dependency graph.** When a skill has multiple files, document which files
 depend on which. When a parent file changes, its dependents should be checked
@@ -558,8 +564,8 @@ Not needed for reviewing or iterating existing skills.
 
 ## Anti-patterns
 
-For common skill design mistakes — each with the symptoms that spot
-it and the fix — load `references/anti-patterns.md`.
+For common skill design mistakes — symptoms and fixes — see
+`references/anti-patterns.md`.
 
 ---
 

@@ -11,8 +11,9 @@ plugins.
 
 ## Load this now
 
-Read `PROCEDURE.md` from this skill's directory. Self-contained —
-everything needed to design, review, or improve a skill.
+- [ ] `PROCEDURE.md` and `references/anti-patterns.md` loaded this session?
+  - NO → CANNOT proceed. Load each now.
+  - YES → Evidence: [files + sections read]
 
 ## File dependencies
 
@@ -20,7 +21,7 @@ everything needed to design, review, or improve a skill.
 |---|---|---|---|
 | `PROCEDURE.md` | The skill design method — five layers, protocol conventions, review checklist | First principles + observed patterns | Nothing — it's a leaf |
 | `references/plugin-engineering.md` | Plugin packaging: marketplace structure, hooks, installation, common mistakes | Battle-tested plugin development | Nothing — standalone reference |
-| `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Read at validation time by PROCEDURE.md Self-review mandate (cross-pattern test against Symptoms lists) |
+| `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Loaded at activation per "Load this now"; applied at drafting and at validation |
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |
 | `references/writing-by-skill-type.md` | Type-specific authoring guidance for new skills (Path 2 techniques, judgment/workflow/domain-knowledge/tooling procedures) | Skill type patterns | Loaded on demand when designing a new skill |
 

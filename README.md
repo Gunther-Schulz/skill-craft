@@ -56,9 +56,9 @@ Run `/reload-plugins` in Claude Code to activate.
 
 | File | Role | Loaded |
 |------|------|--------|
-| `SKILL.md` | Entry point, trigger conditions, dependency graph | At invocation |
-| `PROCEDURE.md` | The skill design method (self-contained, five layers) | At invocation |
-| `references/anti-patterns.md` | Common skill design mistakes — symptoms + fixes | At validation time |
+| `SKILL.md` | Entry point, trigger conditions, dependency graph | At activation |
+| `PROCEDURE.md` | The skill design method (five layers) | At activation |
+| `references/anti-patterns.md` | Common skill design mistakes — symptoms + fixes | At activation |
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | On demand |
 | `references/plugin-engineering.md` | Plugin packaging: marketplace, hooks, installation | On demand |
 | `references/writing-by-skill-type.md` | Type-specific authoring (judgment, workflow, domain-knowledge, tooling) | On demand |
