@@ -13,7 +13,7 @@ functions, blocking gates — so the AI's behavior matches what the
 skill says, not what it pattern-completes.
 
 skill-craft is the meta-discipline. The
-[Diligence framework](https://github.com/Gunther-Schulz/diligence-framework)
+[Anneal framework](https://github.com/Gunther-Schulz/anneal-framework)
 is built using its mechanisms; framework instances
 ([Clippy](https://github.com/Gunther-Schulz/coding-clippy),
 [DANEEL](https://github.com/Gunther-Schulz/daneel)) inherit those

@@ -620,7 +620,7 @@ statements reference it.*
 skill-craft's review checklist (item 5, abstraction) and the Layer 5
 abstraction check were applied to a skill — Clippy — that is
 deliberately the *coding instance* of a domain-general framework (the
-Diligence framework). The checks read as demanding cross-domain
+Anneal framework). The checks read as demanding cross-domain
 universality: the Layer 5 exclusion tests ask whether a change
 "applies to diverse problem domains" and "works across diverse
 languages and runtimes," and the Layer 2 domain-independence check
@@ -650,7 +650,7 @@ separation, the Layer 5 abstraction check, and review-checklist item
 
 *Observed: 2026-05-21, coding-clippy. Surfaced in the skill-craft
 review of the rewritten Clippy plugin — Clippy being the coding
-instance of the Diligence framework. Fix landed in skill-craft
+instance of the Anneal framework. Fix landed in skill-craft
 v1.0.12.*
 
 ---
@@ -692,7 +692,7 @@ rewriting the Clippy plugin. Fix landed in skill-craft v1.0.12.*
 
 ## 24. A framework rule lost its structural enforcement in the rendering to an instance
 
-The Clippy plugin is rendered from the diligence-framework spec. A
+The Clippy plugin is rendered from the anneal-framework spec. A
 load-bearing behavioral rule — the AI self-resolves design decisions
 and does not pose them to the operator as choices (framework
 `core.md` §1) — was rendered into the plugin's investigate-design
@@ -722,7 +722,7 @@ covers any load-bearing rule, not classification decision-points
 alone. The framework-side root causes (the un-fakeable-artifact rule
 generalized to behavioral rules, the design-decision definition, the
 closed cycle-boundary output, the prescription-discipline split)
-landed in the diligence-framework spec.
+landed in the anneal-framework spec.
 
 *Observed: 2026-05-21, coding-clippy. The first empirical run of the
 rewritten Clippy plugin. Fixes landed in skill-craft v1.0.13.*

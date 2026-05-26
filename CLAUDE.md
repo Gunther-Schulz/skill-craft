@@ -2,7 +2,7 @@
 
 ## Rule-corpus edits
 
-When editing skill-craft, diligence-framework spec, or instance
+When editing skill-craft, anneal-framework spec, or instance
 skills (clippy / daneel / etc.): invoke the `skill-craft` skill
 via the Skill tool BEFORE the edit.
 
