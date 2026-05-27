@@ -279,3 +279,27 @@ the render reads as faithful.
 against the source: every load-bearing clause appears in the
 render; structural mechanisms render as structural, not flattened
 to prose. See "Rendering from a source" (PROCEDURE.md Layer 2).
+
+## Edit-without-spec-origin
+
+A rendered artifact is edited directly, without surfacing the
+source clause the edit derives from. The artifact gains content
+the source doesn't carry; downstream re-renders would lose the
+content; audit-against-source has no source claim to compare.
+Distinct from "Unverified render from source" — that anti-pattern
+assumes a source exists and questions render fidelity; this
+assumes no source clause exists for the edit at all.
+
+**Symptoms:**
+- Rendered artifact edited with no surfaced source clause as
+  origin
+- Re-render would lose the edit (no source to render from)
+- Audit-against-source has nothing to compare
+- Drift surfaces retroactively (operator catch), not
+  preventatively at edit-time
+
+**Fix:** route the edit through source first — add the content
+to the source spec, then re-render. The upstream gate (every
+edit cites the source clause it derives from) is the prevention
+mechanism. See "Rendering from a source" (PROCEDURE.md Layer 2)
+for the source→render direction.
