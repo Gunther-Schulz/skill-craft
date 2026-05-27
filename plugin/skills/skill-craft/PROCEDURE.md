@@ -447,19 +447,25 @@ Findings ranked blocking / notable / nit. Recovery path:
    finding: fix-now, accept-with-rationale, or defer-to-
    observations. AI does not self-classify or auto-fix.
 
-**Discipline-citation in recommendations.** When a reviewer finding
-cites a discipline (Edit-as-Pareto-improvement / Naked-judgment
-anti-pattern / Skip-rationalization anti-pattern / no-theater /
-equivalent framework practices), the AI's recommendation cites
-the discipline by name and names the evidence the cited
-discipline's test requires — not naked verdict-text, not echo of
-the subagent's severity (see `references/anti-patterns.md`
-Skip-rationalization, disposition-echo variant). Classifiable
-structural-enforcement candidate → ship-now (n=1). Undefendable
-alternative per no-theater → cut. A proposed AI deviation
-produces an additional `operator-decision-required` line citing
-the alternative — the deviation surfaces explicitly, not as an
-equal-weight option.
+**Discipline-citation in recommendations.** Every reviewer
+finding's disposition cites a discipline-test applied + the
+evidence the test requires — not naked verdict, not echo of the
+subagent's severity (see `references/anti-patterns.md`
+Skip-rationalization, disposition-echo variant). The
+discipline-test source (closed set): (a) the Concern-named
+discipline when the finding cites one — from the candidate set:
+Edit-as-Pareto-improvement / Naked-judgment anti-pattern /
+Skip-rationalization anti-pattern / no-theater / equivalent
+framework practices; (b) when Concern is bare, the AI scans
+(a)'s candidate set and tests the matching member, citing which
+matched + which were ruled out; (c)
+`cosmetic-no-discipline-applies` exemption listing every member
+of (a)'s candidate set considered + the per-member rule-out
+reason. Classifiable structural-enforcement
+candidate → ship-now (n=1). Undefendable alternative per
+no-theater → cut. A proposed AI deviation produces an additional
+`operator-decision-required` line citing the alternative — the
+deviation surfaces explicitly, not as an equal-weight option.
 
 For accept-with-rationale decisions, AI adds an `Accepted-finding:`
 line in the commit message body citing the finding's file:line and
