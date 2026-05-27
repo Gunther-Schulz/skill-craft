@@ -450,12 +450,16 @@ Findings ranked blocking / notable / nit. Recovery path:
 **Discipline-citation in recommendations.** When a reviewer finding
 cites a discipline (Edit-as-Pareto-improvement / Naked-judgment
 anti-pattern / Skip-rationalization anti-pattern / no-theater /
-equivalent framework practices), the AI's recommendation cites the
-discipline and names its verdict. Classifiable structural-enforcement
-candidate → ship-now (n=1). Undefendable alternative per no-theater
-→ cut. A proposed AI deviation produces an additional
-`operator-decision-required` line citing the alternative — the
-deviation surfaces explicitly, not as an equal-weight option.
+equivalent framework practices), the AI's recommendation cites
+the discipline by name and names the evidence the cited
+discipline's test requires — not naked verdict-text, not echo of
+the subagent's severity (see `references/anti-patterns.md`
+Skip-rationalization, disposition-echo variant). Classifiable
+structural-enforcement candidate → ship-now (n=1). Undefendable
+alternative per no-theater → cut. A proposed AI deviation
+produces an additional `operator-decision-required` line citing
+the alternative — the deviation surfaces explicitly, not as an
+equal-weight option.
 
 For accept-with-rationale decisions, AI adds an `Accepted-finding:`
 line in the commit message body citing the finding's file:line and

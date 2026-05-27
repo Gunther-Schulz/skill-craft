@@ -181,6 +181,17 @@ acceptable skip; judgment-shaped escape is insufficient. See
 `PROCEDURE.md` Layer 2 "Un-fakeable artifact principle"
 (N/A-escape extension).
 
+**Variant: disposition-echo.** The same skip-shape applies at
+first-judge disposition (when a reviewer finding cites a
+discipline, AI surfaces it with a disposition per `PROCEDURE.md`
+Layer 4 "Discipline-citation in recommendations"). Echoing the
+subagent's severity into a disposition ("subagent said
+observation, so keep-as-is") without re-deriving against the
+cited discipline is the same skip applied to disposition-
+formation rather than to discipline-dispatch. The discipline
+names a test; the AI applies it — not pattern-complete from
+severity.
+
 ## Naked judgment in rule statements
 
 A load-bearing rule's test rests on the AI's own judgment rather
