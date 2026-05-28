@@ -467,7 +467,8 @@ Findings ranked blocking / notable / nit. Recovery path:
 finding's disposition cites a discipline-test applied + the
 evidence the test requires — not naked verdict, not echo of the
 subagent's severity (see `references/anti-patterns.md`
-Skip-rationalization, disposition-echo variant). The
+Skip-rationalization, disposition-echo and corpus-appeal
+variants). The
 discipline-test source (closed set): (a) the Concern-named
 discipline when the finding cites one — from the candidate set:
 Edit-as-Pareto-improvement / Naked-judgment anti-pattern /

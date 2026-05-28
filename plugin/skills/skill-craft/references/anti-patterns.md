@@ -194,6 +194,18 @@ Concern is bare, the AI independently identifies the applicable
 discipline. The discipline names a test; the AI applies it — not
 pattern-complete from severity.
 
+**Variant: corpus-appeal.** The same skip-shape applies at
+keep-as-is disposition: defending keep by appealing to an
+existing corpus pattern ("§X already does Y, so this new Y is
+OK") without independently testing whether the cited pattern
+meets current discipline. Inherits any weakness circularly.
+Sibling to disposition-echo (both are "appeal-to-existing
+without independent verification"). Fix: independently test the
+cited pattern against the applicable discipline; if the pattern
+fails, do not use it as defense — surface the corpus-wide
+weakness as a separate observation (potentially needing its own
+audit cycle).
+
 ## Naked judgment in rule statements
 
 A load-bearing rule's test rests on the AI's own judgment rather
