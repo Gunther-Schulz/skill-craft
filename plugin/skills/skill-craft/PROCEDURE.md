@@ -268,7 +268,18 @@ lifecycle moment, artifact, or operation) is named by different
 terms in different files, pick one canonical term and apply
 uniformly. Distinct from rule-level multi-file restate (Amendment
 discipline — multi-file rule corpora extension, Layer 4); this
-addresses term-level synonym, not rule restatement.
+addresses term-level synonym, not rule restatement. (3)
+Canonical-term obligation at authoring — when the AI authors
+text using a multi-word noun phrase or compound in noun position
+to name a referent (the corpus-level concept, lifecycle moment,
+artifact, or operation denoted — referent class per (2)), the AI
+selects the canonical term for that referent — sourced in order:
+(i) the corpus or its glossary, (ii) the standard term in
+technical literature for the referent, (iii) surfaced to the
+operator for coining if neither exists. When the operator's
+wording differs from the canonical term selected, the AI uses
+the canonical and surfaces the substitution in its response
+(both terms named, reason cited).
 
 **Domain-independence check.** Abstraction is judged against the
 skill's intended **scope** — the range it is meant to serve. A
