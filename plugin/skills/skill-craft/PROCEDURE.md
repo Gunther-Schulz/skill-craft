@@ -443,8 +443,13 @@ the changed text freshly, and applies these checks:
    is a blocking finding.
 2. **Format consistency** — does the change match adjacent
    entries' format?
-3. **Overlap or conflict** — with existing rules; is the
-   relationship articulated?
+3. **Overlap or conflict** — enumerate cross-referenced rules
+   (the change's citations + grep-found cites of the change's
+   home + semantic siblings in the same Layer); for each, test
+   whether consequences contradict the cited rule and articulate
+   the relationship (parallel / extending / overlapping /
+   contradicting). The enumeration + per-reference test is the
+   un-fakeable artifact; bare "no conflict found" is malformed.
 4. **Coverage** — does the change catch what it targets?
 5. **Substance of any Fix prescription** — does it specify a
    concrete next action?
