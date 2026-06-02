@@ -772,3 +772,37 @@ surfaced single F401 (commit c6346b33 closed it). Codification
 considered, drafted, shipped, then reverted after operator-triggered
 bildhauer pass exposed thin Pareto justification. No fix shipped to
 spec; pattern documented here for future-incidence escalation.*
+
+---
+
+## 26. Soft-load-pointer false-positive: provenance citation read as a load-bearing pointer
+
+During an instance-plugin render review (anneal-dev, a framework instance), a
+fresh skill-craft review subagent raised a **blocking** finding: a phase file
+"defines its verification battery in an unloaded file" because the clause cited
+`bindings.md` and `bindings.md` was in no load gate — i.e. the Soft-load-pointer
+anti-pattern (#17). On independent re-derivation against the artifact, the battery
+was rendered **inline** in the loaded phase file; the `(bindings.md …)` was a
+**provenance citation** (source-attribution for content that is present), not a
+pointer to content that must be loaded. The reviewer conflated the two; the
+"blocking" was a false positive.
+
+The gap: the Soft-load-pointer anti-pattern keys on "reference named in prose
+without an observable load step" — but that description matches BOTH (a) a
+load-bearing pointer (content lives in the named file and must be loaded → a real
+soft-load-pointer) AND (b) a provenance citation (content is rendered inline; the
+named file is cited for source-attribution / re-render fidelity → not a
+soft-load-pointer). The true discriminator is **whether the load-bearing content
+is present in a loaded file**, not whether a file is named in prose.
+
+Proposed change (operator decides; not made): add a discriminator to the
+Soft-load-pointer anti-pattern — a citation is a soft-load-pointer only if the
+load-bearing content is NOT present in a loaded file; a citation that attributes
+the source/provenance of content rendered inline is not one. Test: would the AI
+behave wrong WITHOUT loading the named file? If the content is inline, no. The
+discriminator doubles as a reviewer guard against this false-positive.
+
+*Observed: 2026-06-02, anneal-dev step-5 render skill-craft review (subagent
+a26608dcf75a31ff6) flagged blocking B1; re-derived against verify.md:57-82 /
+implement.md:108-161 (battery + isolation rendered inline) as a
+provenance-citation false-positive. Relates to #17 (Soft "load X" pointers).*
