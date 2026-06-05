@@ -63,8 +63,8 @@ principles it started as.
   heuristic flag (≈200 lines for an ordinary skill; a domain-general
   framework runs longer), not the test. The test is the per-checkpoint
   compression in the Fix.
-- Specialized guidance (data flow tracing, verification states) sits
-  inline alongside core principles
+- Management/operational scaffolding (plumbing, release ops, the
+  machinery of running a check) sits inline alongside core design method
 - Tone becomes adversarial ("this is not optional," "CANNOT proceed,"
   "do not generate") — the procedure is arguing with the AI's tendencies
   instead of stating principles
@@ -79,8 +79,12 @@ principles it started as.
 **Fix:** Periodically re-derive the procedure from the vision. For each
 checkpoint, ask: can I state this in 3-5 sentences that a sculptor would
 recognize? If not, the checkpoint has accumulated implementation detail
-that belongs in `references/`. Move specialized guidance to reference
-files. An ordinary skill's procedure fits on a screen; a framework's
+that belongs in `references/`. The extraction test is the **derivation
+trace**, not length or checklist-shape: a checkpoint that traces to a
+core design principle (VISION) stays inline; one that traces only to
+the mechanics boundary (VISION "what skill-craft is not") is
+management scaffolding and moves to `references/`. An ordinary skill's
+procedure fits on a screen; a framework's
 runs longer, but every section still passes the compression test.
 
 **AI-tightness check** (per-edit): a new clause whose word-count is

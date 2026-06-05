@@ -1,6 +1,6 @@
 {
   "name": "skill-craft",
-  "version": "1.0.63",
+  "version": "1.0.64",
   "description": "Methodology for engineering Claude Code skills the AI actually follows — five layers of structural enforcement.",
   "author": {
     "name": "Gunther Schulz"

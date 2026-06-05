@@ -30,7 +30,9 @@ state what's missing before continuing.
   phrases in third person?
 
 - [ ] **Density.** SKILL.md under 2,000 words? Detailed content in
-  references/ loaded on demand? Every sentence changes AI behavior
+  references/ loaded on demand — what moves out judged by the
+  derivation trace, not length (per `anti-patterns.md` Procedure-drift)?
+  Every sentence changes AI behavior
   (no provenance, restated content, hedging, meta-commentary,
   transitions)? Consider load-time availability before removing
   apparent duplicates. Rules covering the same concern merged into
