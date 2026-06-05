@@ -33,10 +33,11 @@ measurable property. Measure it directly.
 
 A should-trigger query that misfires means the description
 under-triggers; a near-miss that fires means it over-triggers. Fix the
-**description**, not the body, and re-measure. The mechanical harness
-is plugin-dev / skill-creator tooling — skill-craft specifies the
-method; the runner is delegated — plugin-dev's skill-creator
-trigger-rate harness (`SKILL.md` Companion).
+**description**, not the body, and re-measure. The runner is the
+`/eval-skill <name>` slash command in this plugin
+(`commands/eval-skill.md` + `agents/skill-router.md`); it dispatches
+three `skill-router` subagents in parallel against a candidate +
+competitor list, aggregates fire rates, and surfaces diagnoses.
 
 ## Tier 2 — Behaviour-delta signature (un-fakeable artifact, applied to evaluation)
 
@@ -55,6 +56,11 @@ only with the skill loaded.
 
 The delta is the skill's value; the signature is its un-fakeable
 artifact, present only when the work was done (`PROCEDURE.md` Layer 2).
+`/eval-skill <name>` scaffolds this protocol: it dispatches a
+with-skill and a without-skill subagent in parallel on one
+operator-supplied task, saves both outputs side-by-side, and surfaces
+them for the operator's signature comparison (the judgment stays
+operator-side; the running of with/without is automated).
 
 ## Tier 3 — Isolated grade (the subjective residue)
 
