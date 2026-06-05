@@ -133,19 +133,16 @@ Never leave a decision or load-bearing rule naked.
 - **THEN** — defines sequence
 
 Keywords express order; they do not enforce it. The hazard is
-**orchestration-specific**: where ordered steps are **independently
+**dispatch-specific**: where ordered steps are **independently
 dispatchable** (separate subagents, parallel tool calls, async jobs),
-prose order is silently violable — on the success path a parallel run
-and a sequenced run leave identical artifacts, so nothing catches it,
-and the keyword masks the gap ("THEN" reads as "sequence handled"). This
-is a dispatch property, not
-blanket enforcement — a step a single context runs in line has no
-separate dispatch to reorder, so it does not reach judgment-skill
-principle text. So when a dispatchable step **conditionally depends** on
-another's result (B runs only if A resolved a certain way), prose
-ordering is insufficient: encode the dependency so B **cannot be
-constructed without A's result as its input**, and B's artifact
-**cites** that result — then the violation is unconstructable or
+prose order is silently violable — success-path artifacts are identical
+whether sequenced or parallel, so nothing catches the reorder. A step a
+single context runs in line has no separate dispatch and is exempt — the
+concern is dispatch-scoped, not grounds to gate judgment-skill principle
+text. So when a dispatchable step **conditionally depends** on another's
+result (B runs only if A resolved a certain way), encode the dependency
+so B **cannot be constructed without A's result as its input**, and B's
+artifact **cites** that result — the violation is then unconstructable or
 readable off the artifact (Blocking logic, below).
 
 **Blocking logic.** Binary checks with un-fakeable artifact as
@@ -249,17 +246,13 @@ terms in different files, pick one canonical term and apply
 uniformly. Distinct from rule-level multi-file restate (Amendment
 discipline — multi-file rule corpora extension, Layer 4); this
 addresses term-level synonym, not rule restatement. (3)
-Canonical-term obligation at authoring — when the AI authors
-text using a multi-word noun phrase or compound in noun position
-to name a referent (the corpus-level concept, lifecycle moment,
-artifact, or operation denoted — referent class per (2)), the AI
-selects the canonical term for that referent — sourced in order:
-(i) the corpus or its glossary, (ii) the standard term in
-technical literature for the referent, (iii) surfaced to the
-operator for coining if neither exists. When the operator's
-wording differs from the canonical term selected, the AI uses
-the canonical and surfaces the substitution in its response
-(both terms named, reason cited).
+Canonical-term obligation: when authoring a multi-word noun phrase
+to name a referent (per (2)), select the canonical term — sourced in
+order: (i) the corpus or its glossary, (ii) the standard term in
+technical literature, (iii) surfaced to the operator to coin if
+neither exists. When the operator's wording differs, use the
+canonical and surface the substitution (both terms named, reason
+cited).
 
 **Domain-independence check.** Abstraction is judged against the
 skill's intended **scope** — the range it is meant to serve. A
@@ -368,9 +361,12 @@ user decides at skill creation whether the skill needs an improvement
 journal.
 
 **When a failure becomes an observation.** A failure during skill use reveals a
-gap in the procedure. Before adding it to observations, ask: is this a one-time
-mistake or a pattern? A pattern is worth documenting. A one-time mistake is not
-— unless it reveals a class of failures the procedure doesn't address.
+gap in the procedure. Its evidence is the run trajectory, not just the output —
+a load-bearing step the agent skipped on a path that still produced a clean
+artifact is a failure the output hides (`references/evaluation.md` Tier 2).
+Before adding it to observations, ask: is this a one-time mistake or a pattern?
+A pattern is worth documenting. A one-time mistake is not — unless it reveals a
+class of failures the procedure doesn't address.
 
 **When an observation becomes a procedure change.** An observation describes
 what happened. A procedure change prevents it from happening again. A change is

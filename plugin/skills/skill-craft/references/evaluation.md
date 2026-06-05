@@ -21,7 +21,12 @@ stakes require — running more is the Additive-reflex shape
 ## Tier 1 — Triggering (mechanical; the description is the oracle)
 
 The `description` alone decides whether a skill fires — an external,
-measurable property. Measure it directly.
+measurable property. Measure it directly. Author it to that test: state
+what the skill does AND when to use it, in the specific terms a user
+would type, and treat the should-trigger / should-NOT-trigger sets below
+as the bidirectional trigger check (`writing-by-skill-type.md`) pointed
+at the description — write the minimum description that fires on every
+should-trigger query and no near-miss.
 
 - [ ] Triggering measured? (N/A only when the skill is invoked solely
   by explicit slash-command, not description-matching — checkable from
@@ -32,8 +37,12 @@ measurable property. Measure it directly.
   - YES → Evidence: [query set + per-query fire rate]
 
 A should-trigger query that misfires means the description
-under-triggers; a near-miss that fires means it over-triggers. Fix the
-**description**, not the body, and re-measure. The runner is the
+under-triggers; a near-miss that fires means it over-triggers. Repair the
+**description**, never the body, then re-measure — under-trigger: add the
+missing trigger terms or a direct "use when …" clause (widen by
+principle, not a synonym list, per `writing-by-skill-type.md`);
+over-trigger: narrow the clause the near-miss matched, or name the
+competitor skill that should own it. The runner is the
 `/eval-skill <name>` slash command in this plugin
 (`commands/eval-skill.md` + `agents/skill-router.md`); it dispatches
 three `skill-router` subagents in parallel against a candidate +
@@ -61,6 +70,15 @@ with-skill and a without-skill subagent in parallel on one
 operator-supplied task, saves both outputs side-by-side, and surfaces
 them for the operator's signature comparison (the judgment stays
 operator-side; the running of with/without is automated).
+
+**The trajectory is evidence, not just the final artifact.** A signature
+can appear in the output while the path that produced it failed — a gate
+skipped on a success path that passed anyway, a recovered wrong turn, a
+wasteful loop. Read the run's trajectory (what the agent did), not only
+its output: a load-bearing step absent from the trajectory is a finding
+even when the artifact looks right. The same read surfaces the converse —
+a helper the agent re-derives across runs is a chore to freeze into a
+bundled script (`writing-by-skill-type.md`, Skills that bundle scripts).
 
 ## Tier 3 — Isolated grade (the subjective residue)
 

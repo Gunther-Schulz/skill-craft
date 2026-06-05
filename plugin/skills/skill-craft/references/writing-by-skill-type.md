@@ -167,3 +167,23 @@ Keep them minimal. State the steps, the expected inputs, the
 expected outputs. Tooling skills rarely need observations or
 evolution — they either work or they don't. If the tool changes,
 update the steps.
+
+**Skills that bundle scripts.** When a tooling skill ships executable
+scripts (not just inline steps), each script is part of the skill's
+reliability surface and takes its own disciplines:
+
+- **Solve, don't punt.** The script handles its own error conditions —
+  recover, or exit with a precise actionable message — rather than
+  failing into the AI's lap with a bare error to diagnose.
+- **No unexplained constants.** Every magic value (timeout, retry
+  count, threshold) carries the reason for its value at point of use.
+  If the author can't justify the number, the AI can't either.
+- **Plan → validate → execute for fragile or batch operations.** Emit
+  an intermediate plan artifact, validate it with a script before
+  acting, then execute — the un-fakeable-artifact principle (Layer 2)
+  applied to scripts: the validated plan proves the operation was
+  checked before it ran.
+- **State execute-vs-read intent.** Say whether the AI runs the script
+  (most cases — cheaper, deterministic) or reads it as reference (when
+  the logic itself is the guidance). Ambiguous intent wastes a load or
+  a run.

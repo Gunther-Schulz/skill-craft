@@ -41,8 +41,10 @@ When building or scaffolding a plugin, use both:
 - Skill-craft for **what** to build and **how to structure** it
 - Plugin-dev skills for **formatting** and **Claude Code conventions**
 
-If plugin-dev is installed, invoke its relevant sub-skills alongside
-skill-craft guidance. If not installed, suggest installation:
+Check the available-skills list for `plugin-dev:` sub-skills (e.g.
+`plugin-dev:skill-development`) — their presence is the observable signal
+it is installed. If present, invoke the relevant ones alongside
+skill-craft guidance. If absent, suggest installation:
 
 ```
 claude plugin install plugin-dev@claude-plugins-official
