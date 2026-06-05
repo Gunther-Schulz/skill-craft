@@ -25,6 +25,7 @@ plugins.
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |
 | `references/writing-by-skill-type.md` | Type-specific authoring guidance for new skills (Path 2 techniques, judgment/workflow/domain-knowledge/tooling procedures) | Skill type patterns | Loaded on demand when designing a new skill |
 | `references/evaluation.md` | How to evaluate a skill — Tier 1 triggering, Tier 2 behaviour-delta signature, Tier 3 isolated grade | Anthropic measurement guidance + un-fakeable-artifact principle | Loaded on demand when designing or validating a skill |
+| `references/self-review.md` | The Layer-4 self-review mandate machinery — five checks, recovery path, discipline-citation, accept-with-rationale / defer-to-observations commit conventions | Layer 4 self-review mandate | Loaded on demand when dispatching the self-review subagent or executing its findings |
 
 When updating PROCEDURE.md, check that its grounding observations still
 hold. When adding observations, check if the procedure should change.

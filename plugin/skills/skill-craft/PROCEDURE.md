@@ -411,68 +411,10 @@ commit, not a proposed rule.
 
 **Self-review mandate.** Every change to skill-craft's canonical
 files (`PROCEDURE.md`, `references/*.md`, `SKILL.md`) triggers one
-self-review — one subagent for the whole change — **before
-commit**. The authoring AI dispatches a fresh-context subagent
-against the proposed changes (working tree, staged diff, or
-inline-described in brief). The subagent loads skill-craft, reads
-the changed text freshly, and applies these checks:
-
-1. **Universal rule application** — for each canonical rule in
-   skill-craft (Layer 2 principles, Layer 4 disciplines,
-   anti-patterns), test the changed text against it. A violation
-   is a blocking finding.
-2. **Format consistency** — does the change match adjacent
-   entries' format?
-3. **Overlap or conflict** — enumerate cross-referenced rules
-   (the change's citations + grep-found cites of the change's
-   home + semantic siblings in the same Layer); for each, test
-   whether consequences contradict the cited rule and articulate
-   the relationship (parallel / extending / overlapping /
-   contradicting). The enumeration + per-reference test is the
-   un-fakeable artifact; bare "no conflict found" is malformed.
-4. **Coverage** — does the change catch what it targets?
-5. **Substance of any Fix prescription** — does it specify a
-   concrete next action?
-
-Findings ranked blocking / notable / nit. Recovery path:
-
-1. **Blocking** — AI fixes (or reverts the change) without operator
-   round-trip.
-2. **Notable / nit** — AI surfaces each finding to the operator with
-   a recommendation (fix-shape proposed). Operator decides per
-   finding: fix-now, accept-with-rationale, or defer-to-
-   observations. AI does not self-classify or auto-fix.
-
-**Discipline-citation in recommendations.** Every reviewer
-finding's disposition cites a discipline-test applied + the
-evidence the test requires — not naked verdict, not echo of the
-subagent's severity (see `references/anti-patterns.md`
-Skip-rationalization, disposition-echo and corpus-appeal
-variants). The
-discipline-test source (closed set): (a) the Concern-named
-discipline when the finding cites one — from the candidate set:
-Edit-as-Pareto-improvement / Naked-judgment anti-pattern /
-Skip-rationalization anti-pattern / no-theater / equivalent
-framework practices; (b) when Concern is bare, the AI scans
-(a)'s candidate set and tests the matching member, citing which
-matched + which were ruled out; (c)
-`cosmetic-no-discipline-applies` exemption listing every member
-of (a)'s candidate set considered + the per-member rule-out
-reason. Classifiable structural-enforcement
-candidate → ship-now (n=1). Undefendable alternative per
-no-theater → cut. A proposed AI deviation produces an additional
-`operator-decision-required` line citing the alternative — the
-deviation surfaces explicitly, not as an equal-weight option.
-
-For accept-with-rationale decisions, AI adds an `Accepted-finding:`
-line in the commit message body citing the finding's file:line and
-the operator's reason; commit-body-only because the audit trail must
-live in git history permanently. For defer-to-observations, AI logs
-to the relevant OBSERVATIONS.md (of the corpus the finding cites).
+self-review subagent — fresh context, against the proposed change,
+**before commit**. Before dispatching, load
+`references/self-review.md`; the subagent's brief must reference it.
 AI commits only after every finding has a recorded disposition.
-
-Reviewing before commit keeps git history clean — bad commits never
-enter the record.
 
 **Iterative narrowing of rule or mechanism proposals.** Before
 adding any rule, mechanism (subagent, hook, artifact form,
