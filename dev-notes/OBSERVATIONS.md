@@ -841,3 +841,75 @@ reclassify the boundary query rather than broaden the description to win it
 best-practices; baseline + retest each 3 blind router subagents over a 10-query
 set (6 should-trigger, 4 near-miss). First live use of `references/evaluation.md`
 Tier 1. Caveat: simulated routers, n=3, indicative not production-harness.*
+
+---
+
+## 28. First end-to-end /eval-skill Tier 2 run — runner mechanics validated; signature spec too narrow to measure skill-craft's actual value (the test was a softball)
+
+The new `/eval-skill` runner (v1.0.63) was first applied end-to-end to
+skill-craft itself in Review mode. Signature spec named four observable
+elements: (a) 13-item review-checklist citation by canonical name;
+(b) file:line citation per finding; (c) per-item pass/fail verdict;
+(d) anti-pattern names from `anti-patterns.md`. Task: review a
+contrived `csv-utils` SKILL.md with five planted defects pulled from
+`anti-patterns.md` (vague description, soft-load-pointer, naked
+judgment, project-specific contamination, second-person prose).
+WITH-skill and WITHOUT-skill subagents dispatched in parallel.
+
+Surface result: all four signature elements present in WITH, absent
+in WITHOUT (structural delta was sharp: 13-item checklist vs 5
+ad-hoc sections; ~20 line cites vs 2; per-item verdict vs narrative).
+Catch rate: WITH 5/5; WITHOUT 4/5. WITHOUT missed the imperative-form
+/ second-person violation.
+
+**The result is largely an artifact of test design, not a fair
+measure of skill-craft's value.** Three honest limits:
+
+1. The five planted defects came from skill-craft's OWN
+   `anti-patterns.md` catalogue, so a bare model with general
+   skill-design training pattern-matches most of them without
+   needing the framework loaded. WITHOUT scored 4/5 on defects
+   skill-craft itself helped popularise.
+2. Single-shot review never fired skill-craft's load-bearing
+   machinery — self-review subagent mandate, evolution cycle,
+   amendment discipline, rendering-from-source check. None have
+   a chance to differentiate on one ad-hoc review.
+3. Signature was structural (checklist + cites + named patterns) —
+   the shallowest layer of value. The deeper value lives in (a) the
+   meta-machinery above and (b) named-rule catches with no
+   plain-English shorthand (imperative-form, scope-precedes-default,
+   naked-judgment-in-rule-statements), most untriggerable in a
+   single review.
+
+Where skill-craft's value measurably showed this session — *outside*
+this controlled experiment, in live editing of skill-craft itself —
+the mandated fresh-context self-review subagent caught: a
+second-person violation in `evaluation.md` (imperative-form rule); a
+wrong `OBSERVATIONS.md` path in `eval-skill.md` (boundary rule;
+**blocking**); a soft-load-pointer in `eval-skill.md` Step 1
+(`anti-patterns.md`; **blocking**); a stale `(c)` reference after the
+N2 fix collapsed Step 2 to (a)/(b) (cross-file consistency). Each was
+a named-rule catch the authoring context demonstrably missed — they
+came in as either blocking or notable on the authoring AI's own
+draft. Those catches are skill-craft's real signature, firing in
+the workflow the framework was designed for (multi-pass
+canonical-file editing with mandated review), not in a single-shot
+review of a contrived input.
+
+Lesson: the experiment validated runner **mechanics** (Skill-tool
+invocation, parallel dispatch, evidence-cited surfacing, CWD
+fallback — all worked first-try) but **under-measured value**.
+Single-shot catch-rate on contrived defects is a lower bound, not a
+fair measure. A test that would match operator empirical experience
+needs: real skills not contrived ones; signatures that capture
+meta-machinery (self-review catches across an editing session,
+evolution-cycle outputs, amendment-discipline application);
+multi-pass edit sequences not single reviews.
+
+*Observed: 2026-06-05, /eval-skill skill-craft (v1.0.63, first
+end-to-end real-input run). Limits flagged post-hoc when operator
+pushed back — catch-rate delta read smaller than empirical experience
+predicts; the right read is that the experiment was the wrong
+measure, not that the framework's value is thin. Contrived input +
+signature spec + per-element citation table saved at
+`~/.claude/skill-evals/skill-craft/2026-06-05/`.*
