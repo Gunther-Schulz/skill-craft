@@ -59,7 +59,10 @@ document becomes a compliance checklist instead of the lean set of
 principles it started as.
 
 **Symptoms:**
-- Procedure exceeds 200 lines
+- Procedure outgrows what the AI holds in attention — line count is a
+  heuristic flag (≈200 lines for an ordinary skill; a domain-general
+  framework runs longer), not the test. The test is the per-checkpoint
+  compression in the Fix.
 - Specialized guidance (data flow tracing, verification states) sits
   inline alongside core principles
 - Tone becomes adversarial ("this is not optional," "CANNOT proceed,"
@@ -77,7 +80,8 @@ principles it started as.
 checkpoint, ask: can I state this in 3-5 sentences that a sculptor would
 recognize? If not, the checkpoint has accumulated implementation detail
 that belongs in `references/`. Move specialized guidance to reference
-files. The procedure should fit on a screen.
+files. An ordinary skill's procedure fits on a screen; a framework's
+runs longer, but every section still passes the compression test.
 
 **AI-tightness check** (per-edit): a new clause whose word-count is
 dominated by explanation rather than rule is malformed. Cross-references
