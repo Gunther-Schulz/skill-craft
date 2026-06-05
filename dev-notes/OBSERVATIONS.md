@@ -913,3 +913,56 @@ predicts; the right read is that the experiment was the wrong
 measure, not that the framework's value is thin. Contrived input +
 signature spec + per-element citation table saved at
 `~/.claude/skill-evals/skill-craft/2026-06-05/`.*
+
+---
+
+## 29. Extraction axis is management-vs-core, not length — and it is already latent in VISION's derivation contract
+
+During Phase-3 PROCEDURE.md slimming, an extraction-inventory subagent
+classified two checkpoints as EXTRACT-to-references: the **Abstraction
+check** (7-test domain-independence) and the **Forcing-functions
+dispatch hazard** (temporal keywords express order but do not enforce
+it on independently-dispatchable steps). The operator overrode both —
+they are **core design method** and stay inline. The subagent had
+sorted by length / "specialized-detail / checklist-shape," and under
+that lens a 7-test checklist reads as boilerplate and a dispatch
+hazard reads as niche orchestration detail.
+
+The correct axis is **management/operational scaffolding vs core design
+method**:
+
+- **Management (extractable):** plumbing (directory layout), release /
+  activation ops, the *machinery* of running a review (the five
+  checks, recovery path, citation format). These trace only to the
+  mechanics-delegation boundary — "what skill-craft is not."
+- **Core (stays inline regardless of length or checklist-shape):** the
+  abstraction check (operationalizes domain-independence, a Layer-2
+  principle); the dispatch hazard (the un-fakeable-artifact spine
+  applied to ordering); the self-review *mandate* + commit gate.
+
+Proof the axis is real, not convenient: the self-review section
+bisected cleanly — *mandate* (core) stayed inline; *machinery*
+(management) moved to `references/self-review.md`. Same content area,
+split exactly on the axis.
+
+Deeper: this axis is not a new criterion — it is **already implied by
+VISION's derivation contract**. Core = traces to a core design
+principle in VISION; management = traces only to the "what skill-craft
+is not" mechanics boundary. The misclassification happened because the
+Procedure-drift Fix's "move specialized guidance to references" is
+fuzzy enough to override the derivation trace. Implied procedure
+change: point the Procedure-drift Fix at the derivation test (does the
+checkpoint trace to a VISION design principle? keep inline. Only to
+mechanics/ops? move) instead of the fuzzy "specialized" wording.
+
+Process note: the staged, operator-in-the-loop extraction (inventory →
+defer uncertain → operator confirms before executing) caught the
+misclassification. Auto-executing the inventory would have wrongly
+extracted two core checkpoints. The deferral discipline was
+load-bearing.
+
+*Observed: 2026-06-05, Phase-3b PROCEDURE.md extraction; inventory
+subagent EXTRACT verdicts on Abstraction-check + Forcing-functions
+overridden by operator. Implies a procedure change to the
+Procedure-drift Fix (`anti-patterns.md`) — surfaced for decision, not
+yet made (Layer 5 "How to surface it": propose, operator decides).*
