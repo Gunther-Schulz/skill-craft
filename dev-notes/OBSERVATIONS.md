@@ -806,3 +806,38 @@ discriminator doubles as a reviewer guard against this false-positive.
 a26608dcf75a31ff6) flagged blocking B1; re-derived against verify.md:57-82 /
 implement.md:108-161 (battery + isolation rendered inline) as a
 provenance-citation false-positive. Relates to #17 (Soft "load X" pointers).*
+
+---
+
+## 27. Measurement vetoed an inspection-favored description change
+
+The Anthropic-manual audit and a first read of a triggering eval flagged
+skill-craft's own `description` as under-triggering: it claimed "plugin
+structure" — territory delegated to plugin-dev — and lost a plugin-architecture
+query ("structure a new plugin that bundles three skills sharing reference
+docs") to `plugin-dev:plugin-structure`. Inspection-logic prescribed a rewrite:
+drop the delegated overclaim, foreground the differentiator ("make a skill the
+model reliably follows").
+
+Measuring the candidate before shipping it (Tier 1, `references/evaluation.md`)
+reversed the conclusion. Across three blind router trials the new description
+changed zero routing outcomes: still 5/5 fires on unambiguous skill queries,
+0/4 false-fires on near-misses, and the plugin query still routed to
+`plugin-dev:plugin-structure` — because its literal verb ("structure a new
+plugin") is plugin-dev's, and it is a genuine compose/boundary case
+(skill-craft's own SKILL.md says "use both" for plugin building), not a
+triggering defect. The proposed fix was outcome-neutral and its premise — "that
+query is a skill-craft miss" — was wrong.
+
+Lesson: a description that reads like an overclaim is not necessarily
+mis-triggering — only measurement settles it. Tier-1 evaluation earns its place
+by vetoing plausible inspection-favored changes, not only by catching gaps. The
+disciplined output was a change NOT made: keep the working description;
+reclassify the boundary query rather than broaden the description to win it
+(Additive-reflex, `anti-patterns.md`). The current description triggers cleanly
+(5/5 unambiguous, 0/4 false).
+
+*Observed: 2026-06-05, skill-craft self-audit against Anthropic Agent-Skills
+best-practices; baseline + retest each 3 blind router subagents over a 10-query
+set (6 should-trigger, 4 near-miss). First live use of `references/evaluation.md`
+Tier 1. Caveat: simulated routers, n=3, indicative not production-harness.*
