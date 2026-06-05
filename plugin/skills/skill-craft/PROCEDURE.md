@@ -616,6 +616,11 @@ workflow-phase decision logic, judgment-procedure structure
 domain-knowledge progressive disclosure, and tooling minimalism.
 Not needed for reviewing or iterating existing skills.
 
+Build the evaluation before the procedure text: assemble the
+triggering eval and name the skill's behaviour-delta signature
+(`references/evaluation.md`, Tiers 1-2), then write the minimum
+procedure that passes them.
+
 ---
 
 ## Anti-patterns
@@ -628,10 +633,10 @@ For common skill design mistakes — symptoms and fixes — see
 ## Checklist for reviewing a skill
 
 Run after creating or modifying any skill — not optional. Load
-`references/review-checklist.md` and verify all 12 items: structure,
+`references/review-checklist.md` and verify all 13 items: structure,
 boundary rule, trigger clarity, density, salience / reading order,
 abstraction, protocol conventions, deepening, evolution, information
-flow, cross-skill consistency, rendering fidelity.
+flow, cross-skill consistency, rendering fidelity, evaluation.
 
 ---
 
@@ -649,7 +654,7 @@ After any change to skill files:
 1. **Edit in the source repo.** All file writes target the source repo,
    not the marketplace clone.
 2. **Run the review checklist against the changes.** Load
-   `references/review-checklist.md` and verify all 12 items against what
+   `references/review-checklist.md` and verify all 13 items against what
    was just edited. State which items pass and which fail, with
    file:line evidence for each failed item. CANNOT proceed to commit
    until all items pass or failures are explicitly accepted with

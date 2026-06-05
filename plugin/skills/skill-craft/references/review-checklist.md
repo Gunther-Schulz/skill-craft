@@ -15,7 +15,11 @@ Apply after creating or modifying any skill. For any item that fails,
 state what's missing before continuing.
 
 - [ ] **Structure.** SKILL.md entry point, standard file names, README
-  at root, dependency graph for multi-file skills?
+  at root, dependency graph for multi-file skills? Mechanical
+  conformance (frontmatter schema, name/character rules, packaging)
+  validated via plugin-dev / `skills-ref validate`, or explicitly
+  deferred — skill-craft delegates mechanics (`SKILL.md` Companion),
+  so a clean architectural review does not imply a clean frontmatter.
 
 - [ ] **Boundary rule.** Maintenance files (OBSERVATIONS, VISION,
   ROADMAP) never loaded by operational files? Only referenced as
@@ -80,6 +84,12 @@ state what's missing before continuing.
   source mechanisms render as structural mechanisms, not flattened to
   prose? Verified by a clause-level diff against the source — not by
   re-reading the rendered text?
+
+- [ ] **Evaluation.** Triggering measured (Tier 1) for any
+  description-triggered skill, and the behaviour-delta signature
+  checked (Tier 2) where the skill forces an observable artifact? See
+  `references/evaluation.md`. Inspection is not measurement — a skill
+  can read clean and still under-trigger or sit inert.
 
 ---
 

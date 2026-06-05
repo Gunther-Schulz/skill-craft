@@ -24,6 +24,7 @@ plugins.
 | `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Loaded at activation per "Load this now"; applied at drafting and at validation |
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |
 | `references/writing-by-skill-type.md` | Type-specific authoring guidance for new skills (Path 2 techniques, judgment/workflow/domain-knowledge/tooling procedures) | Skill type patterns | Loaded on demand when designing a new skill |
+| `references/evaluation.md` | How to evaluate a skill — Tier 1 triggering, Tier 2 behaviour-delta signature, Tier 3 isolated grade | Anthropic measurement guidance + un-fakeable-artifact principle | Loaded on demand when designing or validating a skill |
 
 When updating PROCEDURE.md, check that its grounding observations still
 hold. When adding observations, check if the procedure should change.
