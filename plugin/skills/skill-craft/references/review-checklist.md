@@ -32,6 +32,12 @@ state what's missing before continuing.
   apparent duplicates. Rules covering the same concern merged into
   fewer, sharper items?
 
+- [ ] **Salience / reading order.** Does every strong default carry its
+  scope at or before the point of statement — no carve-out (workflow-vs-
+  judgment split, exception, narrowing) stranded downstream where the AI
+  reader absorbs the default too late to override it (Scope-precedes-
+  default, `PROCEDURE.md`)?
+
 - [ ] **Abstraction.** Judged against the skill's intended scope — a
   domain-specific skill is correctly domain-bound; only a
   domain-general skill must clear the tests across domains. Passes all
@@ -41,10 +47,14 @@ state what's missing before continuing.
 - [ ] **Protocol conventions.** Imperative form throughout (no second
   person)? Workflow skills: gates use blocking logic (CANNOT + evidence),
   checkpoints observable, choice points surfaced where user has flow
-  control? Judgment skills:
+  control, and every conditional dependency between independently-
+  dispatchable steps encoded structurally (dependent step's input carries
+  the prerequisite's result; artifact cites it) rather than prose-only?
+  Judgment skills:
   principles with evidence requirements, deepening mandatory, output
   demonstrates analysis?
-  - NO → Add blocking logic (workflow) or evidence requirements (judgment).
+  - NO → Add blocking logic / encode dispatch dependencies (workflow) or
+    evidence requirements (judgment).
 
 - [ ] **Deepening.** Findings traced to implications beyond the
   checklist? Checklist is floor, not ceiling?

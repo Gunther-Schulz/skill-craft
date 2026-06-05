@@ -129,7 +129,11 @@ This layer is mechanical. Get it right once and move on.
 ### Layer 2: Protocol conventions (engineering)
 
 How to write protocol text that AI actually follows. AI does not self-enforce.
-Instructions without structural enforcement are suggestions.
+A load-bearing step that must hold needs structural enforcement, or it is a
+suggestion. **Match the mechanism to the work**: deterministic/workflow steps
+(a sequence or gate that must hold) take structural enforcement; judgment
+steps take evidence-backed principles, *not* gates — gate-register applied to
+judgment work over-constrains it (Blocking logic + `references/writing-by-skill-type.md`).
 
 Layer 2 groups into five disciplines: **Enforcement mechanics**
 (the foundations — un-fakeable artifacts, judgment-call mitigation,
@@ -176,6 +180,22 @@ Never leave a decision or load-bearing rule naked.
 - **FIRST** — mandates initial action
 - **BEFORE** — creates prerequisite
 - **THEN** — defines sequence
+
+Keywords express order; they do not enforce it. The hazard is
+**orchestration-specific**: where ordered steps are **independently
+dispatchable** (separate subagents, parallel tool calls, async jobs),
+prose order is silently violable — on the success path a parallel run
+and a sequenced run leave identical artifacts, so nothing catches it,
+and the keyword masks the gap ("THEN" reads as "sequence handled"). This
+is a dispatch property, not
+blanket enforcement — a step a single context runs in line has no
+separate dispatch to reorder, so it does not reach judgment-skill
+principle text. So when a dispatchable step **conditionally depends** on
+another's result (B runs only if A resolved a certain way), prose
+ordering is insufficient: encode the dependency so B **cannot be
+constructed without A's result as its input**, and B's artifact
+**cites** that result — then the violation is unconstructable or
+readable off the artifact (Blocking logic, below).
 
 **Blocking logic.** Binary checks with un-fakeable artifact as
 evidence (per "The un-fakeable-artifact principle" above):
@@ -248,6 +268,15 @@ deleted, would the AI do something different? If no, it is fluff
 and belongs elsewhere (OBSERVATIONS.md, commit messages,
 README.md). Actionable content may need to exist in both routine
 use and on-demand references when load-bearing for routine use.
+
+**Scope precedes default.** Skill text is absorbed in reading order
+by an AI reader acting on what it has read so far. When a rule states
+a strong default and a narrower scope (a carve-out, a workflow-vs-
+judgment split, an exception), the scope cue lands at or before the
+default — a carve-out placed downstream is absorbed too late to
+override the default already taken, and the over-broad default leaks.
+Test: reading only up to the default, is its scope already known? If
+not, move the cue earlier or carry it inline.
 
 **Imperative writing style.** Write skill content in imperative
 form (verb-first instructions), not second person. Correct: "Read
@@ -599,10 +628,10 @@ For common skill design mistakes — symptoms and fixes — see
 ## Checklist for reviewing a skill
 
 Run after creating or modifying any skill — not optional. Load
-`references/review-checklist.md` and verify all 11 items: structure,
-boundary rule, trigger clarity, density, abstraction, protocol
-conventions, deepening, evolution, information flow, cross-skill
-consistency, rendering fidelity.
+`references/review-checklist.md` and verify all 12 items: structure,
+boundary rule, trigger clarity, density, salience / reading order,
+abstraction, protocol conventions, deepening, evolution, information
+flow, cross-skill consistency, rendering fidelity.
 
 ---
 
@@ -620,7 +649,7 @@ After any change to skill files:
 1. **Edit in the source repo.** All file writes target the source repo,
    not the marketplace clone.
 2. **Run the review checklist against the changes.** Load
-   `references/review-checklist.md` and verify all 11 items against what
+   `references/review-checklist.md` and verify all 12 items against what
    was just edited. State which items pass and which fail, with
    file:line evidence for each failed item. CANNOT proceed to commit
    until all items pass or failures are explicitly accepted with
