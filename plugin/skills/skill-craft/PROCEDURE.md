@@ -62,69 +62,20 @@ stop. Skills that work well over time address all five.
 
 ### Layer 1: Plugin structure (plumbing)
 
-Directory layout, manifest, auto-discovery, README. The mechanical foundation.
+Directory layout, manifest, auto-discovery, README — the mechanical
+foundation. Get it right once and move on. Layout, key rules, and
+README structure live in `references/plugin-engineering.md` (section
+"Plugin layout"); marketplace setup, paths, activation, and common
+mistakes live in the rest of that file.
 
-**README.md** sits at the plugin root — for humans deciding whether to
-install (a different audience than SKILL.md, which is the AI's
-instructions).
-
-Required sections:
-- **What it does** — the value in one paragraph. Lead with the problem
-  solved, not the mechanism.
-- **Installation** — the marketplace add + install + reload-plugins
-  commands, copy-pasteable.
-- **Usage** — trigger phrases and/or slash command.
-- **Files** — a table of plugin files and their roles.
-
-Optional: an **origin story** (the real incident that motivated the
-skill) and a brief **phases/features** overview.
-
-A plugin with contributors also needs a **Development** section — the
-edit → commit → reinstall cycle, `/reload-plugins`, and version bumps
-— which prevents the "I changed the file but nothing happened"
-friction.
-
-```
-plugin-name/
-├── .claude-plugin/
-│   └── plugin.json          # Required: {"name": "plugin-name"}
-├── plugin/
-│   └── skills/
-│       └── skill-name/
-│           ├── SKILL.md     # Required: trigger + instructions
-│           └── references/  # Optional: loaded on demand
-├── commands/                # Optional: slash commands (.md)
-├── agents/                  # Optional: subagent definitions (.md)
-└── hooks/                   # Optional: event handlers
-```
-
-Key rules:
-- SKILL.md must be named exactly `SKILL.md`
-- The `description` field in YAML frontmatter is the trigger condition — be
-  specific about trigger phrases
-- Component directories go at plugin root, not inside `.claude-plugin/`
-- Use `${CLAUDE_PLUGIN_ROOT}` for portable path references in scripts
-- Skills auto-discover: any `SKILL.md` in a `skills/` subdirectory loads
-
-**Multiple skills, and shared content.** A plugin can hold several
-skills — each its own `skills/<name>/SKILL.md` directory. Reference
-files are **skill-local**: a `SKILL.md` loads files from its own skill
-directory, and the plugin root has only the recognized component
-directories above — an invented plugin-root `references/` is not a
-supported home for shared content. So when several skills would share
-the same reference material, there is a structural choice: make it
-**one skill** — the orchestrator as `SKILL.md`, the other phases as
-sub-files under it, references skill-local — or accept a duplicated
-copy per skill. Prefer one skill when the shared material is
-load-bearing for all of them; duplicated copies drift. The exact path
-mechanics for referencing bundled files belong to the official
-`plugin-dev` plugin and the Claude Code docs — confirm there rather
-than inventing layout.
-
-For plugin packaging details (marketplace vs plugin separation, hooks pitfalls,
-installation flow, common mistakes), see `references/plugin-engineering.md`.
-
-This layer is mechanical. Get it right once and move on.
+**Multiple skills, and shared content.** Reference files are
+**skill-local**: a `SKILL.md` loads files from its own skill
+directory; a plugin-root `references/` is not a supported home for
+shared content. When several skills would share the same reference
+material, prefer **one skill** (orchestrator as `SKILL.md`, other
+phases as sub-files, references skill-local) over duplicated copies —
+duplicated copies drift. Path mechanics belong to the official
+`plugin-dev` plugin; confirm there rather than inventing layout.
 
 ### Layer 2: Protocol conventions (engineering)
 
@@ -642,39 +593,17 @@ flow, cross-skill consistency, rendering fidelity, evaluation.
 
 ## After creating or modifying a skill
 
-**The source repo is the single source of truth.** All edits — skill
-files, observations, references, plugin.json — happen in the source
-repo (e.g., `~/dev/<org>/<plugin>/`). Never edit files in the
-marketplace clone directly. The marketplace clone under
-`~/.claude/plugins/marketplaces/` is a read-only mirror that gets
-updated by pulling from GitHub.
+**The source repo is the single source of truth.** Edits target the
+source repo, never the marketplace clone (a read-only mirror).
 
-After any change to skill files:
+**The review gate is non-negotiable.** Before commit, load
+`references/review-checklist.md` and verify all 13 items against the
+changes — file:line evidence per failed item. CANNOT proceed to commit
+until all items pass or failures are explicitly accepted with
+reasoning stated.
 
-1. **Edit in the source repo.** All file writes target the source repo,
-   not the marketplace clone.
-2. **Run the review checklist against the changes.** Load
-   `references/review-checklist.md` and verify all 13 items against what
-   was just edited. State which items pass and which fail, with
-   file:line evidence for each failed item. CANNOT proceed to commit
-   until all items pass or failures are explicitly accepted with
-   reasoning stated.
-3. **Commit and push** the source repo. Stage only the changed files.
-   Use a descriptive commit message.
-4. **Update the marketplace clone.** Find the matching directory under
-   `~/.claude/plugins/marketplaces/` (its git remote matches the source
-   repo) and pull from the correct branch. This is the catalog Claude
-   Code reads available versions from.
-5. **Run `claude plugin update <plugin>@<marketplace>`** to bump the
-   installed pin in `~/.claude/plugins/installed_plugins.json`. The
-   marketplace pull alone does not change which version is active.
-6. **Tell the user to run `/reload-plugins`** to re-read the
-   installed pin and activate the change — see
-   `references/plugin-engineering.md` "Activation". Same handoff
-   for same-version edits and version bumps; session restart only
-   needed if hook errors from a prior load persist.
-
-This applies to both new skills and edits to existing skills. Do not
-consider the work done until both the marketplace clone is pulled and
-the installed pin is bumped. Operator handoff: `/reload-plugins`.
+Mechanical release flow (commit → marketplace update → plugin update
+→ `/reload-plugins`) is in `references/plugin-engineering.md`
+sections "Edit the source repo, not the cache" and "Activation".
+Operator handoff once the source repo is committed: `/reload-plugins`.
 

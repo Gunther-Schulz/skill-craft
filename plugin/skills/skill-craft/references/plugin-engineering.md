@@ -37,21 +37,9 @@ public use.
 
 ### What's the same in both paths
 
-The plugin itself is identical. Same directory structure:
-
-```
-plugin/
-├── .claude-plugin/
-│   └── plugin.json
-├── skills/
-│   └── my-skill/
-│       └── SKILL.md
-├── commands/
-├── agents/
-└── hooks/
-```
-
-Same `plugin.json`:
+The plugin itself is identical — same directory shape (see "Plugin
+layout" below for the full tree, key rules, and README structure),
+same `plugin.json`:
 
 ```json
 {
@@ -66,6 +54,62 @@ Same `plugin.json`:
 
 Only `name` is required. The name determines the skill namespace — skills
 are available as `/my-plugin:skill-name`.
+
+---
+
+## Plugin layout (a skill's mechanical foundation)
+
+The directory shape every skill plugin follows. Get it right once and
+move on — bloat in skill-craft's procedure has historically clustered
+here, so the detail lives in this reference, not in `PROCEDURE.md`.
+
+### Directory tree
+
+```
+plugin-name/
+├── .claude-plugin/
+│   └── plugin.json          # Required: {"name": "plugin-name"}
+├── plugin/
+│   └── skills/
+│       └── skill-name/
+│           ├── SKILL.md     # Required: trigger + instructions
+│           └── references/  # Optional: loaded on demand
+├── commands/                # Optional: slash commands (.md)
+├── agents/                  # Optional: subagent definitions (.md)
+└── hooks/                   # Optional: event handlers
+```
+
+### Key rules
+
+- SKILL.md must be named exactly `SKILL.md`.
+- The `description` field in YAML frontmatter is the trigger condition
+  — be specific about trigger phrases.
+- Component directories go at the plugin root, not inside
+  `.claude-plugin/`.
+- Use `${CLAUDE_PLUGIN_ROOT}` for portable path references in scripts.
+- Skills auto-discover: any `SKILL.md` in a `skills/` subdirectory
+  loads.
+
+### README.md (human audience, not the AI)
+
+README sits at the plugin root, for humans deciding whether to install
+— a different audience than `SKILL.md` (the AI's instructions).
+
+Required sections:
+- **What it does** — the value in one paragraph. Lead with the problem
+  solved, not the mechanism.
+- **Installation** — the marketplace add + install + reload-plugins
+  commands, copy-pasteable.
+- **Usage** — trigger phrases and/or slash command.
+- **Files** — a table of plugin files and their roles.
+
+Optional: an **origin story** (the real incident that motivated the
+skill) and a brief **phases/features** overview.
+
+A plugin with contributors also needs a **Development** section — the
+edit → commit → reinstall cycle, `/reload-plugins`, and version bumps
+— which prevents the "I changed the file but nothing happened"
+friction.
 
 ---
 
@@ -219,6 +263,9 @@ claude plugin update my-plugin@my-marketplace
 ```
 
 Then `/reload-plugins`. See "Activation" for the two-pin model.
+
+Stage only the files the edit touched (avoid `git add -A`); commit
+message names what changed.
 
 ### Fast iteration: symlink the cache
 
