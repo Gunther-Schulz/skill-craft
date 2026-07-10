@@ -966,3 +966,31 @@ subagent EXTRACT verdicts on Abstraction-check + Forcing-functions
 overridden by operator. Implies a procedure change to the
 Procedure-drift Fix (`anti-patterns.md`) — surfaced for decision, not
 yet made (Layer 5 "How to surface it": propose, operator decides).*
+
+## Durability classes — skills lack a depreciation model (2026-07-10)
+
+A corpus audit of a heavyweight protocol skill (34 runs of its
+on-disk trackers) split its content sharply by lifecycle class: the
+enforcement primitives (append-only ledger, isolated
+verify-by-real-substrate-execution) carried nearly all the durable
+value; the mechanical self-attestation machinery yielded ~2.3%
+(a re-confirmation ratchet); the accreted blind-spot lenses were
+real but patch-shaped — scar tissue from incidents, each needing a
+retirement criterion it didn't have. A mid-session model upgrade
+(previous tier → newest tier) showed teaching content depreciating
+in real time: the newer model self-applied the discipline the skill
+existed to force, while the enforcement/persistence value held
+(and the same upgraded model still shipped one silent fail-open
+miss — enforcement remains load-bearing even at the top tier).
+
+skill-craft had accretion-quality rules (amendment discipline,
+additive reflex, Edit-as-Pareto) and bloat rules (procedure drift)
+but no durability classification and no retirement mechanism —
+nothing says "a patch that never fires is a cut candidate," and
+nothing tells a consolidation pass WHICH content class to cut
+first.
+
+*Observed: 2026-07-10, protocol-skill tracker-corpus audit +
+model-tier comparison (session forensics). Procedure change made
+same day: Layer 4 "Durability classes and pruning order"
+(v1.0.66).*

@@ -459,6 +459,38 @@ Plus: at the same abstraction level as surrounding content.
 scenario-shaped, extract the underlying relationship; if
 project-specific, move to observations.
 
+**Durability classes and pruning order.** Classify every element of
+a skill's operational content by why it exists:
+
+- **Enforcement structure** — the content class Layer 2's
+  enforcement mechanics produce: gates, un-fakeable artifacts,
+  persistence/ledger mechanisms, isolation, boundary checks.
+  Durable regardless of model capability: a skill earns its
+  existence by what it enforces or structures, not by what it
+  explains (Layer 2 "AI does not self-enforce," extended to the
+  lifecycle dimension).
+- **Capability patch** — teaching content, checklists, blind-spot
+  lenses compensating a current model weakness. Depreciates as
+  models improve: record provenance in OBSERVATIONS.md at minting
+  and log each firing alongside it (a dated line naming what the
+  patch caught); treat firing as the retirement signal — a patch
+  has fired when a use or review cycle cites it as catching a real
+  issue; a patch with no logged firing since the last consolidation
+  pass is a cut candidate at the next one.
+- **Binding** — environment- or tool-specific facts (paths,
+  commands, tool names). Valid while the environment holds:
+  staleness-checked, not fire-checked.
+
+Pruning order at consolidation: patches on firing evidence,
+bindings on staleness, enforcement structure only on architecture
+change. Authoring test (precipitation) — extends the existing
+placement rules (the Procedure-drift Fix, "Before applying a
+patch, check for drift," Layer 3 file roles) by naming the
+out-of-skill destinations: a mechanical check belongs in CI or
+hooks, a universal judgment rule in the instruction-file corpus —
+what remains in skill text is enforcement structure plus judgment
+procedure for couplings not reducible to mechanical checks.
+
 **Signal that consolidation may be done.** Two consecutive review
 cycles surface only minor wording fixes (typos, phrasing tweaks)
 and no structural reorganization (new sub-sections, layer
