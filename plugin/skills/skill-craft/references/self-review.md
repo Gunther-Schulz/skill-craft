@@ -7,7 +7,7 @@ recovery on its findings before commit.
 This is **Mechanism 2** per `PROCEDURE.md` Layer 4 "Two reflexivity
 mechanisms" — that section owns the Mechanism-1-vs-Mechanism-2
 definition. Distinct from `review-checklist.md` (see its **Scope**
-section for the reciprocal framing): review-checklist is the 13-item
+section for the reciprocal framing): review-checklist is the 14-item
 user-facing review applied to any skill; self-review is the
 finer-grained, fresh-context gate for every change to skill-craft's
 own canonical files.

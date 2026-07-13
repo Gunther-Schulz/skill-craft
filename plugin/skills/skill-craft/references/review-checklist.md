@@ -70,6 +70,17 @@ state what's missing before continuing.
   write observation → propose change)? Skill notices when own
   guidance needs updating?
 
+- [ ] **Durability.** Operational content classifiable under the three
+  durability classes (`PROCEDURE.md` Layer 4 "Durability classes")?
+  Capability patches carry provenance + a firing log in
+  OBSERVATIONS.md — a patch with no logged firing since the last
+  consolidation pass is flagged as a cut candidate here (the cut
+  itself belongs to consolidation). Bindings state their validity
+  condition. A patch-bearing skill without OBSERVATIONS.md fails
+  Evolution first, not here. The skill's reason to exist is what it
+  enforces or binds, not what it explains — an explanation-only
+  skill is itself a retirement candidate as models improve.
+
 - [ ] **Information flow (orchestrated skills only).** Every handoff
   passes what the receiver needs? Data explicit in prompt or on disk?
   Format matches? State survives compaction?

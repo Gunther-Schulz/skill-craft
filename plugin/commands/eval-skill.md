@@ -47,7 +47,7 @@ d. **Diagnose misses.** For each defect: name the likely mechanism (keyword coll
 
 ## Step 4 — Tier 2 (always applicable): behaviour-delta signature
 
-a. **Get the signature spec from the operator.** Ask: what un-fakeable artifact does `$ARGUMENTS` exist to force that the bare model would not produce? Examples to give if useful: "findings carrying file:line + impact + classification" (judgment skill); "a tracker with locked design decisions + isolated verify ledger" (workflow skill); "13-item review-checklist completion with file:line per item" (review skill). The signature must be *observable in the output*, not "good thinking."
+a. **Get the signature spec from the operator.** Ask: what un-fakeable artifact does `$ARGUMENTS` exist to force that the bare model would not produce? Examples to give if useful: "findings carrying file:line + impact + classification" (judgment skill); "a tracker with locked design decisions + isolated verify ledger" (workflow skill); "14-item review-checklist completion with file:line per item" (review skill). The signature must be *observable in the output*, not "good thinking."
 
 b. **Get one representative task** the skill is designed to handle.
 

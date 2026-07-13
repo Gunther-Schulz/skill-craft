@@ -554,10 +554,11 @@ For common skill design mistakes — symptoms and fixes — see
 ## Checklist for reviewing a skill
 
 Run after creating or modifying any skill — not optional. Load
-`references/review-checklist.md` and verify all 13 items: structure,
+`references/review-checklist.md` and verify all 14 items: structure,
 boundary rule, trigger clarity, density, salience / reading order,
-abstraction, protocol conventions, deepening, evolution, information
-flow, cross-skill consistency, rendering fidelity, evaluation.
+abstraction, protocol conventions, deepening, evolution, durability,
+information flow, cross-skill consistency, rendering fidelity,
+evaluation.
 
 ---
 
@@ -567,7 +568,7 @@ flow, cross-skill consistency, rendering fidelity, evaluation.
 source repo, never the marketplace clone (a read-only mirror).
 
 **The review gate is non-negotiable.** Before commit, load
-`references/review-checklist.md` and verify all 13 items against the
+`references/review-checklist.md` and verify all 14 items against the
 changes — file:line evidence per failed item. CANNOT proceed to commit
 until all items pass or failures are explicitly accepted with
 reasoning stated.

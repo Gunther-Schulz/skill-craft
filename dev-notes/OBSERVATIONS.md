@@ -994,3 +994,29 @@ first.
 model-tier comparison (session forensics). Procedure change made
 same day: Layer 4 "Durability classes and pruning order"
 (v1.0.66).*
+
+## Durability at review time + the OBSERVATIONS.md presupposition (2026-07-13)
+
+The durability classes (v1.0.66) were wired only into consolidation
+and authoring; a plain review run never asked the existence/expiry
+question — a skill made entirely of dead capability patches would
+pass all 13 items, because every item audits the quality of what is
+there, none whether it should exist. External corroboration: a
+practitioner workflow (video, 2026-07) that keeps near-zero skills,
+each carrying an explicit deletion condition ("delete once better
+models come out"), all bindings to external capability, none
+teaching content. Procedure change same day: review-checklist gains
+a 14th item, Durability (v1.0.67).
+
+Self-review of that change surfaced a corpus-level gap the diff
+faithfully rendered rather than introduced: the source discipline
+(PROCEDURE.md Layer 4 "Durability classes", "record provenance in
+OBSERVATIONS.md at minting") presupposes an OBSERVATIONS.md exists,
+while Layer 4 elsewhere sanctions skills without one (user's choice
+at creation). Checklist-level routing clause added ("a patch-bearing
+skill without OBSERVATIONS.md fails Evolution first, not here"); the
+source discipline still carries the bare presupposition — reconcile
+at the next consolidation pass.
+
+*Observed: 2026-07-13, self-review finding N1 on the v1.0.67
+change.*
