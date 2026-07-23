@@ -1,6 +1,16 @@
 # skill-craft vs Anthropic Agent-Skills guidelines — audit
 
 **Date:** 2026-06-05
+**Currency (stamped 2026-07-23):** snapshot of the 2026-06-05 sources.
+Closed since: the §1 "one to act on" (schema-validation handoff
+invisible at review) — now inside the checklist's Structure item;
+the §4 evaluation gap — closed by `references/evaluation.md` +
+`/eval-skill` (OBSERVATIONS §28). Absorbed since: the Claude-Fable-5
+prompting guidance (brief-instruction steering; "skills for prior
+models are often too prescriptive") → `writing-by-skill-type.md`
+"Calibrating prescription density" + checklist Consumer-calibration
+item. **Re-audit trigger:** a new model generation or a major
+revision of the Anthropic skill docs — stamp the result here.
 **Auditor method:** Anthropic's guidelines were cold-extracted by an *isolated* agent that never saw skill-craft (so its categories aren't anchored to skill-craft's vocabulary), then mapped against skill-craft. This is clippy's separate-checker / isolation lever applied to the audit itself.
 **Anthropic sources:** `agentskills.io/specification`; platform.claude.com Agent-Skills *overview* + *best-practices*; the engineering post "Equipping agents for the real world with Agent Skills"; the shipped `anthropics/skills` repo — especially **skill-creator** (Anthropic's own meta-skill, the true head-to-head twin), plus `docx`/`pptx` as *practice* samples.
 **skill-craft scope audited:** all 6 operational files — `SKILL.md`, `PROCEDURE.md`, `references/{anti-patterns, plugin-engineering, review-checklist, writing-by-skill-type}.md` (1653 lines total).
