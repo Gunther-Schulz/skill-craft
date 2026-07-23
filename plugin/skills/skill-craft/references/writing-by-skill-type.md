@@ -187,3 +187,33 @@ reliability surface and takes its own disciplines:
   (most cases — cheaper, deterministic) or reads it as reference (when
   the logic itself is the guidance). Ambiguous intent wastes a load or
   a run.
+
+## Calibrating prescription density to the consuming model
+
+Prescription density follows the model that will execute the
+skill's instructions — not the author's habits. Name the intended
+consumer (model or tier range) when designing a skill; re-review the
+density whenever the consumer changes.
+
+Both directions are documented by Anthropic:
+
+- **Top-tier consumers (e.g. Claude Fable 5):** "Instruction-following
+  is improved enough that you can steer most behaviors with a brief
+  instruction rather than enumerating each behavior by name," and
+  "Skills developed for prior models are often too prescriptive for
+  Claude Fable 5 and can degrade output quality. Review and consider
+  removing older instructions if default performance is better"
+  (platform.claude.com, "Prompting Claude Fable 5"). Prefer a brief
+  principle plus one curated example over enumerated steps.
+- **Cheaper-tier consumers:** "What works perfectly for Opus might
+  need more detail for Haiku" (Agent Skills best practices). Keep
+  explicit steps, convention lists, and worked forms.
+
+Boundary: the freedom coupling stays primary — fragile or invariant
+procedures keep exact steps regardless of consumer tier. Density
+calibration governs everything outside that class.
+
+Migration: a skill inherited from an older-model era is reviewed for
+over-prescription when its consumer moves up a tier — the reviewed
+removal is deliberate, never a silent trim.
+

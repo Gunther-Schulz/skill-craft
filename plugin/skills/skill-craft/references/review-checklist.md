@@ -80,6 +80,12 @@ state what's missing before continuing.
   Evolution first, not here. The skill's reason to exist is what it
   enforces or binds, not what it explains — an explanation-only
   skill is itself a retirement candidate as models improve.
+- [ ] **Consumer calibration.** Does the skill name its intended
+  consuming model/tier, and does prescription density match — brief
+  principle + example for top-tier consumers, explicit steps and
+  convention lists for cheaper tiers? (Freedom coupling stays
+  primary: fragile procedures keep exact steps at every tier. See
+  writing-by-skill-type, "Calibrating prescription density".)
 
 - [ ] **Information flow (orchestrated skills only).** Every handoff
   passes what the receiver needs? Data explicit in prompt or on disk?
