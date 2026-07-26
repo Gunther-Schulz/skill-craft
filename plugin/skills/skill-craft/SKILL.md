@@ -19,7 +19,7 @@ plugins.
 
 | Document | Purpose | Derived from | When changed, also check |
 |---|---|---|---|
-| `PROCEDURE.md` | The skill design method — five layers, protocol conventions, review checklist | First principles + observed patterns | Nothing — it's a leaf |
+| `PROCEDURE.md` | The skill design method — five layers, protocol conventions, review checklist | First principles + observed patterns | `references/review-checklist.md` (operationalizes Layer rules — Durability, Consumer calibration) and `references/anti-patterns.md` (cites PROCEDURE sections) |
 | `references/plugin-engineering.md` | Plugin packaging: marketplace structure, hooks, installation, common mistakes | Battle-tested plugin development | Nothing — standalone reference |
 | `references/anti-patterns.md` | Common skill design mistakes and fixes | Observed failures | Loaded at activation per "Load this now"; applied at drafting and at validation |
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | Procedure layers | Nothing — standalone reference |

@@ -86,6 +86,9 @@ suggestion. **Match the mechanism to the work**: deterministic/workflow steps
 steps take evidence-backed principles, *not* gates — gate-register applied to
 judgment work over-constrains it (Blocking logic + `references/writing-by-skill-type.md`).
 
+The register a rule renders in follows the same split — see "The two
+registers" (Authoring discipline, below).
+
 Layer 2 groups into five disciplines: **Enforcement mechanics**
 (the foundations — un-fakeable artifacts, judgment-call mitigation,
 gates), **Output discipline** (communication),
@@ -226,10 +229,24 @@ override the default already taken, and the over-broad default leaks.
 Test: reading only up to the default, is its scope already known? If
 not, move the cue earlier or carry it inline.
 
+**The two registers.** Steering text renders in one of two registers
+(alias: directive-voice / evidence-voice); the choice follows the
+Layer 2 mechanism split. The **directive register** commands the
+action ("always freeze fixtures") — for dispatchable sequence, gate
+text, and briefs to cheaper-tier consumers, where compliance matters
+more than judgment. The **evidence register** states the observed
+fact and lets judgment weigh it ("live-anchored counts decay; frozen
+fixtures hold") — for judgment steering of top-tier consumers, where
+a command gets blindly obeyed out of scope or rationalized away in
+scope. A rule that must hold regardless of judgment belongs in
+neither register.
+
 **Imperative writing style.** Write skill content in imperative
 form (verb-first instructions), not second person. Correct: "Read
 the configuration file." Incorrect: "You should read the
-configuration file." Exception in YAML frontmatter:
+configuration file." Mood is second-person-scoped, not a register
+constraint: evidence-register statements are declarative by design.
+Exception in YAML frontmatter:
 `description` uses third-person trigger phrases. Second person
 remains correct in user-facing output templates (text the AI
 produces FOR the user) and quoted-speech examples.
@@ -476,14 +493,21 @@ a skill's operational content by why it exists:
   patch caught); treat firing as the retirement signal — a patch
   has fired when a use or review cycle cites it as catching a real
   issue; a patch with no logged firing since the last consolidation
-  pass is a cut candidate at the next one.
+  pass is a cut candidate at the next one. A consumer-tier shift
+  opens a second review axis: **re-registering** — a surviving
+  directive-register patch is re-tested against the register
+  placement criterion (Authoring discipline, the two registers);
+  one that now steers judgment re-renders in the evidence register;
+  one that needs no prose precipitates or retires. Density/register
+  review on tier moves: `references/writing-by-skill-type.md`
+  Migration.
 - **Binding** — environment- or tool-specific facts (paths,
   commands, tool names). Valid while the environment holds:
   staleness-checked, not fire-checked.
 
-Pruning order at consolidation: patches on firing evidence,
-bindings on staleness, enforcement structure only on architecture
-change. Authoring test (precipitation) — extends the existing
+Pruning order at consolidation: patches on firing evidence (and
+re-registered on tier shifts), bindings on staleness, enforcement
+structure only on architecture change. Authoring test (precipitation) — extends the existing
 placement rules (the Procedure-drift Fix, "Before applying a
 patch, check for drift," Layer 3 file roles) by naming the
 out-of-skill destinations: a mechanical check belongs in CI or
@@ -535,7 +559,10 @@ detection, bidirectional trigger check, widen by principle),
 workflow-phase decision logic, judgment-procedure structure
 (principles with evidence requirements, layers, deepening),
 domain-knowledge progressive disclosure, and tooling minimalism.
-Not needed for reviewing or iterating existing skills.
+Not needed for reviewing or iterating existing skills — with one
+exception: its Migration section (density/register review when the
+consuming tier moves) also loads at a consolidation pass that
+re-registers surviving patches (Layer 4, Capability patch).
 
 Build the evaluation before the procedure text: assemble the
 triggering eval and name the skill's behaviour-delta signature

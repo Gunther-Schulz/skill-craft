@@ -75,7 +75,11 @@ state what's missing before continuing.
   Capability patches carry provenance + a firing log in
   OBSERVATIONS.md — a patch with no logged firing since the last
   consolidation pass is flagged as a cut candidate here (the cut
-  itself belongs to consolidation). Bindings state their validity
+  itself belongs to consolidation). When the skill's consuming tier
+  has moved up since a patch was minted, a directive-register patch
+  is additionally flagged for re-registering (`PROCEDURE.md` Layer 4,
+  Capability patch — the flag lands here, the re-render belongs to
+  consolidation). Bindings state their validity
   condition. A patch-bearing skill without OBSERVATIONS.md fails
   Evolution first, not here. The skill's reason to exist is what it
   enforces or binds, not what it explains — an explanation-only

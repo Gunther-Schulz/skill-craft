@@ -1064,3 +1064,17 @@ re-rendering, not just retirement, as tiers improve)?
 *Observed: 2026-07-26, operator session (beat-the-books), coinage
 during a corpus-mint discussion; external corroboration
 platform.claude.com prompting-claude-fable-5.*
+
+## Deferred (B4, operator GO 2026-07-26): VISION lacks a depreciation/tier dimension
+
+Self-review of the two-registers change found the entire Layer 4
+durability branch (capability-patch depreciation, and now the
+re-registering axis) architecturally unrooted in VISION.md — the
+vision has no model-tier or content-lifetime principle at all
+(pre-existing since v1.0.66; tonight's change extends the unrooted
+branch). Operator disposition: defer — extend VISION with a
+depreciation principle at the next consolidation pass rather than
+bundling a second structural change into this diff.
+
+*Observed: 2026-07-26, self-review finding B4 on the two-registers
+change.*
