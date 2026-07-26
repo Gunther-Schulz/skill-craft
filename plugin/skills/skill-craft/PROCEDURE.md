@@ -229,10 +229,10 @@ override the default already taken, and the over-broad default leaks.
 Test: reading only up to the default, is its scope already known? If
 not, move the cue earlier or carry it inline.
 
-**The two registers.** Steering text renders in one of two registers
-(alias: directive-voice / evidence-voice); the choice follows the
-Layer 2 mechanism split. The **directive register** commands the
-action ("always freeze fixtures") — for dispatchable sequence, gate
+**The two registers.** Steering text renders in one of two registers;
+the choice follows the Layer 2 mechanism split. The **directive
+register** commands the action ("always freeze fixtures") — for
+dispatchable sequence, gate
 text, and briefs to cheaper-tier consumers, where compliance matters
 more than judgment. The **evidence register** states the observed
 fact and lets judgment weigh it ("live-anchored counts decay; frozen
