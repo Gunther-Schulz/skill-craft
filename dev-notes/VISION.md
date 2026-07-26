@@ -62,6 +62,22 @@ the awareness to notice when its own guidance is what needs updating
 (reflexivity). Change without this machinery rots; machinery without
 restraint bloats.
 
+## Content depreciates against a moving reader
+
+The AI a skill steers is not fixed: consumers improve, and content
+written for one tier ages against the next. What a skill *enforces or
+structures* is durable — enforcement rests on fakeability, and
+fakeability does not shrink with capability. What a skill *teaches or
+compensates* is a loan against a current weakness: it depreciates as
+the weakness closes, and holding it past that point costs adherence
+(a stronger reader steered too tightly performs below its default).
+So every piece of operational content carries an implied lifetime and
+a review trigger — retirement when its weakness closes, re-rendering
+into the judgment register when its step stops being compliance work,
+staleness-checking when it binds an environment. A corpus that never
+depreciates its content is betting its reader never improves; the bet
+has lost every time so far.
+
 ## What follows: the five layers
 
 The method organizes as five layers, in rising order of where skills

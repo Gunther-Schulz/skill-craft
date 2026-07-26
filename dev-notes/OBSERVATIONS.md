@@ -1078,3 +1078,18 @@ bundling a second structural change into this diff.
 
 *Observed: 2026-07-26, self-review finding B4 on the two-registers
 change.*
+
+## B4 closed (2026-07-26, same day): VISION depreciation principle added
+
+"Content depreciates against a moving reader" added to VISION.md —
+roots the Layer 4 durability branch (capability-patch depreciation,
+re-registering on tier shifts, binding staleness) that the B4 finding
+identified as architecturally unrooted. Derivation now traces:
+durable = what enforces (fakeability doesn't shrink with capability);
+depreciating = what teaches/compensates; the three durability classes
+and the re-registering axis are this principle rendered operational.
+Deferred-then-done same day: the defer avoided bundling into the
+two-registers diff; VISION is a maintenance file, so no self-review
+mandate applied to this edit itself.
+
+*Closes: B4 (self-review of the two-registers change).*
