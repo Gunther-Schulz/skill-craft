@@ -1020,3 +1020,47 @@ at the next consolidation pass.
 
 *Observed: 2026-07-13, self-review finding N1 on the v1.0.67
 change.*
+
+## Voice terminology gap: evidence-voice vs directive-voice unnamed in the corpus
+
+Two steering-text styles kept needing description-by-example in an
+operator session (2026-07-26) because no corpus term names them:
+**evidence-voice** (an entry states an observed failure shape or fact
+and lets judgment weigh it — "live-anchored acceptance criteria have
+decayed into false alarms; frozen fixtures stayed re-runnable") vs
+**directive-voice** (an entry commands — "always freeze fixtures").
+The distinction already EXISTS structurally in multiple homes without
+a shared name: an operator maintenance doc's render test ("if an
+entry can be obeyed, it is mis-rendered — re-render as the evidence
+that justified it"), PROCEDURE.md Layer 2's workflow-vs-judgment
+split (gates for sequence, evidence-backed principles for judgment),
+writing-by-skill-type's judgment-procedure structure, and the
+anti-patterns "adversarial tone" symptom. Each paraphrases the same
+axis; none can cite a term. Operator coined the pair mid-session and
+asked where it should live — the canonical-term obligation
+(Portability discipline (3)) fired with destination (iii) "operator
+coins" but no home to persist the coinage into.
+
+Same session, corroborating source: the official "Prompting Claude
+Fable 5" doc recommends brief-principle steering over
+behavior-enumeration and warns prior-model skills are "often too
+prescriptive" — i.e. the style axis is now externally documented and
+model-tier-sensitive (stronger models shift the optimum toward
+evidence-voice + structural enforcement for the residue; weaker
+tiers consuming the same text may still need directive renderings —
+the consumer-calibration concern).
+
+Candidate procedure change (next consolidation pass, not
+this-session): name the pair once in PROCEDURE.md Layer 2 (likely at
+the workflow-vs-judgment split, one sentence each + when-which:
+directive-voice for dispatchable sequence and cheap-tier briefs,
+evidence-voice for judgment steering of capable tiers), then have
+the existing homes cite the term instead of paraphrasing. Also
+check: does the Fable-doc's "too prescriptive for newer models"
+finding warrant a consumer-calibration line in the durability/
+capability-patch discipline (patches written directive may need
+re-rendering, not just retirement, as tiers improve)?
+
+*Observed: 2026-07-26, operator session (beat-the-books), coinage
+during a corpus-mint discussion; external corroboration
+platform.claude.com prompting-claude-fable-5.*
