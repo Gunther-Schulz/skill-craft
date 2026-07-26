@@ -61,7 +61,7 @@ e. **Surface side-by-side for the operator with cited evidence.** For each signa
 
    Then name the pattern:
    - **Signature present in WITH, absent in WITHOUT** → skill is doing its work.
-   - **Signature present in both** → skill is inert on this task (bare model already does it). Path-1 observation candidate: maybe the trigger is wrong, maybe the skill is over-broad.
+   - **Signature present in both** → first run the contamination check (`references/evaluation.md` Tier 2): grep `tier2-without.md` for the skill's coined terms (vocabulary the skill's own files introduce that the task statement does not contain; seed from the signature elements of step (a)). A hit means an always-on injector carried the skill into the WITHOUT arm — trace the matched phrase to its source (installed hooks, global instruction files), rerun with that injector disabled; the run is invalid. A clean grep does not prove a clean arm; with no hit and no known injector in the surface, read the skill as inert on this task (bare model already does it). Path-1 observation candidate: maybe the trigger is wrong, maybe the skill is over-broad.
    - **Signature absent in WITH** → skill failed to fire its own discipline. Path-1 observation candidate: the skill loaded but the gates didn't bind.
    The operator does the final signature judgment. The command surfaces grounded evidence, not a verdict.
 

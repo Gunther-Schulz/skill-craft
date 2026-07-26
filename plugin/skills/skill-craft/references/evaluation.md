@@ -59,9 +59,22 @@ only with the skill loaded.
    judgment skill's findings carrying location + impact +
    classification; a workflow skill's gate evidence).
 2. Run one representative task **with** and **without** the skill.
+   The arms must differ in the skill alone: an always-on injector
+   (a plugin hook, a global instruction file, anything injected
+   into every session or subagent) can carry the skill's text into
+   the without-arm and collapse the delta.
 3. Signature present with, absent without → the skill is doing its
-   work. Present in both → inert on that task. Absent in both → the
-   skill failed to fire its own discipline.
+   work. Present in both → before reading it as inert, grep the
+   without-arm's output for the skill's coined terms — vocabulary
+   the skill's own files introduce that the task statement does not
+   contain; the signature elements named in step 1 seed the list. A
+   hit means the arm was contaminated — trace the matched phrase to
+   its source (an installed hook, a global instruction file) and
+   rerun with that injector disabled; the run is invalid. A clean
+   grep does not prove a clean arm (an injector can carry the
+   discipline in its own words) — with no hit and no known injector
+   in the surface, read the skill as inert on that task. Absent in
+   both → the skill failed to fire its own discipline.
 
 The delta is the skill's value; the signature is its un-fakeable
 artifact, present only when the work was done (`PROCEDURE.md` Layer 2).
