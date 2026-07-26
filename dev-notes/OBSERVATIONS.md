@@ -1093,3 +1093,22 @@ two-registers diff; VISION is a maintenance file, so no self-review
 mandate applied to this edit itself.
 
 *Closes: B4 (self-review of the two-registers change).*
+
+## Proportionality question on the self-review mandate (operator-raised, 2026-07-26)
+
+The alias-deletion change (one line, grep-verified zero operational
+consumers) ran the full mandate; the operator asked whether such
+changes warrant it. Data point cuts both ways: the review found no
+blocking issue (supporting "lighter review would have sufficed") but
+its notable — the deletion silently reversed a recorded
+keep-as-alias disposition, requiring the supersession stated with new
+evidence — is exactly the class a grep cannot catch (it lives in
+commit history, not the corpus). Operator lean: no standing
+de-minimis rule (misfire risk — "simple" is a fakeable
+self-assessment), ad-hoc operator passes instead, per situation; the
+14-item checklist skippable for such cases even when the self-review
+runs. Watch: if ad-hoc passes recur, mint the observed boundary from
+the accumulated cases rather than designing one up front.
+
+*Observed: 2026-07-26, alias-deletion review (0 blocking / 1 notable
+/ 1 nit).*
