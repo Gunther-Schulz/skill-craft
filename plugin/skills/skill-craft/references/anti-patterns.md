@@ -207,12 +207,26 @@ keep-as-is disposition: defending keep by appealing to an
 existing corpus pattern ("§X already does Y, so this new Y is
 OK") without independently testing whether the cited pattern
 meets current discipline. Inherits any weakness circularly.
-Sibling to disposition-echo (both are "appeal-to-existing
-without independent verification"). Fix: independently test the
+Sibling to disposition-echo. Fix: independently test the
 cited pattern against the applicable discipline; if the pattern
 fails, do not use it as defense — surface the corpus-wide
 weakness as a separate observation (potentially needing its own
 audit cycle).
+
+**Variant: jurisdiction-appeal.** The same skip-shape applies at
+verdict formation: justifying a disposition by citing a REAL, healthy
+discipline or mechanism whose scope or visibility governs a
+DIFFERENT act than the one being decided (a consolidation-timing rule cited to defer a
+mint; a checker's visibility limit cited to narrow a rule). The
+rationalization borrows the cited rule's strength — where
+corpus-appeal inherits a cited pattern's weakness — so it reads
+as discipline while being drift. Third sibling to
+disposition-echo and corpus-appeal (all three are
+"appeal-to-existing without independent verification"; this one
+appeals across a scope boundary). Test: read the cited
+discipline's own text for the act or scope it names; a mismatch
+with the act being decided is the finding. Fix: name the act
+first, then cite and apply the rule that governs THAT act.
 
 ## Naked judgment in rule statements
 

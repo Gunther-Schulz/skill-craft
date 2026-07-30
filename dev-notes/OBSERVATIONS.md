@@ -1146,3 +1146,13 @@ the instance level (maintenance doc verdict-jurisdiction bullet; the
 operational corpus's costume principle). Candidate for canon: a third
 variant under Skip-rationalization beside disposition-echo and
 corpus-appeal. Layer-4 review decides the general form.
+
+Self-review of the jurisdiction-appeal mint (2026-07-30) flagged the
+third-patch consolidation trigger as arguably met on the
+Skip-rationalization family (three structured variants now attached) —
+downgraded to watch-item because the cited rule's own text names
+checkpoint/caveat additions, not variant entries (the new variant's
+Test applied to its own citation). Watch for the next consolidation
+pass: restructure as one family intro ("appeal-to-existing without
+independent verification") + three compressed moment/mechanism/test
+entries; the N1 fix (family framing stated once) is the down payment.

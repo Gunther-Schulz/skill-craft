@@ -56,8 +56,8 @@ Findings ranked blocking / notable / nit.
 
 Every reviewer finding's disposition cites a discipline-test applied
 + the evidence the test requires — not naked verdict, not echo of the
-subagent's severity (see `anti-patterns.md` Skip-rationalization,
-disposition-echo and corpus-appeal variants). The discipline-test
+subagent's severity (see `anti-patterns.md`
+Skip-rationalization variants). The discipline-test
 source (closed set):
 
 - **(a)** the Concern-named discipline when the finding cites one —
