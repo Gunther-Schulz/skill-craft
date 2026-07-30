@@ -1112,3 +1112,20 @@ the accumulated cases rather than designing one up front.
 
 *Observed: 2026-07-26, alias-deletion review (0 blocking / 1 notable
 / 1 nit).*
+
+## 2026-07-30 — Cross-home duplication is outside every per-home check
+
+During corpus maintenance (dotfiles operational corpus, governed by
+skill-craft as vetting standard): a rule minted into dispatch-discipline
+§1 duplicated a sentence already living in §6 — caught only by an
+operator-prompted cleanliness pass. The maintenance doc's
+neighbor-collision check read the home section's neighbors; the semantic
+sibling lived in another section, outside the read radius. skill-craft's
+authoring checks (proxy detection, bidirectional trigger) are likewise
+per-entry — nothing in the procedure asks "does this statement already
+exist elsewhere in the artifact set?". The consumer-side fix landed at
+the instance level (maintenance doc: search the governed set for the
+concept before minting; hit → amend or source-label). Candidate for the
+general procedure: a "search-before-add" step in the drafting checklist
+for any multi-file skill/corpus — scope defined per skill as its
+governed set. Layer-4 review decides the general form.
