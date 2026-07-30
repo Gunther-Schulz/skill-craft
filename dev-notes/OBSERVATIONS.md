@@ -1129,3 +1129,20 @@ concept before minting; hit → amend or source-label). Candidate for the
 general procedure: a "search-before-add" step in the drafting checklist
 for any multi-file skill/corpus — scope defined per skill as its
 governed set. Layer-4 review decides the general form.
+
+During corpus maintenance (2026-07-30, dotfiles operational corpus): a
+third sibling for the Skip-rationalization anti-pattern's variant list
+— **jurisdiction-appeal**: a verdict cites a REAL, healthy discipline
+from the wrong scope, so the rationalization borrows the cited rule's
+strength (where corpus-appeal inherits a cited pattern's weakness).
+Two same-family instances that day: an extraction (mint-governed)
+deferred citing consolidation-timing, which governs compression — one
+operator question apart; and, earlier in the corpus's JOURNAL, a
+checker's limitation enshrined as doctrine within the hour (rule
+justified by what the enforcement could see). The tell is checkable at
+disposition time: the cited discipline's own text names a different
+act/scope than the one being decided. Consumer-side fixes landed at
+the instance level (maintenance doc verdict-jurisdiction bullet; the
+operational corpus's costume principle). Candidate for canon: a third
+variant under Skip-rationalization beside disposition-echo and
+corpus-appeal. Layer-4 review decides the general form.
