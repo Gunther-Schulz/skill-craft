@@ -1156,3 +1156,26 @@ Test applied to its own citation). Watch for the next consolidation
 pass: restructure as one family intro ("appeal-to-existing without
 independent verification") + three compressed moment/mechanism/test
 entries; the N1 fix (family framing stated once) is the down payment.
+
+2026-07-30 — Trigger axis independent of register; salience below
+ordering. Incident (operational corpus, routing rule): a
+judgment-action rule whose firing moment is a recognizable event (an
+operator GO over settled work) was rendered pure evidence register
+with retrospective tells; a GO-opened implementation burst ran past
+it with the rule loaded — the rule's own documented skip-tell,
+reproduced with the documentation in context. Diagnosis confirmed by
+the operator: (1) register was chosen by action-kind and consumer
+tier only — the two-registers rule had no axis for firing shape, so a
+moment-anchored trigger inherited the weighable form and the weighing
+never happened under momentum; (2) the rule's load-bearing default
+sat mid-sentence in a ~90-word enumeration — parsed, not fired:
+salience failure below the scope-precedes-default ordering level.
+Consumer-side fix landed first (presence-trigger convention at the
+GO moment + default split to its own sentence; dotfiles ce79877).
+Canon sharpened same day: two-registers gains the trigger axis,
+scope-precedes-default gains the salience/flatness case. PROCESS
+NOTE for the next Layer-4 pass: these two canon edits shipped
+WITHOUT the per-change self-review subagent — operator override,
+in-session "anneal in spirit" (checks run in-context, no subagents)
+— so the next review cycle re-reviews both edits as unreviewed
+deltas.

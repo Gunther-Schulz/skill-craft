@@ -227,7 +227,13 @@ judgment split, an exception), the scope cue lands at or before the
 default — a carve-out placed downstream is absorbed too late to
 override the default already taken, and the over-broad default leaks.
 Test: reading only up to the default, is its scope already known? If
-not, move the cue earlier or carry it inline.
+not, move the cue earlier or carry it inline. Salience is the same
+failure below the ordering level: a load-bearing default buried
+mid-sentence in a packed enumeration parses but does not fire at its
+decision moment — in dense prose every clause competes for weight.
+The fix is structural, not explanatory: the default takes its own
+sentence, placed at the seam it governs; added rationale only grows
+what it competes with.
 
 **The two registers.** Steering text renders in one of two registers;
 the choice follows the Layer 2 mechanism split. The **directive
@@ -239,7 +245,13 @@ fact and lets judgment weigh it ("live-anchored counts decay; frozen
 fixtures hold") — for judgment steering of top-tier consumers, where
 a command gets blindly obeyed out of scope or rationalized away in
 scope. A rule that must hold regardless of judgment belongs in
-neither register.
+neither register. Register follows the rule's ACTION; its TRIGGER is
+a separate axis: a rule whose action is judgment but whose firing
+moment is a recognizable event (a hand-off, an approval, a
+start-of-work) under-binds in pure evidence register — execution
+momentum carries past the moment and the weighing never happens.
+Anchor the trigger at its named moment (a convention or gate); the
+action's register stays evidence.
 
 **Imperative writing style.** Write skill content in imperative
 form (verb-first instructions), not second person. Correct: "Read
