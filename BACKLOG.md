@@ -12,7 +12,20 @@ edit; nothing lands from here without it).
   Entry retired 2026-07-31 on a backlog sweep: the commit predated
   the retire and the ref was never carried back here.
 
-- OPEN — search-before-add drafting step for multi-file corpora
-  (carried from the 2026-07-30 cross-home-duplication observation;
-  general form undecided — per-skill governed-set scope is the open
-  design question).
+- PARKED — search-before-add for multi-file corpora (from the
+  2026-07-30 cross-home-duplication observation). Not minted now,
+  deliberately: the canon's multi-file amendment clause predates
+  the incident (v1.0.38) — loaded-but-inert at worst, so only a
+  SHARPEN of that clause is ever on the table, never a new step —
+  and the one corpus that bit already carries the fix at its own
+  governance layer (dotfiles maintenance doc: search the governed
+  set for the concept, not the wording). The open question is a
+  scope/domain one: the governed-set declaration belongs to the
+  corpus's governance layer, not to skill-craft — the canon-general
+  form would at most require THAT a multi-file corpus name its
+  governed set where its governance doc lives, and bind the scan
+  to that named set (a SKILL.md dependency table is the wrong
+  anchor: it names load-bearing files, and the corpus that bit has
+  no SKILL.md at all). Exit trigger: a SECOND cross-home
+  duplication in a corpus other than dotfiles' mints the sharpen;
+  quiet through a review cycle or two drops this with a pointer.
