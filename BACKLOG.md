@@ -8,4 +8,4 @@ edit; nothing lands from here without it).
 
 - (empty — cleared 2026-08-05, operator backlog-clear GO;
   leaving refs and dispositions in dev-notes/OBSERVATIONS.md
-  "2026-08-05 — Consolidation pass" and the clearing commit.)
+  "2026-08-05 — Consolidation pass" and the clearing commit 64cd292.)
