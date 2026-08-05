@@ -20,6 +20,17 @@ unrelated plugins never block. A no-op `claude plugin update` does
 NOT move lastUpdated (verified 2026-08-05), so a pin-move fire
 corresponds to a real version change.
 
+Subagent downgrade (2026-08-05, live incident): a running fable
+subagent had its Skill(skill-craft) load DENIED when the pin moved
+mid-day. The named remedy is operator-only — no subagent can type
+/reload-plugins — so the deny was a wall, not a signal, and the
+agent worked around it by reading the mirror source by hand. In a
+subagent context (payload carries a non-empty `agent_id`) the same
+predicate now emits an ADVISORY instead: the load proceeds on the
+baseline copy, and the advisory names the pin's current installPath
+so the agent can read the newer source directly if it matters.
+Main sessions still deny — there the remedy is one keystroke away.
+
 Fail-open by design: missing field, unreadable file, or parse error
 exits silently — the gate must never break Skill use on harness
 drift. --test runs fixture-based red/green checks.
@@ -119,8 +130,10 @@ def plugin_entry(skill_name: str, installed: dict):
     return None, None
 
 
-def check(payload: dict, installed: dict, baseline) -> str | None:
-    """Return the deny reason, or None (= stay silent)."""
+def stale_pin(payload: dict, installed: dict, baseline):
+    """(name, entry, updated) when the invoked skill's plugin pin moved
+    after `baseline`, else None. The one predicate behind both
+    renderings (deny in a main session, advisory in a subagent)."""
     if payload.get("tool_name") != "Skill":
         return None
     skill = (payload.get("tool_input") or {}).get("skill") or ""
@@ -130,6 +143,15 @@ def check(payload: dict, installed: dict, baseline) -> str | None:
     updated = _parse_ts(entry.get("lastUpdated") or "")
     if updated is None or updated <= baseline:
         return None
+    return name, entry, updated
+
+
+def check(payload: dict, installed: dict, baseline) -> str | None:
+    """Return the deny reason, or None (= stay silent)."""
+    hit = stale_pin(payload, installed, baseline)
+    if hit is None:
+        return None
+    name, _entry, updated = hit
     return (
         f"plugin '{name}' pin moved {updated.strftime('%Y-%m-%d %H:%M:%S%z')} — "
         f"AFTER this session's baseline ({baseline.strftime('%Y-%m-%d %H:%M:%S%z')}: "
@@ -138,6 +160,34 @@ def check(payload: dict, installed: dict, baseline) -> str | None:
         "Operator: type /reload-plugins, then retry the Skill call. "
         "(/reload-skills does NOT re-read the pin.)"
     )
+
+
+def advisory_text(name: str, entry: dict, updated, baseline) -> str:
+    """The subagent rendering: same predicate, no block — the denied
+    party cannot perform the deny's remedy, so it gets the current
+    source location instead."""
+    install = (entry or {}).get("installPath") or "(installPath unrecorded)"
+    return (
+        f"[{SOURCE}] plugin '{name}' pin moved "
+        f"{updated.strftime('%Y-%m-%d %H:%M:%S%z')} — after this context's "
+        f"baseline ({baseline.strftime('%Y-%m-%d %H:%M:%S%z')}). This SUBAGENT "
+        "serves the previously resolved version and cannot run "
+        "/reload-plugins (operator-only); proceeding with the baseline copy. "
+        f"Current released source, readable directly: {install}/skills/. "
+        "If the newer version plausibly matters for your task, read it there "
+        "and say so in your report."
+    )
+
+
+def advise(context: str) -> None:
+    """Non-blocking PreToolUse context injection: no systemMessage, no
+    permissionDecision — the Skill load proceeds."""
+    print(json.dumps({
+        "hookSpecificOutput": {
+            "hookEventName": "PreToolUse",
+            "additionalContext": context,
+        },
+    }))
 
 
 def deny(reason: str) -> None:
@@ -161,9 +211,13 @@ def main() -> int:
         installed = json.loads(installed_path.read_text())
         baseline = session_baseline(payload.get("transcript_path") or "",
                                     payload.get("session_id"))
-        reason = check(payload, installed, baseline)
-        if reason:
-            deny(reason)
+        hit = stale_pin(payload, installed, baseline)
+        if hit:
+            if payload.get("agent_id"):
+                name, entry, updated = hit
+                advise(advisory_text(name, entry, updated, baseline))
+            else:
+                deny(check(payload, installed, baseline))
     except Exception:
         return 0  # fail-open: the gate must never break Skill use
     return 0
@@ -263,6 +317,95 @@ def _test() -> None:
     assert b3.hour == 12                             # scoped: this life
     assert check(skill_call, installed, b3) is None  # 10:19 < 12:00
     assert session_baseline(t, "ZZZ").hour == 8      # no match: fallback
+
+    # --- main() level: the subagent downgrade (live incident 2026-08-05).
+    # A deny whose remedy is operator-only is a wall in a subagent, so
+    # the same predicate renders as an advisory there.
+    import io
+    import os
+    from contextlib import redirect_stdout
+
+    install_dir = "/home/g/.claude/plugins/cache/mp/clippy/0.12.1"
+
+    def home_with(last_updated, install_path=install_dir):
+        d = tempfile.mkdtemp()
+        pdir = os.path.join(d, ".claude", "plugins")
+        os.makedirs(pdir)
+        e = {"lastUpdated": last_updated}
+        if install_path is not None:
+            e["installPath"] = install_path
+        with open(os.path.join(pdir, "installed_plugins.json"), "w") as fh:
+            json.dump({"plugins": {"clippy@coding-clippy": [e]}}, fh)
+        return d
+
+    def run_main(raw, home):
+        """Feed stdin, capture stdout; Path is redirected so the fixture
+        home is read instead of the real one."""
+        old_stdin, old_path = sys.stdin, globals()["Path"]
+
+        class _P:
+            # `old_path`, not `Path`: the global is patched below, so a
+            # late lookup would resolve to this very stub.
+            @staticmethod
+            def home():
+                return old_path(home)
+
+        out = io.StringIO()
+        ret, exited, code = None, False, None
+        try:
+            sys.stdin = io.StringIO(raw)
+            globals()["Path"] = _P
+            with redirect_stdout(out):
+                try:
+                    ret = main()
+                except SystemExit as exc:
+                    exited, code = True, exc.code
+        finally:
+            sys.stdin, globals()["Path"] = old_stdin, old_path
+        return ret, out.getvalue(), exited, code
+
+    t_main = transcript(start_line)                    # baseline 08:00
+    stale_home = home_with("2026-08-05T13:20:08.000Z")  # pin moved after
+    fresh_home = home_with("2026-08-05T07:00:00.000Z")  # pin older
+    call = {"tool_name": "Skill", "tool_input": {"skill": "clippy:clippy"},
+            "transcript_path": t_main}
+
+    # (a) subagent + stale pin → advisory context, load proceeds.
+    _, out_a, _, _ = run_main(json.dumps(dict(call, agent_id="a1")),
+                              stale_home)
+    adv = json.loads(out_a)
+    assert "permissionDecision" not in out_a, out_a
+    assert "systemMessage" not in adv, out_a
+    ctx = adv["hookSpecificOutput"]["additionalContext"]
+    assert adv["hookSpecificOutput"]["hookEventName"] == "PreToolUse"
+    assert install_dir + "/skills/" in ctx, ctx
+    assert "SUBAGENT" in ctx and "13:20:08" in ctx, ctx
+
+    # (b) main session + stale pin → deny, byte-identical to today.
+    _, out_b, _, _ = run_main(json.dumps(call), stale_home)
+    dp = json.loads(out_b)
+    assert dp["hookSpecificOutput"]["permissionDecision"] == "deny", out_b
+    assert dp["systemMessage"] == "[" + SOURCE + "] Blocked: " + check(
+        call, {"plugins": {"clippy@coding-clippy": [
+            {"lastUpdated": "2026-08-05T13:20:08.000Z"}]}},
+        session_baseline(t_main)), out_b
+
+    # (c) subagent + fresh pin → silence.
+    _, out_c, _, _ = run_main(json.dumps(dict(call, agent_id="a1")),
+                              fresh_home)
+    assert out_c == "", out_c
+    # Empty agent_id is a main session, not a subagent.
+    _, out_d, _, _ = run_main(json.dumps(dict(call, agent_id="")), stale_home)
+    assert "permissionDecision" in out_d, out_d
+    # Missing installPath degrades to the literal placeholder, not a crash.
+    _, out_e, _, _ = run_main(
+        json.dumps(dict(call, agent_id="a1")),
+        home_with("2026-08-05T13:20:08.000Z", install_path=None))
+    assert "(installPath unrecorded)/skills/" in out_e, out_e
+    # Fail-open survives the new branch: garbage stdin, wrong tool.
+    assert run_main("not json", stale_home)[0] == 0
+    assert run_main(json.dumps({"tool_name": "Bash"}), stale_home)[1] == ""
+
     print("plugin-stale-gate: all tests passed")
 
 

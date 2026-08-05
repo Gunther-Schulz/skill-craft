@@ -1281,3 +1281,47 @@ parallel item would be the additive reflex). Version: 1.1.2 per
 observed canon-mint practice (patch bumps), not 1.2.0.
 The two owed 2026-07-30 deltas re-reviewed: findings N3/N4 above,
 both fixed — re-review debt cleared.
+
+---
+
+## 2026-08-05 — The stale-pin deny was a wall for the party that cannot reload
+
+Live incident (same day as the gate's own mint, v1.1.0): skill-craft's
+pin moved 13:20:08Z mid-day (installed_plugins.json lastUpdated), and a
+RUNNING fable subagent then had its Skill(skill-craft) load denied by
+the gate. The deny's named remedy — /reload-plugins — is an
+operator-only slash command: no subagent can ever satisfy it, and the
+subagent has no channel to ask for one mid-flight. The agent worked
+around the wall by reading the mirror source by hand, which is the
+right outcome arrived at the expensive way.
+
+The gate's predicate was correct; only its RENDERING was wrong for
+that audience. A blocking gate whose remedy the blocked party cannot
+perform stops being a signal and becomes an obstacle to route around —
+and routing around a gate is the behavior that erodes every other gate
+in the set. Downgrade decided and operator-ratified 2026-08-05
+(v1.1.3): in a subagent context (payload carries a non-empty
+`agent_id` — the same detection dispatch-guards uses, replicated as a
+one-line predicate rather than imported, for self-containment) the
+same predicate emits a non-blocking PreToolUse `additionalContext`
+advisory: the load proceeds on the baseline copy, and the advisory
+names the pin's CURRENT `installPath` so the agent can read the newer
+released source directly — the one remedy that is actually available
+to it — and say so in its report. Main sessions still deny; there the
+remedy is one keystroke away.
+
+General shape, worth carrying beyond this hook: **a gate's audience
+determines whether deny is a legitimate verdict.** Before writing a
+block, ask who receives it and whether that party can perform the
+remedy named in the text. Where it cannot, the honest rendering is an
+advisory that names the remedy the receiver DOES have.
+
+Firing expectation (this is what the log should show next): the
+advisory fires on the next mid-day pin move observed in any subagent
+context, and the deny keeps firing for main sessions. Red evidence:
+main()-level fixture cases in `--test` — subagent + stale pin emits
+additionalContext with the installPath and no permissionDecision;
+same payload without agent_id denies byte-identically to v1.1.2;
+subagent + fresh pin stays silent — plus a live stdin smoke through
+the real installed_plugins.json reproducing the 13:20:08 incident
+payload.
