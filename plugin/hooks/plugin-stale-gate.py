@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""PreToolUse(Skill) gate: block skill injections from a stale plugin pin.
+"""PreToolUse(Skill) gate: WARN when a skill injection comes from a
+stale plugin pin. Never blocks — the load proceeds.
 
 Incident (2026-08-05): a plugin released several versions mid-session,
 `claude plugin update` moved the pin, the operator ran /reload-skills
@@ -20,16 +21,38 @@ unrelated plugins never block. A no-op `claude plugin update` does
 NOT move lastUpdated (verified 2026-08-05), so a pin-move fire
 corresponds to a real version change.
 
-Subagent downgrade (2026-08-05, live incident): a running fable
-subagent had its Skill(skill-craft) load DENIED when the pin moved
-mid-day. The named remedy is operator-only — no subagent can type
-/reload-plugins — so the deny was a wall, not a signal, and the
-agent worked around it by reading the mirror source by hand. In a
-subagent context (payload carries a non-empty `agent_id`) the same
-predicate now emits an ADVISORY instead: the load proceeds on the
-baseline copy, and the advisory names the pin's current installPath
-so the agent can read the newer source directly if it matters.
-Main sessions still deny — there the remedy is one keystroke away.
+Deny retired (2026-08-05, operator-raised + measured). The gate
+denied in main sessions on the theory that only a deny reaches the
+operator, while a warn would let stale rule text into context
+unread. Both halves were wrong:
+
+  - The operator-facing channel is `systemMessage`, and it renders
+    on the ALLOW path with no `permissionDecision` at all — probed
+    live, three variants in one session: bare systemMessage
+    (PROBE-A), +additionalContext (PROBE-B), +permissionDecision
+    "allow" (PROBE-C). All three surfaced identically, under the
+    same "PreToolUse:Skill says:" line the deny had used, and all
+    three Skill loads succeeded. The deny bought zero attention.
+  - A stale skill is a near-copy of the fresh one; a blocked skill
+    is the discipline absent entirely. Observed twice: a fable
+    subagent worked around its DENIED skill-craft load by reading
+    the mirror by hand, and a main-session deny produced a design
+    conversation and no /reload-plugins.
+
+So one rendering serves both contexts, and the `agent_id` branch
+that carried the old main/subagent split is gone. Two channels,
+two audiences: `systemMessage` tells the OPERATOR the pin moved and
+that /reload-plugins (not /reload-skills) re-reads it;
+`additionalContext` tells the MODEL its load is the baseline copy
+and names the current installPath so it can read the newer source
+directly when the delta plausibly matters.
+
+Known imprecision, deliberately left: the pin moves at PLUGIN
+granularity while staleness matters at SKILL granularity, so a
+release touching only a hook still warns about an unrelated skill.
+Under a deny that cost a blocked skill; under a warn it costs one
+line of text, which is not worth the SessionStart install-path
+snapshot a content-level comparison would need.
 
 Fail-open by design: missing field, unreadable file, or parse error
 exits silently — the gate must never break Skill use on harness
@@ -132,8 +155,7 @@ def plugin_entry(skill_name: str, installed: dict):
 
 def stale_pin(payload: dict, installed: dict, baseline):
     """(name, entry, updated) when the invoked skill's plugin pin moved
-    after `baseline`, else None. The one predicate behind both
-    renderings (deny in a main session, advisory in a subagent)."""
+    after `baseline`, else None. The predicate behind the warning."""
     if payload.get("tool_name") != "Skill":
         return None
     skill = (payload.get("tool_input") or {}).get("skill") or ""
@@ -147,57 +169,52 @@ def stale_pin(payload: dict, installed: dict, baseline):
 
 
 def check(payload: dict, installed: dict, baseline) -> str | None:
-    """Return the deny reason, or None (= stay silent)."""
+    """The operator-facing warning text, or None (= stay silent)."""
     hit = stale_pin(payload, installed, baseline)
     if hit is None:
         return None
     name, _entry, updated = hit
+    return operator_text(name, updated, baseline)
+
+
+def operator_text(name: str, updated, baseline) -> str:
+    """Rides `systemMessage` — renders to the OPERATOR on the allow
+    path (probed 2026-08-05; see module docstring). Names the remedy
+    and the near-name command that does NOT perform it."""
     return (
-        f"plugin '{name}' pin moved {updated.strftime('%Y-%m-%d %H:%M:%S%z')} — "
-        f"AFTER this session's baseline ({baseline.strftime('%Y-%m-%d %H:%M:%S%z')}: "
-        "last /reload-plugins, else session start). The session still serves "
-        "the previously resolved version; this Skill injection would be stale. "
-        "Operator: type /reload-plugins, then retry the Skill call. "
+        f"[{SOURCE}] plugin '{name}' pin moved "
+        f"{updated.strftime('%Y-%m-%d %H:%M:%S%z')} — after this session's "
+        f"baseline ({baseline.strftime('%Y-%m-%d %H:%M:%S%z')}: last "
+        "/reload-plugins, else session start). The Skill load PROCEEDS on the "
+        "previously resolved version. To serve the new one: /reload-plugins "
         "(/reload-skills does NOT re-read the pin.)"
     )
 
 
-def advisory_text(name: str, entry: dict, updated, baseline) -> str:
-    """The subagent rendering: same predicate, no block — the denied
-    party cannot perform the deny's remedy, so it gets the current
-    source location instead."""
+def model_text(name: str, entry: dict, updated) -> str:
+    """Rides `additionalContext` — reaches the MODEL only. Names the
+    current installPath so a context that cannot run /reload-plugins
+    (any subagent) can still read the newer source directly."""
     install = (entry or {}).get("installPath") or "(installPath unrecorded)"
     return (
         f"[{SOURCE}] plugin '{name}' pin moved "
-        f"{updated.strftime('%Y-%m-%d %H:%M:%S%z')} — after this context's "
-        f"baseline ({baseline.strftime('%Y-%m-%d %H:%M:%S%z')}). This SUBAGENT "
-        "serves the previously resolved version and cannot run "
-        "/reload-plugins (operator-only); proceeding with the baseline copy. "
-        f"Current released source, readable directly: {install}/skills/. "
-        "If the newer version plausibly matters for your task, read it there "
-        "and say so in your report."
+        f"{updated.strftime('%Y-%m-%d %H:%M:%S%z')}, after this context's "
+        "baseline: this Skill load serves the PREVIOUSLY RESOLVED version, "
+        "not the pinned one. Current released source, readable directly: "
+        f"{install}/skills/. If the newer version plausibly matters for the "
+        "task at hand, read it there and say so."
     )
 
 
-def advise(context: str) -> None:
-    """Non-blocking PreToolUse context injection: no systemMessage, no
-    permissionDecision — the Skill load proceeds."""
+def warn(name: str, entry: dict, updated, baseline) -> None:
+    """The one rendering, both contexts: no permissionDecision, ever —
+    the Skill load proceeds. Two channels because the two audiences
+    need different sentences (docstring)."""
     print(json.dumps({
+        "systemMessage": operator_text(name, updated, baseline),
         "hookSpecificOutput": {
             "hookEventName": "PreToolUse",
-            "additionalContext": context,
-        },
-    }))
-
-
-def deny(reason: str) -> None:
-    msg = f"[{SOURCE}] Blocked: {reason}"
-    print(json.dumps({
-        "systemMessage": msg,
-        "hookSpecificOutput": {
-            "hookEventName": "PreToolUse",
-            "permissionDecision": "deny",
-            "permissionDecisionReason": msg,
+            "additionalContext": model_text(name, entry, updated),
         },
     }))
 
@@ -213,11 +230,7 @@ def main() -> int:
                                     payload.get("session_id"))
         hit = stale_pin(payload, installed, baseline)
         if hit:
-            if payload.get("agent_id"):
-                name, entry, updated = hit
-                advise(advisory_text(name, entry, updated, baseline))
-            else:
-                deny(check(payload, installed, baseline))
+            warn(*hit, baseline)
     except Exception:
         return 0  # fail-open: the gate must never break Skill use
     return 0
@@ -254,11 +267,11 @@ def _test() -> None:
     }}
     skill_call = {"tool_name": "Skill", "tool_input": {"skill": "clippy:clippy"}}
 
-    # RED: update (10:19) after session start (08:00), no reload → deny.
+    # RED: update (10:19) after session start (08:00), no reload → warn.
     b = session_baseline(transcript(untimed_line, start_line))
     assert b is not None and b.hour == 8
     assert check(skill_call, installed, b) is not None
-    # GREEN: reload (10:00) … still before the update (10:19) → deny.
+    # GREEN: reload (10:00) … still before the update (10:19) → warn.
     b = session_baseline(transcript(start_line, marker_line))
     assert b.hour == 10 and check(skill_call, installed, b) is not None
     # GREEN: reload after the update → pass.
@@ -318,9 +331,10 @@ def _test() -> None:
     assert check(skill_call, installed, b3) is None  # 10:19 < 12:00
     assert session_baseline(t, "ZZZ").hour == 8      # no match: fallback
 
-    # --- main() level: the subagent downgrade (live incident 2026-08-05).
-    # A deny whose remedy is operator-only is a wall in a subagent, so
-    # the same predicate renders as an advisory there.
+    # --- main() level: warn-only, both contexts (2026-08-05).
+    # The INVARIANT this file exists to hold since the deny was retired:
+    # no output path may carry permissionDecision. Red against the
+    # pre-change implementation, which emitted deny for a main session.
     import io
     import os
     from contextlib import redirect_stdout
@@ -370,36 +384,38 @@ def _test() -> None:
     call = {"tool_name": "Skill", "tool_input": {"skill": "clippy:clippy"},
             "transcript_path": t_main}
 
-    # (a) subagent + stale pin → advisory context, load proceeds.
-    _, out_a, _, _ = run_main(json.dumps(dict(call, agent_id="a1")),
-                              stale_home)
-    adv = json.loads(out_a)
-    assert "permissionDecision" not in out_a, out_a
-    assert "systemMessage" not in adv, out_a
-    ctx = adv["hookSpecificOutput"]["additionalContext"]
-    assert adv["hookSpecificOutput"]["hookEventName"] == "PreToolUse"
-    assert install_dir + "/skills/" in ctx, ctx
-    assert "SUBAGENT" in ctx and "13:20:08" in ctx, ctx
+    # (a) THE INVARIANT: stale pin never blocks, in either context.
+    # This is the assertion that went red against the deny build.
+    for agent in ("a1", "", None):
+        raw = json.dumps(call if agent is None else dict(call, agent_id=agent))
+        _, out, _, _ = run_main(raw, stale_home)
+        assert "permissionDecision" not in out, (agent, out)
+        assert "Blocked" not in out, (agent, out)
 
-    # (b) main session + stale pin → deny, byte-identical to today.
+    # (b) both channels present, each carrying its own audience's text.
     _, out_b, _, _ = run_main(json.dumps(call), stale_home)
-    dp = json.loads(out_b)
-    assert dp["hookSpecificOutput"]["permissionDecision"] == "deny", out_b
-    assert dp["systemMessage"] == "[" + SOURCE + "] Blocked: " + check(
-        call, {"plugins": {"clippy@coding-clippy": [
-            {"lastUpdated": "2026-08-05T13:20:08.000Z"}]}},
+    wp = json.loads(out_b)
+    hso = wp["hookSpecificOutput"]
+    assert hso["hookEventName"] == "PreToolUse", out_b
+    # systemMessage → operator: names the remedy and the near-name trap.
+    assert wp["systemMessage"] == operator_text(
+        "clippy", _parse_ts("2026-08-05T13:20:08.000Z"),
         session_baseline(t_main)), out_b
+    assert "/reload-plugins" in wp["systemMessage"], out_b
+    assert "/reload-skills does NOT" in wp["systemMessage"], out_b
+    assert "PROCEEDS" in wp["systemMessage"], out_b
+    # additionalContext → model: names where the newer source sits.
+    ctx = hso["additionalContext"]
+    assert install_dir + "/skills/" in ctx, ctx
+    assert "13:20:08" in ctx, ctx
 
-    # (c) subagent + fresh pin → silence.
-    _, out_c, _, _ = run_main(json.dumps(dict(call, agent_id="a1")),
-                              fresh_home)
-    assert out_c == "", out_c
-    # Empty agent_id is a main session, not a subagent.
-    _, out_d, _, _ = run_main(json.dumps(dict(call, agent_id="")), stale_home)
-    assert "permissionDecision" in out_d, out_d
+    # (c) fresh pin → silence, in either context.
+    for agent in ("a1", None):
+        raw = json.dumps(call if agent is None else dict(call, agent_id=agent))
+        assert run_main(raw, fresh_home)[1] == "", agent
     # Missing installPath degrades to the literal placeholder, not a crash.
     _, out_e, _, _ = run_main(
-        json.dumps(dict(call, agent_id="a1")),
+        json.dumps(call),
         home_with("2026-08-05T13:20:08.000Z", install_path=None))
     assert "(installPath unrecorded)/skills/" in out_e, out_e
     # Fail-open survives the new branch: garbage stdin, wrong tool.

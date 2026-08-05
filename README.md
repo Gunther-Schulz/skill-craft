@@ -68,7 +68,7 @@ Run `/reload-plugins` in Claude Code to activate.
 | `references/plugin-engineering.md` | Plugin packaging: marketplace, hooks, installation | On demand |
 | `references/writing-by-skill-type.md` | Type-specific authoring (judgment, workflow, domain-knowledge, tooling) | On demand |
 | `commands/release-plugin.md` | `/release-plugin` — mechanical release + activation sequence, ends at the operator's `/reload-plugins` | Command |
-| `hooks/plugin-stale-gate.py` | Denies Skill calls whose own plugin's pin moved after the session's last `/reload-plugins` — stale injections blocked with the fix named | Hook (automatic) |
+| `hooks/plugin-stale-gate.py` | Warns (never blocks) when a Skill call's own plugin pin moved after the session's last `/reload-plugins` — the load proceeds on the stale copy, the operator gets the fix, the model gets the newer source's path | Hook (automatic) |
 | `hooks/plugin-update-reminder.py` | After `claude plugin update`/`install`: running sessions serve the old version until `/reload-plugins` | Hook (automatic) |
 | `dev-notes/OBSERVATIONS.md` | Improvement journal — maintainer-side, outside plugin payload | Never |
 

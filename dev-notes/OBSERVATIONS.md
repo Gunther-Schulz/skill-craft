@@ -1325,3 +1325,76 @@ same payload without agent_id denies byte-identically to v1.1.2;
 subagent + fresh pin stays silent — plus a live stdin smoke through
 the real installed_plugins.json reproducing the 13:20:08 incident
 payload.
+
+---
+
+## 2026-08-05 — plugin-stale-gate: the deny retired entirely (v1.2.0)
+
+The v1.1.3 entry above ends on a firing expectation that is now
+withdrawn: *"the deny keeps firing for main sessions."* It rested on
+an unprobed premise — that only a deny reaches the operator, so a
+main-session warn would be silent to them while letting stale rule
+text into context unread. The operator challenged the premise
+directly ("a stale skill is better than none; it's mainly supposed to
+remind me to run /reload-plugins"), and the probe killed it.
+
+**Measurement (live, three variants in one session).** A temporary
+patch to the installed cache copy emitted, on the ALLOW path, for
+three consecutive `Skill(ref)` calls: (A) bare `systemMessage`, no
+`hookSpecificOutput` at all; (B) `systemMessage` +
+`additionalContext`; (C) `systemMessage` + `permissionDecision:
+"allow"`. All three rendered to the operator, under the identical
+`PreToolUse:Skill says:` line the deny had been using, and all three
+Skill loads succeeded. Positive control: B's `additionalContext`
+reached the model, proving the harness ran the hook and parsed its
+JSON rather than discarding it — the absence in the other variants
+would otherwise have been an unfalsifiable non-event. Scratchpad log
+recorded each emitted payload verbatim; cache copy restored
+byte-identical (md5 `6f0e05f3cb44`) after.
+
+So `systemMessage` renders on the allow path unconditionally. **The
+deny bought exactly zero operator attention** over a warn, and paid
+for it by withholding the skill.
+
+**The lesson, one level up from the v1.1.3 one.** That entry got the
+receiver question right (*who receives the block, and can they
+perform the remedy?*) and the channel question wrong. Both halves
+matter: a deny is a legitimate verdict only when blocking is what
+achieves the effect — and where a non-blocking channel reaches the
+same receiver with the same words, the block is pure cost. Ask what
+the deny BUYS over a warn on the same channel, and probe the channel
+before assuming the answer.
+
+Corroborating evidence the block was never doing the work: twice
+observed, an unwanted block produced a workaround rather than the
+named remedy — a fable subagent read the mirror source by hand, and a
+main session opened a design conversation instead of typing
+/reload-plugins.
+
+Minted (v1.2.0): one rendering for both contexts, `agent_id` branch
+deleted along with `deny()`/`advise()`/`advisory_text()`. Two
+channels, two audiences: `systemMessage` → operator (pin moved,
+/reload-plugins re-reads it, /reload-skills does not, the load
+PROCEEDS); `additionalContext` → model (this load is the baseline
+copy, current source at `<installPath>/skills/`, read it if the delta
+plausibly matters). Predicate and fail-open semantics untouched.
+
+Red evidence: the new invariant — *no output path may carry
+`permissionDecision`* — asserted against the pre-change
+implementation, which emitted `permissionDecision: deny` for a main
+session (old code, new expectation; the existing battery stayed green
+alongside, so old-against-old would have passed vacuously). Bite: the
+deny re-injected into `warn()`, `--test` failed at the invariant
+assertion, injection removed, green.
+
+Deliberately NOT fixed: the pin moves at PLUGIN granularity while
+staleness matters at SKILL granularity, so a hook-only release still
+warns about an unrelated skill. Under a deny that cost a blocked
+skill; under a warn it costs one line, which does not justify the
+SessionStart install-path snapshot a content-level comparison needs.
+Reopen only if the warn proves noisy in the firing log.
+
+Firing expectation (what the log should show next): the warn fires on
+the next mid-day pin move in ANY context, no Skill call is ever
+blocked by this hook again, and the operator's next /reload-plugins
+follows the warn rather than a wall.
