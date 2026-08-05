@@ -1210,3 +1210,16 @@ staleness-checked) with enforcement-structure form; the doc paragraph
 is canon. Red evidence: fixture red/green suite in each hook
 (--test); live red probe planned at release: bump 1.1.1 without
 reload → gate must deny, then reload → pass. Firing log starts here.
+
+Firing log, plugin-stale-gate (live, 2026-08-05, releasing session):
+RED delivered through the real harness twice — the deliberate 1.1.1
+probe (pin 11:44:31 vs baseline 11:43:57, Skill call denied with the
+mechanism and fix named) and an unplanned legitimate fire minutes
+later (a skill-craft invocation for unrelated corpus work, blocked
+until the operator reloaded — the exact incident class, caught on
+day one). GREEN after each /reload-plugins (1.1.0 and 1.1.1 probes,
+gate silent, base directory correct). plugin-update-reminder fired
+live after the 1.1.1 `claude plugin update` (its text landed as
+PostToolUse context in the releasing session). §Activation's
+"ignore the CLI restart message" claim re-verified twice: hooks and
+commands from the new version were live after reload alone.
