@@ -42,7 +42,9 @@ state what's missing before continuing.
   scope at or before the point of statement — no carve-out (workflow-vs-
   judgment split, exception, narrowing) stranded downstream where the AI
   reader absorbs the default too late to override it (Scope-precedes-
-  default, `PROCEDURE.md`)?
+  default, `PROCEDURE.md`)? And below the ordering level: does every
+  load-bearing default occupy its own sentence at the seam it governs —
+  none buried mid-sentence in a packed enumeration?
 
 - [ ] **Abstraction.** Judged against the skill's intended scope — a
   domain-specific skill is correctly domain-bound; only a
@@ -66,9 +68,9 @@ state what's missing before continuing.
   checklist? Checklist is floor, not ceiling?
 
 - [ ] **Evolution.** OBSERVATIONS.md exists for skills involving
-  judgment? SKILL.md includes evolution instructions (notice gap →
-  write observation → propose change)? Skill notices when own
-  guidance needs updating?
+  judgment or carrying capability patches? SKILL.md includes
+  evolution instructions (notice gap → write observation → propose
+  change)? Skill notices when own guidance needs updating?
 
 - [ ] **Durability.** Operational content classifiable under the three
   durability classes (`PROCEDURE.md` Layer 4 "Durability classes")?

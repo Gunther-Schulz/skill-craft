@@ -1223,3 +1223,61 @@ live after the 1.1.1 `claude plugin update` (its text landed as
 PostToolUse context in the releasing session). §Activation's
 "ignore the CLI restart message" claim re-verified twice: hooks and
 commands from the new version were live after reload alone.
+
+## 2026-08-05 — Consolidation pass (operator-commissioned backlog clear)
+
+Forward obligations discharged, each against its recorded clause:
+- Search-before-add (BACKLOG parked entry): EXIT TRIGGER FIRED — the
+  second cross-home incident arrived same-day (repair commits
+  violating multi-home discipline dominated both coding-clippy
+  render-vet findings tables, 2026-08-05). MINTED into PROCEDURE.md
+  Layer 4 multi-file corpora: governed set named + search-before-add
+  scan as placement basis + repairs get the same scan. BACKLOG
+  entry closed by this commit's ref; file now empty by design.
+- Voice/register terminology (:1024): CLOSED-ALREADY-SATISFIED —
+  "The two registers" (Layer 2 Authoring discipline, minted
+  2026-07-30) names the pair; obligation predates it.
+- Durability cut-candidate gap (:970): CLOSED-ALREADY-SATISFIED —
+  the durability-classes text carries "a patch with no logged firing
+  since the last consolidation pass is a cut candidate".
+- OBSERVATIONS presupposition (:998): RECONCILED — capability-patch
+  bullet now states the requirement explicitly and points at the
+  Evolution check as its enforcer.
+- Skip-family restructure (:1151 watch): DONE — family intro minted
+  ("appeal-to-existing"), per-variant sibling cross-references
+  removed (carried by the intro); variants kept compact rather than
+  rewritten (content-preserving Pareto).
+- The two unreviewed 2026-07-30 canon deltas (:1160 process note):
+  re-review is IN THIS PASS's self-review brief, explicitly.
+Remaining journal-resident watch (not a backlog item): self-review
+proportionality (:1097) — unchanged, watch-kind unchanged.
+
+Self-review round 2 (2026-08-05, opus, consolidation pass): 4
+blocking all fixed pre-commit — B1 OBSERVATIONS-requirement
+duplicated across two homes in the commit minting the
+anti-duplication rule (parenthetical dropped; checklist owns the
+routing); B2 the cited Evolution enforcer lacked the patch-bearing
+predicate (widened — this also cures the pre-existing corpus-appeal
+in review-checklist:83); B3 the permissive no-journal default kept
+its carve-out 120 lines downstream (carve-out now at the default);
+B4 the family restructure had shipped only its additive half (three
+variants compressed to moment/mechanism/test; net-subtractive now).
+Notables applied: governed-set placement half restored
+(declaration in the governance doc; skill-craft's own set declared
+in repo CLAUDE.md; fallback = whole payload), scan requirement its
+own sentence, trigger-axis carve-out carried inline at the Layer-2
+lead, salience case gains its own test + the checklist Salience
+item gains the flatness half, residual contrast clauses cut with
+the compression, coinage related to Terminology (2) inline.
+Derivation marking (reviewer n1): the incident evidence
+(cross-home propagation-miss, the duplication mirror) squarely
+grounds the repairs-clause; the governed-set + placement-basis
+clauses are DERIVED from the un-fakeable-artifact principle (the
+scan is the artifact), stated here rather than claimed
+incident-grounded. Accepted (n2): no new checklist item for
+search-before-add — the review-time consumer is self-review check
+3's cross-reference enumeration (near-duplicate function; a
+parallel item would be the additive reflex). Version: 1.1.2 per
+observed canon-mint practice (patch bumps), not 1.2.0.
+The two owed 2026-07-30 deltas re-reviewed: findings N3/N4 above,
+both fixed — re-review debt cleared.

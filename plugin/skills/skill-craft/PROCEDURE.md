@@ -83,8 +83,11 @@ How to write protocol text that AI actually follows. AI does not self-enforce.
 A load-bearing step that must hold needs structural enforcement, or it is a
 suggestion. **Match the mechanism to the work**: deterministic/workflow steps
 (a sequence or gate that must hold) take structural enforcement; judgment
-steps take evidence-backed principles, *not* gates — gate-register applied to
-judgment work over-constrains it (Blocking logic + `references/writing-by-skill-type.md`).
+steps take evidence-backed principles, *not* gates on the action —
+gate-register applied to judgment work over-constrains it (Blocking
+logic + `references/writing-by-skill-type.md`); a judgment rule's
+firing MOMENT may still be anchored at a convention or gate (the
+trigger axis — "The two registers", below).
 
 The register a rule renders in follows the same split — see "The two
 registers" (Authoring discipline, below).
@@ -233,7 +236,8 @@ mid-sentence in a packed enumeration parses but does not fire at its
 decision moment — in dense prose every clause competes for weight.
 The fix is structural, not explanatory: the default takes its own
 sentence, placed at the seam it governs; added rationale only grows
-what it competes with.
+what it competes with. Test: does the load-bearing default occupy
+its own sentence at the seam it governs?
 
 **The two registers.** Steering text renders in one of two registers;
 the choice follows the Layer 2 mechanism split. The **directive
@@ -385,9 +389,11 @@ persisting gaps noticed during use:
 This is the write-target rule applied: OBSERVATIONS.md is referenced as a
 destination, not loaded as a source.
 
-Skills WITHOUT OBSERVATIONS.md do not need evolution instructions. The
-user decides at skill creation whether the skill needs an improvement
-journal.
+Skills WITHOUT OBSERVATIONS.md do not need evolution instructions —
+except a skill carrying capability patches, which requires the
+journal (Durability classes: provenance + firing log live there).
+For the rest, the user decides at skill creation whether the skill
+needs an improvement journal.
 
 **When a failure becomes an observation.** A failure during skill use reveals a
 gap in the procedure. Its evidence is the run trajectory, not just the output —
@@ -419,12 +425,20 @@ For **multi-file rule corpora** (a spec rendered into multiple
 files, or a framework with instance renders), the decision
 sequence applies across ALL homes the concept exists in — a rule
 restated in N files with different framings is the reduce/merge
-case in (3), not a clean parallel structure. Scan every home
-before adding a new sub-section anywhere; fragmenting the same
-rule across multiple homes with restated emphasis is its own
-failure shape (cross-file fragmentation). On amendment to a rule
-in a multi-file corpus, audit each home for stale or now-redundant
-restatement.
+case in (3), not a clean parallel structure. The corpus declares
+its **governed set** in its governance doc — the files a concept
+may live in; absent a declaration, the set is every file of the
+payload ("governed set" names the boundary Terminology
+discipline (2)'s "all files in the corpus" ranges over).
+Every addition is preceded by a search-before-add scan over that
+set for the concept, the scan (command + hits) recorded as the
+addition's placement basis. Repair and amendment commits get the
+same scan as additions (observed: repairs receive less multi-home
+rigor than original work precisely because they feel local).
+Fragmenting the same rule across multiple homes with restated
+emphasis is its own failure shape (cross-file fragmentation). On
+amendment to a rule in a multi-file corpus, audit each home for
+stale or now-redundant restatement.
 
 **Two reflexivity mechanisms — different stages.** Layer 5 "How to
 surface it" governs Mechanism 1: AI notices a gap, proposes a

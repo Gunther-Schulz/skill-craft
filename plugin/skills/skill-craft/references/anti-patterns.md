@@ -189,44 +189,42 @@ acceptable skip; judgment-shaped escape is insufficient. See
 `PROCEDURE.md` Layer 2 "Un-fakeable artifact principle"
 (N/A-escape extension).
 
-**Variant: disposition-echo.** The same skip-shape applies at
-first-judge disposition (AI surfaces a reviewer finding with a
-disposition per `PROCEDURE.md` Layer 4 "Discipline-citation in
-recommendations"). Echoing the subagent's severity into a
-disposition ("subagent said observation, so keep-as-is") without
-re-deriving against the applicable discipline is the same skip
-applied to disposition-formation rather than to discipline-
-dispatch. Applies whether the finding's Concern names a discipline
-or not — when Concern names one, the AI tests against it; when
-Concern is bare, the AI independently identifies the applicable
-discipline. The discipline names a test; the AI applies it — not
-pattern-complete from severity.
+**The appeal-to-existing family.** The variants below share one
+shape — a disposition justified by appeal to something existing (a
+reviewer's stated severity, a corpus pattern, another rule's scope)
+without independent verification against the applicable discipline.
+An echo inherits the appealed thing's judgment, a corpus-appeal
+inherits its weakness, a jurisdiction-appeal borrows its strength
+across a scope boundary.
 
-**Variant: corpus-appeal.** The same skip-shape applies at
-keep-as-is disposition: defending keep by appealing to an
-existing corpus pattern ("§X already does Y, so this new Y is
-OK") without independently testing whether the cited pattern
-meets current discipline. Inherits any weakness circularly.
-Sibling to disposition-echo. Fix: independently test the
-cited pattern against the applicable discipline; if the pattern
-fails, do not use it as defense — surface the corpus-wide
-weakness as a separate observation (potentially needing its own
+**Variant: disposition-echo.** Moment: first-judge disposition of a
+reviewer finding (`PROCEDURE.md` Layer 4 "Discipline-citation in
+recommendations"). Mechanism: the reviewer's severity is echoed
+into the disposition ("subagent said observation, so keep-as-is")
+without re-deriving — whether the Concern names a discipline (test
+against it) or is bare (identify the applicable discipline
+independently). Test: does the disposition cite a discipline-test
+applied, or only the reviewer's rank? Fix: apply the discipline's
+test; never pattern-complete from severity.
+
+**Variant: corpus-appeal.** Moment: keep-as-is disposition.
+Mechanism: an existing corpus pattern is cited as defense ("§X
+already does Y, so this new Y is OK") without testing the cited
+pattern against current discipline — weakness inherited circularly.
+Test: does the cited pattern itself pass the applicable discipline?
+Fix: test it; if it fails, it is no defense — surface the
+corpus-wide weakness as its own observation (potentially its own
 audit cycle).
 
-**Variant: jurisdiction-appeal.** The same skip-shape applies at
-verdict formation: justifying a disposition by citing a REAL, healthy
-discipline or mechanism whose scope or visibility governs a
-DIFFERENT act than the one being decided (a consolidation-timing rule cited to defer a
-mint; a checker's visibility limit cited to narrow a rule). The
-rationalization borrows the cited rule's strength — where
-corpus-appeal inherits a cited pattern's weakness — so it reads
-as discipline while being drift. Third sibling to
-disposition-echo and corpus-appeal (all three are
-"appeal-to-existing without independent verification"; this one
-appeals across a scope boundary). Test: read the cited
-discipline's own text for the act or scope it names; a mismatch
-with the act being decided is the finding. Fix: name the act
-first, then cite and apply the rule that governs THAT act.
+**Variant: jurisdiction-appeal.** Moment: verdict formation.
+Mechanism: a REAL, healthy rule is cited whose scope or visibility
+governs a DIFFERENT act than the one being decided (a
+consolidation-timing rule cited to defer a mint; a checker's
+visibility limit cited to narrow a rule) — drift reads as
+discipline. Test: read the cited rule's own text for the act or
+scope it names; a mismatch with the act being decided is the
+finding. Fix: name the act first, then cite and apply the rule
+that governs THAT act.
 
 ## Naked judgment in rule statements
 
