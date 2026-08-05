@@ -1,14 +1,14 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "skill-craft-marketplace",
-  "description": "Methodology for engineering Claude Code skills the AI actually follows",
+  "description": "Skill and plugin engineering for Claude Code — skills the AI actually follows",
   "owner": {
     "name": "Gunther Schulz"
   },
   "plugins": [
     {
       "name": "skill-craft",
-      "description": "Methodology for engineering Claude Code skills the AI actually follows — five layers of structural enforcement.",
+      "description": "Skill and plugin engineering for Claude Code — five layers of structural enforcement so skills work as written, plus evaluation and release-activation tooling: /eval-skill, /release-plugin, and hooks that catch stale plugin pins in running sessions.",
       "source": "./plugin"
     }
   ]

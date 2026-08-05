@@ -328,6 +328,7 @@ Three activation actions, each with a different reach:
 | `/reload-plugins` (alone) | Same-version skill/hook/setting changes at the currently-pinned version. Re-reads the installed pin but does not bump it. |
 | `claude plugin update` + `/reload-plugins` | Version-bump activation. `update` bumps the pin; `/reload-plugins` re-reads the pin so subsequent skill invocations resolve to the new installPath. (Ignore the CLI's "Restart to apply changes" message — conservative guidance; `/reload-plugins` is the activation step.) |
 | Session restart | Equivalent to `/reload-plugins` for pin re-reads. Use when hook errors from a prior load persist (those don't clear on `/reload-plugins`) or when a fresh process is otherwise desired. |
+| `/reload-skills` | **Nothing here** — rescans skill files at already-resolved paths; never re-reads the pin. The near-identical name is the trap: a session keeps serving the old version through it (verified live). |
 
 So: both same-version edits and version bumps activate via
 `/reload-plugins` once the respective on-disk change is in place
@@ -335,6 +336,13 @@ So: both same-version edits and version bumps activate via
 pin bump). The pin is the resolution point — changing it and
 then re-reading via `/reload-plugins` activates the new version
 in the running session.
+
+A session may not know the pin moved at all — another session can
+move it. This plugin mechanizes the sequence and the catch: the
+`/release-plugin` command (the flow above end-to-end), a PreToolUse
+gate denying Skill calls whose own plugin's pin moved after the
+session's last `/reload-plugins`, and a PostToolUse reminder after
+`claude plugin update|install`.
 
 Caveat (unverified this session; expected behavior per the
 pin-resolution model): skills already invoked in the current

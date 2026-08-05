@@ -612,8 +612,9 @@ changes — file:line evidence per failed item. CANNOT proceed to commit
 until all items pass or failures are explicitly accepted with
 reasoning stated.
 
-Mechanical release flow (commit → marketplace update → plugin update
-→ `/reload-plugins`) is in `references/plugin-engineering.md`
-sections "Edit the source repo, not the cache" and "Activation".
-Operator handoff once the source repo is committed: `/reload-plugins`.
+Mechanical release flow: run `/release-plugin`
+(`commands/release-plugin.md`) — the §Activation sequence end-to-end
+(`references/plugin-engineering.md`, "Edit the source repo, not the
+cache" + "Activation"). Operator handoff once the pin is verified
+moved: `/reload-plugins`.
 

@@ -1179,3 +1179,34 @@ WITHOUT the per-change self-review subagent — operator override,
 in-session "anneal in spirit" (checks run in-context, no subagents)
 — so the next review cycle re-reviews both edits as unreviewed
 deltas.
+
+## 2026-08-05 — Release activation had no mechanical consumer; /reload-skills near-name trap
+
+Incident (coding-clippy releases 0.10.0→0.12.1, beat-the-books
+session): `claude plugin update` moved the pin, the operator ran
+/reload-skills ("no changes"), and the next Skill invocation served
+the session-start version (0.9.97) — caught only because the operator
+asked to verify the active version before a run; a first booking
+("restart is the only remedy", pinned into a project CLAUDE.md and
+relayed from external issue reports about a DIFFERENT failure class)
+was falsified the same day by the live test: /reload-plugins
+activated 0.12.1 in the same session. §Activation's two-pin model was
+correct all along — the knowledge existed, nothing enforced or
+announced it, and the operator may not even know a pin moved (another
+session can move it).
+
+Minted (v1.1.0): `/release-plugin` command (the §Activation sequence
+end-to-end, halting on unbumped versions and unmoved pins);
+`hooks/plugin-stale-gate.py` (PreToolUse(Skill) deny when the invoked
+skill's own plugin pin moved after the session's last /reload-plugins
+marker, else session start — transcript-derived baseline, fail-open,
+marker literal split in source so the hook's own text never plants a
+phantom reload in transcripts); `hooks/plugin-update-reminder.py`
+(PostToolUse(Bash) context line after `claude plugin
+update|install`). §Activation gains the /reload-skills-trap paragraph
++ component pointer. Durability: hooks/command are BINDING-class
+(valid while the CLI's reload semantics hold, as-of 2026-08-05;
+staleness-checked) with enforcement-structure form; the doc paragraph
+is canon. Red evidence: fixture red/green suite in each hook
+(--test); live red probe planned at release: bump 1.1.1 without
+reload → gate must deny, then reload → pass. Firing log starts here.

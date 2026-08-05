@@ -10,7 +10,12 @@ This is the failure mode skill-craft engineers against.
 A Claude Code plugin for designing skills that work as written. Five
 layers of structural enforcement — un-fakeable artifacts, forcing
 functions, blocking gates — so the AI's behavior matches what the
-skill says, not what it pattern-completes.
+skill says, not what it pattern-completes. The methodology ships
+with its tooling: an evaluation harness (`/eval-skill`), a
+mechanical release-and-activation sequence (`/release-plugin`), and
+hooks that catch stale plugin pins in running sessions — a plugin
+update activates only on `/reload-plugins`; until then every running
+session silently serves the old version.
 
 skill-craft is the meta-discipline. The
 [Anneal framework](https://github.com/Gunther-Schulz/anneal-framework)
@@ -62,6 +67,9 @@ Run `/reload-plugins` in Claude Code to activate.
 | `references/review-checklist.md` | Full skill review checklist with blocking logic | On demand |
 | `references/plugin-engineering.md` | Plugin packaging: marketplace, hooks, installation | On demand |
 | `references/writing-by-skill-type.md` | Type-specific authoring (judgment, workflow, domain-knowledge, tooling) | On demand |
+| `commands/release-plugin.md` | `/release-plugin` — mechanical release + activation sequence, ends at the operator's `/reload-plugins` | Command |
+| `hooks/plugin-stale-gate.py` | Denies Skill calls whose own plugin's pin moved after the session's last `/reload-plugins` — stale injections blocked with the fix named | Hook (automatic) |
+| `hooks/plugin-update-reminder.py` | After `claude plugin update`/`install`: running sessions serve the old version until `/reload-plugins` | Hook (automatic) |
 | `dev-notes/OBSERVATIONS.md` | Improvement journal — maintainer-side, outside plugin payload | Never |
 
 ## License
