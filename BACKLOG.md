@@ -9,9 +9,7 @@ edit; nothing lands from here without it).
 - (cleared 2026-08-05, operator backlog-clear GO;
   leaving refs and dispositions in dev-notes/OBSERVATIONS.md
   "2026-08-05 — Consolidation pass" and the clearing commit 64cd292.)
-- PARKED — adopt a grilling/frontier-round variant fleet-wide
-  (source: mattpocock/skills `grilling`, MIT; whole-skill adoption
-  vs local variant undecided). Not skill-craft canon content —
-  parked here pending a fleet-level home. Trigger: operator
-  decision after the 2.0.0 trial. Evidence for: the format
-  transferred on mere contact (OBSERVATIONS 2026-08-06).
+- (dropped 2026-08-06, same day as parked: grilling/frontier-round
+  adoption was mis-homed here — operator correction: not skill-craft
+  work at any grade. Minted thin as a corpus convention instead
+  (dotfiles f3dfa52, CLAUDE.md Recommending & reporting).)

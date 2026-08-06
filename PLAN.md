@@ -175,8 +175,9 @@ dev-notes; adapt in, never cite by pointer — context-independence)
 
 ## Out of scope, booked elsewhere
 
-- Adopting a grilling/frontier-round variant fleet-wide (possibly
-  his whole skill; to be decided) — parked in BACKLOG.md; not canon
-  content.
+- The grilling/frontier-round form: minted thin as an operator-
+  corpus convention (dotfiles f3dfa52, CLAUDE.md Recommending &
+  reporting) — never skill-craft content (operator correction
+  2026-08-06; skill-craft stays pure craft).
 - Fleet description rewrites and description-flip of explicit-
   invoke skills — follows 2.0.0, using its doctrine + Tier 1 evals.
