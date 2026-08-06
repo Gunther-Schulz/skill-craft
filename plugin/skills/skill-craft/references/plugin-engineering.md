@@ -1,5 +1,9 @@
 # Plugin Engineering Reference
 
+**Load when:** packaging, releasing, or installing a plugin;
+setting up a marketplace; diagnosing activation or stale-pin
+behavior.
+
 Practical guide to packaging and distributing Claude Code plugins. Covers
 what the official `plugin-dev` does not: distribution paths, marketplace
 workflow, battle-tested gotchas, and operational knowledge.
@@ -60,8 +64,8 @@ are available as `/my-plugin:skill-name`.
 ## Plugin layout (a skill's mechanical foundation)
 
 The directory shape every skill plugin follows. Get it right once and
-move on — bloat in skill-craft's procedure has historically clustered
-here, so the detail lives in this reference, not in `PROCEDURE.md`.
+move on — bloat in skill-craft's method has historically clustered
+here, so the detail lives in this reference, not in `SKILL.md`.
 
 ### Directory tree
 

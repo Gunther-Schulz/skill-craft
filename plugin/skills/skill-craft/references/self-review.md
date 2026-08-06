@@ -1,92 +1,71 @@
-# Self-review (Layer 4 mandate machinery)
+# Self-review (the pre-commit dispatch)
 
-**Load when:** Dispatching the mandated self-review subagent against
-a proposed change to skill-craft canonical files, or executing
-recovery on its findings before commit.
+**Load when:** dispatching the self-review subagent against a
+change to skill-craft's operational files, or executing recovery on
+its findings.
 
-This is **Mechanism 2** per `PROCEDURE.md` Layer 4 "Two reflexivity
-mechanisms" — that section owns the Mechanism-1-vs-Mechanism-2
-definition. Distinct from `review-checklist.md` (see its **Scope**
-section for the reciprocal framing): review-checklist is the 14-item
-user-facing review applied to any skill; self-review is the
-finer-grained, fresh-context gate for every change to skill-craft's
-own canonical files.
-
-## The mandate
-
-Every change to skill-craft's canonical files (`PROCEDURE.md`,
-`references/*.md`, `SKILL.md`) triggers one self-review — one subagent
-for the whole change — **before commit**. The authoring AI dispatches
-a fresh-context subagent against the proposed changes (working tree,
-staged diff, or inline-described in brief). The subagent loads
-skill-craft, reads the changed text freshly, and applies the five
-checks below.
+Every change to skill-craft's operational files (`SKILL.md`,
+`references/*.md`) dispatches one fresh-context subagent — one per
+change-set, **before commit**. The subagent loads skill-craft,
+reads the changed text freshly (working tree, staged diff, or
+inline in the brief), and applies the five checks. This is
+verification of the session's own edits — distinct from
+reflexivity (SKILL.md, own conduct), where a proposed new rule goes
+to the operator: here the artifact under review is the session's
+own commit, so blocking recovery executes without a round-trip.
+Fresh-context vetting is tier-insensitive insurance — it removes
+self-blindness, not a capability gap — and stays regardless of the
+consuming model.
 
 ## The five checks
 
-1. **Universal rule application** — for each canonical rule in
-   skill-craft (Layer 2 principles, Layer 4 disciplines,
-   anti-patterns), test the changed text against it. A violation is a
-   blocking finding.
+1. **Rule application** — test the changed text against each rule
+   of the canon (SKILL.md sections; the anti-patterns). A violation
+   is a blocking finding.
 2. **Format consistency** — does the change match adjacent entries'
-   format?
-3. **Overlap or conflict** — enumerate cross-referenced rules (the
-   change's citations + grep-found cites of the change's home +
-   semantic siblings in the same Layer); for each, test whether
-   consequences contradict the cited rule and articulate the
-   relationship (parallel / extending / overlapping / contradicting).
-   The enumeration + per-reference test is the un-fakeable artifact;
-   bare "no conflict found" is malformed.
+   form?
+3. **Overlap or conflict** — enumerate cross-referenced rules: the
+   change's citations, grep-found citations of the change's home,
+   and semantic siblings in the same section. Per reference,
+   articulate the relationship (parallel / extending / overlapping
+   / contradicting). The enumeration with per-reference tests is
+   the artifact; a bare "no conflict found" is malformed.
 4. **Coverage** — does the change catch what it targets?
-5. **Substance of any Fix prescription** — does it specify a concrete
-   next action?
+5. **Fix substance** — does any Fix prescribe a concrete next
+   action?
 
-## Recovery path
+## Recovery
 
-Findings ranked blocking / notable / nit.
+Findings rank blocking / notable / nit.
 
-1. **Blocking** — AI fixes (or reverts the change) without operator
-   round-trip.
-2. **Notable / nit** — AI surfaces each finding to the operator with a
-   recommendation (fix-shape proposed). Operator decides per finding:
-   fix-now, accept-with-rationale, or defer-to-observations. AI does
-   not self-classify or auto-fix.
+- **Blocking** — fix (or revert the change) before commit, no
+  operator round-trip.
+- **Notable / nit** — surface each finding to the operator with a
+  recommendation (fix-shape proposed). The operator decides per
+  finding: fix-now, accept-with-rationale, or
+  defer-to-observations.
 
-## Discipline-citation in recommendations
+## Discipline-citation in dispositions
 
-Every reviewer finding's disposition cites a discipline-test applied
-+ the evidence the test requires — not naked verdict, not echo of the
-subagent's severity (see `anti-patterns.md`
-Skip-rationalization variants). The discipline-test
-source (closed set):
+Every finding's disposition cites the discipline-test applied plus
+the evidence that test requires — never a naked verdict, never an
+echo of the reviewer's severity (the appeal-to-existing family,
+`anti-patterns.md`). When the finding names a discipline, test
+against it; when it is bare, identify the applicable discipline
+from the candidate set (Edit-as-Pareto-improvement, Naked judgment,
+Skip-rationalization, equivalent canon rules) and cite
+which matched and which were ruled out. A
+cosmetic-no-discipline-applies exemption lists the candidates
+considered with per-member rule-outs. A proposed deviation from a
+finding surfaces as its own `operator-decision-required` line — an
+explicit flag, not an equal-weight option.
 
-- **(a)** the Concern-named discipline when the finding cites one —
-  from the candidate set: Edit-as-Pareto-improvement / Naked-judgment
-  anti-pattern / Skip-rationalization anti-pattern / no-theater /
-  equivalent framework practices.
-- **(b)** when Concern is bare, the AI scans (a)'s candidate set and
-  tests the matching member, citing which matched + which were ruled
-  out.
-- **(c)** `cosmetic-no-discipline-applies` exemption listing every
-  member of (a)'s candidate set considered + the per-member rule-out
-  reason.
+## Commit conventions
 
-Classifiable structural-enforcement candidate → ship-now (n=1).
-Undefendable alternative per no-theater → cut. A proposed AI
-deviation produces an additional `operator-decision-required` line
-citing the alternative — the deviation surfaces explicitly, not as an
-equal-weight option.
-
-## Accept-with-rationale and defer-to-observations
-
-For accept-with-rationale decisions, AI adds an `Accepted-finding:`
-line in the commit message **body** citing the finding's file:line and
-the operator's reason; commit-body-only because the audit trail must
-live in git history permanently. For defer-to-observations, AI logs
-to the relevant `OBSERVATIONS.md` (of the corpus the finding cites).
-AI commits only after every finding has a recorded disposition.
-
-## Why before commit, not after
-
-Reviewing before commit keeps git history clean — bad commits never
-enter the record.
+Accept-with-rationale adds an `Accepted-finding:` line in the
+commit message **body**, citing the finding's file:line and the
+operator's reason — commit-body-only, because the audit trail lives
+permanently in git history. Defer-to-observations logs to the
+OBSERVATIONS.md of the corpus the finding cites. Commit only after
+every finding has a recorded disposition; reviewing before commit
+keeps bad commits out of the record.

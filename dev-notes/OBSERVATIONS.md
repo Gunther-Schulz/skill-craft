@@ -1430,3 +1430,73 @@ classes, consumer calibration) is current and harvest-rich. Credit:
 Harvest list B adapts from mattpocock/skills (MIT),
 github.com/mattpocock/skills — writing-for-agents,
 SKILL-MECHANICS, grilling.
+
+## 2026-08-06 — 2.0.0 canon written (from-scratch rewrite per PLAN.md)
+
+- Canon rewritten as a single-body SKILL.md; PROCEDURE.md retired —
+  the SKILL→PROCEDURE chain was one extra hop every invocation that
+  the disclosure ladder no longer justifies (successor-shape
+  latitude in the write brief; PLAN names the files being replaced,
+  not a mandated split). References: enforcement.md (new — the
+  tier-conditional instrument toolbox), anti-patterns.md,
+  evaluation.md, review-checklist.md (de-gated to review
+  questions), self-review.md, writing-by-skill-type.md
+  (density-calibration and Migration content moved into SKILL.md
+  Two parties / era re-grade), plugin-engineering.md (light touch).
+  dev-notes/VISION.md deleted (PLAN Q2); surviving content absorbed
+  into the birth declaration, Enforcement, and Lifecycle.
+- Suspect-at-intake verdicts (PLAN Harvest A): blocking logic as
+  default rendering — OUT, re-entered tier-conditional in
+  enforcement.md; word-count budgets as stated — OUT, replaced by
+  the two-loads ladder ("size each by what it costs where it
+  sits"); consolidated load-gate boilerplate — survives once as the
+  named "load gate" convention, below-trust-tier only, skill-craft
+  itself drops it; five-layer frame — OUT, spine organization
+  (parties / economics / registers / enforcement / architecture /
+  lifecycle / evaluation); "every sentence must change behavior" —
+  survives re-founded as the model-relative no-op test.
+- Harvest B landed: pointer economics; invocation choice (with
+  measured basis, below); term selection sharpened (criterion: the
+  clearest term of its domain from canonical literature;
+  verification: cold probe; anti-target: operator echo; coined
+  tokens stay for machine-read vocabulary); era re-grade widened
+  into durability + no-op test, not duplicated; positive rendering
+  (marked hypothesis, registers); completion-criteria demand
+  wording + environment-as-source-of-truth (marked hypothesis /
+  pruning).
+- New Path-1 anti-pattern: Overweight description. Provenance:
+  fleet descriptions observed overweight 2026-08-06 —
+  integration-shakedown ~180 words; statiker's forcing-point
+  summary buying zero triggering on an explicit-invoke skill.
+- Tier-1 measurements (dev-notes/eval-skill-craft/2026-08-06/
+  result.md): prose invocation 12/12 listed → 0/12 delisted —
+  settles PLAN's open question against a description-flip for
+  prose-invoked skills; new 2.0.0 description 18/18 should-trigger,
+  12/12 near-miss clean, ships unrepaired.
+- Fire-born baseline for 2.0.0 self-machinery: carried mechanical
+  set only (eval runner, release/stale-pin hooks, pre-commit
+  self-review dispatch); no new gates minted at birth. The firing
+  log for future capability patches starts at this entry.
+
+Self-review round (fable, fresh context, pre-commit): 1 blocking,
+4 notable, 4 nit; PLAN conformance confirmed — no settled decision
+missing, contradicted, or silently bridged. Dispositions: B1
+(undefined "no-theater" in self-review.md candidate set) fixed —
+token dropped; N1 (operator phrase "the clearest term of its
+domain" carried verbatim against PLAN's not-this-sentence
+instruction — the rule's own anti-target) fixed — criterion
+reworded; N2 (environment-as-truth unmarked hypothesis) fixed —
+marker added; N3/N4 (stale eval-skill.md example + dangling
+citation) fixed — dependent repair, not infrastructure redesign;
+n1 (anchor), n2 (description-mood rule aligned to the
+Tier-1-proven what-plus-when form, both homes), n4 (Load-when
+header) fixed; n3 split — the ×3 "seed, not bound" duplication
+reduced to two role-distinct homes, the "inspection is not
+measurement" double kept with rationale (evaluation.md has a
+standalone consumer via /eval-skill; commit body carries the
+Accepted-finding line). Mechanism firing note: the self-review
+dispatch caught a real defect class the writer was blind to
+(operator-echo in the very rule that forbids it) — counts as a
+firing for the mechanism's own retention log. Recursion check
+(repo CLAUDE.md): the reviewer did not self-validate — it returned
+9 findings; each re-read against the cited line before fixing.

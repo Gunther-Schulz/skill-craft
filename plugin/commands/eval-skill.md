@@ -47,7 +47,7 @@ d. **Diagnose misses.** For each defect: name the likely mechanism (keyword coll
 
 ## Step 4 — Tier 2 (always applicable): behaviour-delta signature
 
-a. **Get the signature spec from the operator.** Ask: what un-fakeable artifact does `$ARGUMENTS` exist to force that the bare model would not produce? Examples to give if useful: "findings carrying file:line + impact + classification" (judgment skill); "a tracker with locked design decisions + isolated verify ledger" (workflow skill); "14-item review-checklist completion with file:line per item" (review skill). The signature must be *observable in the output*, not "good thinking."
+a. **Get the signature spec from the operator.** Ask: what un-fakeable artifact does `$ARGUMENTS` exist to force that the bare model would not produce? Examples to give if useful: "findings carrying file:line + impact + classification" (judgment skill); "a tracker with locked design decisions + isolated verify ledger" (workflow skill); "review-questions completion with file:line per item" (review skill). The signature must be *observable in the output*, not "good thinking."
 
 b. **Get one representative task** the skill is designed to handle.
 
@@ -57,7 +57,7 @@ c. **Dispatch two general-purpose subagents in parallel** with these briefs. Fir
 
 d. **Save outputs.** Default target: `./dev-notes/eval-$ARGUMENTS/<YYYY-MM-DD>/` (or `~/.claude/skill-evals/$ARGUMENTS/<YYYY-MM-DD>/` if no `dev-notes/` exists in CWD). Confirm or override with the operator in one question. Write `tier2-with.md` and `tier2-without.md` verbatim.
 
-e. **Surface side-by-side for the operator with cited evidence.** For each signature element the operator named in (a), locate it (or its absence) in both saved files and report with file:line citations — e.g. "element 'finding with location+impact+classification' present in `tier2-with.md:L42-58` (quote: '...'), absent in `tier2-without.md` (grep '<pattern>' returned 0 hits)." **A verdict line without per-element citations is malformed; the citations are the un-fakeable artifact for the verdict** (the verdict itself, otherwise, is a bare-claim shape — `anti-patterns.md`).
+e. **Surface side-by-side for the operator with cited evidence.** For each signature element the operator named in (a), locate it (or its absence) in both saved files and report with file:line citations — e.g. "element 'finding with location+impact+classification' present in `tier2-with.md:L42-58` (quote: '...'), absent in `tier2-without.md` (grep '<pattern>' returned 0 hits)." **A verdict line without per-element citations is malformed; the citations are the un-fakeable artifact for the verdict** (the verdict itself, otherwise, is a fakeable claim — skill-craft `SKILL.md`, Enforcement).
 
    Then name the pattern:
    - **Signature present in WITH, absent in WITHOUT** → skill is doing its work.

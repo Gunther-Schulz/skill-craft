@@ -1,122 +1,102 @@
-# Checklist for Reviewing a Skill
+# Review questions
 
-**Load when:** Reviewing an existing skill or validating a new one.
+**Load when:** reviewing a skill after creating or modifying it —
+any skill, including skill-craft itself.
 
-**Scope.** This checklist applies when reviewing any skill — including
-skill-craft itself. The Self-review mandate (`PROCEDURE.md` Layer 4) is
-a separate, finer-grained mechanism: it runs on every commit to
-skill-craft's canonical files and adds a cross-pattern test against
-`anti-patterns.md` Symptoms. The two compose; this checklist does not
-subsume or replace the mandate.
+The questions seed the review and do not bound it: trace each
+finding's implications past the list, and state findings per item —
+file:line for failures. Distinct from the self-review dispatch
+(`references/self-review.md`), the fresh-context pass on changes to
+skill-craft's own files; the two compose.
 
----
+1. **Consumer.** Declared — model or tier range? Enforcement
+   density matches the declaration: evidence-register principles
+   for a top tier, structural instruments (`enforcement.md`) below
+   trust tier? Fragile or invariant sequences keep exact steps at
+   every tier?
 
-Apply after creating or modifying any skill. For any item that fails,
-state what's missing before continuing.
+2. **Structure.** Entry SKILL.md; references skill-local;
+   maintenance files outside the plugin payload? Mechanical
+   conformance (frontmatter schema, packaging) validated via
+   plugin-dev / `skills-ref validate`, or the deferral stated — a
+   clean architectural pass does not imply clean frontmatter.
 
-- [ ] **Structure.** SKILL.md entry point, standard file names, README
-  at root, dependency graph for multi-file skills? Mechanical
-  conformance (frontmatter schema, name/character rules, packaging)
-  validated via plugin-dev / `skills-ref validate`, or explicitly
-  deferred — skill-craft delegates mechanics (`SKILL.md` Companion),
-  so a clean architectural review does not imply a clean frontmatter.
+3. **Boundary.** Maintenance files never loaded by operational
+   files — referenced as write targets only?
 
-- [ ] **Boundary rule.** Maintenance files (OBSERVATIONS, VISION,
-  ROADMAP) never loaded by operational files? Only referenced as
-  write targets? Located outside the plugin payload, not in the
-  skill directory?
+4. **Pointer.** Description states what the skill does and when to
+   use it (never second person), leading word front-loaded, one
+   trigger per genuinely distinct branch, no identity the body
+   carries? Invocation choice
+   deliberate — model- vs user-invoked, with the prose-invocation
+   cost weighed (SKILL.md, Invocation choice)?
 
-- [ ] **Trigger clarity.** SKILL.md description states specific trigger
-  phrases in third person?
+5. **Ladder.** In-file vs disclosed decided by branching — what
+   every branch needs inline, single-branch material behind
+   pointers? Concepts co-located, not scattered? No sediment —
+   every line still bearing on what the document does?
 
-- [ ] **Density.** SKILL.md under 2,000 words? Detailed content in
-  references/ loaded on demand — what moves out judged by the
-  derivation trace, not length (per `anti-patterns.md` Procedure-drift)?
-  Every sentence changes AI behavior
-  (no provenance, restated content, hedging, meta-commentary,
-  transitions)? Consider load-time availability before removing
-  apparent duplicates. Rules covering the same concern merged into
-  fewer, sharper items?
+6. **No-op test.** Passed sentence by sentence against the declared
+   consumer — no instruction the consumer already obeys by default?
+   Leading words strong enough to beat the default?
 
-- [ ] **Salience / reading order.** Does every strong default carry its
-  scope at or before the point of statement — no carve-out (workflow-vs-
-  judgment split, exception, narrowing) stranded downstream where the AI
-  reader absorbs the default too late to override it (Scope-precedes-
-  default, `PROCEDURE.md`)? And below the ordering level: does every
-  load-bearing default occupy its own sentence at the seam it governs —
-  none buried mid-sentence in a packed enumeration?
+7. **Salience.** Every strong default carries its scope at or
+   before its statement — no carve-out stranded downstream? Every
+   load-bearing default owns its own sentence at the seam it
+   governs — none buried mid-sentence in a packed enumeration?
 
-- [ ] **Abstraction.** Judged against the skill's intended scope — a
-  domain-specific skill is correctly domain-bound; only a
-  domain-general skill must clear the tests across domains. Passes all
-  seven tests (five exclusion, two inclusion)? At the same level as
-  surrounding content? Uses terminology abstract within that scope?
+8. **Register.** Directive vs evidence follows each rule's action;
+   judgment rules with event-shaped firing moments carry anchored
+   triggers; imperative form throughout; directive rules rendered
+   positive where possible?
 
-- [ ] **Protocol conventions.** Imperative form throughout (no second
-  person)? Workflow skills: gates use blocking logic (CANNOT + evidence),
-  checkpoints observable, choice points surfaced where user has flow
-  control, and every conditional dependency between independently-
-  dispatchable steps encoded structurally (dependent step's input carries
-  the prerequisite's result; artifact cites it) rather than prose-only?
-  Judgment skills:
-  principles with evidence requirements, deepening mandatory, output
-  demonstrates analysis?
-  - NO → Add blocking logic / encode dispatch dependencies (workflow) or
-    evidence requirements (judgment).
+9. **Abstraction.** Judged at the skill's declared scope — a
+   domain skill correctly domain-bound; only a domain-general skill
+   reaching across domains. No baked-in language, paradigm,
+   architecture, runtime, or problem domain; states a relationship
+   between entities, not a scenario; composes with existing rules;
+   at the level of surrounding content? Context-independent —
+   correct behavior for a user whose global configuration is empty?
 
-- [ ] **Deepening.** Findings traced to implications beyond the
-  checklist? Checklist is floor, not ceiling?
+10. **Enforcement.** Must-hold sequences structurally enforced with
+    un-fakeable evidence; N/A escapes mechanically verifiable; no
+    naked load-bearing judgment (mitigation ladder applied —
+    SKILL.md, Enforcement)?
 
-- [ ] **Evolution.** OBSERVATIONS.md exists for skills involving
-  judgment or carrying capability patches? SKILL.md includes
-  evolution instructions (notice gap → write observation → propose
-  change)? Skill notices when own guidance needs updating?
+11. **Completion criteria.** Steps end on checkable, demanding
+    bounds — "every X accounted for," not "produce a list"?
 
-- [ ] **Durability.** Operational content classifiable under the three
-  durability classes (`PROCEDURE.md` Layer 4 "Durability classes")?
-  Capability patches carry provenance + a firing log in
-  OBSERVATIONS.md — a patch with no logged firing since the last
-  consolidation pass is flagged as a cut candidate here (the cut
-  itself belongs to consolidation). When the skill's consuming tier
-  has moved up since a patch was minted, a directive-register patch
-  is additionally flagged for re-registering (`PROCEDURE.md` Layer 4,
-  Capability patch — the flag lands here, the re-render belongs to
-  consolidation). Bindings state their validity
-  condition. A patch-bearing skill without OBSERVATIONS.md fails
-  Evolution first, not here. The skill's reason to exist is what it
-  enforces or binds, not what it explains — an explanation-only
-  skill is itself a retirement candidate as models improve.
-- [ ] **Consumer calibration.** Does the skill name its intended
-  consuming model/tier, and does prescription density match — brief
-  principle + example for top-tier consumers, explicit steps and
-  convention lists for cheaper tiers? (Freedom coupling stays
-  primary: fragile procedures keep exact steps at every tier. See
-  writing-by-skill-type, "Calibrating prescription density".)
+12. **Evolution.** Improvement journal exists for judgment skills
+    and patch-carrying skills; the gap → observation → change cycle
+    stated; capability patches carry provenance and a firing log —
+    a patch with no logged firing since the last consolidation
+    flagged as a cut candidate (the cut itself belongs to
+    consolidation)?
 
-- [ ] **Information flow (orchestrated skills only).** Every handoff
-  passes what the receiver needs? Data explicit in prompt or on disk?
-  Format matches? State survives compaction?
+13. **Durability.** Operational content classifiable — enforcement
+    structure, capability patch, binding? Bindings state their
+    validity condition? A consumer-tier move since minting flags
+    directive-register patches for re-registering (SKILL.md, the
+    era re-grade — the flag lands here, the re-render belongs to
+    consolidation)?
 
-- [ ] **Cross-skill consistency (multi-skill plugins).** Every
-  assumption one skill encodes about another — field names, file
-  paths, schemas, status values, invocation syntax — matches the
-  other skill's actual contract? Checked against the other skill,
-  not recalled?
+14. **Information flow** (orchestrated skills only). Every handoff
+    passes what the receiver needs — explicit, format-matched,
+    compaction-safe?
 
-- [ ] **Rendering fidelity (skills that derive content from a source
-  spec, framework, or standards doc).** Every load-bearing clause of
-  the source survived into the skill text? Structurally-enforced
-  source mechanisms render as structural mechanisms, not flattened to
-  prose? Verified by a clause-level diff against the source — not by
-  re-reading the rendered text?
+15. **Cross-skill consistency** (multi-skill plugins). Every
+    assumption one skill encodes about another — field names,
+    paths, schemas, status values, invocation syntax — checked
+    against the other skill's actual contract, not recalled?
 
-- [ ] **Evaluation.** Triggering measured (Tier 1) for any
-  description-triggered skill, and the behaviour-delta signature
-  checked (Tier 2) where the skill forces an observable artifact? See
-  `references/evaluation.md`. Inspection is not measurement — a skill
-  can read clean and still under-trigger or sit inert.
+16. **Rendering fidelity** (skills derived from a source spec or
+    framework). Every load-bearing source clause survives;
+    structural mechanisms render structural; verified by
+    clause-level diff from a context that did not write the render?
 
----
+17. **Evaluation.** Tier 1 measured for any description-triggered
+    skill; Tier 2 where the skill forces an observable signature
+    (`references/evaluation.md`)? Inspection is not measurement.
 
-**After running this checklist:** State whether this pass surfaced
-anything new. Recommend another pass or moving on.
+After the pass: state whether it surfaced anything new; recommend
+another pass or moving on.

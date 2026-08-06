@@ -1,337 +1,232 @@
-# Anti-Patterns
+# Anti-patterns
 
-**Load when:** Reviewing a skill for common design mistakes.
+**Load when:** reviewing a skill for known failure shapes, or
+drafting content that risks one.
 
-**Reader model.** A skill file's only reader is the AI in mid-execution.
-Anti-patterns below are skill-design failure modes — content that
-doesn't serve that reader, rule shapes that don't behave as written,
-or structures that break the AI's loading or execution flow. Fixes
-vary by shape: relocate content to a maintenance file (OBSERVATIONS.md,
-commit messages, README.md, VISION.md), reshape the rule (anchor to
-observable criteria), or restructure the skill (split files, change
-loading boundary).
+**Reader model.** A skill file's only reader is the AI in
+mid-execution. The entries below are skill-design failure shapes —
+content that doesn't serve that reader, rule forms that don't
+behave as written, or structures that break loading or execution.
+Entries stay in negative form by design: the named shape IS the
+rule (SKILL.md, The two registers — positive-rendering exemption).
 
 ---
 
+## Overweight description
+
+The description restates the body — method summaries, identity
+prose, synonym chains — and every word is paid on every turn of
+every session (observed fleet-wide: a ~180-word triage description;
+a forcing-point summary in the description of a skill invoked only
+by name, buying zero triggering).
+
+**Symptoms:** description longer than its trigger branches justify;
+identity the body carries restated; synonyms renaming one branch;
+method summary in a name-invoked skill's description.
+
+**Fix:** front-load the leading word; one trigger per genuinely
+distinct branch; cut identity the body carries (SKILL.md, Context
+pointers). Before delisting a prose-invoked skill entirely, weigh
+the measured invocation cost (SKILL.md, Invocation choice).
+
 ## Monolithic SKILL.md
 
-Everything in one file. Works for trivial skills. Fails when the skill
-grows because the AI loads the entire file at activation, wasting context
-on guidance that isn't needed yet.
+Everything inline regardless of branch. Works for trivial skills;
+fails as the skill grows — attention thins across material only
+some branches reach.
 
-**Fix:** Extract reference material to `references/` subdirectory. Keep
-SKILL.md focused on trigger conditions, what to load, and the core method.
+**Fix:** the disclosure ladder (SKILL.md, The information
+hierarchy): inline what every branch needs, push single-branch
+reference behind pointers.
 
 ## Procedure with project-specific examples
 
-The procedure contains concrete names, examples, or patterns from a
-specific project. It only makes sense in that project. Porting it to
-another project requires rewriting the examples.
+The method contains concrete names, examples, or patterns from one
+project; porting it means rewriting them.
 
-**Fix:** Procedure is abstract. Observations contain the real incidents.
+**Fix:** the method stays abstract at the skill's declared scope;
+real incidents live in the journal.
 
 ## Checklist as ceiling
 
-The procedure has a checklist of N items. The AI performs all N,
-reports findings, and stops — neither tracing each finding's
-implications nor looking past the N categories. Issues outside the
-checklist, and adjacent issues a finding predicts, go unfound.
+The skill has a checklist of N items; the consumer performs all N,
+reports, and stops — neither tracing findings' implications nor
+looking past the N categories.
 
-**Fix:** The checklist seeds the investigation, it does not bound it.
-Trace each finding's implications — follow each as a lead until it
-stops producing new findings — and look beyond the N categories.
+**Fix:** the checklist seeds the investigation and does not bound
+it. Trace each finding as a lead until it stops producing new
+findings; look beyond the categories.
 
 ## Skill that never evolves
 
-The skill was written once and never updated. Failures during use are
-worked around rather than incorporated as observations or procedure
-changes.
+Failures during use are worked around rather than recorded and
+incorporated.
 
-**Fix:** Establish the improvement cycle (layer 4). Every failure is a
-candidate observation. Every observation is a candidate procedure change.
+**Fix:** the evolution cycle (SKILL.md, Lifecycle): every failure
+is a candidate observation, every pattern-naming observation a
+candidate change.
 
 ## Procedure drift through incremental patches
 
-The opposite of "never evolves." Each observation adds a paragraph to the
-procedure. Individually correct. In aggregate, the procedure bloats beyond
-what the AI can hold in attention and drifts from the founding vision. The
-document becomes a compliance checklist instead of the lean set of
-principles it started as.
+The opposite failure: each observation adds a paragraph,
+individually correct; in aggregate the method bloats past what
+attention holds and the register turns adversarial.
 
-**Symptoms:**
-- Procedure outgrows what the AI holds in attention — line count is a
-  heuristic flag (≈200 lines for an ordinary skill; a domain-general
-  framework runs longer), not the test. The test is the per-checkpoint
-  compression in the Fix.
-- Management/operational scaffolding (plumbing, release ops, the
-  machinery of running a check) sits inline alongside core design method
-- Tone becomes adversarial ("this is not optional," "CANNOT proceed,"
-  "do not generate") — the procedure is arguing with the AI's tendencies
-  instead of stating principles
-- Multiple paragraphs say the same thing with different emphasis
-- A VISION.md exists but reading the procedure doesn't feel like the vision
-- **WHY-explanation prose padding the rule** — rationale text the AI
-  can infer from anchored cross-references (`§X.Y`, `file.md`), or
-  restating-with-different-emphasis filler. Skills target AI
-  consumption; human-style explanation is bloat when the anchor
-  carries the meaning.
+**Symptoms:** management scaffolding (release ops, the machinery of
+running a check) inline beside the core method; adversarial tone
+("this is not optional") — text arguing with the reader's
+tendencies instead of stating principles or building mechanisms;
+multiple paragraphs restating one point with different emphasis;
+WHY-prose padding a rule an anchor already carries.
 
-**Fix:** Periodically re-derive the procedure from the vision. For each
-checkpoint, ask: can I state this in 3-5 sentences that a sculptor would
-recognize? If not, the checkpoint has accumulated implementation detail
-that belongs in `references/`. The extraction test is the **derivation
-trace**, not length or checklist-shape: a checkpoint that traces to a
-core design principle (VISION) stays inline; one that traces only to
-the mechanics boundary (VISION "what skill-craft is not") is
-management scaffolding and moves to `references/`. An ordinary skill's
-procedure fits on a screen; a framework's
-runs longer, but every section still passes the compression test.
-
-**AI-tightness check** (per-edit): a new clause whose word-count is
-dominated by explanation rather than rule is malformed. Cross-references
-substitute for explanation; the AI follows the anchor when context is
-needed. Rule-words first, anchors second, explanation only when no
-anchor exists.
-
-**Form choice for rules** (per-edit): pick positive vs negative form
-based on rule class. Classification tests apply in order; first match
-wins:
-
-1. **Definitional** — rule defines what a thing IS ("X is A + B").
-   Lead with positive shape; negative form only as discriminator.
-   Discriminator test: a parent rule (a discipline's lead, an
-   enclosing definition) already states the positive shape →
-   this rule is a discriminator, keep it negative. Default to
-   discriminator when ambiguous; under-stating is recoverable,
-   restating inflates. Standalone-all-negative AND discriminator-
-   with-positive-lead are both malformed.
-
-2. **Mechanical** — rule backed by an un-fakeable artifact
-   (file:line citation, count, list, observable check). Positive
-   default — "produce X" is more checkable than "don't fake X";
-   the artifact carries the check.
-
-3. **Anti-pattern** — rule names a failure shape the AI defaults
-   to (Symptoms + Fix structure). Negative form — the named shape
-   IS the rule; pattern-match against the shape. This file is
-   negative-form by this rule.
-
-4. **Judgment with multiple correct paths** — none of the above
-   apply, and positive form would over-constrain the situation.
-   Negative refusal of the wrong behavior, leaving room for
-   legitimate variations.
-
-Form is secondary to mechanical-vs-judgment (PROCEDURE.md "Judgment
-calls as design risk"). Mechanical preferred regardless of form.
-
-**Edit-as-Pareto-improvement** (per-edit): a rule edit must show
-either fewer words OR more coverage (ideally both). Pure addition
-without coverage gain is the bloat path. Before commit, name what
-the edit removed or consolidated; if nothing, the addition is
-suspect.
+**Fix:** re-run the no-op test sentence by sentence against the
+declared consumer; move management scaffolding down the disclosure
+ladder; re-render adversarial gates into mechanisms (if they must
+hold) or the evidence register (if they steer judgment). The
+per-edit guard is Edit-as-Pareto-improvement (Additive reflex,
+below).
 
 ## Rule elaboration creep
 
-A load-bearing rule grows beyond principle + test + fix. Each
-addition is locally justified but aggregate creates narrowing
-bias and conflict risk. ("Procedure drift" at rule level;
-"Checklist as ceiling" applied to rule text rather than
-execution.)
+A load-bearing rule grows beyond principle + test + fix; each
+addition locally justified, the aggregate narrowing and
+conflict-prone — Procedure drift at rule grain.
 
-**Symptoms:**
-- Body exceeds principle + test + fix
-- Examples enumerated within the rule
-- Sub-shapes elaborate the same principle
-- Motivational prose appears alongside the test
+**Symptoms:** body exceeds principle + test + fix; examples
+enumerated inside the rule; sub-shapes elaborating the same
+principle; motivational prose beside the test.
 
-**Fix:** Compress to principle + test + fix. Drop enumeration,
-sub-categorization, motivational framing.
+**Fix:** compress to principle + test + fix; drop enumeration,
+sub-categorization, motivation.
 
 ## Additive reflex
 
-When working on a rule corpus, AI tendency is to propose additions
-even when restraint or subtraction is correct. The failure surfaces
-at the AI's proposal moment; cumulative effect is bloat (parallels
-"Procedure drift" at corpus accretion).
+On a rule corpus, the default proposal is an addition even where
+restraint or subtraction is correct; the cumulative effect is
+bloat.
 
-**Symptoms:**
-- Proposed responses to bloat are themselves rule-additions
-- Multi-option menus when "do nothing" is the right option
-- Refactoring that grows total content
-- Rule-additions to police rule-additions
+**Symptoms:** responses to bloat that are themselves rule-additions;
+multi-option menus where "do nothing" is right; refactors that grow
+total content; rules policing rule-additions.
 
-**Fix:** apply "Edit-as-Pareto-improvement" (above). Default
-disposition on ambiguous rule-need: do nothing.
+**Fix — Edit-as-Pareto-improvement:** a rule edit shows fewer words
+OR more coverage, ideally both. Before commit, name what the edit
+removed or consolidated; if nothing, the addition is suspect.
+Default disposition on ambiguous rule-need: do nothing.
 
 ## Skip-rationalization
 
-The AI is about to apply a discipline (a review, a check, a gate
-honoring, a subagent dispatch) and constructs a rationalization for
-skipping it: *"this is a small change," "prior reviewer covers
-this," "redundant here," "in-context is enough," "applying an
-existing recommendation."* Discipline gets skipped; gap surfaces
-later — often via operator catch.
+About to apply a discipline (a review, a check, a gate, a
+dispatch), the AI constructs a rationalization for skipping it —
+"small change," "prior reviewer covers this," "redundant here."
+The discipline gets skipped; the gap surfaces later, often via
+operator catch.
 
-**Symptoms:**
-- AI voices doubt in prose about whether a discipline applies
-- AI cites discretion-shaped reasons: "small change," "redundant,"
-  "prior coverage," "trivial," "obviously inapplicable"
-- AI proceeds without the discipline
-- Pattern recurs across commits with new escape rationalizations
-- Recovery is reactive (retroactive dispatch on operator catch)
-  rather than preventive
+**Symptoms:** doubt voiced in prose about whether a discipline
+applies; discretion-shaped reasons cited; proceeding without the
+discipline; the pattern recurring with fresh escape phrasings.
 
-**Fix:** The rationalization-construction IS the dispatch signal —
-the doubt itself is evidence the discipline applies. Dispatch
-first, evaluate after. Mechanical inapplicability conditions
-(observable from artifact / diff / document state) are the only
-acceptable skip; judgment-shaped escape is insufficient. See
-`PROCEDURE.md` Layer 2 "Un-fakeable artifact principle"
-(N/A-escape extension).
+**Fix:** the rationalization-construction IS the signal — the doubt
+is evidence the discipline applies. Apply first, evaluate after.
+Mechanical inapplicability conditions (observable from artifact,
+diff, or document state) are the only acceptable skip
+(`enforcement.md`, N/A escapes).
 
-**The appeal-to-existing family.** The variants below share one
-shape — a disposition justified by appeal to something existing (a
-reviewer's stated severity, a corpus pattern, another rule's scope)
-without independent verification against the applicable discipline.
-An echo inherits the appealed thing's judgment, a corpus-appeal
-inherits its weakness, a jurisdiction-appeal borrows its strength
-across a scope boundary.
+**The appeal-to-existing family.** Variants sharing one shape: a
+disposition justified by appeal to something existing without
+independent verification against the applicable discipline.
 
-**Variant: disposition-echo.** Moment: first-judge disposition of a
-reviewer finding (`PROCEDURE.md` Layer 4 "Discipline-citation in
-recommendations"). Mechanism: the reviewer's severity is echoed
-into the disposition ("subagent said observation, so keep-as-is")
-without re-deriving — whether the Concern names a discipline (test
-against it) or is bare (identify the applicable discipline
-independently). Test: does the disposition cite a discipline-test
-applied, or only the reviewer's rank? Fix: apply the discipline's
-test; never pattern-complete from severity.
-
-**Variant: corpus-appeal.** Moment: keep-as-is disposition.
-Mechanism: an existing corpus pattern is cited as defense ("§X
-already does Y, so this new Y is OK") without testing the cited
-pattern against current discipline — weakness inherited circularly.
-Test: does the cited pattern itself pass the applicable discipline?
-Fix: test it; if it fails, it is no defense — surface the
-corpus-wide weakness as its own observation (potentially its own
-audit cycle).
-
-**Variant: jurisdiction-appeal.** Moment: verdict formation.
-Mechanism: a REAL, healthy rule is cited whose scope or visibility
-governs a DIFFERENT act than the one being decided (a
-consolidation-timing rule cited to defer a mint; a checker's
-visibility limit cited to narrow a rule) — drift reads as
-discipline. Test: read the cited rule's own text for the act or
-scope it names; a mismatch with the act being decided is the
-finding. Fix: name the act first, then cite and apply the rule
-that governs THAT act.
+- *Disposition-echo*: a reviewer's severity is echoed into the
+  disposition ("reviewer said observation, so keep-as-is") without
+  re-deriving. Test: does the disposition cite a discipline-test
+  applied, or only the reviewer's rank?
+- *Corpus-appeal*: an existing corpus pattern cited as defense
+  ("§X already does Y") without testing the cited pattern against
+  current discipline — weakness inherited circularly. Test: does
+  the cited pattern itself pass? If not, it is no defense; surface
+  the corpus-wide weakness as its own observation.
+- *Jurisdiction-appeal*: a real, healthy rule cited whose scope
+  governs a different act than the one being decided — drift
+  reading as discipline. Test: read the cited rule's own text for
+  the act it names; a mismatch is the finding. Name the act first,
+  then apply the rule that governs THAT act.
 
 ## Naked judgment in rule statements
 
-A load-bearing rule's test rests on the AI's own judgment rather
-than on an observable property. The AI pattern-completes the
-missing criterion and answers consistently-wrong; the error
-surfaces downstream.
+A load-bearing rule's test rests on the consumer's own judgment
+rather than an observable property; the consumer pattern-completes
+the missing criterion and answers consistently wrong.
 
-**Symptoms:**
-- The rule has no explicit criterion for what constitutes correct
-  application
-- The decision affects control flow (path taken, skip taken,
-  category assigned)
-- The rule directs the AI to apply "judgment" without naming the
-  observable criterion
-- The rule's test uses a common-word qualifier (e.g.,
-  "verbatim," "sufficient," "minimal," "reasonable,"
-  "appropriate") without an operational definition that
-  constrains its reading
+**Symptoms:** no explicit criterion for correct application; the
+decision affects control flow; the rule says "apply judgment"
+without naming the observable; a common-word qualifier
+("sufficient," "minimal," "reasonable") with no operational
+definition constraining its reading.
 
-**Fix:** Apply one of three mitigations — mechanical criteria,
-structural enforcement, or safety net — per "Judgment calls as
-design risk" (PROCEDURE.md Layer 2). Never leave the test naked.
-For common-word qualifiers, the mitigation is usually inline
-operational definition (e.g., "minimal verbatim content from
-the cited range that grounds the claim") or replacement with
-mechanical criteria.
+**Fix:** the mitigation ladder (SKILL.md, Enforcement): mechanical
+criteria, structural enforcement, or a documented fail-loud net —
+never a naked test. For common-word qualifiers, inline an
+operational definition or replace with a mechanical criterion.
 
 ## Information loss at skill boundaries
 
-Orchestrated workflows (A invokes B, B invokes C) lose data at every
-handoff. Skill A's output is compressed into skill B's prompt, dropping
-fields that skill C needs later. Or a retry invocation includes only the
-failure details, not the original design context. Or counters tracked in
-conversation are lost when context compacts.
+Orchestrated workflows (A invokes B, B invokes C) lose data at
+every handoff: output compressed into the next prompt drops fields
+a later consumer needs; a retry carries only the failure details;
+conversation-held state dies at compaction.
 
-**Symptoms:**
-- Downstream skill re-discovers what upstream already found
-- Retry produces different (often worse) results than original
-- Session recovery loses progress or quality signals
-- Reviewer re-verifies what executor already proved
+**Symptoms:** downstream re-discovers what upstream found; retries
+produce worse results than originals; session recovery loses
+progress; a reviewer re-verifies what an executor proved.
 
-**Fix:** For each handoff point, audit: does the receiver get everything
-it needs? Is the data passed explicitly (in prompt or on disk), or does
-it rely on conversation context that can be compacted? See "Information
-flow in orchestrated workflows" in the main procedure.
+**Fix:** audit each handoff — receiver gets everything it needs,
+explicitly, format-matched, compaction-safe (`enforcement.md`,
+Information flow).
 
 ## Soft load pointers
 
-A skill points at load-bearing reference files with prose
-("for X, see Y") instead of an imperative load gate. The AI reads
-it as informational, skips the load, substitutes pattern-memory;
-output looks spec-compliant but diverges from current references
-silently.
+A skill points at load-bearing reference files with prose ("for X,
+see Y") for a consumer that reads pointers as informational — the
+load is skipped, pattern memory substitutes, and output diverges
+from the current reference silently.
 
-**Symptoms:**
-- Reference named in prose without an observable load step
-- No loaded-references manifest at skill activation
-- Skipping the reference would produce wrong output yet loading
-  is not gated
+**Symptoms:** a load-bearing reference named in prose for a
+below-trust-tier consumer; no load evidence at activation; skipping
+the reference would produce wrong output, yet nothing gates it.
 
-**Fix:** Convert load-bearing reference loads to a blocking gate
-at skill activation requiring a loaded-references manifest as
-evidence. Discriminator: load-bearing = skipping produces wrong
-output; genuinely-optional = skill works correctly when not loaded
-(genuinely-optional may remain on-demand per Layer 3). See
-"Blocking logic" (PROCEDURE.md Layer 2).
+**Fix:** tier-conditional — for a below-trust-tier consumer or a
+must-hold procedure, the load gate (`enforcement.md`); for a
+top-tier consumer, a sharp pointer at point of use, gated only on
+fire evidence. Discriminator: load-bearing = skipping produces
+wrong output; genuinely-optional stays on demand at every tier.
 
 ## Unverified render from source
 
 A skill rendered from a source spec by paraphrase silently flattens
-structural rules to prose ("must" → "should") and drops load-bearing
-clauses. The renderer is blind to its own flattening — re-reading
-the render reads as faithful.
+structural rules to prose ("must" → "should") and drops
+load-bearing clauses; the renderer is blind to its own flattening,
+so re-reading the render reads as faithful.
 
-**Symptoms:**
-- Skill text was written by paraphrasing a source spec
-- No clause-level diff against the source by a separate context
-- Enforcement language is softer than the source
-- Load-bearing clauses in the source have no corresponding text in
-  the skill
+**Symptoms:** skill text written by paraphrasing a source; no
+clause-level diff by a separate context; enforcement language
+softer than the source; source clauses with no corresponding text.
 
-**Fix:** A fresh subagent (not the renderer) diffs clause-by-clause
-against the source: every load-bearing clause appears in the
-render; structural mechanisms render as structural, not flattened
-to prose. See "Rendering from a source" (PROCEDURE.md Layer 2).
+**Fix:** a fresh context (not the renderer) diffs clause-by-clause
+against the source: every load-bearing clause present, structural
+mechanisms rendered structural (SKILL.md, Rendering from a source).
 
 ## Edit-without-spec-origin
 
-A rendered artifact is edited directly, without surfacing the
-source clause the edit derives from. The artifact gains content
-the source doesn't carry; downstream re-renders would lose the
-content; audit-against-source has no source claim to compare.
-Distinct from "Unverified render from source" — that anti-pattern
-assumes a source exists and questions render fidelity; this
-assumes no source clause exists for the edit at all.
+A rendered artifact is edited directly, without the source clause
+the edit derives from — the artifact gains content the source
+doesn't carry, a re-render would lose it, and audit-against-source
+has nothing to compare. Distinct from Unverified render: that
+questions render fidelity; this has no source clause at all.
 
-**Symptoms:**
-- Rendered artifact edited with no surfaced source clause as
-  origin
-- Re-render would lose the edit (no source to render from)
-- Audit-against-source has nothing to compare
-- Drift surfaces retroactively (operator catch), not
-  preventatively at edit-time
+**Symptoms:** render edited with no surfaced source clause;
+re-render would lose the edit; drift surfaces retroactively at
+operator catch.
 
-**Fix:** route the edit through source first — add the content
-to the source spec, then re-render. The upstream gate (every
-edit cites the source clause it derives from) is the prevention
-mechanism. See "Rendering from a source" (PROCEDURE.md Layer 2)
-for the source→render direction.
+**Fix:** route the edit through the source first — add the content
+to the source, then re-render; every render edit cites the source
+clause it derives from.

@@ -1,219 +1,145 @@
 # Writing skill procedures by type
 
-**Load when:** Designing a new skill — to determine the appropriate
-procedure shape for the skill's type. Not needed for reviewing or
-iterating existing skills.
+**Load when:** designing a new skill — to determine the procedure
+shape for the skill's type, and for the full Path 2 techniques.
 
 ---
 
-Not all skills are the same type. The approach to writing
-PROCEDURE.md depends on what kind of skill it is.
+Not all skills are the same type. The shape of the method text
+depends on what kind of skill it is.
 
 ## Skill types
 
 **Rule-based skills** — checklists, audits, validation procedures.
-The procedure is a set of rules that prevent specific failures.
+The method is a set of rules preventing specific failures.
 
-**Workflow skills** — orchestrate a multi-phase process. The
-procedure is a flow with phases, gates, and routing.
+**Workflow skills** — orchestrate a multi-phase process. The method
+is a flow with phases, gates, and routing.
 
 **Domain knowledge skills** — encode expertise for a specific
-domain. The procedure is "when encountering X, do Y because that's
-how this domain works."
+domain: "when encountering X, do Y — that is how this domain
+works."
 
-**Judgment skills** — require assessment, not execution.
-Architecture audits, reflective reviews, design critiques. The
-procedure defines what to examine and what constitutes a finding,
-but the analysis requires understanding, not step-following.
+**Judgment skills** — assess rather than execute: audits,
+reflective reviews, design critiques. The method defines what to
+examine and what constitutes a finding; the analysis requires
+understanding, not step-following.
 
-**Tooling skills** — thin wrappers around a specific workflow or
-tool. The procedure is a sequence of steps.
+**Tooling skills** — thin wrappers around a workflow or tool. The
+method is a sequence of steps.
 
 An audit fits whichever type matches its checks: mechanical checks
-that need no understanding make it rule-based; checks that require
-assessment make it a judgment skill.
+make it rule-based; checks requiring assessment make it a judgment
+skill.
 
 ## Writing rule-based procedures
 
-Two paths, depending on whether real incidents exist.
+Two paths, by whether real incidents exist (SKILL.md, Two paths for
+every rule).
 
-**Path 1: Phenomenon-driven (you have incidents).** A failure
-happened. The observation exists or is obvious.
+**Path 1: phenomenon-driven (incidents exist).** Document the
+observation (what happened, abstracted); derive the rule from it
+(what would prevent it); the observation grounds the rule — its
+reason for existing stays traceable.
 
-1. Document the observation (what happened, abstracted)
-2. Derive the rule from the observation (what would prevent it)
-3. The observation grounds the rule — the reason for its existence
-   is traceable
+**Path 2: blank-slate (no incidents yet).** The rules are
+hypotheses — mark them as such and validate by use. Each technique
+below finds or holds the right abstraction level, the common root
+of the failure modes it addresses:
 
-This is how most effective rule-based skills are built. The
-observation comes first, the rule follows.
-
-**Path 2: Blank-slate (no incidents yet).** You're writing rules
-for a new capability. No failures to learn from. Each technique
-below is a way to find or hold the right abstraction level — broad
-enough to apply across variants, specific enough to discriminate.
-Wrong abstraction is the common root of every failure mode these
-techniques address.
-
-- **Phenomenon identification.** Before drafting any rule, describe
-  what actually goes wrong (or could go wrong) and why. A rule must
-  address the root cause, not just one scenario.
-
-- **Proxy detection.** For each element of a rule, ask: does this
-  represent the actual condition, or an approximation? "Be careful"
-  is a proxy for a specific action. Replace proxies with the
-  precise condition.
-
-- **Bidirectional trigger check.** Every rule has two failure
-  modes: too narrow (misses cases the principle should catch) and
-  too fuzzy (covers cases it shouldn't, or fails to discriminate).
-  Refining toward one risks the other. List at least two cases
-  where the rule WOULD fire and at least two where it WOULDN'T.
-  For each, decide whether the firing/non-firing matches the
-  intended principle. Misses → too narrow; spurious fires → too
-  fuzzy.
-
-- **Widen by principle, not enumeration.** When a trigger is too
-  narrow, abstract upward to the underlying principle that catches
-  all variants — including ones not enumerated — and restate the
-  rule at that level. A rule that grows by appending "...or X, or
-  Y, or Z" is brittle: the next failure shape not in the list
-  slips through. The fix is upward (abstract to the principle),
-  not outward (list more cases). Applies equally when refining an
-  existing rule based on a new incident: a Path 1 observation that
-  exposes a gap should produce a sharper principle, not a longer
-  list.
-
-Rules from Path 2 are hypotheses. Validate by use, refine through
-Path 1.
+- **Phenomenon identification.** Before drafting a rule, describe
+  what actually goes wrong (or could) and why. The rule addresses
+  the root cause, not one scenario.
+- **Proxy detection.** For each element of a rule: does it state
+  the actual condition or an approximation? "Be careful" proxies a
+  specific action — replace the proxy with the precise condition.
+- **Bidirectional trigger check.** Every rule fails two ways: too
+  narrow (misses cases the principle covers) and too fuzzy (fires
+  where it shouldn't). List at least two cases where the rule WOULD
+  fire and two where it WOULDN'T; per case, decide whether the
+  outcome matches the intent. Misses → too narrow; spurious fires →
+  too fuzzy.
+- **Widen by principle, not enumeration.** A trigger too narrow
+  abstracts upward to the principle that catches unenumerated
+  variants — a rule growing by "…or X, or Y, or Z" is brittle; the
+  next shape not in the list slips through. Applies equally when a
+  Path 1 incident exposes a gap in an existing rule: sharpen the
+  principle, don't lengthen the list.
 
 ## Writing workflow procedures
 
-Define phases, gates between phases, and what triggers transitions.
-The key decisions are: what must be true to advance? What signals
-completion? What happens when the user interrupts?
+Define phases, gates between them, and what triggers transitions:
+what must be true to advance, what signals completion, what happens
+on interrupt. Workflow procedures benefit from explicit
+choice-surfacing at phase boundaries more than any other type — the
+surfaced choice IS the flow control.
 
-Workflow procedures benefit from explicit choice-surfacing at phase
-boundaries more than any other type — the surfaced choice IS the
-flow control, showing the user where they are and what they can do
-next. Specific patterns (persistent menus, inline questions, etc.)
-are skill-specific.
-
-**Decision logic within workflow phases.** When a workflow phase
-produces design decisions that contain decision logic
-(classification, matching, filtering, scoring, routing), apply
-Path 2 techniques to that logic: phenomenon identification, proxy
-detection, and non-firing case enumeration. A workflow skill's
-design phase proposing a heuristic is creating an internal rule —
-validate it as one, not just as a workflow step. This is a
-specific case of the Layer 2 principle "Judgment calls as design
-risk" — classification inside a workflow phase is that same
-decision at finer grain.
+**Decision logic within workflow phases.** A workflow phase whose
+output contains decision logic (classification, matching,
+filtering, scoring, routing) is minting an internal rule — validate
+it with the Path 2 techniques above, not just as a workflow step.
+This is the naked-judgment mitigation (SKILL.md, Enforcement) at
+finer grain.
 
 ## Writing judgment procedures
 
-Judgment skills assess rather than execute. The procedure defines
-what to examine and what constitutes a finding, but cannot be
-reduced to a checklist that produces correct results when followed
-mechanically.
+Judgment skills assess. The method defines what to examine and what
+constitutes a finding; it cannot reduce to a checklist that is
+correct when followed mechanically.
 
 **Principles with evidence requirements, not blocking checkpoints.**
-A judgment skill states: "two passes minimum" (principle) and
-"each finding must have: code location, impact, classification"
-(evidence requirement). Not: "- [ ] Two passes completed? NO →
-CANNOT proceed" (blocking checkpoint). The distinction matters: a
-blocking checkpoint can be satisfied mechanically without
-understanding. A principle with evidence requirements forces the
-output to demonstrate the principle was applied.
+State the principle ("two passes minimum") and the evidence
+requirement ("each finding carries location, impact,
+classification") — not a gate ("- [ ] Two passes completed? NO →
+CANNOT proceed"). A gate can be satisfied mechanically without
+understanding; an evidence requirement forces the output to
+demonstrate the principle was applied. The test: can the check be
+satisfied mechanically without understanding? If yes, it belongs in
+a workflow skill.
 
-The test: "can this check be satisfied mechanically without
-understanding?" If yes, it belongs in a workflow skill. If no, it
-belongs in a judgment skill.
+**Layers, not steps.** Judgment procedures examine one system from
+multiple angles (structural shape, boundary agreements, error
+paths); layers do not gate each other — findings from any layer
+inform the others.
 
-**Layers, not steps.** Judgment procedures examine the same system
-from multiple angles (e.g., structural shape, boundary agreements,
-error paths). Each layer produces different findings. Unlike
-workflow phases, layers don't gate each other — findings from any
-layer can inform analysis in other layers.
+**Deepening is mandatory.** Every finding predicts adjacent issues:
+a swallowed error in one function predicts swallowed errors in its
+siblings. Instruct: trace each finding's implications. Without
+deepening the output is surface findings, not structural insight.
 
-**Deepening is mandatory.** Every finding predicts adjacent
-issues. A judgment procedure must instruct: trace each finding's
-implications. A swallowed error in one function predicts swallowed
-errors in similar functions. A missing abstraction in one area
-predicts missing abstractions in adjacent areas. Without
-deepening, the skill produces a checklist of surface findings
-instead of structural insight.
-
-**The output demonstrates the analysis.** For each finding:
-specific location, impact if unfixed, classification (severity).
-The findings themselves are the evidence that the judgment was
-applied. A judgment skill that says "looks good" without findings
-is a protocol violation.
+**The output demonstrates the analysis.** Per finding: location,
+impact if unfixed, classification. The findings are the evidence
+the judgment happened; "looks good" without findings is a protocol
+violation.
 
 ## Writing domain knowledge procedures
 
-Encode the expertise as concrete rules with context. Not "be aware
-of CRS issues" but "BEFORE any geometry operation, verify source
-and target CRS match. If they don't, reproject explicitly."
-
-Domain procedures are the most likely to need progressive
-disclosure — the full expertise is too large to load at once. Core
-rules in PROCEDURE.md, detailed reference material in
-`references/`.
+Encode expertise as concrete rules with context — not "be aware of
+CRS issues" but "BEFORE any geometry operation, verify source and
+target CRS match; if they don't, reproject explicitly." Domain
+procedures need the disclosure ladder most: core rules in the body,
+detail in `references/`.
 
 ## Writing tooling procedures
 
-Keep them minimal. State the steps, the expected inputs, the
-expected outputs. Tooling skills rarely need observations or
-evolution — they either work or they don't. If the tool changes,
-update the steps.
+Keep them minimal: steps, expected inputs, expected outputs.
+Tooling skills rarely need journals — they work or they don't; when
+the tool changes, update the steps.
 
-**Skills that bundle scripts.** When a tooling skill ships executable
-scripts (not just inline steps), each script is part of the skill's
-reliability surface and takes its own disciplines:
+**Skills that bundle scripts.** A shipped script is part of the
+skill's reliability surface:
 
-- **Solve, don't punt.** The script handles its own error conditions —
-  recover, or exit with a precise actionable message — rather than
-  failing into the AI's lap with a bare error to diagnose.
+- **Solve, don't punt.** The script handles its own error
+  conditions — recover, or exit with a precise actionable message —
+  never failing into the consumer's lap with a bare error.
 - **No unexplained constants.** Every magic value (timeout, retry
-  count, threshold) carries the reason for its value at point of use.
-  If the author can't justify the number, the AI can't either.
-- **Plan → validate → execute for fragile or batch operations.** Emit
-  an intermediate plan artifact, validate it with a script before
-  acting, then execute — the un-fakeable-artifact principle (Layer 2)
-  applied to scripts: the validated plan proves the operation was
-  checked before it ran.
-- **State execute-vs-read intent.** Say whether the AI runs the script
-  (most cases — cheaper, deterministic) or reads it as reference (when
-  the logic itself is the guidance). Ambiguous intent wastes a load or
-  a run.
-
-## Calibrating prescription density to the consuming model
-
-Prescription density follows the model that will execute the
-skill's instructions — not the author's habits. Name the intended
-consumer (model or tier range) when designing a skill; re-review the
-density whenever the consumer changes.
-
-Both directions are documented by Anthropic:
-
-- **Top-tier consumers (e.g. Claude Fable 5):** "Instruction-following
-  is improved enough that you can steer most behaviors with a brief
-  instruction rather than enumerating each behavior by name," and
-  "Skills developed for prior models are often too prescriptive for
-  Claude Fable 5 and can degrade output quality. Review and consider
-  removing older instructions if default performance is better"
-  (platform.claude.com, "Prompting Claude Fable 5"). Prefer a brief
-  principle plus one curated example over enumerated steps.
-- **Cheaper-tier consumers:** "What works perfectly for Opus might
-  need more detail for Haiku" (Agent Skills best practices). Keep
-  explicit steps, convention lists, and worked forms.
-
-Boundary: the freedom coupling stays primary — fragile or invariant
-procedures keep exact steps regardless of consumer tier. Density
-calibration governs everything outside that class.
-
-Migration: a skill inherited from an older-model era is reviewed for
-over-prescription when its consumer moves up a tier — the reviewed
-removal is deliberate, never a silent trim.
-
+  count, threshold) carries the reason for its value at point of
+  use.
+- **Plan → validate → execute** for fragile or batch operations:
+  emit a plan artifact, validate it with a script, then act — the
+  un-fakeable artifact applied to scripts; the validated plan
+  proves the operation was checked before it ran.
+- **State execute-vs-read intent.** Say whether the consumer runs
+  the script (most cases — cheaper, deterministic) or reads it as
+  reference (when the logic itself is the guidance); ambiguous
+  intent wastes a load or a run.

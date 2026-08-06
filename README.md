@@ -2,20 +2,25 @@
 
 > Skills the AI actually follows.
 
-You write a skill. The AI ignores half of it — reads `SKILL.md`, skips
-`PROCEDURE.md`, hits a checkpoint and breezes past it. The skill says
-"check all edge cases" and the AI says "checked" without checking.
-This is the failure mode skill-craft engineers against.
+You write a skill. The AI ignores half of it — skips the reference
+it was told to read, hits a checkpoint and breezes past it. The
+skill says "check all edge cases" and the AI says "checked" without
+checking. And the half it does read costs context on every turn,
+whether or not it fires. Skill-craft engineers against both.
 
-A Claude Code plugin for designing skills that work as written. Five
-layers of structural enforcement — un-fakeable artifacts, forcing
-functions, blocking gates — so the AI's behavior matches what the
-skill says, not what it pattern-completes. The methodology ships
-with its tooling: an evaluation harness (`/eval-skill`), a
-mechanical release-and-activation sequence (`/release-plugin`), and
-hooks that catch stale plugin pins in running sessions — a plugin
-update activates only on `/reload-plugins`; until then every running
-session silently serves the old version.
+A Claude Code plugin for designing skills that hold at a cost worth
+paying. Every skill declares its consumer — the model tier that
+executes it — and that declaration sets the enforcement density:
+evidence-register principles for top-tier consumers, structural
+instruments (un-fakeable artifacts, blocking gates, load manifests)
+below trust tier. The economics — pointer wording, invocation
+choice, term selection, the model-relative no-op test — apply at
+every tier. The methodology ships with its tooling: an evaluation
+harness (`/eval-skill`), a mechanical release-and-activation
+sequence (`/release-plugin`), and hooks that catch stale plugin
+pins in running sessions — a plugin update activates only on
+`/reload-plugins`; until then every running session silently serves
+the old version.
 
 skill-craft is the meta-discipline. The
 [Anneal framework](https://github.com/Gunther-Schulz/anneal-framework)
@@ -24,15 +29,20 @@ is built using its mechanisms; framework instances
 [DANEEL](https://github.com/Gunther-Schulz/daneel)) inherit those
 mechanisms downstream.
 
-## The five layers
+## The method
 
-1. **Plugin structure** — directory layout, manifest, auto-discovery
-2. **Protocol conventions** — un-fakeable artifacts, forcing functions, blocking gates
-3. **Skill architecture** — file roles, progressive disclosure, dependency graph
-4. **Skill evolution** — the observations-cycle and amendment discipline
-5. **Skill reflexivity** — noticing during use that guidance itself needs updating
-
-Layers 3-5 are where skills succeed or fail over time.
+- **The two parties** — writer and declared consumer; enforcement
+  density follows the declaration
+- **Economics** — the two loads, context pointers, invocation
+  choice, term selection, the no-op test, pruning
+- **The two registers** — directive vs evidence, chosen by consumer
+  and mechanism
+- **Enforcement** — un-fakeable artifacts; the tier-conditional
+  instrument toolbox
+- **Lifecycle** — durability classes, fire-based retirement, the
+  era re-grade, amendment discipline
+- **Evaluation** — triggering measured, behaviour-delta signature,
+  isolated grade
 
 ## Companion: plugin-dev
 
@@ -61,10 +71,12 @@ Run `/reload-plugins` in Claude Code to activate.
 
 | File | Role | Loaded |
 |------|------|--------|
-| `SKILL.md` | Entry point, trigger conditions, dependency graph | At activation |
-| `PROCEDURE.md` | The skill design method (five layers) | At activation |
-| `references/anti-patterns.md` | Common skill design mistakes — symptoms + fixes | At activation |
-| `references/review-checklist.md` | Full skill review checklist with blocking logic | On demand |
+| `SKILL.md` | The canon — two-party spine, economics, registers, enforcement, lifecycle | At activation |
+| `references/enforcement.md` | The instrument toolbox — blocking logic, load gates, boundary and handoff checks | On demand |
+| `references/anti-patterns.md` | Skill-design failure shapes — symptoms + fixes | On demand |
+| `references/review-checklist.md` | The review questions | On demand |
+| `references/evaluation.md` | Tier 1 triggering, Tier 2 behaviour-delta, Tier 3 grade | On demand |
+| `references/self-review.md` | The pre-commit fresh-context self-review dispatch | On demand |
 | `references/plugin-engineering.md` | Plugin packaging: marketplace, hooks, installation | On demand |
 | `references/writing-by-skill-type.md` | Type-specific authoring (judgment, workflow, domain-knowledge, tooling) | On demand |
 | `commands/release-plugin.md` | `/release-plugin` — mechanical release + activation sequence, ends at the operator's `/reload-plugins` | Command |
