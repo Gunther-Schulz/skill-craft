@@ -1553,3 +1553,21 @@ entry format read directly this session). Reviewer also caught the
 dispatch brief's stale line citation for the backlog entry — a
 live co-writer shifted the dotfiles backlog between my read and
 the reviewer's; located by title grep, content matched.
+
+## 2026-08-06 — Render-time term-provenance (operator GO'd corpus change; Layer-5 observation)
+
+The canon's portability/abstraction checks anchor at PROPOSAL time
+(the rule idea); the observed leak class happens at RENDER time —
+the final text's noun phrases import session vocabulary even when
+the concept passed its abstraction probe. Motivating incident: the
+falsification-escalation mint leaked "intent/mechanical passes",
+"clippy", and "money path" into the operator corpus; caught by the
+operator post-push (dotfiles JOURNAL 2026-07-31 ADDENDUM), repaired
+by re-rendering against existing corpus instruments. Candidate
+canon change: a term-provenance step over the FINAL render — every
+noun phrase sources from (a) the target corpus's own vocabulary,
+(b) domain literature, or (c) session context, and (c) is the leak
+signal. The consuming corpus (dotfiles CLAUDE-maintenance.md,
+skill-craft-vetting bullet) now states this for itself, 2026-08-06;
+this observation proposes the general form for the canon. Operator
+decides at the next canon pass.
