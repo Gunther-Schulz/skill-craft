@@ -11,11 +11,18 @@ Run skill-craft's evaluation discipline on the skill named `$ARGUMENTS`. Tier 1 
 
 **FIRST**, load `references/evaluation.md` from skill-craft into context. State the section headers loaded as the un-fakeable load artifact — no subsequent step is valid without this load. Without it, the command runs on memory of the discipline, not the discipline itself (`anti-patterns.md` Soft-load-pointer).
 
-Then find the target skill's `SKILL.md`. Search likely locations and show the operator the file path + the description verbatim:
+**Normalize the argument before using it anywhere.** `$ARGUMENTS` is substituted raw into every path and every qualified skill name below, so a path argument corrupts all of them at once (observed: an argument of `plugin/skills/dispatch/SKILL.md` produced the search path `…/skills/plugin/skills/dispatch/SKILL.md/SKILL.md` and the skill-tool name `<plugin>:plugin/skills/dispatch/SKILL.md`). Resolve it to a bare **skill name** first:
+
+- Contains `/` or ends in `.md` → it is a path. The NAME is the directory containing `SKILL.md` (`plugin/skills/dispatch/SKILL.md` → `dispatch`). Use that name for every `$ARGUMENTS` substitution below, and treat the given path as the located SKILL.md — the search is already answered, skip it.
+- Otherwise it is already a name; continue.
+
+State the resolved name in one line before proceeding.
+
+Then find the target skill's `SKILL.md` (unless a path already supplied it). Search likely locations and show the operator the file path + the description verbatim — `<name>` is the resolved name:
 
 ```
-ls ~/.claude/plugins/cache/*/<plugin>/*/skills/$ARGUMENTS/SKILL.md 2>/dev/null
-ls ~/.claude/plugins/marketplaces/*/plugin/skills/$ARGUMENTS/SKILL.md 2>/dev/null
+ls ~/.claude/plugins/cache/*/<plugin>/*/skills/<name>/SKILL.md 2>/dev/null
+ls ~/.claude/plugins/marketplaces/*/plugin/skills/<name>/SKILL.md 2>/dev/null
 ```
 
 If multiple paths match, prefer the cache path matching the currently-installed version (read `~/.claude/plugins/installed_plugins.json`).
@@ -47,15 +54,15 @@ d. **Diagnose misses.** For each defect: name the likely mechanism (keyword coll
 
 ## Step 4 — Tier 2 (always applicable): behaviour-delta signature
 
-a. **Get the signature spec from the operator.** Ask: what un-fakeable artifact does `$ARGUMENTS` exist to force that the bare model would not produce? Examples to give if useful: "findings carrying file:line + impact + classification" (judgment skill); "a tracker with locked design decisions + isolated verify ledger" (workflow skill); "review-questions completion with file:line per item" (review skill). The signature must be *observable in the output*, not "good thinking."
+a. **Get the signature spec from the operator.** Ask: what un-fakeable artifact does `<name>` exist to force that the bare model would not produce? Examples to give if useful: "findings carrying file:line + impact + classification" (judgment skill); "a tracker with locked design decisions + isolated verify ledger" (workflow skill); "review-questions completion with file:line per item" (review skill). The signature must be *observable in the output*, not "good thinking."
 
 b. **Get one representative task** the skill is designed to handle.
 
-c. **Dispatch two general-purpose subagents in parallel** with these briefs. First derive the qualified Skill-tool name `<plugin>:$ARGUMENTS` from the SKILL.md path located in Step 1 (path shape: `…/cache/<marketplace>/<plugin>/<version>/skills/$ARGUMENTS/SKILL.md` → `<plugin>` is the directory segment after the marketplace). Pass that qualified name into both briefs.
-   - **WITH-skill**: "Invoke the `<plugin>:$ARGUMENTS` skill (via `Skill(skill='<plugin>:$ARGUMENTS')`) and follow its guidance to execute this task. Task: [paste task]. Save your full output verbatim."
-   - **WITHOUT-skill**: "Execute this task directly. Do NOT invoke `<plugin>:$ARGUMENTS` or any specialized methodology skill (skill-craft, anneal-dev, clippy, etc.) — respond as you would without them loaded. Task: [paste task]. Save your full output verbatim."
+c. **Dispatch two general-purpose subagents in parallel** with these briefs. First derive the qualified Skill-tool name `<plugin>:<name>` from the SKILL.md path located in Step 1 (path shape: `…/cache/<marketplace>/<plugin>/<version>/skills/<name>/SKILL.md` → `<plugin>` is the directory segment after the marketplace). Pass that qualified name into both briefs.
+   - **WITH-skill**: "Invoke the `<plugin>:<name>` skill (via `Skill(skill='<plugin>:<name>')`) and follow its guidance to execute this task. Task: [paste task]. Save your full output verbatim."
+   - **WITHOUT-skill**: "Execute this task directly. Do NOT invoke `<plugin>:<name>` or any specialized methodology skill (skill-craft, anneal-dev, clippy, etc.) — respond as you would without them loaded. Task: [paste task]. Save your full output verbatim."
 
-d. **Save outputs.** Default target: `./dev-notes/eval-$ARGUMENTS/<YYYY-MM-DD>/` (or `~/.claude/skill-evals/$ARGUMENTS/<YYYY-MM-DD>/` if no `dev-notes/` exists in CWD). Confirm or override with the operator in one question. Write `tier2-with.md` and `tier2-without.md` verbatim.
+d. **Save outputs.** Default target: `./dev-notes/eval-<name>/<YYYY-MM-DD>/` (or `~/.claude/skill-evals/<name>/<YYYY-MM-DD>/` if no `dev-notes/` exists in CWD). Confirm or override with the operator in one question. Write `tier2-with.md` and `tier2-without.md` verbatim.
 
 e. **Surface side-by-side for the operator with cited evidence.** For each signature element the operator named in (a), locate it (or its absence) in both saved files and report with file:line citations — e.g. "element 'finding with location+impact+classification' present in `tier2-with.md:L42-58` (quote: '...'), absent in `tier2-without.md` (grep '<pattern>' returned 0 hits)." **A verdict line without per-element citations is malformed; the citations are the un-fakeable artifact for the verdict** (the verdict itself, otherwise, is a fakeable claim — skill-craft `SKILL.md`, Enforcement).
 
@@ -67,10 +74,10 @@ e. **Surface side-by-side for the operator with cited evidence.** For each signa
 
 ## Step 5 — Write the eval record
 
-Write `./dev-notes/eval-$ARGUMENTS/<YYYY-MM-DD>/result.md`:
+Write `./dev-notes/eval-<name>/<YYYY-MM-DD>/result.md`:
 
 ```
-# /eval-skill $ARGUMENTS — <date>
+# /eval-skill <name> — <date>
 
 Skill path: <path to SKILL.md>
 Installed version: <version from installed_plugins.json>
