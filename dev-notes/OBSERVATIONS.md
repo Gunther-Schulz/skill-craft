@@ -1571,3 +1571,31 @@ signal. The consuming corpus (dotfiles CLAUDE-maintenance.md,
 skill-craft-vetting bullet) now states this for itself, 2026-08-06;
 this observation proposes the general form for the canon. Operator
 decides at the next canon pass.
+
+## 2026-08-06 — Cross-repo experiment booking: opus pre-release review of skill edits (statiker trial)
+
+The statiker repo pre-registered an experiment bearing on this
+canon's review posture (statiker CLAUDE.md trial conventions +
+dev-notes/OBSERVATIONS.md, 2026-08-06): the next three statiker
+SKILL.md releases each get ONE fresh-context opus review before
+the pin moves (brief = diff + full skill + question, no author
+reasoning; findings dispositioned pre-release). Pre-registered
+criterion: SUSTAINS if ≥1 of 3 reviews yields a substantive
+change to shipped text (structural/provenance/reach/register, not
+wording); else RETIRES to stabilization-only review. Evidence
+motivating it (operator-relayed, labeled unverified in the
+statiker ledger): opus arm out-bit fable arm in the statiker
+attack ladder rounds 1-3 (byte-identical artifacts, n=4, one
+domain); an opus vet catching a blocking factual defect in
+hours-old top-tier text. CANON RELEVANCE if it sustains: the
+mandatory fresh-context pre-commit review dispatch currently binds
+only skill-craft's own files, while other skills get a
+same-session checklist pass ("Reviewing a skill"); a sustained
+result grounds widening the dispatch form (tier-insensitive per
+the self-review reference's own doctrine, so a cheaper tier
+carries it) to skills under active development generally — a
+Path-1 amendment with the three review reports as provenance.
+NO canon change now: zero rounds run; unmarked-guess path
+otherwise. Consumer: the next canon pass, and the statiker meta
+session's grading entry at the third release (statiker
+dev-notes) — read both before amending.
