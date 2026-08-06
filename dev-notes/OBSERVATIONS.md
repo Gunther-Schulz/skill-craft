@@ -1500,3 +1500,56 @@ dispatch caught a real defect class the writer was blind to
 firing for the mechanism's own retention log. Recursion check
 (repo CLAUDE.md): the reviewer did not self-validate — it returned
 9 findings; each re-read against the cited line before fixing.
+
+## 2026-08-06 — Guard-lifecycle doctrine minted (operator GO, dotfiles BACKLOG "READY 2026-08-06 — guard-lifecycle adoption")
+
+Path 1; incident provenance: midturn incident 2026-08-05 (synthetic
+fixture blindness + frozen corpus scoring a dead detector as
+passing), recorded in the dotfiles backlog entry — the binding
+decision record.
+
+- Minted: `references/enforcement.md` "Guard lifecycle (shipped
+  hooks)" — deny-arm fixtures on recorded real payloads (both traps
+  carried verbatim), warn-first with logged fires, deny on measured
+  rates, replay audit with re-capture bound to harness versions;
+  plus the two-reader report line (prose + schema-validated
+  structured tail). Existing instance of the two-reader pattern:
+  statiker's tag-first tracker lines. SKILL.md toolbox enumeration
+  gains "the guard lifecycle for shipped hooks" — pointer only.
+- Placement basis (search-before-add over the governed set):
+  `grep -rni "hook|guard|warn|deny|fixture|lifecycle"` over
+  SKILL.md + references/*.md — zero doctrinal coverage; all hits
+  incidental (packaging mechanics in plugin-engineering, the
+  era-regrade's precipitation clause). Gap → minimum novel content.
+- Home deviation, named: the backlog entry expected the
+  plugin-engineering reference; the follow-up brief set the
+  enforcement reference as expected home with placement judgment
+  against the canon's ladder. Basis: plugin-engineering is
+  packaging bindings; the lifecycle is enforcement-instrument
+  doctrine — it sits with the instruments it governs.
+- Out of scope, homed elsewhere per the decision record: hookbench
+  + warn-runner (dotfiles), schema-tail validator + writer lock
+  (dispatch-guards), PermissionRequest seam (stamped re-open
+  condition in the backlog; build nothing).
+- Self-referential residue (reviewer NIT-8): skill-craft's own
+  shipped hooks now sit inside the class convention with no
+  recorded-real fixture corpus yet; the fleet measurement is homed
+  in hookbench (dotfiles decision record), not here.
+
+Self-review round 2 (fable, fresh context, guard-lifecycle
+amendment): 1 blocking, 3 notable, 5 nit. B1 (incident tag inline
+in canon) fixed — parenthetical deleted; the trap clause stays
+verbatim, the dated provenance lives in this entry (deviation from
+a literal reading of the follow-up brief's "carry verbatim",
+surfaced to the operator at booking). N2 (home deviation) and N4
+(report-pattern line beyond the backlog's canon clause) accepted —
+both decided by the operator's follow-up brief, recorded above; N3
+(timing "AFTER 2.0.0 lands") accepted — the follow-up brief itself
+commissioned the amendment against the committed 2.0.0-dev
+rewrite. NIT-6 fixed (one term, "guard", after the title's
+equation); NIT-5/7 no action (reviewer's own rule-outs); NIT-8 the
+line above; NIT-9 verified in-session (statiker SKILL.md tag-first
+entry format read directly this session). Reviewer also caught the
+dispatch brief's stale line citation for the backlog entry — a
+live co-writer shifted the dotfiles backlog between my read and
+the reviewer's; located by title grep, content matched.

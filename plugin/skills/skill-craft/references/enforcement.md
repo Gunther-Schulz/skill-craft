@@ -84,6 +84,36 @@ proceeding. Silent revision between phases is the fakeability
 failure applied to handoffs, whichever artifact carries the
 commitment.
 
+## Guard lifecycle (shipped hooks)
+
+A hook is the strongest instrument in the toolbox — a mechanical
+check without moods — and the least visible when it dies: its
+failure mode is silence read as clean. Class convention for
+hook-bearing plugins, each stage the un-fakeable principle applied
+to the guard itself:
+
+- **Deny-arm fixtures, pinned on recorded real payloads.** A guard
+  ships with fixtures proving its deny arm fires on the defect it
+  was built for, and the fixtures are recorded real payloads, never
+  authored ones — synthetic fixtures re-create same-parentage
+  blindness: the author's expectation pins the very defect the
+  guard should catch.
+- **Warn first, deny on measured rates.** A new guard enters the
+  fleet in warn mode with its fires logged; it graduates to deny on
+  measured rates — true fires against false fires on legitimate
+  work. A guard firing on legitimate work trains the override
+  reflex that kills it.
+- **Audited by replaying the fixture corpus, re-capture bound to
+  harness versions.** A frozen recording corpus scores dead
+  detectors as passing — the input shape moves and the guard
+  silently stops matching. The corpus is re-captured on a cadence
+  bound to the harness version it records.
+
+**The two-reader report.** Where a guard's or protocol's output is
+consumed by both a human and a validator, one artifact serves both:
+a prose report for the human, a schema-validated structured tail
+for the machine — the tail is what fire rates and audits measure.
+
 ## Information flow in orchestrated workflows
 
 At every handoff between skills or agents, data is lost unless

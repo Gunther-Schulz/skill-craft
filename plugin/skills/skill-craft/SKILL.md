@@ -251,7 +251,8 @@ gate whose evidence is un-fakeable, judgment staying inside;
 
 The instrument forms — blocking logic, the load gate,
 dispatch-order encoding, phase-boundary commitment gates, handoff
-information flow — are the below-trust-tier and must-hold toolbox:
+information flow, the guard lifecycle for shipped hooks — are the
+below-trust-tier and must-hold toolbox:
 `references/enforcement.md`. Applying them to a top-tier consumer's
 judgment work is the register error named above.
 
