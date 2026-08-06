@@ -1398,3 +1398,35 @@ Firing expectation (what the log should show next): the warn fires on
 the next mid-day pin move in ANY context, no Skill call is ever
 blocked by this hook again, and the operator's next /reload-plugins
 follows the warn rather than a wall.
+
+## 2026-08-06 — Contact transfer: a read skill's format steered behavior without invocation
+
+During the mattpocock/skills comparison session, the assistant read
+his `grilling` skill (22 lines) among ~10 others. Roughly a hundred
+turns later, presenting design questions for the 2.0.0 plan, it
+reproduced that skill's round format unprompted — the ❓/➡️ glyphs,
+batched rounds, and the word "frontier" — without deciding to adopt
+it, and flagged the leak only when the operator asked. The
+recommendation-beside-question SUBSTANCE was already operator-corpus
+doctrine; what transferred was the FORM, carried by one
+prior-recruiting term ("frontier", from search algorithms).
+
+Two readings, both actionable:
+- Corroborates the Tier 2 arm-contamination check (evaluation.md):
+  merely reading a skill contaminates behavior; a control arm in a
+  session that has read the candidate is not a control.
+- Strongest cheap evidence a format can show for adoption value —
+  transfer on contact, no enforcement. Feeds PLAN.md Harvest B item
+  3 (term selection recruits priors) and the parked grilling-variant
+  BACKLOG item.
+
+## 2026-08-06 — 2.0.0 rewrite charter persisted
+
+PLAN.md created (statiker pattern: core settled in dialogue, plan is
+the carrier, canon written from scratch next session). Basis
+recorded there — architecture + missing economics half, explicitly
+NOT staleness: the July annealing (two registers, durability
+classes, consumer calibration) is current and harvest-rich. Credit:
+Harvest list B adapts from mattpocock/skills (MIT),
+github.com/mattpocock/skills — writing-for-agents,
+SKILL-MECHANICS, grilling.
