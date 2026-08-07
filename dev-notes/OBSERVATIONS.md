@@ -1599,3 +1599,26 @@ NO canon change now: zero rounds run; unmarked-guess path
 otherwise. Consumer: the next canon pass, and the statiker meta
 session's grading entry at the third release (statiker
 dev-notes) — read both before amending.
+
+- 2026-08-07 — **Proposed widening (operator-raised, statiker meta
+  session; incident provenance in statiker dev-notes, reviews
+  12/T3 → draft-attack-2/I1): the Architecture rule's
+  operational/maintenance split binds at FILE grain only; the
+  observed leak is CLAUSE grain.** Incident: a reviewer flagged an
+  operational rule resting on an unversioned external fact
+  (another plugin's grep patterns); the author repaired it by
+  dating the fact IN the skill text ("verified against its source
+  as of <date> — re-check on change") — maintenance metadata
+  addressed to the maintainer, a no-op for the executing consumer,
+  costing context every load. Two existing rules each half-cover
+  it (file-level split; no-op test) and neither fired at write
+  time, because the trigger moment is specific: a provenance
+  demand arriving as a review finding invites answering in the
+  wrong home. Proposed one-sentence widening of the Architecture
+  "Operational vs maintenance files" rule: the split binds inside
+  files too — freshness stamps, verification dates, and re-check
+  triggers address the maintainer and go to the journal or a
+  mechanized check; operational text keeps only the rationale the
+  consumer needs. Canon edit owed via the normal pass
+  (self-review gate); this entry is the observation, not the
+  patch. Consumer: the next skill-craft canon pass.
