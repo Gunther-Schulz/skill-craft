@@ -43,3 +43,39 @@ edit; nothing lands from here without it).
   and green runs recorded in dev-notes. Repo-specific content
   checks (statiker's tag-enum/scope-form consistency) are
   explicitly OUT — those live in the consuming repo's tools/.
+
+## Parked — review-regime section (draft-attack-before-release)
+
+- **Mint a review-regime rule set into skill-craft** (operator
+  question, 2026-08-07, statiker meta session #4; parked on a
+  named trigger: statiker trial reaches its no-blocker round or
+  stabilization grading, whichever first — the convergence
+  clause needs the completed series as evidence). Skill-craft is
+  the right home: it already owns "Reviewing a skill",
+  self-review, and the consolidation criterion, but carries no
+  regime for RELEASING edits to dense interlocked skill text.
+  Candidate content, evidence-complete parts marked: (a)
+  draft-attack-before-release — repairs to a skill executed
+  literally by a fresh context are attacked pre-release by a
+  fresh context on the draft diff (diff + full file + question,
+  no author reasoning), iterated to a no-blocker round, then
+  released byte-identical [evidence: statiker reviews 8-12
+  release-first cadence 4→2→2→1→1 with every round's blockers
+  inside the newest repair vs. draft-attacks 1-5 catching 12
+  blockers pre-release; stop-call record in statiker dev-notes].
+  (b) trend-over-round reading at each lap seam — blocker counts
+  and locations ACROSS rounds, not the last round's findings; a
+  flat or rising series with findings concentrated in the newest
+  repair layer re-opens the repair FORM (patch vs. coherent
+  region rewrite) [evidence: statiker draft-attack cadence
+  2→1→2→3→4 under patch-on-patch; form switch at attack 5
+  operator-prompted, not self-noticed — the miss that makes the
+  rule]. (c) probe-execute external-behavior claims (git,
+  filesystem, tool semantics) before shipping them in skill
+  text; a widened claim ("and kin") inherits the probe duty for
+  each widened member [evidence: attack-5 B2 — the two
+  unprobed "kin" were exactly the two ops git does not guard].
+  Provenance chain: statiker dev-notes/OBSERVATIONS.md sessions
+  #3-#4 (2026-08-07). Consumer: skill-craft maintainer session
+  at the trigger; grading input = the statiker series' final
+  cadence.
