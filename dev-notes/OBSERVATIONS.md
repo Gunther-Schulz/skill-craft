@@ -1749,3 +1749,14 @@ dev-notes) — read both before amending.
   committed and refined checkers, refinements suppress exactly the
   two known false-fire classes. Consumer: this change-set's
   commit; the next enforcement.md pass (N4-deferred).**
+
+- 2026-08-08 (dispatch-guards 0.7.1 release, skill-lint step): the
+  dead-cite check false-fires on a TOOL-NAME parenthetical —
+  forms.md:29 "(SendMessage)" is the harness tool, not a section
+  cite, yet it blocks (exit 1). Over-firing-check class: the
+  heuristic reads any parenthesized CamelCase token as a cite.
+  Dispositioned ACCEPTED at that release (bytes identical to the
+  already-released 0.7.0). Candidate repair: a declared-exemption
+  list of known tool names, or requiring a §/heading-like shape
+  before a parenthetical counts as a cite. Consumer: the next
+  skill-lint pass over its heuristics.
