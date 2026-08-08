@@ -1622,3 +1622,34 @@ dev-notes) — read both before amending.
   consumer needs. Canon edit owed via the normal pass
   (self-review gate); this entry is the observation, not the
   patch. Consumer: the next skill-craft canon pass.
+
+- 2026-08-08 — **Observation (operator challenge, statiker meta
+  session): skill-craft did not catch prose-held machine semantics
+  accreting across repair rounds** (~600 of statiker SKILL.md's
+  1032 operational lines; blocker series 5→7→7 concentrated in each
+  round's newest text; resolved by the operator accepting an
+  executable-spec form change — statiker dev-notes 2026-08-08).
+  Triage against skill-craft's own failure classes: NOT a gap — the
+  Enforcement section already holds the principle (must-hold rules
+  belong in mechanisms, not prose; mitigation preference order).
+  LOADED-BUT-INERT: skill-craft was invoked before every SKILL.md
+  edit (statiker's hook enforces it), but during attack-repair laps
+  it discharges as an edit-gate while the acting frame is the
+  attack round's correctness brief — the attackers grade the
+  semantics' correctness, never the MEDIUM, and skill-craft's
+  structural question is never re-asked under repair momentum. The
+  catch that eventually worked was corpus-level (the re-entry-seam
+  trend rule + a pre-registered stop criterion, both minted
+  2026-08-07 from this same incident) — so the general lesson sits
+  at its truth level already. Proposed minimal change (trigger, not
+  content, per iterative narrowing): at a repair-lap re-entry on a
+  skill's own text — or on a growth burst in one section — the
+  review re-asks the Enforcement section's medium question: which
+  of the text under repair is must-hold semantics that belongs in a
+  mechanism? Computable tripwire candidate: successive repair
+  rounds whose findings concentrate in the newest text. Scope
+  note: the operator's wider overbuild challenge had three parts;
+  only this one is skill-craft's jurisdiction — meta-to-object
+  ratio and batch accretion are economy questions (corpus). One
+  incident as provenance; operator decides whether it becomes a
+  checklist item.**
