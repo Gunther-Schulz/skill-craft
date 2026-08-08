@@ -34,6 +34,11 @@ BLOCKING = ("wrap", "trailing-ws", "dead-cite")
 CODE_SPAN = re.compile(r"`([^`\n]+)`")
 PARENTHETICAL = re.compile(r"\(([^()]{2,60})\)")
 HEADING = re.compile(r"^#{1,6}\s+(.*?)\s*$")
+# a bold run-in label opening a paragraph or list item is a heading
+# for citation purposes: "(Amendment discipline)" resolves to
+# "**Amendment discipline.**" (integration finding G5 — the corpus
+# cites run-in labels as sections)
+BOLD_LABEL = re.compile(r"^\s*(?:[-*+]\s+)?\*\*([^*\n]+?)\*\*")
 TRAILING_PAREN = re.compile(r"\s*\([^()]*\)\s*$")
 CITE_FORBIDDEN = set(";:!?`|=/\\<>[]{}#*.")
 
@@ -96,6 +101,8 @@ def check_wrap(path, lines, fm, fence, out):
             continue
         if line.lstrip().startswith("|"):  # markdown table row
             continue
+        if HEADING.match(line):  # a heading cannot wrap without
+            continue             # changing every anchor and cite
         if unbreakable(line):
             continue
         out.append(Finding(path, n + 1, "wrap",
@@ -122,7 +129,7 @@ def headings(lines, fence):
     for n, line in enumerate(lines):
         if fence[n]:
             continue
-        m = HEADING.match(line)
+        m = HEADING.match(line) or BOLD_LABEL.match(line)
         if not m:
             continue
         full = normalize(m.group(1))

@@ -61,7 +61,15 @@ skill-craft's own files; the two compose.
 10. **Enforcement.** Must-hold sequences structurally enforced with
     un-fakeable evidence; N/A escapes mechanically verifiable; no
     naked load-bearing judgment (mitigation ladder applied —
-    SKILL.md, Enforcement)?
+    SKILL.md, Enforcement)? The medium question: is any of the
+    text itself must-hold machine semantics — text a machine
+    reads, not judgment steering — belonging in a mechanism
+    rather than either register (SKILL.md, The two registers),
+    prose keeping only the principles? The answering measurement
+    is a count — the share of the section's lines that are
+    machine-read semantics. Successive repair rounds
+    concentrating findings in each round's newest text read as
+    evidence the medium is wrong (hypothesis, validate by use).
 
 11. **Completion criteria.** Steps end on checkable, demanding
     bounds — "every X accounted for," not "produce a list"?
@@ -99,4 +107,4 @@ skill-craft's own files; the two compose.
     (`references/evaluation.md`)? Inspection is not measurement.
 
 After the pass: state whether it surfaced anything new; recommend
-another pass or moving on.
+another pass, a change of medium, or moving on.

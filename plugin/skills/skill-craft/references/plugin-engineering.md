@@ -4,12 +4,15 @@
 setting up a marketplace; diagnosing activation or stale-pin
 behavior.
 
-Practical guide to packaging and distributing Claude Code plugins. Covers
+Practical guide to packaging and distributing Claude Code plugins.
+Covers
 what the official `plugin-dev` does not: distribution paths, marketplace
 workflow, battle-tested gotchas, and operational knowledge.
 
-For skill formatting, writing style, hooks, commands, MCP servers, agents,
-progressive disclosure, and plugin settings (.local.md), see the official
+For skill formatting, writing style, hooks, commands, MCP servers,
+agents,
+progressive disclosure, and plugin settings (.local.md), see the
+official
 `plugin-dev` plugin (`plugin-dev@claude-plugins-official`).
 
 ---
@@ -28,12 +31,14 @@ Host a marketplace in a GitHub repo. Full control over distribution.
 The plugin can be published to the official marketplace later without
 restructuring.
 
-Use this when: the plugin is personal, for a team, or not ready for public
+Use this when: the plugin is personal, for a team, or not ready for
+public
 release.
 
 ### Path B: Official Claude Code marketplace
 
-You submit a PR to the official `claude-plugins-official` repo. Anthropic
+You submit a PR to the official `claude-plugins-official` repo.
+Anthropic
 reviews and merges. The plugin is available to all Claude Code users.
 
 Use this when: the plugin is polished, general-purpose, and ready for
@@ -56,7 +61,8 @@ same `plugin.json`:
 }
 ```
 
-Only `name` is required. The name determines the skill namespace — skills
+Only `name` is required. The name determines the skill namespace —
+skills
 are available as `/my-plugin:skill-name`.
 
 ---
@@ -120,7 +126,8 @@ friction.
 ## Path A: Private marketplace setup
 
 A private marketplace needs two layers in one repo: the marketplace
-(catalog) and the plugin (extension). Their `.claude-plugin/` directories
+(catalog) and the plugin (extension). Their `.claude-plugin/`
+directories
 must never be mixed.
 
 ```
@@ -160,8 +167,10 @@ Located at `.claude-plugin/marketplace.json` in the repo root:
 }
 ```
 
-Required fields: `name`, `owner` (with `name`), `plugins` array. Each plugin
-entry needs `name` and `source`. The `source` is a relative path starting
+Required fields: `name`, `owner` (with `name`), `plugins` array. Each
+plugin
+entry needs `name` and `source`. The `source` is a relative path
+starting
 with `./`.
 
 ### Step-by-step setup
@@ -199,7 +208,8 @@ model.
 
 ### Publishing later to official marketplace
 
-When ready to publish, submit a PR to `claude-plugins-official` with your
+When ready to publish, submit a PR to `claude-plugins-official` with
+your
 `plugin/` directory. The marketplace.json wrapper is not needed — the
 official repo is the marketplace. No restructuring of the plugin itself.
 
@@ -246,7 +256,8 @@ Installed plugins exist in three locations:
 
 - **Source repo** — the Git repository (e.g., `~/dev/user/my-plugin/`).
   This is where edits belong.
-- **Marketplace copy** — `~/.claude/plugins/marketplaces/my-marketplace/`.
+- **Marketplace copy** —
+  `~/.claude/plugins/marketplaces/my-marketplace/`.
   Cloned from the source repo. Read-only in practice — changes here are
   overwritten by `marketplace update`.
 - **Cache copy** — `~/.claude/plugins/cache/my-marketplace/my-plugin/`.
@@ -371,11 +382,13 @@ Hook errors from a previous load also persist across
 
 **Bad fit (keep as standalone tool):**
 - System utilities needing a CLI binary in `$PATH`
-- Tools that configure `statusLine` (plugins can only set the `agent` key)
+- Tools that configure `statusLine` (plugins can only set the `agent`
+  key)
 - Scripts with heavy external state that must survive reinstalls
 - Tools where hooks just call an external binary
 
-**The test:** If after converting to a plugin, install.sh still handles most
+**The test:** If after converting to a plugin, install.sh still handles
+  most
 of the setup, the plugin layer is adding complexity without value.
 
 ---

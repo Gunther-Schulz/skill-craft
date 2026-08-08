@@ -17,8 +17,9 @@ the other.
 consumer is a top-tier session model, and its own prescription
 density is calibrated to that. Its teaching content is rich; gates
 on itself are near-zero at birth and fire-earned (Skill-craft's own
-conduct, fire-born machinery). Mechanical insurance is tier-insensitive and
-stays mechanical: the eval runner (`/eval-skill`), the release and
+conduct, fire-born machinery). Mechanical insurance is
+tier-insensitive and stays mechanical: the eval runner
+(`/eval-skill`), the release and
 stale-pin hooks, and the pre-commit self-review dispatch
 (`references/self-review.md`). Observations write to
 `dev-notes/OBSERVATIONS.md` in the source repo
@@ -388,6 +389,11 @@ under-trigger or sit inert.
 After creating or modifying any skill, work through the review
 questions (`references/review-checklist.md`), findings stated per
 item — file:line for failures; the deepening rule rides with them.
+The medium question (review-checklist.md, Enforcement item) — is
+any of this text machine-read semantics belonging in a
+mechanism? — is owed again whenever a section has grown since
+its last review, repair laps included: momentum re-grades
+correctness and never the medium (hypothesis, validate by use).
 
 ## Skill-craft's own conduct
 

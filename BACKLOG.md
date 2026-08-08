@@ -14,6 +14,10 @@ edit; nothing lands from here without it).
   work at any grade. Minted thin as a corpus convention instead
   (dotfiles f3dfa52, CLAUDE.md Recommending & reporting).)
 
+- (left 2026-08-08 by commit baf064a + the integration commit
+  beside it; red target re-pinned to 40bcc73 after the booked sha
+  measured green — dispositions and runs in dev-notes 2026-08-08
+  "skill-lint landed". Original entry kept below for the record.)
 - **READY — skill-lint: mechanical pre-release checker for skill
   files** (booked 2026-08-07, operator GO from the statiker meta
   session; provenance: statiker reviews 8-12, where wrap/term/cite
@@ -79,3 +83,14 @@ edit; nothing lands from here without it).
   #3-#4 (2026-08-07). Consumer: skill-craft maintainer session
   at the trigger; grading input = the statiker series' final
   cadence.
+
+  - (judged 2026-08-08, backlog-work pass, operator GO: stays
+    PARKED — the named trigger is unmet, the statiker trial has
+    not run. Grading input grew since booking: the R1–R3
+    design-attack series ended in a FORM change (executable spec +
+    battery, statiker dev-notes 2026-08-08), not a no-blocker
+    round — so part (a)'s iterate-to-no-blocker shape now has a
+    measured limit (flat series on dense interlocked prose =
+    medium wrong, not more rounds), and part (b) is already
+    corpus canon (re-entry-seam trend rule). At the trigger,
+    re-derive against that record; do not mint as drafted.)

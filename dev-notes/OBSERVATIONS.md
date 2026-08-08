@@ -1653,3 +1653,99 @@ dev-notes) — read both before amending.
   ratio and batch accretion are economy questions (corpus). One
   incident as provenance; operator decides whether it becomes a
   checklist item.**
+
+- 2026-08-08 — **MINT (operator GO, statiker meta session): the
+  prose-held machine-semantics observation above lands as a
+  widening of review-checklist item 10** — the medium question
+  (which of the text is must-hold machine semantics belonging in an
+  executable spec + battery, prose keeping principles), asked over
+  the body and re-asked at repair-lap re-entry and on a
+  section growth burst; tripwire: successive repair rounds whose
+  findings concentrate in each round's newest text. Placement
+  basis: grep "must-hold|belongs in a mechanism|medium" over the
+  governed set — principle homes at SKILL.md:178 (registers) and
+  the Enforcement section; the review instrument (checklist item
+  10) was the home that failed to fire, so the trigger lands
+  there, citing the principle rather than restating it. Fire log
+  opens with the founding incident (statiker, 5→7→7). Consumer:
+  every checklist-driven review; next consolidation pass grades
+  the patch.**
+
+- 2026-08-08 — **Self-review recovery on the item-10 mint (fresh
+  opus review, 3B/4N/2n): the mint entry's premise "the review
+  instrument was the home that failed to fire" was DISPROVEN (B3:
+  review-checklist.md is a disclosed reference the repair-lap
+  frame never loads — grep over statiker dev-notes shows zero
+  review-checklist mentions, instrument proven live on a known
+  positive first). Recovery landed: trigger relocated to SKILL.md
+  "Reviewing a skill" (hook-loaded on every edit) as one abstract
+  clause — item 10's medium question owed again whenever a section
+  has grown since its medium was last decided — and item 10
+  compressed to the question + citation form (B1 enumeration →
+  abstraction; B2 sub-shapes and motivation dropped; N2 restates →
+  cites The two registers; N3a tripwire marked hypothesis,
+  validate by use; N3b outward journal pointer dropped — operator
+  decision, mid-turn, same session: provenance pointers do not
+  belong in operational skill text, which also confirms the
+  2026-08-07 clause-grain proposal's direction; n1/n2 resolved by
+  the compression and question shape). DEFERRED (N4): "executable
+  spec + battery" as a named instrument form in enforcement.md —
+  the corpus currently gives a YES answer to the medium question
+  no construction recipe; candidate addition at the next
+  enforcement.md pass, provenance: statiker's executable-spec form
+  change. Planted-test note: the operator withheld the N3b defect
+  deliberately to test whether the self-review catches it; it did,
+  from three angles (N3b, check-3 refs 5 and 7). Consumer: the
+  commit's disposition record; the next enforcement.md pass (N4).**
+
+- 2026-08-08 — **skill-lint landed (the READY item; opus build
+  baf064a + desk integration). Red-first proven: planted cases
+  fire all four checks, whitelists proven live on would-have-fired
+  lines, --fix and --diff-base proven against positive controls.
+  The backlog's booked RED TARGET was refuted by measurement (G1:
+  0aa1891 carries zero rewrappable over-72 lines — the sha was
+  booked from reviewer recollection, not from a measurement at the
+  sha; lesson, corpus-grade: a red target booked by sha is worth
+  what a measurement at that sha proves). Red run re-pinned to
+  40bcc73 (review-8 repairs), measured red independently by arm
+  and desk (83/79-col prose at lines 134/310). The GREEN premise
+  was refuted too (G2): statiker SKILL.md at aaf2327 carries two
+  real 73/75-col lines — the limit stays 72, the defects are
+  real, fixed in the statiker working copy by the desk.
+  Dispositions: G3 whitelist widening ACCEPTED (frontmatter,
+  fenced code, table rows, longest-token predicate — the generic
+  predicate replacing enumeration); G4 backticked-only singleton
+  ACCEPTED; G5 → desk integration added bold run-in labels as
+  cite targets and headings as an unbreakable wrap class, planted
+  red re-proven after each; G6 was the desk's own BACKLOG edit,
+  no foreign writer. Desk follow-through: 14 genuine wrap lines
+  across skill-craft's own files rewrapped; all 8 operational
+  files now blocking=0 (61 singleton warns stand, usefulness
+  unmeasured — the arm's honest residue). Arm lessons, kept: run
+  a new checker over its own wiring commit before it lands; keep
+  false-fire classes as the check's regression set; a zero from a
+  suppression flag is indistinguishable from a dead flag without
+  a positive control. Consumer: /release-plugin executions (the
+  new step 3); the next consolidation pass.**
+
+- 2026-08-08 — **Batch review (fresh opus, 1B/4N/3n over the full
+  change-set) RECOVERED; change-set closed. Dispositions: B1 fixed
+  (tripwire split into its own sentence — the salience rule item 7
+  itself enforces; clears n1's scope ambiguity); N1 fixed (cite by
+  name, not renumbering-fragile ordinal); N2 fixed (question's
+  one-clause form inlined at the SKILL.md trigger — the failing
+  frame provably never follows disclosed pointers); N3 fixed (the
+  answering measurement named in item 10: the machine-semantics
+  line-share count — recorded as DISTINCT from deferred N4, which
+  keeps the construction recipe for the next enforcement.md pass;
+  two halves, not one deferral); N4 fixed (the after-the-pass line
+  gains the third exit: a change of medium); n2 fixed (always-true
+  qualifier swapped for "since its last review"); n3 stands as a
+  booked open question (release-plugin step-3 path resolution is
+  prose by dispatcher decision — ${CLAUDE_PLUGIN_ROOT} support in
+  command files unverified, outside the governed set). Mechanical
+  layers verified by the reviewer with positive controls: rewraps
+  content-neutral by word-diff, planted red byte-identical under
+  committed and refined checkers, refinements suppress exactly the
+  two known false-fire classes. Consumer: this change-set's
+  commit; the next enforcement.md pass (N4-deferred).**
