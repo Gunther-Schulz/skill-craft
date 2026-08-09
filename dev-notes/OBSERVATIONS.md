@@ -1760,3 +1760,29 @@ dev-notes) — read both before amending.
   list of known tool names, or requiring a §/heading-like shape
   before a parenthetical counts as a cite. Consumer: the next
   skill-lint pass over its heuristics.
+
+## 2026-08-09 — the no-op test's sentence unit rewards packing
+
+Observed in the operator's rule corpus (measured before its
+modularization): median sentence 33 words, p90 64, max 148 — every
+sentence individually defensible under the no-op test because
+deleting any changes behavior, while single clauses inside them
+would fail individually. The sentence-unit test is the mechanism:
+an author optimizing against it merges rule + qualifier +
+rationale + cross-reference into one unit that always passes
+whole. Change landed same-session (operator GO): the test's unit
+is now the CLAUSE (SKILL.md, The no-op test), checklist item 6
+grades clause-by-clause with a packed-sentence unpacking step,
+anti-patterns' fix line follows. Firing log starts here.
+
+## 2026-08-09 — era-re-grade cites Tier 2 as the no-op instrument; evaluation.md never carries the test
+
+Surfaced by the clause-unit self-review (disposition:
+defer-to-observations, operator GO). SKILL.md's era re-grade names
+"Tier 2 of references/evaluation.md" as the instrument for
+re-running the no-op test, but evaluation.md contains no reference
+to the no-op test (grep: zero hits) and Tier 2 measures a
+with/without behavioural delta, not per-unit deletion. Either the
+citation should name what Tier 2 actually provides (a
+behaviour-delta floor under re-graded content) or evaluation.md
+owes a no-op protocol. Reconcile at the next consolidation.

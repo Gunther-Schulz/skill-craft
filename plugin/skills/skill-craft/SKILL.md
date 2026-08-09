@@ -134,14 +134,17 @@ differently in different files picks one canonical term, applied
 uniformly), and terms scope-neutral within the skill's declared
 scope (paradigm-neutral for a coding skill).
 
-**The no-op test.** Every sentence must change the declared
-consumer's behavior versus its default. The test is model-relative,
-not reader-relative: two people disagreeing about a no-op disagree
-about the default, and the question is settled by running the
-document against the consumer — not by debate. A failing sentence
-is deleted whole, not trimmed. The test grades leading words too: a
-word too weak to beat the default is a no-op, and the fix is a
-stronger word, not more words.
+**The no-op test.** Every CLAUSE must change the declared
+consumer's behavior versus its default. The clause, not the
+sentence, is the unit: a sentence packing rule, qualifier, and
+rationale passes whole while holding clauses that individually
+fail. The test is model-relative, not reader-relative: two people
+disagreeing about a no-op disagree about the default, and the
+question is settled by running the document against the
+consumer — not by debate. A failing clause is deleted whole, not
+trimmed. The test grades leading words too: a word too weak to
+beat the default is a no-op, and the fix is a stronger word, not
+more words.
 
 **Pruning.**
 

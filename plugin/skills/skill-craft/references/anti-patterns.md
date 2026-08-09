@@ -79,7 +79,7 @@ tendencies instead of stating principles or building mechanisms;
 multiple paragraphs restating one point with different emphasis;
 WHY-prose padding a rule an anchor already carries.
 
-**Fix:** re-run the no-op test sentence by sentence against the
+**Fix:** re-run the no-op test clause by clause against the
 declared consumer; move management scaffolding down the disclosure
 ladder; re-render adversarial gates into mechanisms (if they must
 hold) or the evidence register (if they steer judgment). The

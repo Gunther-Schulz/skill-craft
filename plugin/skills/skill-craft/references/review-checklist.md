@@ -36,9 +36,11 @@ skill-craft's own files; the two compose.
    pointers? Concepts co-located, not scattered? No sediment —
    every line still bearing on what the document does?
 
-6. **No-op test.** Passed sentence by sentence against the declared
-   consumer — no instruction the consumer already obeys by default?
-   Leading words strong enough to beat the default?
+6. **No-op test.** Passed clause by clause against the declared
+   consumer — no clause the consumer already obeys by default?
+   Packed sentences unpacked before grading (SKILL.md, the no-op
+   test's clause unit)? Leading words strong enough to beat the
+   default?
 
 7. **Salience.** Every strong default carries its scope at or
    before its statement — no carve-out stranded downstream? Every
