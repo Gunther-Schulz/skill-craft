@@ -62,7 +62,7 @@ c. **Dispatch two general-purpose subagents in parallel** with these briefs. Fir
    - **WITH-skill**: "Invoke the `<plugin>:<name>` skill (via `Skill(skill='<plugin>:<name>')`) and follow its guidance to execute this task. Task: [paste task]. Save your full output verbatim."
    - **WITHOUT-skill**: "Execute this task directly. Do NOT invoke `<plugin>:<name>` or any specialized methodology skill (skill-craft, anneal-dev, clippy, etc.) — respond as you would without them loaded. Task: [paste task]. Save your full output verbatim."
 
-d. **Save outputs.** Default target: `./dev-notes/eval-<name>/<YYYY-MM-DD>/` (or `~/.claude/skill-evals/<name>/<YYYY-MM-DD>/` if no `dev-notes/` exists in CWD). Confirm or override with the operator in one question. Write `tier2-with.md` and `tier2-without.md` verbatim.
+d. **Save outputs.** Default target: `./dev-notes/eval-<name>/<YYYY-MM-DD>/` (or `~/.local/share/skill-craft/evals/<name>/<YYYY-MM-DD>/` if no `dev-notes/` exists in CWD). Confirm or override with the operator in one question. Write `tier2-with.md` and `tier2-without.md` verbatim.
 
 e. **Surface side-by-side for the operator with cited evidence.** For each signature element the operator named in (a), locate it (or its absence) in both saved files and report with file:line citations — e.g. "element 'finding with location+impact+classification' present in `tier2-with.md:L42-58` (quote: '...'), absent in `tier2-without.md` (grep '<pattern>' returned 0 hits)." **A verdict line without per-element citations is malformed; the citations are the un-fakeable artifact for the verdict** (the verdict itself, otherwise, is a fakeable claim — skill-craft `SKILL.md`, Enforcement).
 
