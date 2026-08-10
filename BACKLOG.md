@@ -14,6 +14,26 @@ edit; nothing lands from here without it).
   work at any grade. Minted thin as a corpus convention instead
   (dotfiles f3dfa52, CLAUDE.md Recommending & reporting).)
 
+- **READY 2026-08-10 — unbound-reference test: the object-side
+  sibling of the named-moment lever** (operator GO from the
+  full-corpus review request; incident record and fix-pattern
+  evidence: dev-notes/OBSERVATIONS.md 2026-08-10, third lever
+  entry). Design decided: (1) SKILL.md gains the test beside the
+  no-op test (both are per-clause authoring tests): every
+  load-bearing definite reference either has a unique in-scope
+  referent or names its selector — the tell is a definite article
+  over a noun with siblings in the consumer's environment; the fix
+  binds to the invariant object, never a container, section, or
+  label that usually coincides with it. (2) review-checklist.md
+  gains the matching item with the hot-noun grep named as the
+  candidate instrument (grading stays judgment). Verifier: Layer-4
+  self-review; dry-run against the four evidence incidents (each
+  older wording fails the test, each repaired wording passes).
+  Done when both files carry it, self-review dispositions recorded,
+  release ships it — natural bundle with the named-moment READY
+  entry below (same files, one release). Consumer: the next
+  skill-craft canon session.
+
 - **READY 2026-08-10 — named-moment lever, three canon
   applications** (operator GO by booking question on the presented
   findings; incident record and derivation:
