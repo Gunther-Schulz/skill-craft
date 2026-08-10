@@ -14,6 +14,33 @@ edit; nothing lands from here without it).
   work at any grade. Minted thin as a corpus convention instead
   (dotfiles f3dfa52, CLAUDE.md Recommending & reporting).)
 
+- **READY 2026-08-10 — named-moment lever, three canon
+  applications** (operator GO by booking question on the presented
+  findings; incident record and derivation:
+  dev-notes/OBSERVATIONS.md 2026-08-10, the two lever entries —
+  the trigger-anchor gap and the application sweep). Design
+  decided per finding: (1) REVIEW MARK — reviews record a dated
+  journal line naming the commit ref reviewed; the medium re-ask
+  ("machine-read semantics belonging in a mechanism?") is owed per
+  section grown since the previous mark and its verdict lands in
+  the review record — the owed re-ask becomes readable, not
+  remembered. (2) ERA STAMP — the consumer declaration (SKILL.md,
+  The two parties) carries an as-of stamp naming the model era it
+  was last graded against; Lifecycle's era re-grade and checklist
+  13's "moved since minting" then diff against the stamp — the
+  binding staleness discipline applied to the canon's own
+  declaration. (3) MINOR — a delist flip's commit names its
+  re-measurement (Invocation choice). Also in scope, same
+  provenance: the trigger-anchor clause itself gains the two tests
+  (observable referent; visible absence) per the first
+  observation. Each lands per amendment discipline with the
+  Layer-4 self-review; verifier: the self-review's clause-level
+  findings plus a constructed dry-run per finding (a review
+  without a mark, a declaration without a stamp — each now
+  visibly non-compliant). Done when all four land in the canon
+  with self-review dispositions recorded and the release ships
+  them. Consumer: the next skill-craft canon session.
+
 - (left 2026-08-08 by commit baf064a + the integration commit
   beside it; red target re-pinned to 40bcc73 after the booked sha
   measured green — dispositions and runs in dev-notes 2026-08-08
