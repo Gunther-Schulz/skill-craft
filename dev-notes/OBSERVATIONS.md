@@ -1892,3 +1892,36 @@ object. Plus one review-checklist item carrying the same test.
 Instrument note from the review: a hot-noun grep (the
 record|list|test|check|source|baseline|output|log|file) surfaces
 candidates cheaply; grading stays judgment.
+
+## 2026-08-10 — a plugin released MID-WAVE is invisible to every running session, including the dispatcher's own
+
+Measured in a dotfiles drain wave. A dispatcher released
+dispatch-guards 0.10.14 (`f80fd4f`) while its own wave was still
+running, then dispatched further agents. One executor loaded the
+executor skill at **0.10.13** while the pin on disk already read
+0.10.14, and flagged the mismatch in its `(h)` slot instead of
+reporting a clean read. Nothing else would have surfaced it: a
+skill carries no version in its own prose, so the old copy and the
+new one read as the same file.
+
+The gap is a REACH gap in an existing mechanism, not a missing one.
+The stale-pin gate fires on the operator's next Skill call in a
+session that has not reloaded — it says nothing about a SUBAGENT
+spawned from such a session, and the subagent inherits the
+dispatcher's already-resolved path. So the one party who cannot see
+the staleness is the one who caused it.
+
+The computable half does not exist: "is this session serving the
+current pin?" is not answerable from inside the session, which is
+the whole defect. What is left is a procedure step, and it belongs
+where the release happens rather than where the dispatch happens —
+the release is the act that opens the window.
+
+Minted (v2.1.3): `/release-plugin` step 8, a DISPATCH FREEZE between
+"pin moved" (step 7) and the operator's `/reload-plugins` handoff
+(now step 9). Until the reload, no further dispatches — or the brief
+states the served version explicitly, so the executor can report the
+mismatch from its own `(h)` slot, which is exactly how this incident
+was caught. Renumbering checked against dependents: the only
+step-number citation anywhere in the three repos is to step 3
+(OBSERVATIONS.md:1744), which does not move.

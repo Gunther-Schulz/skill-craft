@@ -37,12 +37,28 @@ sequence is mechanical; show each step's executed output.
      HEAD?
      - NO → CANNOT proceed to activation. Surface the mismatch.
      - YES → Evidence: the pin entry pasted.
-8. Operator handoff — exactly one action, stated as the turn's final
+8. - [ ] Dispatch freeze. The window opens at step 7, not at step 9:
+     the pin has moved on disk and every running session — INCLUDING
+     THIS ONE — still resolves the old copy. A subagent inherits the
+     dispatcher's resolution, so a dispatch composed now executes the
+     OLD skill silently: a skill carries no version in its own prose,
+     so both copies read as the same file. The stale-pin gate does not
+     cover this — it fires on the operator's next Skill call in an
+     unreloaded session and says nothing about a subagent spawned from
+     one.
+     - Until step 9 is taken: no further dispatches — OR the brief
+       states the served version explicitly, so the executor can report
+       the mismatch from its own `(h)` slot.
+     - Measured 2026-08-10: an executor loaded dispatch-guards 0.10.13
+       while the pin on disk already read 0.10.14, released mid-wave by
+       its own dispatcher. It flagged the mismatch instead of reporting
+       a clean read; nothing else would have surfaced it.
+9. Operator handoff — exactly one action, stated as the turn's final
    line: type `/reload-plugins`. Never `/reload-skills` (it rescans
    already-resolved paths and does not re-read the pin). Every running
    session serves the old version until this step.
-9. After the operator confirms: verify activation at the serving
-   altitude — for a plugin with a skill, invoke it and read the
-   injection's base-directory version; otherwise confirm the
-   stale-pin gate stays silent on the next Skill call. Report the
-   released version, pin SHA, and activation evidence.
+10. After the operator confirms: verify activation at the serving
+    altitude — for a plugin with a skill, invoke it and read the
+    injection's base-directory version; otherwise confirm the
+    stale-pin gate stays silent on the next Skill call. Report the
+    released version, pin SHA, and activation evidence.
