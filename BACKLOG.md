@@ -14,6 +14,32 @@ edit; nothing lands from here without it).
   work at any grade. Minted thin as a corpus convention instead
   (dotfiles f3dfa52, CLAUDE.md Recommending & reporting).)
 
+- **READY 2026-08-10 — the history-hedge costume: name it in
+  Pruning, catch it in review** (operator gap-question after two
+  same-day statiker incidents; fresh-context review evidence in
+  statiker dev-notes/OBSERVATIONS.md 2026-08-10). The gap: the
+  corpus prices sediment and the no-op test grades clauses, but
+  nothing NAMES the costume that escapes both in practice —
+  history/experiment framing riding inside behavior-bearing
+  sentences ("operator experiments outside this default", "booked
+  mint", trial-stage labels, corrects-an-earlier-version notes):
+  the sentence passes the no-op test whole while its history
+  clause fails, exactly the packing failure SKILL.md already
+  describes. Design decided, two edits, one widening each:
+  (1) Pruning's relevance-decay bullet widens to name the class —
+  operational text states the current decision as the plain
+  default; history, provenance, and experiment status live in the
+  journal and git; AND the deletion check that makes the cure
+  safe: before cutting a history-flavored phrase, state what
+  semantic work it did — an "experiments outside this default"
+  phrase was carrying a SCOPE EXCLUSION, and its clean-sounding
+  replacement sanctioned a route the machinery cannot serve
+  (caught by fresh review, same day, blocking). (2)
+  review-checklist gains the paired question: any history/
+  experiment framing in operational text — and for each cure, what
+  did the old phrasing exclude or carry? Verifier: the Layer-4
+  gate on the canon edit; done by commit ref here.
+
 - **READY 2026-08-10 — unbound-reference test: the object-side
   sibling of the named-moment lever** (operator GO from the
   full-corpus review request; incident record and fix-pattern
