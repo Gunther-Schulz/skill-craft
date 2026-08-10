@@ -1861,3 +1861,34 @@ moments (Reflexivity's "a gap noticed") — noticing has no
 observable producer, and their design already defines the output
 once noticing occurs, which is the right shape; anchoring noticing
 itself would reproduce the defect the lever repairs.
+
+## 2026-08-10 — third lever entry: the unbound definite reference (object-side sibling of the named-moment gap)
+
+Same provenance chain, operator-prompted full-corpus review. The
+named-moment gap was a TRIGGER with no referent — the rule never
+fires. This class is its object-side sibling: the rule fires, but
+its object is "the X" where the consumer's environment offers
+several Xs and the wording is satisfied by any of them — the act
+lands on a sibling object and reads as compliance. Incident today:
+"the check is against the record" was satisfied by an incident
+record while the work item evaporated (caught by the operator, not
+the rule). The reviewed corpus shows this is a RECURRING class
+with an established fix pattern — several of its most load-bearing
+rules exist precisely because a wrong referent once satisfied
+their older wording: "the verifier's output is what the check
+itself wrote, never an intermediary's exit status"; "a document
+about the artifact is not its definition"; "the provenance note
+hangs on the claim, not the section" (same-day peer fix). The fix
+each time: bind to the invariant object, never to a container,
+section, or label that usually coincides with it.
+
+Proposed change (operator decides; work item in BACKLOG.md): an
+UNBOUND-REFERENCE TEST beside the no-op test — every load-bearing
+definite reference ("the record", "the list", "the test", "the
+source") either has a unique in-scope referent or names its
+selector; the tell is a definite article over a noun with siblings
+in the consumer's environment; the fix binds to the invariant
+object. Plus one review-checklist item carrying the same test.
+Instrument note from the review: a hot-noun grep (the
+record|list|test|check|source|baseline|output|log|file) surfaces
+candidates cheaply; grading stays judgment.
