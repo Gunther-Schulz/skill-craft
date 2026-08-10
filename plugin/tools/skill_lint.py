@@ -152,6 +152,9 @@ def cite_candidate(content):
     Deliberately narrow: the check blocks, so a false fire costs more
     than a miss. Excluded are all-caps identifiers, filenames and
     paths, anything sentence-punctuated, and anything over six words.
+    A lone CamelCase token is excluded too — an identifier such as
+    SendMessage names a tool, not a section, and the governed skill
+    corpora contain zero headings that are a single CamelCase word.
     """
     c = content.strip()
     if not c or not c[0].isupper():
@@ -165,6 +168,8 @@ def cite_candidate(content):
         return None
     if any(len(w) == 1 and w.isupper() for w in words):
         return None  # placeholder prose, e.g. (A invokes B, B invokes C)
+    if len(words) == 1 and re.search(r"[a-z][A-Z]", words[0]):
+        return None  # CamelCase identifier, e.g. (SendMessage)
     lead = re.match(r"[A-Za-z]+", words[0]).group(0)
     if len(lead) > 1 and lead.isupper():
         return None  # acronym-initial prose, e.g. (AI-attribution trailer)
