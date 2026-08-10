@@ -48,6 +48,20 @@ edit; nothing lands from here without it).
   checks (statiker's tag-enum/scope-form consistency) are
   explicitly OUT — those live in the consuming repo's tools/.
 
+- **PARKED 2026-08-10 — skill-lint dead-cite still fires on a
+  COMMA-SEPARATED identifier list.** Residual of 2b4a32e, surfaced by
+  its executor with a run, not a reading: `(SendMessage, WebFetch)`
+  still flags — the shipped exclusion is single-token only. Absent
+  from both governed corpora today (full-corpus run: zero dead-cites),
+  so nothing is blocked. NOT a one-liner, which is why this is parked
+  rather than ready: `cite_candidate` deliberately takes
+  `head = c.split(",")[0]` so a legitimate cross-file cite
+  `(Heading, \`file.md\`)` still resolves, so "exclude comma lists
+  whose head is CamelCase" has a real cite shape to preserve. Named
+  missing decision: whether a comma list whose FIRST token is a
+  CamelCase identifier is ever a cite. Trigger: the shape appearing in
+  a governed corpus, or a release blocked by it.
+
 ## Parked — review-regime section (draft-attack-before-release)
 
 - **Mint a review-regime rule set into skill-craft** (operator
