@@ -24,7 +24,13 @@ edit; nothing lands from here without it).
   referent or names its selector — the tell is a definite article
   over a noun with siblings in the consumer's environment; the fix
   binds to the invariant object, never a container, section, or
-  label that usually coincides with it. (2) review-checklist.md
+  label that usually coincides with it. Same-principle third
+  binding site (fold, not a separate entry — restraint): a rule's
+  SCOPE binds by the act's substance, not its presentation — the
+  polite-twin incident (dotfiles reporting.md, 2026-08-10) escaped
+  a deferral rule by presenting as an offer; trigger-referent,
+  object-referent, and scope-substance are one test asked at three
+  sites. (2) review-checklist.md
   gains the matching item with the hot-noun grep named as the
   candidate instrument (grading stays judgment). Verifier: Layer-4
   self-review; dry-run against the four evidence incidents (each
