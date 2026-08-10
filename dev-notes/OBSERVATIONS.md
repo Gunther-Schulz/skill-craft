@@ -1818,3 +1818,46 @@ rule was exactly their application: bind the obligation to an act
 that provably already happens (the correction's record being
 written) and make the answers slots in that record, so a skipped
 firing is visible in the artifact itself.
+
+## 2026-08-10 — lever application sweep: where "needs a named moment" applies to this canon itself
+
+Follow-up to the trigger-anchor observation above (same provenance
+chain), operator-prompted: sweep this canon for rules that name a
+firing moment whose referent nothing produces, or whose compliance
+leaves no artifact. Instrument: full read of SKILL.md plus a
+moment-language grep over references
+(`whenever|owed|re-grade|re-measure|re-review|before ...`), hits
+graded individually. Most obligations pass — mechanically enforced
+(pre-commit self-review dispatch, eval runner, release and
+stale-pin hooks) or artifact-producing by form (placement scans
+recorded, findings per checklist item, firing logs, hypothesis
+markers, observation writes). Three findings:
+
+1. **The medium re-ask** (Reviewing a skill): "owed again whenever
+   a section has grown since its last review" — growth-since has
+   no referent (reviews leave no durable mark to measure against)
+   and the re-ask leaves no artifact; the clause even self-labels
+   hypothesis. Lever: reviews record their mark (a commit ref in
+   the journal or the checklist output), and the review record
+   carries the medium verdict for each section grown since the
+   previous mark — the owed re-ask becomes readable from the
+   record instead of remembered.
+2. **The era re-grade trigger** (Lifecycle; checklist item 13):
+   "when the consuming model moves a tier or a generation" and "a
+   consumer-tier move since minting" have no recorded baseline —
+   the consumer declaration names a tier or range but not the era
+   it was graded against. Lever, small: the consumer declaration
+   carries an as-of stamp (model/era at last grading), turning the
+   re-grade trigger into a diffable staleness check — the stamp
+   discipline this canon already prescribes for bindings, applied
+   to its own declaration.
+3. Minor: "Re-measure before flipping any prose-invoked skill"
+   (Invocation choice) demands a measurement whose absence is
+   invisible; if kept prose, the flip commit names its
+   measurement.
+
+Correctly un-anchorable, no change proposed: the noticing-class
+moments (Reflexivity's "a gap noticed") — noticing has no
+observable producer, and their design already defines the output
+once noticing occurs, which is the right shape; anchoring noticing
+itself would reproduce the defect the lever repairs.
