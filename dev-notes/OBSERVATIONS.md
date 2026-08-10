@@ -1786,3 +1786,35 @@ with/without behavioural delta, not per-unit deletion. Either the
 citation should name what Tier 2 actually provides (a
 behaviour-delta floor under re-graded content) or evaluation.md
 owes a no-op protocol. Reconcile at the next consolidation.
+
+## 2026-08-10 — the trigger-anchor clause is missing two tests: an observable referent, and visible absence
+
+Provenance: a corpus rule in the operator's dotfiles (the
+learning-question's second firing moment, calibration module) was
+measured inert on a day its trigger condition was met seven times —
+zero unprompted firings — and the derivation (dotfiles JOURNAL
+2026-08-10; brief docs/directives/post-incident-self-firing-brief-
+2026-08-10.md) located the failure UPSTREAM of register. The rule
+was nominally anchored at a named moment ("whenever the correction
+list grows"), satisfying the trigger-axis clause as written
+(SKILL.md, The two registers: "Anchor the trigger at its named
+moment (a convention or a gate)"), and still could not fire. Two
+mechanisms the clause does not name:
+
+1. REFERENT: the named moment must be an event something
+   observably PRODUCES — an act performed, an artifact written.
+   "When the list grows" anchored to a list nothing keeps carries
+   an anchor's syntax without an anchor.
+2. VISIBLE ABSENCE: a convention fixes the under-binding only when
+   compliance leaves an artifact whose omission is visible in the
+   output (the corpus's route/gauge/closing lines all work this
+   way — presence lines). An anchored trigger whose compliance is
+   a purely mental act decays silently: nothing distinguishes
+   fired from skipped.
+
+Proposed change (operator decides): extend the clause's fix
+sentence with both tests. The repair that fixed the motivating
+rule was exactly their application: bind the obligation to an act
+that provably already happens (the correction's record being
+written) and make the answers slots in that record, so a skipped
+firing is visible in the artifact itself.
