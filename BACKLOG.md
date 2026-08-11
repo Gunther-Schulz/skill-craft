@@ -14,6 +14,31 @@ edit; nothing lands from here without it).
   work at any grade. Minted thin as a corpus convention instead
   (dotfiles f3dfa52, CLAUDE.md Recommending & reporting).)
 
+- **READY 2026-08-11 — /release-plugin gains a BIRTH branch: the
+  first activation of a newly created plugin.** Evidence: dev-notes
+  observation 2026-08-11 (9728e02, begehung's birth — four
+  hand-discovered steps between skill creation and serving; operator
+  requirement "after a build/change, /reload-plugins should be my
+  only act"). Design (decided; recommendation over the alternative
+  home plugin-engineering.md because the release skill is the
+  invocable act whose checklist the variant belongs in):
+  release-plugin's SKILL.md gains a first-release branch —
+  `claude plugin marketplace add <owner>/<repo>` + `claude plugin
+  install <plugin>@<marketplace>`, then "converge the environment's
+  plugin management where it has one (pins/roster/doctor —
+  environment-specific execution, generic wording)", then the
+  existing reload handoff + activation verification;
+  plugin-engineering.md gets one pointer line. Scope note for the
+  branch: on fleets with a machine-wide plugin-birth lane (dotfiles
+  `claude/runbooks/plugin-birth.md` is one), the lane governs the
+  convergence detail and the branch cites it rather than restating.
+  Verifier: skill-craft's own mandated fresh-context self-review
+  dispatch on the change, plus a Tier-1 re-check that the
+  release-plugin description still triggers on release queries and
+  now also on "install my new plugin / first release". Done: branch
+  present, self-review dispositions recorded, release cut, the
+  dev-notes observation annotated with the commit ref.
+
 - **READY 2026-08-10 — the history-hedge costume: name it in
   Pruning, catch it in review** (operator gap-question after two
   same-day statiker incidents; fresh-context review evidence in
