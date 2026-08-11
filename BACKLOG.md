@@ -59,6 +59,15 @@ edit; nothing lands from here without it).
   begehung dev-notes — then a skill-craft canon session lands the
   amendments with the Layer-4 self-review; do not mint before the
   ablation arm has its own graded evidence.
+  TRIGGER MET 2026-08-11 (same day): grade recorded — begehung
+  a2e552c, eval-begehung/2026-08-11/result.md. The run's own verdict
+  sharpens delta (1): the ablation arm reproduced conduct but zero
+  bookkeeping artifacts, so the arm separates term-priors from
+  corpus-text exactly as hypothesized; and it surfaced a fourth
+  candidate for the same amendment: state the CONTROL-ARM DEFINITION
+  in the record (corpus-loaded vs bare — subagents inherit global
+  instruction files, so "without" never means bare). Entry is now
+  executable by the next canon session.
 
 - **READY 2026-08-10 — the history-hedge costume: name it in
   Pruning, catch it in review** (operator gap-question after two
