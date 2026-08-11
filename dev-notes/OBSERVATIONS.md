@@ -1945,3 +1945,39 @@ management (pins/doctor where the environment has them), then the
 reload handoff" — generic wording, environment-specific execution.
 Deployment-side half booked concretely in dotfiles BACKLOG
 (plugin-birth lane, 2026-08-11).
+
+## 2026-08-11 — eval-method deltas from the begehung eval series (three candidates for evaluation.md)
+
+Observed while running the canon's own eval protocol end-to-end on a
+newborn skill (begehung: Tier-1 via /eval-skill 12/12; name
+cold-probe per SKILL.md term-selection — both fired as designed, a
+use-log line for that machinery). Three method gaps surfaced, each
+with the incident that grounds it:
+
+1. ABLATION ARM. Tier 2 is two-arm (with/without). The operator's
+   counter-question — "would a single sentence perform the same?" —
+   has no arm in the protocol, yet it is the no-op test at document
+   scale: the strongest cheap competitor is one sentence exploiting
+   the skill-name's priors (here justified by the cold-probe result:
+   the bare word recruited most of the method). A three-arm run
+   (with / without / sentence) separates what the TERM buys from
+   what the corpus buys. Evidence pending its own completion: the
+   2026-08-11 three-arm run on statiker (record in begehung
+   dev-notes/eval-begehung/) — mint only after that run is graded.
+2. STAGED PROBES for response-shaped signature elements. A signature
+   element of the form "a follow-up X is answered by Y" (begehung's
+   rotation element) is unmeasurable in a single saved output — it
+   needs a second act against the LIVE arm. Named background agents
+   make this cheap (SendMessage follow-up after the first report);
+   the protocol currently compares one-shot outputs only.
+3. SERIES LIMITATION, stated. A one-shot Tier-2 measures round
+   discipline; a skill whose value compounds across sessions (a
+   persistent ledger, a rotation schedule) has its core claim
+   outside any single run — the honest instrument there is trial-
+   series grading, and evaluation.md should say so rather than let
+   a flat one-shot delta read as "skill is inert".
+
+Proposal (operator decides; reflexivity rule): the three land as
+amendments to references/evaluation.md Tier 2 in a skill-craft canon
+session with the Layer-4 self-review; BACKLOG entry parked on the
+named trigger.

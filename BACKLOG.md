@@ -39,6 +39,27 @@ edit; nothing lands from here without it).
   present, self-review dispositions recorded, release cut, the
   dev-notes observation annotated with the commit ref.
 
+- **PARKED 2026-08-11 — evaluation.md Tier 2 gains the eval-method
+  deltas: ablation arm, staged probes, series limitation.** Evidence:
+  dev-notes observation 2026-08-11 "eval-method deltas" (the begehung
+  eval series — Tier-1 and cold-probe machinery fired as designed;
+  three gaps surfaced in use). Candidate design, evidence-complete
+  parts marked: (1) ablation arm — Tier 2 adds an optional third arm,
+  the strongest cheap competitor (one sentence exploiting the
+  skill-name's priors), separating what the term buys from what the
+  corpus buys [evidence PENDING: the 2026-08-11 three-arm run on
+  statiker, graded]; (2) staged probes — response-shaped signature
+  elements take a follow-up act against the live arm (named
+  background agents + SendMessage), not a one-shot output diff
+  [evidence: begehung's rotation element, measurable no other way];
+  (3) series limitation stated — compounding-value skills need
+  trial-series grading; a flat one-shot delta must not read as
+  inert [evidence: begehung's MAP claim, structurally outside any
+  single run]. Named trigger: the three-arm run's grade recorded in
+  begehung dev-notes — then a skill-craft canon session lands the
+  amendments with the Layer-4 self-review; do not mint before the
+  ablation arm has its own graded evidence.
+
 - **READY 2026-08-10 — the history-hedge costume: name it in
   Pruning, catch it in review** (operator gap-question after two
   same-day statiker incidents; fresh-context review evidence in
