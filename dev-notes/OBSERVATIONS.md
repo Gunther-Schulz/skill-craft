@@ -1925,3 +1925,23 @@ mismatch from its own `(h)` slot, which is exactly how this incident
 was caught. Renumbering checked against dependents: the only
 step-number citation anywhere in the three repos is to step 3
 (OBSERVATIONS.md:1744), which does not move.
+
+## 2026-08-11 — gap: plugin BIRTH is uncovered between creation guidance and /release-plugin
+
+Observed at the birth of `begehung` (operator requirement stated in
+the incident: "after a skill build or change, everything should be
+converged so that /reload-plugins is my only remaining act").
+Skill-craft covers creation (design/review/eval) and RELEASE
+(/release-plugin: bump, push, marketplace update, reload handoff) —
+but the FIRST activation of a newborn plugin is named nowhere:
+marketplace add, plugin install, and the environment's
+plugin-management convergence (on this fleet: dotfiles mirror pins +
+repo adoption + doctor roster check) were each discovered by hand,
+and the operator had to ask for the convergence afterward. Proposal
+(operator decides; reflexivity rule): plugin-engineering.md or
+/release-plugin gains a birth path — "first release of a new plugin:
+marketplace add + install, then converge the environment's plugin
+management (pins/doctor where the environment has them), then the
+reload handoff" — generic wording, environment-specific execution.
+Deployment-side half booked concretely in dotfiles BACKLOG
+(plugin-birth lane, 2026-08-11).
