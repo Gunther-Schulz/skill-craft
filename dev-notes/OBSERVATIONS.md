@@ -1981,3 +1981,45 @@ Proposal (operator decides; reflexivity rule): the three land as
 amendments to references/evaluation.md Tier 2 in a skill-craft canon
 session with the Layer-4 self-review; BACKLOG entry parked on the
 named trigger.
+
+## 2026-08-16 — Invariance de-binds: a rule inside identical-per-brief boilerplate reads as plumbing (measured, n=3)
+
+Incident (beat-the-books desk "Session 11", booked with its concrete
+fix in dispatch-guards dev-notes/dispatch-OBSERVATIONS.md, same
+date — that entry owns the forms.md repair; this one carries the
+canon-level class): three same-model discovery dispatches in one
+run, each brief carrying the READ-ONLY tail verbatim, which states
+the no-report-file rule TWICE. Dispatches 1–2 violated it (wrote a
+report file, messaged a pointer); for dispatch 3 the desk moved the
+rule — wording unchanged — to the brief's HEAD and named the
+consequence ("a file is not a report and will not be read as one"):
+complied. Same run, same brief form, same model, same task class —
+position the only changed variable.
+
+Diagnosis, and why it is NOT the existing salience case: canon's
+"scope precedes default; the default owns its sentence" covers a
+default buried mid-sentence in a packed enumeration — parsed, not
+fired. Here the rule was neither buried nor under-worded: it held
+its own words, twice. What de-bound it is INVARIANCE — a block
+identical across every brief is classified by the reader as
+transport plumbing and skimmed as a unit, so rules inside it lose
+binding force regardless of their local salience. The property that
+makes boilerplate a guarantee (byte-identical, never drifts) is the
+property that makes it invisible. Measured cure: position at the
+container's head + named consequence.
+
+Pre-formulated canon widening (next consolidation pass; Layer-4
+self-review applies): the "Scope precedes default" clause gains the
+container case — after "Give it its own sentence at the seam it
+governs; added rationale only grows what it competes with," append:
+"Salience is also container-relative: an invariant block (a pasted
+tail, a fixed template) is skimmed as plumbing precisely because it
+never varies, and a load-bearing rule inside one de-binds whatever
+its wording — position it at the container's head with its
+consequence named (measured: 2 violations at tail position, full
+compliance after the move, wording unchanged)."
+
+Consumer + drain: next skill-craft consolidation/canon pass (the
+entry above proposes evaluation.md amendments the same way); the
+concrete forms.md fix drains separately via dispatch-guards'
+maintenance quota — one meaning, two grains, each in its owner.
