@@ -2153,3 +2153,31 @@ pass (same as the eval-deltas entry's route).
 - **Consumer + drain seam:** skill-craft maintainer at the next
   edit of either file; drains via the standing OBSERVATIONS quota.
   Booked as PARKED in BACKLOG.md (load-manifest design).
+
+## 2026-08-20 — Mint: plugin-release-owed SessionStart banner (fire-born, incident same day)
+- **Incident + basis:** committed versions 2.2.1/2.2.2 accumulated
+  ahead of the installed pin (2.2.0) while the only watcher of that
+  direction — the commit-time warning — fired four times in one day
+  (the fourth on the mint commit itself, measured by its executor)
+  and held nothing; the operator's /reload-plugins re-read an
+  unmoved pin and the mismatch surfaced only by operator question.
+  Two dispatcher deferrals ("rides the next release") named no
+  trigger — an unnamed deferral, drift by the corpus's own rule.
+- **Mechanism:** plugin/hooks/plugin-release-owed.py (d05e690,
+  ships in 2.2.3) — SessionStart, fires one model-facing line when
+  the cwd's plugin manifest version differs from its installed pin;
+  silent otherwise; fail-open. Channel decision: model-facing
+  stdout, precedent the backlog banner (model acts, brings the
+  operator the decision). Red-proven on its target defect class
+  both directions (never-fires and always-fires mutants each go
+  red; live fire + live no-fire pair on the real pin).
+- **Known reach limit (executor N4):** string inequality — detects
+  "differs", not "which is newer"; a pin AHEAD of the repo (stale
+  checkout) also prints the line. Acceptable: both states warrant a
+  look.
+- **First firing:** the live-fire verification run (this entry's
+  day); first harness firing expected at the next session start in
+  this repo while a release is owed. Log subsequent catches here.
+- **First-run-watched grade (guard-checker-bau, eval-open):** pass —
+  executor added a discriminating sixth fixture and a two-direction
+  mutation proof beyond the brief.
