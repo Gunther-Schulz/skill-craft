@@ -2109,3 +2109,9 @@ other way: plugin-engineering's Path A install step points at
 Pre-formulated fix: replace that step's command lines with one
 pointer line. Consumer + drain: next skill-craft consolidation
 pass (same as the eval-deltas entry's route).
+
+## 2026-08-20 — Triple probe on fresh rules: sequenced single-axis passes out-find one combined review
+- **Incident + basis:** one freshly minted corpus rule, three sequential operator review passes, three distinct real findings — carrier (home would die with its arc), shape (overclaim + a parent rule restated badly instead of cross-referenced), abstraction (incident flavor surviving into the wording). Each finding was invisible before the previous repair landed, because each repair changed the text the next pass graded. A single combined review had found only the first.
+- **Class:** review-pass architecture — sequenced single-axis passes vs one multi-axis pass, for freshly authored steering text.
+- **Pre-formulated change:** review-checklist.md gains a note at its head (or the fresh-rule branch): for text authored in this session, run the checklist as SEQUENCED single-axis passes — carrier/home first, claim-shape second, abstraction/de-particularization third — re-reading the corrected text between passes; the combined walk stays correct for text not just written.
+- **Consumer + drain seam:** skill-craft maintainer at the next review-checklist pass; drains via the standing OBSERVATIONS quota.
