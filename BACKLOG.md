@@ -76,20 +76,6 @@ lands from here without it).
     flight — its dev-notes name the trial close's grading as a
     future consumer. Trigger unmet, stays parked.)
 
-- **PARKED 2026-08-20 — self-review canon load does not name
-  review-checklist.md.** From the fresh-text-note self-review
-  (gap 3): self-review.md's five-check procedure names SKILL.md and
-  anti-patterns.md as the canon the reviewer loads, while
-  review-checklist.md:8-10 says the two reviews compose — whether
-  the standing self-review subagent reads the checklist (and so
-  receives run-mode rules minted there, like the fresh-text note)
-  is unspecified. Named missing decision: does review-checklist.md
-  join self-review's load list, or do the two stay deliberately
-  disjoint (checklist = post-change review, self-review = pre-commit
-  vet)? Trigger: the next self-review.md edit, or a self-review
-  whose findings show the checklist's run-mode rules were needed
-  and unloaded.
-
 - **PARKED 2026-08-20 — self-review load manifest (the load has no
   compliance artifact).** From the load-list change's round-3
   review (N4): self-review.md's reader is the dispatcher, so its
@@ -142,6 +128,12 @@ lands from here without it).
 - **DONE** 2026-08-20 — named-moment lever (2.2.0 canon pass): review
   mark, era stamp, flip-measurement line, trigger-anchor tests
   all landed. Body: git + OBSERVATIONS.
+- **DONE** 2026-08-20 — self-review canon load names
+  review-checklist.md (booked same day from the fresh-text-note
+  review's gap 3; operator settled: joins). Landed by d7f9a4b —
+  fresh-text rule bound at the five-checks seam, three review
+  rounds dispositioned in the commit body. Successor question
+  (load manifest) parked above.
 
 ## Kämmung passes
 
