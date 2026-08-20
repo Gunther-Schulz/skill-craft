@@ -43,3 +43,11 @@ commit message were lifted. Anything already carried by
   re-read under-fires on INLINE execution and on evidence-pointer
   premises — sharpen proposed to the operator; if minted, it lands
   in dotfiles routing.md with its JOURNAL line, not here.
+- 2026-08-20: booked opus lane commit d05e690 (release-owed
+  SessionStart banner + hooks.json wiring + 2.2.3 bump) —
+  integrated after dispatcher verification (6/6 --test, live
+  fire/no-fire pair on the real pin, hooks.json parse, trailer
+  claim). G1 channel decision: model-facing stdout, precedent the
+  backlog banner; systemMessage copy rejected as the decaying
+  operator-nag channel. Mint provenance + reach limit:
+  dev-notes/OBSERVATIONS.md, same-day mint entry (1392991).
