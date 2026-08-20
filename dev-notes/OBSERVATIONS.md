@@ -2023,3 +2023,41 @@ Consumer + drain: next skill-craft consolidation/canon pass (the
 entry above proposes evaluation.md amendments the same way); the
 concrete forms.md fix drains separately via dispatch-guards'
 maintenance quota — one meaning, two grains, each in its owner.
+
+## 2026-08-20 — Three candidates from a high-volume corpus-editing day (~15 edits, one fresh-context harmony review over the whole governed set)
+
+1. **Amendment search needs the inverse direction.** Amendment
+discipline's search finds restatements of the content being ADDED.
+The day's review surfaced the inverse class: a mint that changes an
+operating premise re-scopes every rule RESTING on the old premise —
+two existing rules would have actively forbidden the new
+arrangement, and a delta-only review structurally cannot see them.
+Candidate: widen Amendment discipline — before landing, ask which
+existing rules would forbid, mis-fire, or fall silent under the new
+content, and land those sharpens in the same edit set. (Minted
+same-day at the operating site's governance layer; this candidate
+is the layer-2 generalization — it holds for any governed corpus.)
+
+2. **Register drift is invisible per-edit; the working detector is a
+closed-taxonomy sweep with stated instrument reach.** A corpus
+written under the two-registers rule had accumulated ten
+directive-voice sentences inside evidence-register files, each
+individually defensible at its edit. What made them findable: a
+fresh-context review using a closed finding taxonomy whose
+instrument declared its own REACH — the sentence-initial-imperative
+grep was wrap-blind on hard-wrapped text, so its count was reported
+as a lower bound, with a live positive control. Candidate:
+review-checklist gains a register-consistency item prescribing
+exactly that instrument-honesty form (closed classes, reach stated,
+counts as bounds where the instrument is blind).
+
+3. **Protocol-shaped skills owe a delivery walk.** A multi-party
+delegation protocol designed the same day shipped three steps that
+ASSUMED delivery with no mechanism carrying them: a line a human
+must paste (never handed to them), state that must survive the
+authoring session (never persisted), an acknowledgment (never
+awaited). All three were found by the operator, none by review.
+Candidate: for any skill prescribing a multi-party or multi-session
+protocol, the review walks the lifecycle end-to-end asking per step
+WHO DELIVERS it — inline text, gate, artifact, or human memory,
+where human memory is the finding.
