@@ -76,6 +76,20 @@ lands from here without it).
     flight — its dev-notes name the trial close's grading as a
     future consumer. Trigger unmet, stays parked.)
 
+- **PARKED 2026-08-20 — self-review canon load does not name
+  review-checklist.md.** From the fresh-text-note self-review
+  (gap 3): self-review.md's five-check procedure names SKILL.md and
+  anti-patterns.md as the canon the reviewer loads, while
+  review-checklist.md:8-10 says the two reviews compose — whether
+  the standing self-review subagent reads the checklist (and so
+  receives run-mode rules minted there, like the fresh-text note)
+  is unspecified. Named missing decision: does review-checklist.md
+  join self-review's load list, or do the two stay deliberately
+  disjoint (checklist = post-change review, self-review = pre-commit
+  vet)? Trigger: the next self-review.md edit, or a self-review
+  whose findings show the checklist's run-mode rules were needed
+  and unloaded.
+
 - **PARKED 2026-08-20 — release lint scope misses command files.**
   From the 2.2.0 self-review (finding n3): /release-plugin step 3
   lints "each SKILL.md plus its references/*.md", so

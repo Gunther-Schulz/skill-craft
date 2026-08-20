@@ -2115,3 +2115,13 @@ pass (same as the eval-deltas entry's route).
 - **Class:** review-pass architecture — sequenced single-axis passes vs one multi-axis pass, for freshly authored steering text.
 - **Pre-formulated change:** review-checklist.md gains a note at its head (or the fresh-rule branch): for text authored in this session, run the checklist as SEQUENCED single-axis passes — carrier/home first, claim-shape second, abstraction/de-particularization third — re-reading the corrected text between passes; the combined walk stays correct for text not just written.
 - **Consumer + drain seam:** skill-craft maintainer at the next review-checklist pass; drains via the standing OBSERVATIONS quota.
+- **Correction (2026-08-20, authoring session, on the minting
+  session's self-review probe):** "a single combined review had
+  found only the first" was INFERRED, not run — no combined arm
+  existed; and the strict invisibility claim holds for the second
+  finding only (the third pre-existed the second repair and a
+  combined read could in principle have caught it). Honest
+  mechanism: attention-concentration — each single-axis pass finds
+  what the prior mixed-attention read left — plus one genuinely
+  text-dependent unmasking. Minted rendering says "observed" with
+  that mechanism (commit: the fresh-text note).

@@ -9,6 +9,19 @@ file:line for failures. Distinct from the self-review dispatch
 (`references/self-review.md`), the fresh-context pass on changes to
 skill-craft's own files; the two compose.
 
+Freshly authored text — written in this session, or under review
+before its first commit — runs the questions one axis at a time,
+re-reading the corrected text between passes, until a pass returns
+nothing new: a single-axis pass finds what a mixed-attention read
+leaves, and a repair can change what the next pass grades
+(observed: three distinct defects on one fresh rule, one per
+pass — one visible only after a prior repair changed the text, the
+rest caught when their axis got an undivided pass; all unmasked,
+none minted by a repair — the minted kind reads oppositely, item
+10). Each pass's output names its axis and its findings, or
+"nothing" — a missing line is a skipped pass. The combined walk
+stays correct for text not just written.
+
 1. **Consumer.** Declared — model or tier range? Enforcement
    density matches the declaration: evidence-register principles
    for a top tier, structural instruments (`enforcement.md`) below
