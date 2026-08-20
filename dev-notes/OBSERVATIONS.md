@@ -1787,6 +1787,10 @@ citation should name what Tier 2 actually provides (a
 behaviour-delta floor under re-graded content) or evaluation.md
 owes a no-op protocol. Reconcile at the next consolidation.
 
+Reconciled (2.2.0 canon pass, 2026-08-20): the ablation arm landed
+in evaluation.md Tier 2 (the no-op test at document scale), and the
+era re-grade's citation now names it as the instrument.
+
 ## 2026-08-10 — the trigger-anchor clause is missing two tests: an observable referent, and visible absence
 
 Provenance: a corpus rule in the operator's dotfiles (the
@@ -1818,6 +1822,9 @@ rule was exactly their application: bind the obligation to an act
 that provably already happens (the correction's record being
 written) and make the answers slots in that record, so a skipped
 firing is visible in the artifact itself.
+
+Minted (2.2.0 canon pass, 2026-08-20): both tests appended to the
+trigger-anchor clause (SKILL.md, The two registers).
 
 ## 2026-08-10 — lever application sweep: where "needs a named moment" applies to this canon itself
 
@@ -1862,6 +1869,11 @@ observable producer, and their design already defines the output
 once noticing occurs, which is the right shape; anchoring noticing
 itself would reproduce the defect the lever repairs.
 
+Minted (2.2.0 canon pass, 2026-08-20): review mark (Reviewing a
+skill + checklist close), era stamp (The two parties; era re-grade
+and item 13 diff against it; own declaration stamped), flip-commit
+measurement line (Invocation choice).
+
 ## 2026-08-10 — third lever entry: the unbound definite reference (object-side sibling of the named-moment gap)
 
 Same provenance chain, operator-prompted full-corpus review. The
@@ -1892,6 +1904,10 @@ object. Plus one review-checklist item carrying the same test.
 Instrument note from the review: a hot-noun grep (the
 record|list|test|check|source|baseline|output|log|file) surfaces
 candidates cheaply; grading stays judgment.
+
+Minted (2.2.0 canon pass, 2026-08-20): the unbound-reference test
+beside the no-op test with the three-site fold (trigger, object,
+scope); checklist item 18 with the hot-noun grep.
 
 ## 2026-08-10 — a plugin released MID-WAVE is invisible to every running session, including the dispatcher's own
 
@@ -1946,6 +1962,12 @@ reload handoff" — generic wording, environment-specific execution.
 Deployment-side half booked concretely in dotfiles BACKLOG
 (plugin-birth lane, 2026-08-11).
 
+Minted (2.2.0 canon pass, 2026-08-20): /release-plugin step 1 gains
+the birth branch (marketplace add + install + environment
+convergence, rejoining at step 7 — no step renumbered);
+plugin-engineering.md activation section carries the pointer;
+description gains the first-release trigger.
+
 ## 2026-08-11 — eval-method deltas from the begehung eval series (three candidates for evaluation.md)
 
 Observed while running the canon's own eval protocol end-to-end on a
@@ -1981,6 +2003,11 @@ Proposal (operator decides; reflexivity rule): the three land as
 amendments to references/evaluation.md Tier 2 in a skill-craft canon
 session with the Layer-4 self-review; BACKLOG entry parked on the
 named trigger.
+
+Minted (2.2.0 canon pass, 2026-08-20): all three landed in
+evaluation.md Tier 2 (ablation arm, staged probes, series
+limitation) plus the fourth candidate from the graded run
+(control-arm definition stated in the record).
 
 ## 2026-08-16 — Invariance de-binds: a rule inside identical-per-brief boilerplate reads as plumbing (measured, n=3)
 
@@ -2024,6 +2051,9 @@ entry above proposes evaluation.md amendments the same way); the
 concrete forms.md fix drains separately via dispatch-guards'
 maintenance quota — one meaning, two grains, each in its owner.
 
+Minted (2.2.0 canon pass, 2026-08-20): the pre-formulated widening
+landed in SKILL.md, Scope precedes default.
+
 ## 2026-08-20 — Three candidates from a high-volume corpus-editing day (~15 edits, one fresh-context harmony review over the whole governed set)
 
 1. **Amendment search needs the inverse direction.** Amendment
@@ -2061,3 +2091,21 @@ Candidate: for any skill prescribing a multi-party or multi-session
 protocol, the review walks the lifecycle end-to-end asking per step
 WHO DELIVERS it — inline text, gate, artifact, or human memory,
 where human memory is the finding.
+
+Minted (2.2.0 canon pass, 2026-08-20): (1) inverse-direction search
+in Amendment discipline; (2) register-drift sweep form in checklist
+item 8; (3) delivery walk in checklist item 14.
+
+## 2026-08-20 — consolidation input: birth branch duplicates plugin-engineering's install sequence
+
+From the 2.2.0 self-review (finding N7, operator disposition
+defer-to-observations). release-plugin.md's birth branch and
+plugin-engineering.md:189-194 both carry the marketplace-add +
+fully-qualified-install sequence. The command file must stay
+paste-executable (a release step cannot depend on loading a
+reference mid-command), so the consolidation direction is the
+other way: plugin-engineering's Path A install step points at
+/release-plugin's birth branch instead of restating the commands.
+Pre-formulated fix: replace that step's command lines with one
+pointer line. Consumer + drain: next skill-craft consolidation
+pass (same as the eval-deltas entry's route).

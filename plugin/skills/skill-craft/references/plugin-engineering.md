@@ -354,7 +354,9 @@ in the running session.
 
 A session may not know the pin moved at all — another session can
 move it. This plugin mechanizes the sequence and the catch: the
-`/release-plugin` command (the flow above end-to-end), a PreToolUse
+`/release-plugin` command (the flow above end-to-end, including
+the birth branch for a plugin's FIRST release — marketplace add,
+install, environment convergence), a PreToolUse
 gate denying Skill calls whose own plugin's pin moved after the
 session's last `/reload-plugins`, and a PostToolUse reminder after
 `claude plugin update|install`.

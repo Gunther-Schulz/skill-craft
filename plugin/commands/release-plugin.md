@@ -1,5 +1,5 @@
 ---
-description: Release the current plugin repo and activate it — checklist, version-bump check, commit+push, marketplace + pin update, operator /reload-plugins handoff, activation verification.
+description: Release the current plugin repo and activate it — checklist, version-bump check, commit+push, marketplace + pin update, operator /reload-plugins handoff, activation verification. Covers the first release of a newly created plugin.
 argument-hint: <plugin-repo-path (default: current repo)>
 ---
 
@@ -9,7 +9,22 @@ sequence is mechanical; show each step's executed output.
 1. Resolve the repo: it must contain `plugin/.claude-plugin/plugin.json`
    (or `.claude-plugin/plugin.json` at root). Read `name` + `version`;
    find the marketplace and installed pin in
-   `~/.claude/plugins/installed_plugins.json` (key `<name>@<marketplace>`).
+   `~/.claude/plugins/installed_plugins.json`
+   (key `<name>@<marketplace>`).
+   - No pin entry = FIRST RELEASE (birth branch). Steps 2, 3 and 5
+     run as written; step 4 is satisfied vacuously (no pin to
+     differ from — paste the version being born). In place of
+     step 6: `claude plugin marketplace add <owner>/<repo>` (or the
+     environment's marketplace convention), then
+     `claude plugin install <name>@<marketplace>` (fully-qualified;
+     a bare name fails with "Plugin not found" — measured
+     2026-08-20). Then converge the environment's plugin management
+     where it has one — mirror pins, adoption roster, doctor/health
+     checks; an environment that declares a plugin-birth lane or
+     runbook governs the convergence detail — follow it rather than
+     improvising. Evidence: the environment's pin/roster entry for
+     the new plugin pasted, or "none exists" stated. Rejoin at
+     step 7.
 2. Repo checklist: if the repo's CLAUDE.md names a pre-push or release
    checklist, run it now.
 3. Skill-lint: run the checker shipped at this plugin's root,

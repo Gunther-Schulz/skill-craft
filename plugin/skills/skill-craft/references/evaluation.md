@@ -65,7 +65,11 @@ signature appears only with the skill loaded.
    READING the candidate contaminates: a skill's format has
    transferred on contact alone, without invocation, surfacing a
    hundred turns later. A control arm in a session that has read
-   the candidate is not a control.
+   the candidate is not a control. State the control arm's
+   DEFINITION beside the saved outputs — corpus-loaded vs bare:
+   subagents inherit global instruction files, so "without" never
+   means bare, and a delta read against an assumed-bare control
+   misattributes the ambient corpus's work to the skill.
 3. Signature present with, absent without → the skill is doing its
    work. Present in both → before reading it as inert, grep the
    without-arm's output for the skill's coined terms — vocabulary
@@ -73,7 +77,10 @@ signature appears only with the skill loaded.
    contain; the signature elements of step 1 seed the list. A hit
    means the arm was contaminated — trace the matched phrase to its
    source and rerun with that injector disabled; the run is
-   invalid. A clean grep does not prove a clean arm (an injector
+   invalid. The class splits: the skill's OWN text leaking in
+   invalidates; the declared ambient corpus (step 2) is the
+   control's baseline in both arms and does not. A clean grep
+   does not prove a clean arm (an injector
    can carry the discipline in its own words) — with no hit and no
    known injector in the surface, read the skill as inert on that
    task. Absent in both → the skill failed to fire its own
@@ -85,6 +92,28 @@ Enforcement). `/eval-skill <name>` scaffolds the protocol: a
 with-skill and a without-skill subagent in parallel on one
 operator-supplied task, outputs saved side-by-side, the signature
 comparison staying operator-side.
+
+**The ablation arm.** The strongest cheap competitor to a skill is
+one sentence exploiting the skill-name's priors. A third arm
+running that sentence alone separates what the TERM buys from what
+the corpus text buys — the no-op test at document scale (measured:
+the ablation arm reproduced the skill's conduct but none of its
+bookkeeping artifacts — term-priors carry conduct, corpus text
+carries the artifacts). Run it when the cold probe showed the name
+itself recruits (SKILL.md, Term selection).
+
+**Staged probes.** A response-shaped signature element — "a
+follow-up X is answered by Y" — is unmeasurable in one saved
+output; one-shot comparison misses it by construction. Measure it
+with a second act against the LIVE arm: a named background agent
+takes a follow-up message after its first report, and the response
+is the artifact.
+
+**The series limitation.** A one-shot Tier 2 measures round
+discipline. A skill whose value compounds across sessions — a
+persistent ledger, a rotation schedule — has its core claim
+outside any single run: grade it over a trial series, and read a
+flat one-shot delta as unmeasured-here, never as inert.
 
 **The trajectory is evidence, not just the final artifact.** A
 signature can appear in the output while the path that produced it

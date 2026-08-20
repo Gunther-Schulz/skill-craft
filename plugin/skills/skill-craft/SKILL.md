@@ -14,8 +14,9 @@ Design for both at once; every section below is a lever on one or
 the other.
 
 **Birth declaration.** Skill-craft is a judgment skill; its intended
-consumer is a top-tier session model, and its own prescription
-density is calibrated to that. Its teaching content is rich; gates
+consumer is a top-tier session model (graded as of the Claude 5
+era, 2026-08), and its own prescription density is calibrated to
+that. Its teaching content is rich; gates
 on itself are near-zero at birth and fire-earned (Skill-craft's own
 conduct, fire-born machinery). Mechanical insurance is
 tier-insensitive and stays mechanical: the eval runner
@@ -30,8 +31,11 @@ use, never a load.
 
 Every skill has a writer and a consumer, and the design follows the
 consumer. Declare the consumer — the model or tier range that will
-execute the skill — in the skill's opening, and let the declaration
-set the enforcement density:
+execute the skill — in the skill's opening, with an as-of stamp
+naming the model era the declaration was last graded against (the
+binding staleness discipline applied to the declaration itself;
+the era re-grade diffs against this stamp), and let the
+declaration set the enforcement density:
 
 - A **top-tier consumer** takes evidence-register principles and
   brief teaching. Gates on its judgment work over-constrain it and
@@ -89,7 +93,7 @@ noise, and one routed the named request to a content-matching
 competitor skill. Delisting is therefore safe only for skills
 invoked by slash command (harness-resolved, no routing step); prose
 invocation rides on the listing. Re-measure before flipping any
-prose-invoked skill.
+prose-invoked skill; the flip's commit names its measurement.
 
 **The information hierarchy.** Two content types — steps (ordered
 actions) and reference (rules and facts consulted on demand) — sit
@@ -146,6 +150,19 @@ trimmed. The test grades leading words too: a word too weak to
 beat the default is a no-op, and the fix is a stronger word, not
 more words.
 
+**The unbound-reference test.** Every load-bearing definite
+reference — "the record", "the test", "the source" — either has a
+unique in-scope referent or names its selector. The tell is a
+definite article over a noun with siblings in the consumer's
+environment: the act lands on a sibling object and reads as
+compliance. Bind to the invariant object, never a container,
+section, or label that usually coincides with it. The same binding
+question recurs at two more sites: a trigger binds to a moment
+something observably produces (The two registers, the anchored
+trigger), and a rule's scope binds by an act's substance, never
+its presentation (`references/anti-patterns.md`,
+Jurisdiction-appeal, which carries the operational test).
+
 **Pruning.**
 
 - One meaning, one home — a single source of truth per behavior, so
@@ -162,7 +179,19 @@ more words.
 - Relevance decays: a line loses it by never bearing on the task or
   by the world changing under it. Without a pruning discipline the
   default fate is sediment — stale layers that settle because
-  adding feels safe and removing feels risky.
+  adding feels safe and removing feels risky. One costume escapes
+  both the sediment eye and the no-op test — the HISTORY-HEDGE
+  costume: history and experiment framing riding inside
+  behavior-bearing sentences (trial-stage labels,
+  corrects-an-earlier-version notes, experiment status) —
+  the sentence passes whole while its history clause does nothing.
+  Operational text states the current decision as the plain
+  default; provenance and experiment status live in the journal and
+  git. The cure carries its own check: before cutting a
+  history-flavored phrase, state the semantic work it did — one
+  such phrase was carrying a scope exclusion, and its
+  clean-sounding replacement sanctioned a route the machinery could
+  not serve.
 
 ## The two registers
 
@@ -185,7 +214,15 @@ judgment rule whose firing moment is a recognizable event (a
 hand-off, an approval, a start of work) under-binds in pure
 evidence register — execution momentum carries past the moment and
 the weighing never happens. Anchor the trigger at its named moment
-(a convention or a gate); the action's register stays evidence.
+(a convention or a gate) — the ANCHORED TRIGGER; the action's
+register stays evidence. The anchor holds only under two tests:
+the named moment is an
+event something observably PRODUCES — an act performed, an
+artifact written; an anchor to a state nothing keeps carries
+anchor syntax without an anchor — and compliance leaves an
+artifact whose omission is visible in the output; a purely mental
+obligation decays silently, nothing distinguishing fired from
+skipped.
 
 **Positive rendering** (hypothesis, validate by use): where a rule
 is directive, state the target behavior rather than the
@@ -288,7 +325,13 @@ read so far: a strong default whose carve-out sits downstream leaks
 level, salience: a load-bearing default buried mid-sentence in a
 packed enumeration parses but does not fire at its decision moment.
 Give it its own sentence at the seam it governs; added rationale
-only grows what it competes with.
+only grows what it competes with. Salience is also
+container-relative: an invariant block (a pasted tail, a fixed
+template) is skimmed as plumbing precisely because it never varies,
+and a load-bearing rule inside one de-binds whatever its wording —
+position it at the container's head with its consequence named
+(measured: 2 violations at tail position, full compliance after
+the move, wording unchanged).
 
 ## Lifecycle
 
@@ -319,9 +362,11 @@ staleness-checked, not fire-checked.
 
 **The era re-grade.** The no-op test is model-relative, so its
 verdicts expire with the model era: when the consuming model moves
-a tier or a generation, re-grade the corpus. Re-run the no-op test
-over teaching content (Tier 2 of `references/evaluation.md` is the
-instrument — settled by running, not debate); re-register surviving
+a tier or a generation past the consumer declaration's stamp,
+re-grade the corpus. Re-run the no-op test over teaching content
+(Tier 2 of `references/evaluation.md` is the instrument — its
+ablation arm, the no-op test at document scale, where the name
+recruits; settled by running, not debate); re-register surviving
 directive-register patches against the register criterion (one that
 now steers judgment re-renders in the evidence register; one that
 needs no prose retires or precipitates into a hook or check);
@@ -342,7 +387,13 @@ repair is preceded by a search over that set for the concept, the
 scan (command + hits) recorded as the edit's placement basis —
 repairs get the same rigor as additions precisely because they feel
 local. On amendment, audit each home the concept lives in for stale
-or now-redundant restatement.
+or now-redundant restatement. The search runs in both directions:
+beyond restatements of the content being added, a change that
+shifts an operating premise re-scopes every rule resting on the old
+premise — ask which existing rules would forbid, mis-fire, or fall
+silent under the new content, and land those sharpens in the same
+edit set; a delta-only review finds duplicates, never the rules the
+delta invalidates.
 
 **Iterative narrowing.** Before any addition, classify the failure
 it answers: *gap* (nothing covers it — add the minimum novel
@@ -392,11 +443,15 @@ under-trigger or sit inert.
 After creating or modifying any skill, work through the review
 questions (`references/review-checklist.md`), findings stated per
 item — file:line for failures; the deepening rule rides with them.
-The medium question (review-checklist.md, Enforcement item) — is
-any of this text machine-read semantics belonging in a
-mechanism? — is owed again whenever a section has grown since
-its last review, repair laps included: momentum re-grades
-correctness and never the medium (hypothesis, validate by use).
+The review's MARK is a `Skill-reviewed:` trailer on the commit
+landing the change — read back with `git log`, so "grown since"
+comes from git and never from a maintenance-file load. The medium
+question (review-checklist.md, Enforcement item) — is any of this
+text machine-read semantics belonging in a mechanism? — is owed
+again for each section grown since the last marked commit, repair
+laps included, its verdict recorded in that commit's body:
+momentum re-grades correctness and never the medium (hypothesis,
+validate by use).
 
 ## Skill-craft's own conduct
 

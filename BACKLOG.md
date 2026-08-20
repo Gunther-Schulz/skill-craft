@@ -14,139 +14,28 @@ edit; nothing lands from here without it).
   work at any grade. Minted thin as a corpus convention instead
   (dotfiles f3dfa52, CLAUDE.md Recommending & reporting).)
 
-- **READY 2026-08-11 — /release-plugin gains a BIRTH branch: the
-  first activation of a newly created plugin.** Evidence: dev-notes
-  observation 2026-08-11 (9728e02, begehung's birth — four
-  hand-discovered steps between skill creation and serving; operator
-  requirement "after a build/change, /reload-plugins should be my
-  only act"). Design (decided; recommendation over the alternative
-  home plugin-engineering.md because the release skill is the
-  invocable act whose checklist the variant belongs in):
-  release-plugin's SKILL.md gains a first-release branch —
-  `claude plugin marketplace add <owner>/<repo>` + `claude plugin
-  install <plugin>@<marketplace>`, then "converge the environment's
-  plugin management where it has one (pins/roster/doctor —
-  environment-specific execution, generic wording)", then the
-  existing reload handoff + activation verification;
-  plugin-engineering.md gets one pointer line. Scope note for the
-  branch: on fleets with a machine-wide plugin-birth lane (dotfiles
-  `claude/runbooks/plugin-birth.md` is one), the lane governs the
-  convergence detail and the branch cites it rather than restating.
-  Verifier: skill-craft's own mandated fresh-context self-review
-  dispatch on the change, plus a Tier-1 re-check that the
-  release-plugin description still triggers on release queries and
-  now also on "install my new plugin / first release". Done: branch
-  present, self-review dispositions recorded, release cut, the
-  dev-notes observation annotated with the commit ref.
+- (left 2026-08-20 by the 2.2.0 canon pass — birth branch landed
+  in release-plugin step 1, plugin-engineering pointer added,
+  description gains the first-release trigger; Tier-1 re-check and
+  self-review dispositions in the pass record. Body: git +
+  OBSERVATIONS annotation.)
 
-- **PARKED 2026-08-11 — evaluation.md Tier 2 gains the eval-method
-  deltas: ablation arm, staged probes, series limitation.** Evidence:
-  dev-notes observation 2026-08-11 "eval-method deltas" (the begehung
-  eval series — Tier-1 and cold-probe machinery fired as designed;
-  three gaps surfaced in use). Candidate design, evidence-complete
-  parts marked: (1) ablation arm — Tier 2 adds an optional third arm,
-  the strongest cheap competitor (one sentence exploiting the
-  skill-name's priors), separating what the term buys from what the
-  corpus buys [evidence PENDING: the 2026-08-11 three-arm run on
-  statiker, graded]; (2) staged probes — response-shaped signature
-  elements take a follow-up act against the live arm (named
-  background agents + SendMessage), not a one-shot output diff
-  [evidence: begehung's rotation element, measurable no other way];
-  (3) series limitation stated — compounding-value skills need
-  trial-series grading; a flat one-shot delta must not read as
-  inert [evidence: begehung's MAP claim, structurally outside any
-  single run]. Named trigger: the three-arm run's grade recorded in
-  begehung dev-notes — then a skill-craft canon session lands the
-  amendments with the Layer-4 self-review; do not mint before the
-  ablation arm has its own graded evidence.
-  TRIGGER MET 2026-08-11 (same day): grade recorded — begehung
-  a2e552c, eval-begehung/2026-08-11/result.md. The run's own verdict
-  sharpens delta (1): the ablation arm reproduced conduct but zero
-  bookkeeping artifacts, so the arm separates term-priors from
-  corpus-text exactly as hypothesized; and it surfaced a fourth
-  candidate for the same amendment: state the CONTROL-ARM DEFINITION
-  in the record (corpus-loaded vs bare — subagents inherit global
-  instruction files, so "without" never means bare). Entry is now
-  executable by the next canon session.
+- (left 2026-08-20 by the 2.2.0 canon pass — all four deltas landed
+  in evaluation.md Tier 2: ablation arm, staged probes, series
+  limitation, control-arm definition. Body: git + OBSERVATIONS
+  annotation.)
 
-- **READY 2026-08-10 — the history-hedge costume: name it in
-  Pruning, catch it in review** (operator gap-question after two
-  same-day statiker incidents; fresh-context review evidence in
-  statiker dev-notes/OBSERVATIONS.md 2026-08-10). The gap: the
-  corpus prices sediment and the no-op test grades clauses, but
-  nothing NAMES the costume that escapes both in practice —
-  history/experiment framing riding inside behavior-bearing
-  sentences ("operator experiments outside this default", "booked
-  mint", trial-stage labels, corrects-an-earlier-version notes):
-  the sentence passes the no-op test whole while its history
-  clause fails, exactly the packing failure SKILL.md already
-  describes. Design decided, two edits, one widening each:
-  (1) Pruning's relevance-decay bullet widens to name the class —
-  operational text states the current decision as the plain
-  default; history, provenance, and experiment status live in the
-  journal and git; AND the deletion check that makes the cure
-  safe: before cutting a history-flavored phrase, state what
-  semantic work it did — an "experiments outside this default"
-  phrase was carrying a SCOPE EXCLUSION, and its clean-sounding
-  replacement sanctioned a route the machinery cannot serve
-  (caught by fresh review, same day, blocking). (2)
-  review-checklist gains the paired question: any history/
-  experiment framing in operational text — and for each cure, what
-  did the old phrasing exclude or carry? Verifier: the Layer-4
-  gate on the canon edit; done by commit ref here.
+- (left 2026-08-20 by the 2.2.0 canon pass — Pruning names the
+  costume with the deletion check; checklist item 5 carries the
+  paired question. Body: git + OBSERVATIONS.)
 
-- **READY 2026-08-10 — unbound-reference test: the object-side
-  sibling of the named-moment lever** (operator GO from the
-  full-corpus review request; incident record and fix-pattern
-  evidence: dev-notes/OBSERVATIONS.md 2026-08-10, third lever
-  entry). Design decided: (1) SKILL.md gains the test beside the
-  no-op test (both are per-clause authoring tests): every
-  load-bearing definite reference either has a unique in-scope
-  referent or names its selector — the tell is a definite article
-  over a noun with siblings in the consumer's environment; the fix
-  binds to the invariant object, never a container, section, or
-  label that usually coincides with it. Same-principle third
-  binding site (fold, not a separate entry — restraint): a rule's
-  SCOPE binds by the act's substance, not its presentation — the
-  polite-twin incident (dotfiles reporting.md, 2026-08-10) escaped
-  a deferral rule by presenting as an offer; trigger-referent,
-  object-referent, and scope-substance are one test asked at three
-  sites. (2) review-checklist.md
-  gains the matching item with the hot-noun grep named as the
-  candidate instrument (grading stays judgment). Verifier: Layer-4
-  self-review; dry-run against the four evidence incidents (each
-  older wording fails the test, each repaired wording passes).
-  Done when both files carry it, self-review dispositions recorded,
-  release ships it — natural bundle with the named-moment READY
-  entry below (same files, one release). Consumer: the next
-  skill-craft canon session.
+- (left 2026-08-20 by the 2.2.0 canon pass — the unbound-reference
+  test beside the no-op test, three-site fold included; checklist
+  item 18 with the hot-noun grep. Body: git + OBSERVATIONS.)
 
-- **READY 2026-08-10 — named-moment lever, three canon
-  applications** (operator GO by booking question on the presented
-  findings; incident record and derivation:
-  dev-notes/OBSERVATIONS.md 2026-08-10, the two lever entries —
-  the trigger-anchor gap and the application sweep). Design
-  decided per finding: (1) REVIEW MARK — reviews record a dated
-  journal line naming the commit ref reviewed; the medium re-ask
-  ("machine-read semantics belonging in a mechanism?") is owed per
-  section grown since the previous mark and its verdict lands in
-  the review record — the owed re-ask becomes readable, not
-  remembered. (2) ERA STAMP — the consumer declaration (SKILL.md,
-  The two parties) carries an as-of stamp naming the model era it
-  was last graded against; Lifecycle's era re-grade and checklist
-  13's "moved since minting" then diff against the stamp — the
-  binding staleness discipline applied to the canon's own
-  declaration. (3) MINOR — a delist flip's commit names its
-  re-measurement (Invocation choice). Also in scope, same
-  provenance: the trigger-anchor clause itself gains the two tests
-  (observable referent; visible absence) per the first
-  observation. Each lands per amendment discipline with the
-  Layer-4 self-review; verifier: the self-review's clause-level
-  findings plus a constructed dry-run per finding (a review
-  without a mark, a declaration without a stamp — each now
-  visibly non-compliant). Done when all four land in the canon
-  with self-review dispositions recorded and the release ships
-  them. Consumer: the next skill-craft canon session.
+- (left 2026-08-20 by the 2.2.0 canon pass — review mark, era
+  stamp, flip-measurement line, trigger-anchor tests all landed.
+  Body: git + OBSERVATIONS.)
 
 - (left 2026-08-08 by commit baf064a + the integration commit
   beside it; red target re-pinned to 40bcc73 after the booked sha
@@ -242,3 +131,13 @@ edit; nothing lands from here without it).
     medium wrong, not more rounds), and part (b) is already
     corpus canon (re-entry-seam trend rule). At the trigger,
     re-derive against that record; do not mint as drafted.)
+
+- **PARKED 2026-08-20 — release lint scope misses command files.**
+  From the 2.2.0 self-review (finding n3): /release-plugin step 3
+  lints "each SKILL.md plus its references/*.md", so
+  plugin/commands/*.md never pass through skill_lint — the command
+  file's own pre-existing wrap flag was invisible to every release
+  it shipped in (fixed by hand in 2.2.0). Named missing decision:
+  whether command files join the release lint set (they are
+  operator-facing steps, not skill prose — wrap rules may differ).
+  Trigger: the next command-file edit, or a release shipping one.

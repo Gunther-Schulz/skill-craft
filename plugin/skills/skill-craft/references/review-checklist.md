@@ -34,7 +34,10 @@ skill-craft's own files; the two compose.
 5. **Ladder.** In-file vs disclosed decided by branching — what
    every branch needs inline, single-branch material behind
    pointers? Concepts co-located, not scattered? No sediment —
-   every line still bearing on what the document does?
+   every line still bearing on what the document does? No history
+   or experiment framing inside operational text (the history-hedge
+   costume, SKILL.md Pruning) — and each cure states what semantic
+   work the old phrasing did before it is cut?
 
 6. **No-op test.** Passed clause by clause against the declared
    consumer — no clause the consumer already obeys by default?
@@ -46,11 +49,19 @@ skill-craft's own files; the two compose.
    before its statement — no carve-out stranded downstream? Every
    load-bearing default owns its own sentence at the seam it
    governs — none buried mid-sentence in a packed enumeration?
+   No load-bearing rule inside an invariant block (a pasted tail,
+   a fixed template) — container-relative salience (SKILL.md,
+   Scope precedes default)?
 
 8. **Register.** Directive vs evidence follows each rule's action;
    judgment rules with event-shaped firing moments carry anchored
    triggers; imperative form throughout; directive rules rendered
-   positive where possible?
+   positive where possible? Register drift is invisible per-edit —
+   each slip individually defensible at its edit — so at
+   consolidation, sweep the corpus with a closed finding taxonomy
+   (each hit classed directive / evidence / mechanism-text) and an
+   instrument whose reach is stated: a wrap-blind grep reports its
+   count as a lower bound, shown live on a positive control.
 
 9. **Abstraction.** Judged at the skill's declared scope — a
    domain skill correctly domain-bound; only a domain-general skill
@@ -85,14 +96,18 @@ skill-craft's own files; the two compose.
 
 13. **Durability.** Operational content classifiable — enforcement
     structure, capability patch, binding? Bindings state their
-    validity condition? A consumer-tier move since minting flags
-    directive-register patches for re-registering (SKILL.md, the
-    era re-grade — the flag lands here, the re-render belongs to
-    consolidation)?
+    validity condition? A consumer-tier move past the consumer
+    declaration's stamp flags directive-register patches for
+    re-registering (SKILL.md, the era re-grade — the flag lands
+    here, the re-render belongs to consolidation)?
 
-14. **Information flow** (orchestrated skills only). Every handoff
-    passes what the receiver needs — explicit, format-matched,
-    compaction-safe?
+14. **Information flow and delivery** (orchestrated and
+    protocol-prescribing skills). Every handoff passes what the
+    receiver needs — explicit, format-matched, compaction-safe?
+    For a skill prescribing a multi-party or multi-session
+    protocol: the lifecycle walked end-to-end, each step asked WHO
+    DELIVERS it — inline text, gate, artifact, or human memory,
+    where human memory is the finding?
 
 15. **Cross-skill consistency** (multi-skill plugins). Every
     assumption one skill encodes about another — field names,
@@ -106,7 +121,21 @@ skill-craft's own files; the two compose.
 
 17. **Evaluation.** Tier 1 measured for any description-triggered
     skill; Tier 2 where the skill forces an observable signature
-    (`references/evaluation.md`)? Inspection is not measurement.
+    (`references/evaluation.md`)? A compounding-value skill graded
+    over a trial series, never read inert from a flat one-shot
+    delta (evaluation.md, the series limitation)? Inspection is
+    not measurement.
+
+18. **Reference binding.** Every load-bearing definite reference
+    has a unique in-scope referent or names its selector — bound
+    to the invariant object, never a container, section, or label
+    coinciding with it; trigger moments have observable producers
+    and compliance artifacts (SKILL.md, the unbound-reference
+    test; The two registers, the anchored trigger)? Candidate
+    instrument: a hot-noun grep
+    (`the (record|list|test|check|source|baseline|output|log|file)`)
+    surfaces candidates cheaply; grading stays judgment.
 
 After the pass: state whether it surfaced anything new; recommend
-another pass, a change of medium, or moving on.
+another pass, a change of medium, or moving on. Record the
+review's mark (SKILL.md, Reviewing a skill).
