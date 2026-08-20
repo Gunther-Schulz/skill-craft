@@ -6,9 +6,13 @@ its findings.
 
 Every change to skill-craft's operational files (`SKILL.md`,
 `references/*.md`) dispatches one fresh-context subagent — one per
-change-set, **before commit**. The subagent loads skill-craft,
-reads the changed text freshly (working tree, staged diff, or
-inline in the brief), and applies the five checks. This is
+change-set, **before commit**. The subagent loads skill-craft and
+`references/review-checklist.md` (for its fresh-text rule; the
+numbered questions stay the dispatcher's skill-review, and the
+closing instructions — the review mark, the medium verdict — are
+the dispatcher's acts), reads the changed text freshly (working
+tree, staged diff, or inline in the brief), and applies the five
+checks. This is
 verification of the session's own edits — distinct from
 reflexivity (SKILL.md, own conduct), where a proposed new rule goes
 to the operator: here the artifact under review is the session's
@@ -18,6 +22,13 @@ self-blindness, not a capability gap — and stays regardless of the
 consuming model.
 
 ## The five checks
+
+The reviewed change is freshly authored text, so the checklist's
+fresh-text rule applies in its read-only specialization — no
+repair between passes, no fixpoint iteration: the five checks run
+as five passes, one axis per pass, the report carrying one line
+per check naming its findings or "nothing"; a missing line is a
+skipped check.
 
 1. **Rule application** — test the changed text against each rule
    of the canon (SKILL.md sections; the anti-patterns). A violation
@@ -49,7 +60,7 @@ Findings rank blocking / notable / nit.
 
 Every finding's disposition cites the discipline-test applied plus
 the evidence that test requires — never a naked verdict, never an
-echo of the reviewer's severity (the appeal-to-existing family,
+echo of the subagent's severity (the appeal-to-existing family,
 `anti-patterns.md`). When the finding names a discipline, test
 against it; when it is bare, identify the applicable discipline
 from the candidate set (Edit-as-Pareto-improvement, Naked judgment,

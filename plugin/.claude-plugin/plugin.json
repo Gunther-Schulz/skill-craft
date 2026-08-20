@@ -1,6 +1,6 @@
 {
   "name": "skill-craft",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Skill and plugin engineering for Claude Code — two-party skill design (declared consumer sets enforcement density) with pointer/term/invocation economics, plus evaluation and release-activation tooling: /eval-skill, /release-plugin, and hooks that catch stale plugin pins in running sessions.",
   "author": {
     "name": "Gunther Schulz"

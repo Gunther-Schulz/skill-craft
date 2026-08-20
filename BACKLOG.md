@@ -90,6 +90,19 @@ lands from here without it).
   whose findings show the checklist's run-mode rules were needed
   and unloaded.
 
+- **PARKED 2026-08-20 — self-review load manifest (the load has no
+  compliance artifact).** From the load-list change's round-3
+  review (N4): self-review.md's reader is the dispatcher, so its
+  loads reach the reviewer only by brief transcription — a skipped
+  check is visible via the per-check line, a skipped load leaves
+  no absence. Pre-formulated fix in OBSERVATIONS "2026-08-20 —
+  Review-machinery obligations without compliance artifacts": a
+  one-line load manifest at the file head, pasted into the brief,
+  echoed in the report. Named missing decision: manifest form (and
+  whether review-checklist.md's per-pass wording adopts the
+  "N passes, one axis per pass" mechanism in the same edit).
+  Trigger: the next edit of self-review.md or review-checklist.md.
+
 - **PARKED 2026-08-20 — release lint scope misses command files.**
   From the 2.2.0 self-review (finding n3): /release-plugin step 3
   lints "each SKILL.md plus its references/*.md", so

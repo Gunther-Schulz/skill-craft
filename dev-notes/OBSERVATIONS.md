@@ -2125,3 +2125,31 @@ pass (same as the eval-deltas entry's route).
   what the prior mixed-attention read left — plus one genuinely
   text-dependent unmasking. Minted rendering says "observed" with
   that mechanism (commit: the fresh-text note).
+
+## 2026-08-20 — Review-machinery obligations without compliance artifacts (two instances, one class; from the load-list change's three review rounds)
+- **Incident + basis:** round-3 self-review of the self-review.md
+  load-list edit surfaced two corpus-level weaknesses, each ruled
+  out of blocking because pre-existing (corpus-appeal routing,
+  anti-patterns.md). (1) review-checklist.md's own per-pass output
+  line shares the fakeability its rendering into self-review.md
+  had: "each pass's output names its axis and its findings" is
+  producible by one mixed-attention read emitting labeled lines —
+  the passes themselves leave no distinct artifact. (2) self-review.md's
+  reader is the DISPATCHER, never the subagent: every obligation
+  in it reaches a reviewer only via brief transcription, so a
+  skipped CHECK is now visible (the per-check line) while a
+  skipped LOAD has no artifact — a dispatcher composing from
+  memory drops the checklist load with zero visible absence (both
+  loads affected, the skill-craft load included).
+- **Class:** anchored-trigger second test (compliance artifact)
+  applied to the review machinery's own obligations.
+- **Pre-formulated change:** (1) review-checklist.md's fresh-text
+  rule adopts the "as N passes, one axis per pass" mechanism
+  wording (parallel to self-review.md's repaired rendering), and
+  (2) self-review.md's prose load list becomes a one-line load
+  manifest at the file's head that the dispatcher pastes into the
+  brief and the reviewer's report echoes — the echo is the load's
+  compliance artifact, the same lever as the per-check lines.
+- **Consumer + drain seam:** skill-craft maintainer at the next
+  edit of either file; drains via the standing OBSERVATIONS quota.
+  Booked as PARKED in BACKLOG.md (load-manifest design).
