@@ -51,3 +51,21 @@ commit message were lifted. Anything already carried by
   backlog banner; systemMessage copy rejected as the decaying
   operator-nag channel. Mint provenance + reach limit:
   dev-notes/OBSERVATIONS.md, same-day mint entry (1392991).
+
+- 2026-08-23 — **A Path-2 rule's provenance has nowhere legal to
+  live** (opus lane `opus-daneel-lenses`, journal-only; `032651a`,
+  booked here because the pre-push gate blocks subagent commits whose
+  SHA sits in no record carrier and dev-notes/ is not one). Surfaced
+  while landing a hypothesis-marked lens in the DANEEL corpus. Path 2
+  requires a hypothesis be "explicitly marked as one"; the
+  Architecture rule forbids an operational file pointing at a
+  maintenance file. The lens marked itself by citing "the grounding
+  incident", which lives in `dev-notes/OBSERVATIONS.md` — so the
+  citation bound to nothing for the lens's actual reader. Both rules
+  are correct and they collide at exactly one sentence. SURFACED, NOT
+  PATCHED, per Reflexivity: the proposed shape is that a Path-2 rule
+  states its UNCERTAINTY in operational text and leaves its EVIDENCE
+  in the journal — candidate home SKILL.md Lifecycle "Two paths",
+  widened in place. OPERATOR DECISION OUTSTANDING; nothing in the
+  governed set was touched, so no self-review dispatch is owed and
+  the entry costs nothing while it waits.
