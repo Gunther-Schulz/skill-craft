@@ -2209,3 +2209,31 @@ pass (same as the eval-deltas entry's route).
   source-labelled to this seam (dotfiles ddf46c1 + follow-up).
 - **First firing:** the transcript that motivated it. Log subsequent
   catches here.
+
+## 2026-08-23 — Gap: a Path-2 rule's provenance cannot live where the rule may not point (path 1, incident-grounded)
+- **Incident + basis:** landing a hypothesis-marked lens in the DANEEL
+  corpus (daneel 0e2eca9). The lens text read "*Hypothesis, validate
+  by use.* The grounding incident shows this lens catches that
+  failure…" — and its review pass (axis: reference binding) found "the
+  grounding incident" bound to nothing for the lens's actual reader:
+  the incident lives in `dev-notes/OBSERVATIONS.md`, and SKILL.md's
+  Architecture rule forbids an operational file pointing at a
+  maintenance file. Path 2 requires the hypothesis be "explicitly
+  marked as one"; the Architecture boundary forbids the marking from
+  carrying its evidence. Both rules are correct and they collide at
+  exactly one sentence. Governed-set scan: `command grep -rnE
+  'hypothesis, validate by use|marked as one|maintenance file' SKILL.md
+  references/` → SKILL.md Lifecycle (two paths), SKILL.md Architecture
+  (operational vs maintenance), review-checklist item 3 — each states
+  its own half; neither names the collision.
+- **Mechanism:** none yet — surfaced, not patched (Reflexivity: propose,
+  don't silently patch). Proposed shape, for the operator to weigh: a
+  Path-2 rule states its UNCERTAINTY in the operational text and leaves
+  its EVIDENCE in the journal, and those cannot be the same sentence.
+  Operationally the marked rule says what is unmeasured about it — "how
+  often it fires on correct work is unmeasured" — and says nothing about
+  where that was learned. Candidate home: SKILL.md Lifecycle, Two paths,
+  widened in place rather than a new rule (amendment over addition).
+- **First firing:** the incident above; the repair shipped in daneel
+  07c493d, which replaced the citation with the unmeasured-claim form.
+  Log subsequent catches here.
