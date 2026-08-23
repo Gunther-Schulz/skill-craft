@@ -2181,3 +2181,31 @@ pass (same as the eval-deltas entry's route).
 - **First-run-watched grade (guard-checker-bau, eval-open):** pass —
   executor added a discriminating sixth fixture and a two-direction
   mutation proof beyond the brief.
+
+## 2026-08-23 — Widen: the anchored trigger names the in-session pledge as the weakest mental obligation (path 1, incident-grounded)
+- **Incident + basis:** an operator-relayed peer-session transcript
+  (wan2gp text-encode investigation): the session diagnosed its own
+  failure correctly, pledged "measured numbers get stated bare… or
+  carry the word unmeasured", and in the same message labeled source
+  readings "measured" and shipped a derived absence and a mechanism
+  as settled — the rule it restated loaded the whole time. Operator
+  question: "is 'pledges don't hold, forms do' already in skill-craft
+  and the maintenance doc?" Governed-set scan: `command grep -rnE
+  'omission|mental obligation|self-enforce' SKILL.md references/` →
+  :222-225 (anchored trigger), :274-275 (Enforcement); the principle
+  was present, the in-session-pledge grain was not.
+- **Mechanism:** SKILL.md, The two registers, anchored-trigger
+  paragraph widened in place: the consumer's own in-reply commitment
+  is the purely-mental obligation at its weakest (one observation;
+  reach past it marked hypothesis); a lesson arriving as a pledge is
+  anchored at that seam (convention with a named artifact, or a gate —
+  enforcement.md commitment consistency) or goes to the journal as an
+  observation, never into a body as a resolve. First draft landed as
+  a +67-word insert in Enforcement; the pre-commit self-review (opus,
+  fresh) returned 2 blocking (no anchor for a rule whose firing moment
+  is an event; second home for the visible-omission instrument), 9
+  notable, 3 nit — repaired to the widen per its recommended shape.
+  Sibling home: operator corpus CLAUDE-maintenance.md render test,
+  source-labelled to this seam (dotfiles ddf46c1 + follow-up).
+- **First firing:** the transcript that motivated it. Log subsequent
+  catches here.

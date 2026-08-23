@@ -222,7 +222,16 @@ artifact written; an anchor to a state nothing keeps carries
 anchor syntax without an anchor — and compliance leaves an
 artifact whose omission is visible in the output; a purely mental
 obligation decays silently, nothing distinguishing fired from
-skipped.
+skipped. The consumer's own in-session commitment — a correction
+accepted, a "from now on" stated in reply — is that obligation at
+its weakest: observed not surviving the next paragraph of the same
+message with the rule it restated still loaded (one observation;
+its reach past that case is hypothesis, validate by use). A lesson
+arriving as a pledge is anchored at this seam — a convention whose
+artifact is named, or a gate on the boundary
+(`references/enforcement.md`, commitment consistency) — or it goes
+to the journal as an observation (Lifecycle), never into a body as
+a resolve.
 
 **Positive rendering** (hypothesis, validate by use): where a rule
 is directive, state the target behavior rather than the
