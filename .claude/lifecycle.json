@@ -1,0 +1,66 @@
+{
+  "schema": 2,
+  "id-prefix": "sc",
+  "public": true,
+  "laws": "CLAUDE.md",
+  "closure-home": "ITEMS-DONE.md",
+  "trigger-policy": "on-demand",
+  "goals": [
+    "general-maintenance"
+  ],
+  "head-rule": "none",
+  "lanes": [],
+  "template-bindings": {},
+  "leak-scan": {
+    "source-scope-foreign-path": false,
+    "reason": "repo is PUBLIC (gh visibility=PUBLIC, verified at migration); init defaulted public=false unchecked."
+  },
+  "kinds": {
+    "items": {
+      "home": "ITEMS.md",
+      "writer": "verb:item add, verb:item park, verb:item close",
+      "reader": [
+        "verb:item ready",
+        "verb:item check",
+        "verb:item ratio",
+        "verb:retire"
+      ],
+      "staleness": "change-coupling — an item whose evidence or requirement record pointer no longer resolves",
+      "exit": {
+        "action": "move",
+        "recording-act": "the item close fire-log line",
+        "detail": "to ITEMS-DONE.md on DONE or DROPPED"
+      },
+      "growth": "bounded-by-exit — every item leaves by a recorded closure or a recorded drop, and the alarm is a kind that grew without an exit event, never a count (R22)"
+    },
+    "done bodies": {
+      "home": "ITEMS-DONE.md",
+      "writer": "verb:item close",
+      "reader": [
+        "verb:item check",
+        "verb:retire"
+      ],
+      "staleness": "none, declared why: a closure record is history — it accumulates, it does not go stale",
+      "exit": {
+        "action": "compact",
+        "recording-act": "a ledger decision line naming the compacted range",
+        "detail": "WAVE 4 — declared now so the kind has no undeclared stage, not implemented"
+      },
+      "growth": "compacted — done bodies fold on the retire lane's declared rule and git keeps the body; the archive section is history and dropping it would lose the basis of laws still in force"
+    },
+    "ledger lines": {
+      "home": "LEDGER.md",
+      "writer": "verb:ledger add, session",
+      "reader": [
+        "verb:ledger rejected",
+        "verb:item add"
+      ],
+      "staleness": "none, declared why: append-only decision history",
+      "exit": {
+        "action": "never",
+        "recording-act": "compaction only — a line whose item is DONE and past the horizon folds into that body's compaction line"
+      },
+      "growth": "unbounded-with-reason — one line per decision event, no bodies; the decision rate is the control, and the pre-migration prose sits below the archive heading held verbatim"
+    }
+  }
+}
