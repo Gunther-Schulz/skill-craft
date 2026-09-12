@@ -21,7 +21,7 @@ and are not restated here. What this repo carries:
 
 - `LEDGER.md` — this repo's on-disk ledger. Read its tail before
   re-deriving anything that may already be settled.
-- `BACKLOG.md` — future work, in the parked and ready grades.
+- `ITEMS.md` — future work, graded; closures move to `ITEMS-DONE.md`.
 - `PLAN.md` — the 2.0.0 rewrite charter; carrier for that design
   session's settled decisions.
 - `dev-notes/` — maintenance artifacts, kept outside the plugin
@@ -30,7 +30,7 @@ and are not restated here. What this repo carries:
 - `README.md` — humans and the public, never operating knowledge.
 
 Boundary: an incident and its abstraction → `dev-notes/OBSERVATIONS.md`;
-a decision and its why → `LEDGER.md`; a work item → `BACKLOG.md`; a
+a decision and its why → `LEDGER.md`; a work item → `ITEMS.md`; a
 standing rule → this file. A rationale that lives only in a commit
 message is the drift this split exists to stop.
 
@@ -40,3 +40,14 @@ skill-craft's governed set: `plugin/skills/skill-craft/SKILL.md`,
 `plugin/skills/skill-craft/references/*.md`. Every rule addition,
 repair, or amendment scans this set first; the scan (command + hits)
 is the edit's placement basis.
+
+## Legacy carrier
+
+Legacy `BACKLOG.md` citations resolve at d81e32cd2daee0858cbe56104acf9681e8c34aa2 — the commit before its
+retirement. The migration wrote 17 line-citations into `ITEMS.md` and
+`ITEMS-DONE.md` pointing into that blob.
+
+Declared exemptions for the consumer sweep: `LEDGER.md` and
+`dev-notes/OBSERVATIONS.md` still name `BACKLOG.md` in HISTORICAL entries.
+That is correct as history — a dated record naming the carrier that existed
+then is not a stale pointer — and they are exempt rather than rewritten.
