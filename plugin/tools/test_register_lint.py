@@ -150,6 +150,37 @@ def test_every_tell_pattern_stays_green_on_clean(pattern_id):
     assert f"tell:{pattern_id}" not in classes(CLEAN)
 
 
+# --- the quoted-span exemption (second-person only) ------------------
+# The discriminating pair: the same words go red unquoted and green
+# quoted, so the exemption is shown to act on quoting rather than on
+# the words. The boundary case below fixes its reach: another tell
+# inside quotes still fires.
+
+
+def test_second_person_fires_unquoted():
+    doc = "# T\n\nYou should read the manifest first.\n"
+    assert "tell:second-person" in classes(doc)
+
+
+def test_second_person_is_exempt_inside_double_quotes():
+    doc = '# T\n\nThe template reads "You should read the manifest first".\n'
+    assert "tell:second-person" not in classes(doc)
+
+
+def test_second_person_is_exempt_inside_backticks():
+    doc = "# T\n\nThe template reads `You should read the manifest first`.\n"
+    assert "tell:second-person" not in classes(doc)
+
+
+def test_other_tells_still_fire_inside_quotes():
+    doc = '# T\n\nThe note says "delve into the manifest".\n'
+    assert "tell:delve" in classes(doc)
+
+
+def test_only_second_person_is_quote_exempt():
+    assert rl.QUOTE_EXEMPT == {"second-person"}
+
+
 def test_pattern_table_size_is_in_the_specified_band():
     assert 10 <= len(rl.TELL_PATTERNS) <= 20
 

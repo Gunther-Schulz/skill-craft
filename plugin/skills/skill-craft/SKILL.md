@@ -251,6 +251,68 @@ stating what the skill does and when to use it, never second
 person; second person remains correct inside user-facing output
 templates and quoted speech.
 
+## Prose form and the authoring pipeline
+
+Grade the edited text, not the file.
+
+Write operational text in short imperative sentences. One idea per
+sentence. Split any sentence the reader must re-read to parse. The
+measured band and its source sit in
+`${CLAUDE_PLUGIN_ROOT}/tools/register_lint.py`, which grades a file
+against them.
+
+Carry evidence for every rule. Keep that evidence off the executing
+reader's path. The reader in mid-task needs the rule. The maintenance
+pass needs the incident, the date, and the measurement. Put the rule
+in the body and its evidence behind a pointer: the journal, a
+dev-note, a dated sidecar. Which rules hold mechanically and which are
+hoped is already drawn under Durability classes, between enforcement
+structure and capability patches.
+
+These two steps are the drafting half. The review the repo's cadence
+rule mandates runs after them.
+
+1. Run the lint over the edited text. Repair each finding. Repeat
+   until it exits 0.
+2. Prune of existing text: run the prune gate below.
+
+**The prune gate.** A prune drops words from text already in force.
+Its risk is a dropped obligation, and no lint sees one. A context that
+did not write the prune enumerates every clause of the before-text and
+dispositions each one KEPT, REWORDED, ABSENT, or WEAKENED. That
+enumeration rides in the self-review brief whenever the change-set
+contains a prune. Run the skill's eval battery where one exists
+(`references/evaluation.md`). A finding of ABSENT or WEAKENED on a
+load-bearing clause blocks the prune. This is the clause-level diff of
+Rendering from a source, aimed at prunes; the dispatch skill's
+enumeration-brief form carries the fuller version where that plugin is
+installed.
+
+Each skill adopts this at its own seam. Skip the corpus-wide
+retrofit: it reflows text nothing is currently changing, and the prune
+gate then runs over every line at once. A new skill file lints whole.
+For an edit to a legacy file, copy the edited sections into a scratch
+file and lint that file.
+
+## Stable rule ids
+
+Number each rule that other text cites. That number is its id, and it
+stays fixed across edits. A removed rule leaves its number as a gap.
+Surviving rules keep the numbers they have. Cite the id, never the
+phrasing.
+
+An id survives rewording; a phrase cite does not. A phrase cite holds
+only where the corpus ships a checker that resolves it. This repo
+ships one. The operator corpus ships none, and carried three broken
+references on 2026-08-23.
+
+Ids adopt at each file's own seam, this file's at its next
+consolidation pass. One precondition comes first: the dead-cite
+checker resolves id-shaped citations before any ids land, or it
+reports every new citation as dead.
+
+Ids are owed where rules are cited. A rule nothing cites needs none.
+
 ## Steps and completion criteria
 
 Every step ends on a completion criterion — the condition telling

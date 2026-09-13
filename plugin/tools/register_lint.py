@@ -2,7 +2,7 @@
 """register_lint — mechanical register checker for skill markdown.
 
 A CHECKER, not a rewriter: it flags and exits non-zero. It grades the
-mechanical half of the register discipline (SKILL.md, The register and
+mechanical half of the prose-form discipline (SKILL.md, Prose form and
 the authoring pipeline) — sentence density, em-dash load, and a list of
 AI tells. The judgment half (does the pruned text still carry every
 obligation) is the fresh-context clause-coverage diff, not this tool.
@@ -148,6 +148,13 @@ SENTENCE_END = re.compile(r"[.!?](?=\s|$)")
 FENCE = re.compile(r"^\s*(?:```|~~~)")
 EM_DASH = "—"
 
+# Patterns exempt inside a quoted span. Scoped to second-person only:
+# a skill quotes user-facing output and speech, where second person is
+# correct (SKILL.md, Imperative form). Every other tell still fires in
+# quotes, because quoting a tell does not stop it being one.
+QUOTE_EXEMPT = {"second-person"}
+QUOTED_SPAN = re.compile(r"`[^`\n]*`|\"[^\"\n]*\"|“[^”\n]*”")
+
 
 class Finding:
     def __init__(self, path, line, check, text):
@@ -276,8 +283,14 @@ def check_tells(path, body):
     findings = []
     for pattern_id, pattern, _example in TELL_PATTERNS:
         rx = re.compile(pattern, re.IGNORECASE)
+        exempt = pattern_id in QUOTE_EXEMPT
         for lineno, text in body:
-            m = rx.search(text)
+            subject = (
+                QUOTED_SPAN.sub(lambda m: " " * len(m.group(0)), text)
+                if exempt
+                else text
+            )
+            m = rx.search(subject)
             if m:
                 findings.append(
                     Finding(path, lineno, f"tell:{pattern_id}", repr(m.group(0)))
@@ -299,7 +312,7 @@ def lint(path, raw):
 def main(argv=None):
     parser = argparse.ArgumentParser(
         prog="register_lint.py",
-        description="Grade one markdown file against the register discipline.",
+        description="Grade one markdown file against the prose-form discipline.",
     )
     parser.add_argument("file", help="markdown file to lint")
     parser.add_argument("--json", action="store_true", help="machine-readable output")
