@@ -1,6 +1,6 @@
 schema: 2
 baseline: 14
-added: 3
+added: 4
 compacted: 0
 
 ## sc-1
@@ -76,3 +76,12 @@ evidence: operator decision 2026-09-13, statiker session 1b204567 ('agreed to yo
 blocked-by: NONE
 amend-reason: 2026-09-13 operator direction: adapt her recipe with the manual pruning replaced by automation — lint-loop for the mechanical half, fresh-context clause diff + evals for the judgment half
 amended-done-criterion: 2026-09-13 skill-craft SKILL.md carries both disciplines PLUS the automated prune loop that replaces her manual step (operator, 2026-09-13: full automation at the same level statiker automates design): (1) the tell+density LINT, mechanical and red-first on planted tells, thresholds calibrated on pstack's own measured band (7.9-18.7 words/sentence, 0-5 em dashes — the 2026-09-13 comparison report is the calibration data); (2) the PRUNE LOOP: the drafting LLM iterates against the lint until green — her inner-loop-against-a-harness applied to prose; (3) the SEMANTIC-PRESERVATION gate replacing the human's judgment half: a fresh-context clause-coverage diff (the dispatch skill's enumeration form, ABSENT/WEAKENED per clause, cheap tier) proving the pruned text drops no obligation, plus the eval-skill battery where the skill has one; the lint ships proven red on planted tells and green on clean text; existing house skills adopt at their own seams, never wholesale
+
+## sc-9
+grade: READY
+requirement: generalize statiker's review-cadence conclusion into skill-craft doctrine (operator, 2026-09-13, statiker session: every small edit does not need review, before a release definitely — and generalize it): fresh-context review attaches to the DELIVERY SEAM, not the edit. For version-pinned payloads (plugins) the seam is the RELEASE: small conduct-prose edits ride unreviewed, machine-read semantics and the accumulated delta are reviewed once at the seam, an oversized delta splits into parallel class lanes at that one seam. For live-on-write carriers (a corpus CLAUDE.md, hooks on an execution path) the EDIT is the seam, so per-edit gates stand there. Supersedes the unconditional per-edit self-review reading of the Self-review clause for pinned payloads
+goal: tend
+write-set: SKILL.md (Self-review clause plus a cadence clause in Lifecycle or Reviewing)
+done-criterion: SKILL.md states the seam-attached cadence with the pinned/live-on-write split; the Self-review clause carries the qualifier; provenance cites statiker's checkpoint rule (2026-08-16), its 2026-09-13 tightening, and the release-batching incident (three releases, no consuming run, 28 wake-ups)
+evidence: statiker CLAUDE.md checkpoint bullet incl. this date's tightening (commit 8d69a9a); statiker release-batching decision 2026-09-11 (ledger 7e0572f); operator decision this date, statiker session 1b204567
+blocked-by: NONE
