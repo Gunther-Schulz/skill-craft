@@ -2279,3 +2279,7 @@ Incident+basis: two corpus sharpens shipped with 'operator-named' / 'operator pr
   seam: the next SKILL.md release pass grades the text against the
   no-op test for the declared consumer; a fail there is a recorded
   decline, not a silent drop.
+- **Applied:** same day, on operator direction (build-first on GO) —
+  SKILL.md Enforcement, opened by manifest 2.2.7; self-review clean of
+  blockers, two notables fixed in place (marker form, corrective-action
+  close). The release-pass grade above still stands as the drain.

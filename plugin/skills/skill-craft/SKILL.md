@@ -367,6 +367,16 @@ presence checks, cross-references); (2) structural enforcement — a
 gate whose evidence is un-fakeable, judgment staying inside;
 (3) a fail-loud downstream check, documented as the weakest option.
 
+Upstream of all three sits a design question: whether the artifact
+can make the consumer's laziest route the correct one. The route a
+reader takes by default — the nearest pattern, the file already
+open, the shortest compliant act — either produces the intended
+behavior, or the design spends enforcement fighting its own shape;
+a gate that fires often on honest work is often this defect
+wearing an enforcement gap's costume, and the fix moves the
+default, not the gate (hypothesis, validate by use: how often the
+question changes a design is unmeasured).
+
 The instrument forms — blocking logic, the load gate,
 dispatch-order encoding, phase-boundary commitment gates, handoff
 information flow, the guard lifecycle for shipped hooks — are the
