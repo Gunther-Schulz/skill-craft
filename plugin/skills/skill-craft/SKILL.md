@@ -523,16 +523,28 @@ laps included, its verdict recorded in that commit's body:
 momentum re-grades correctness and never the medium (hypothesis,
 validate by use).
 
+Review cadence follows the delivery seam (operator decision). A
+version-pinned payload delivers at its release. Small conduct-prose
+edits ride unreviewed until that seam. One review there covers the
+accumulated delta. A change to machine-read semantics keeps a
+mandatory review at the same seam. An oversized delta splits that
+one review into parallel class lanes. It never adds an extra seam.
+A live-on-write carrier delivers at the edit itself, so per-edit
+review stands there. Provenance: the statiker checkpoint rule and
+its release-batching record.
+
 ## Skill-craft's own conduct
 
 - **Governed set**: `SKILL.md` + `references/*.md`, declared in the
   source repo's CLAUDE.md. Additions and repairs carry the
   search-before-add scan over that set as placement basis
   (Amendment discipline).
-- **Self-review**: every change to those files dispatches one
-  fresh-context self-review before commit
-  (`references/self-review.md`); commit only after every finding
-  has a recorded disposition.
+- **Self-review**: a change-set to those files dispatches one
+  fresh-context self-review before the release that delivers it
+  (`references/self-review.md`); the release moves only after
+  every finding has a recorded disposition. The seam rule in
+  Reviewing a skill sets the cadence; machine-read semantics
+  review at that seam without exception.
 - **Fire-born machinery**: no new gate, mandate, or checklist on
   skill-craft itself without one real incident as provenance —
   amendment over addition; the mint and each subsequent firing are
