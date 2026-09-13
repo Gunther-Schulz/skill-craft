@@ -185,6 +185,13 @@ Jurisdiction-appeal, which carries the operational test).
   behavior-bearing sentences (trial-stage labels,
   corrects-an-earlier-version notes, experiment status) —
   the sentence passes whole while its history clause does nothing.
+  ATTRIBUTION is the same costume in credit's clothing. A rule
+  labeled with who asked for it ("operator-named", "per X's
+  preference") reads as provenance discipline. It is not: the
+  label downgrades a correct rule to taste, and a future reader
+  weighs attributed rules more lightly than derived ones. A rule
+  true on its merits states its mechanism. Genuine fiat carries
+  "(operator decision)" at most.
   Operational text states the current decision as the plain
   default; provenance and experiment status live in the journal and
   git. The cure carries its own check: before cutting a
