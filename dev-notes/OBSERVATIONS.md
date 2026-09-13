@@ -2237,3 +2237,9 @@ pass (same as the eval-deltas entry's route).
 - **First firing:** the incident above; the repair shipped in daneel
   07c493d, which replaced the citation with the unmeasured-claim form.
   Log subsequent catches here.
+
+## 2026-09-13 — sc-8 lap: three instrument lessons (register_lint mint)
+
+1. THRESHOLD-INDEPENDENT FIXTURES (measured, sc-8 lane): a red-first mutant on a threshold also probes fixture independence — a fixture sized EM_DASH_MAX+1 moved with the mutated cap and the infinity mutant produced no red at all. Class: same-parentage fixture. Fix shipped: literal counts pinned to the calibration band plus a test asserting the constants equal the calibrated values. Consumer: any future battery over a thresholded check in this repo.
+2. A MUTANT NEEDS ITS OWN POSITIVE CONTROL (measured, sc-8 lane): a mutant with a bad indent anchor produced a pytest ERROR that read like a red at a glance — proof that is not proof. Fix shipped: compile() check on each mutant before trusting its run. Consumer: same as 1.
+3. STYLE-SUBJECT DOCS TRIP TELL LINTS (measured: pstack unslop returns 14 tell findings on itself; our own canon's quoted counter-example fired second-person until the quoted-span exemption landed with both controls). Class: known false-fire; quoted-span exemption is scoped to second-person ONLY, pinned by QUOTE_EXEMPT test. Consumer: whoever widens the tell list next.
