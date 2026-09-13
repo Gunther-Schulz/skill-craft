@@ -2247,3 +2247,35 @@ pass (same as the eval-deltas entry's route).
 ## 2026-09-13 — attribution costume added to the history-hedge rule (fired same day it was minted against)
 
 Incident+basis: two corpus sharpens shipped with 'operator-named' / 'operator preference' attribution on rules that are derivable from standing principles (routing.md sign-off clause, this date); the operator caught the downgrade ('makes it sound like personal preference and not a rule we distilled'), and skill-craft was LOADED at both compose moments — loaded-but-inert. Mechanism of non-firing: the history-hedge costume list named history flavors only; attribution reads as provenance compliance, so nothing matched. Class: history-hedge, attribution variant. Fix: the costume list gains the attribution paragraph (this commit). Consumer: every future corpus/skill mint; the release-seam review checks the widened rule.
+
+## 2026-09-13 — Path-2 candidate: the laziest-route test at artifact design time (borrowed, no local incident)
+
+- **Incident + basis:** none local — a borrow, so Path 2 (hypothesis,
+  validate by use). Operator GO to land it here, this date. Source:
+  Dune's "Agent-friendly architecture" Contract page (operator-supplied
+  stills of poteto's talk video; facts archived at statiker
+  `dev-notes/grokbot-surface-2026-09-13.md` §5 update, df6f61a). The
+  page enumerates the agent defaults an artifact must survive — copy
+  the nearest working pattern; edit the file already open; choose the
+  shortest path that compiles; avoid deleting code whose callers are
+  not visible; follow the requested implementation even when it
+  conflicts with a system invariant — and designs so that the default
+  route IS the correct route, instead of guarding a route that fights
+  the defaults.
+- **Class:** enforcement economics — a mitigation upstream of the
+  Enforcement section's existing preference order (mechanical criteria
+  / structural gate / fail-loud): remove the need for enforcement by
+  aligning the consumer's default path with the intended behavior.
+- **Pre-formulated rule text** (candidate home: SKILL.md Enforcement,
+  widened in place — amendment over addition): "Before reaching for
+  any mitigation, ask whether the artifact can make the consumer's
+  laziest route the correct route — the path a reader takes by default
+  (nearest pattern, file already open, shortest compliant act) either
+  produces the intended behavior, or the design spends enforcement
+  fighting its own shape. A gate that fires often on honest work is
+  frequently this defect wearing an enforcement gap's costume. How
+  often the question changes a design is unmeasured."
+- **First firing:** none — unfired at minting; log catches here. Drain
+  seam: the next SKILL.md release pass grades the text against the
+  no-op test for the declared consumer; a fail there is a recorded
+  decline, not a silent drop.
