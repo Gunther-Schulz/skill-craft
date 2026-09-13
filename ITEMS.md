@@ -1,6 +1,6 @@
 schema: 2
 baseline: 14
-added: 1
+added: 2
 compacted: 0
 
 ## sc-1
@@ -56,3 +56,12 @@ write-set: plugin/skills/skill-craft/SKILL.md (Durability classes, Layer 4) and 
 done-criterion: Durability classes either adopts a run-count discriminator (a rule whose scope no run has entered is unmeasured, not cut-eligible) or records why the current predicate is sufficient here. Either is an exit; silence is not. If adopted, the review-checklist entry at :107 moves with it, and dev-notes/OBSERVATIONS.md:1240-1242 is corrected, since it currently certifies as closed the very gap this reopens.
 evidence: MEASURED 2026-09-12 by the dotfiles drainage desk, both sides opened. THIS REPO carries the undefended predicate at plugin/skills/skill-craft/SKILL.md:368 and :478-479 (a mechanism with no firing since the last review is a cut candidate) and references/review-checklist.md:107. DANEEL's fix, for comparison rather than for copying: dev-notes/OBSERVATIONS.md:18-38 -- the reviewer's first question is not did it fire but has anything EXERCISED it yet, how many runs have entered this rule's scope since minting; zero runs plus zero firings carry no information, and such a rule is UNMEASURED rather than depreciating. WHY THIS REPO WOULD NOT HAVE FOUND IT: dev-notes/OBSERVATIONS.md:1240-1242 records the durability cut-candidate gap as CLOSED-ALREADY-SATISFIED because the rule text exists -- so a reviewer here reads the gap as closed, and the defect is in the text that closed it. Instrument note: the sweep for the defect formulation (zero runs / unmeasured / has anything exercised / run count / entered its scope) over this repo returned only unrelated senses of unmeasured; the positive control on the same instrument (cut candidate) returned 6 hits, so that absence is instrument-proven rather than an unread sweep.
 blocked-by: decision whether Durability classes adopts the run-count discriminator, or declares the current predicate sufficient with its reason
+
+## sc-7
+grade: READY
+requirement: five house skills declare their consumer without the as-of stamp skill-craft's own two-parties section mandates ('with an as-of stamp naming the model era the declaration was last graded against', SKILL.md:33-37): dispatch:8, executor:8, begehung:10, kaemmung:11, statiker:630. Found by the 2026-09-13 skill-style comparison (statiker dev-notes/skill-style-comparison-2026-09-13.md, finding iii.1), each location verified at source by the desk
+goal: tend
+write-set: dispatch-guards repo (dispatch+executor SKILL.md consumer lines),begehung repo (SKILL.md:10),kaemmung repo (SKILL.md:11),statiker repo (SKILL.md:630 — rides a statiker release seam per its review cadence)
+done-criterion: each of the five consumer declarations carries an as-of era stamp in skill-craft:33-37's form; verifier: case-folded grep for 'as of' on each consumer line returns a hit; the statiker edit lands at that repo's next release seam, never as its own release
+evidence: skill-craft SKILL.md:33-37 read at the desk 2026-09-13; the five unstamped lines from the comparison report, executor:8 and statiker:630 spot-verified at source same date
+blocked-by: NONE
