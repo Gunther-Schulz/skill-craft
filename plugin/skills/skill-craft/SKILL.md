@@ -303,8 +303,7 @@ phrasing.
 
 An id survives rewording; a phrase cite does not. A phrase cite holds
 only where the corpus ships a checker that resolves it. This repo
-ships one. The operator corpus ships none, and carried three broken
-references on 2026-08-23.
+ships one. The operator corpus ships none.
 
 Ids adopt at each file's own seam, this file's at its next
 consolidation pass. One precondition comes first: the dead-cite
