@@ -1,6 +1,6 @@
 schema: 2
 baseline: 14
-added: 2
+added: 3
 compacted: 0
 
 ## sc-1
@@ -64,4 +64,13 @@ goal: tend
 write-set: dispatch-guards repo (dispatch+executor SKILL.md consumer lines),begehung repo (SKILL.md:10),kaemmung repo (SKILL.md:11),statiker repo (SKILL.md:630 — rides a statiker release seam per its review cadence)
 done-criterion: each of the five consumer declarations carries an as-of era stamp in skill-craft:33-37's form; verifier: case-folded grep for 'as of' on each consumer line returns a hit; the statiker edit lands at that repo's next release seam, never as its own release
 evidence: skill-craft SKILL.md:33-37 read at the desk 2026-09-13; the five unstamped lines from the comparison report, executor:8 and statiker:630 spot-verified at source same date
+blocked-by: NONE
+
+## sc-8
+grade: READY
+requirement: skill-craft adopts two style disciplines from the 2026-09-13 comparison (statiker dev-notes/skill-style-comparison-2026-09-13.md), operator-decided in the statiker session: (1) STABLE NUMBERED RULE IDS with gaps preserved for cross-referenced rules (pstack unslop:19's habit) — incident basis beyond the comparand: phrase-shaped cross-references have returned false zeros when greped (corpus environment module, 2026-08-23, several lanes); (2) a REGISTER discipline, operator's words: pstack reads 'how i wish skill-craft could force a skill to be written' — short imperative sentences, and the house case-law register recognized as LLM default un-resisted at the surface (measured: 21-48 words/sentence, up to 432 em dashes/file vs pstack 0-5) while its EPISTEMICS (incident provenance, mechanical-vs-hoped labels) stay mandatory: the fix is separating the two — evidence REQUIRED but carried as pointer/sidecar out of the executing reader's path (precedent: statiker's own 2026-08-10 'skill text states decisions cleanly, history in dev-notes'), plus a compose-time density rule and a mechanical AI-tell lint (pstack unslop's bans are largely regex-detectable, so the lint clears the mechanism bar)
+goal: tend
+write-set: SKILL.md (register + reference-discipline sections),tools or hooks (the tell-lint, red-first per this repo's own discipline)
+done-criterion: skill-craft SKILL.md carries both disciplines; the register rule's mechanical slice ships as a lint proven red on a planted tell and green on clean text; existing house skills are NOT retrofitted wholesale — each adopts at its own seam (statiker at a release seam per its cadence rule)
+evidence: operator decision 2026-09-13, statiker session 1b204567 ('agreed to your recomends for 1 and 4' + the register direction quoted above); comparison report finding (i).2/(i).3 and the measured register numbers; corpus environment module's phrase-search false-zero incidents 2026-08-23
 blocked-by: NONE
