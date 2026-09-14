@@ -433,3 +433,43 @@ def test_cap_value_discriminates_at_the_boundary():
         rl.lint("o.md", just_over)[1]["em_dashes"]
     assert rl.lint("u.md", just_under)[1]["em_dashes_per_1000"] < cap
     assert rl.lint("o.md", just_over)[1]["em_dashes_per_1000"] > cap
+
+
+def test_quote_exemption_spans_the_line_wrap():
+    """A quoted counter-example broken across a hard wrap is ONE span.
+
+    The exemption was line-scoped while the prose it grades is wrapped,
+    so a quotation split over two lines had no closing delimiter on
+    either line and was never masked. Found by running this tool over
+    its OWN SKILL.md: the sentence teaching imperative form quotes its
+    counter-example, the quote wraps, and the second-person tell fired
+    on the line that teaches the rule.
+
+    The pair is what makes it a measurement: the same words UNQUOTED
+    must still fire, or the repair would have silenced the check
+    instead of scoping it.
+    """
+    head = "---\nname: s\ndescription: d\n---\n\n# S\n\n"
+    wrapped_quote = head + (
+        'Write verb-first ("Read the manifest," not "You should read\n'
+        'the manifest") in every step.\n'
+    )
+    unquoted = head + "You should read the manifest in every step.\n"
+
+    assert "tell:second-person" not in classes(wrapped_quote)
+    assert "tell:second-person" in classes(unquoted)
+
+
+def test_quote_mask_preserves_line_numbers():
+    """Masking must not shift any line, or every finding below a quote
+    reports at the wrong place — a pointer that always resolves and
+    silently names the wrong line."""
+    head = "---\nname: s\ndescription: d\n---\n\n# S\n\n"
+    doc = head + (
+        'A "quote that runs\nacross the wrap" sits here.\n'
+        "Delve into the manifest.\n"
+    )
+    hits = [f for f in rl.lint("f.md", doc)[0] if f.check == "tell:delve"]
+    assert len(hits) == 1
+    line = doc.splitlines()[hits[0].line - 1]
+    assert "Delve" in line, f"finding points at {line!r}"

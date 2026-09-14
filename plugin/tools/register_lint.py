@@ -48,11 +48,30 @@ import typing
 #
 # The default is DERIVED from the same pstack sample the old absolute 5
 # came from, not chosen: create-verification carried 5 dashes in 936
-# words = 5.34 per 1000, and it was the sample's only file with any. So
-# 5.34 IS "the top of the pstack band" restated in the corrected unit,
-# and every skill-craft file keeps the verdict it had (all eight fail
-# both ways — rates 13.9-32.2, absolutes 16-97). That invariance is a
-# battery arm, not a claim.
+# words = 5.34 per 1000. So 5.34 IS "the top of the pstack band"
+# restated in the corrected unit.
+#
+# THAT DERIVATION RESTS ON ONE FILE, and "the top of a band" reads like
+# a range summarising several. Four of the sample's five files carried
+# ZERO em dashes, so the band's upper edge is a single observation and
+# the default is n=1. It is stated rather than smoothed because the
+# alternative is a comment implying a sample that does not exist.
+#
+# The consequence is bounded, which is why n=1 is tolerable here: the
+# default governs only a corpus that declares no band of its own, and
+# its job there is to pull a NEW skill toward short imperative prose —
+# a direction, not a threshold anyone tunes against. A corpus that
+# cares declares its band at the invocation.
+#
+# WHAT PINS THIS VALUE IN THE BATTERY, since only one arm does: the
+# derivation assertion, which reads the comparison report's own rows.
+# The invariance arm over skill-craft's files does NOT pin it — every
+# file there sits 2.6x-6.0x above the cap, so any value under 13.88
+# passes it identically (measured by mutation: 5.34 -> 11.0 and 5.34
+# -> 2.0 each fail the derivation arm alone). The constructed boundary
+# arm builds its fixtures FROM the band and so is blind to the value
+# by construction. Moving this number means moving the derivation
+# assertion with it, deliberately.
 WORDS_PER_SENT_MAX = 19.0
 EM_DASH_PER_1000_MAX = 5.34
 
@@ -193,7 +212,12 @@ EM_DASH = "—"
 # correct (SKILL.md, Imperative form). Every other tell still fires in
 # quotes, because quoting a tell does not stop it being one.
 QUOTE_EXEMPT = {"second-person"}
-QUOTED_SPAN = re.compile(r"`[^`\n]*`|\"[^\"\n]*\"|“[^”\n]*”")
+# DOTALL-equivalent by construction: the character classes now admit
+# \n, so a quotation broken across the corpus's hard wrap is one
+# span. Bounded to keep a stray unmatched quote from swallowing the
+# rest of the file: at most 400 characters, which covers a wrapped
+# sentence and not a runaway.
+QUOTED_SPAN = re.compile(r"`[^`]{0,400}?`|\"[^\"]{0,400}?\"|“[^”]{0,400}?”")
 
 
 class Finding:
@@ -335,17 +359,37 @@ def check_density(path, body, band=DEFAULT_BAND):
     return findings, {"words": words, "sentences": len(sentences), "mean": mean}
 
 
+def _mask_quotes_across_lines(body):
+    """`body` with quoted spans blanked, masking ACROSS the line wrap.
+
+    The exemption was line-scoped while the prose it grades is hard
+    wrapped, so a quotation broken over two lines had no closing
+    delimiter on either and was never masked. Measured on this tool's
+    own SKILL.md: the sentence teaching imperative form quotes its own
+    counter-example — `not "You should read the / configuration
+    file."` — and the second-person tell fired on the line that
+    teaches the rule.
+
+    Masking preserves LENGTH and line structure so every line number
+    and column still refers to the same place in the source.
+    """
+    joined = "\n".join(text for _, text in body)
+    masked = QUOTED_SPAN.sub(
+        lambda m: "".join("\n" if c == "\n" else " " for c in m.group(0)),
+        joined,
+    )
+    pieces = masked.split("\n")
+    return {lineno: pieces[i] for i, (lineno, _) in enumerate(body)}
+
+
 def check_tells(path, body):
     findings = []
+    masked = _mask_quotes_across_lines(body)
     for pattern_id, pattern, _example in TELL_PATTERNS:
         rx = re.compile(pattern, re.IGNORECASE)
         exempt = pattern_id in QUOTE_EXEMPT
         for lineno, text in body:
-            subject = (
-                QUOTED_SPAN.sub(lambda m: " " * len(m.group(0)), text)
-                if exempt
-                else text
-            )
+            subject = masked[lineno] if exempt else text
             m = rx.search(subject)
             if m:
                 findings.append(
