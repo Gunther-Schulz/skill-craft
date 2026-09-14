@@ -2321,9 +2321,20 @@ Incident+basis: two corpus sharpens shipped with 'operator-named' / 'operator pr
   files keep 19.0/5 as the default, so a new skill is still pulled
   toward short imperative prose. A consuming corpus declares its own
   band in its CLAUDE.md (proposed key: `register-band:
-  <words-per-sentence> <em-dashes>`), the lint reads the declaration
-  from the graded file's repo and enforces THAT, and a file with no
-  declaration keeps the default. Prose sentence: "The band is a
+  <words-per-sentence> <em-dashes-per-1000-words>`), the lint reads the
+  declaration from the graded file's repo and enforces THAT, and a file
+  with no declaration keeps the default. CORRECTED IN PLACE after
+  delivery (peer session dotfiles-db, fact traffic; reproduced at this
+  desk before amending): the em-dash half was first written as an
+  ABSOLUTE per-file count, which is the wrong metric SHAPE and not
+  merely the wrong value. Over the six ethos modules the absolute count
+  spreads 3.5x with file length (28-98) while the RATE is tight —
+  insurance 24.0, fixing 21.3, accretion 22.9, calibration 23.4,
+  grounding 20.5, reporting 27.5 per 1000 words. An absolute cap in a
+  declared band therefore fires on the next long module or is vacuous
+  for a short one; the corpus's stable property is the rate. The
+  existing `EM_DASH_MAX = 5` inherits the same defect and a
+  recalibration that only moves its number keeps it. Prose sentence: "The band is a
   property of the corpus, not of the tool. A corpus whose idiom is
   deliberately dense declares its band and is graded against it; drift
   past a declared band is the finding the global cap cannot express,
