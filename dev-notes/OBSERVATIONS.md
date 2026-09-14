@@ -2283,3 +2283,58 @@ Incident+basis: two corpus sharpens shipped with 'operator-named' / 'operator pr
   SKILL.md Enforcement, opened by manifest 2.2.7; self-review clean of
   blockers, two notables fixed in place (marker form, corrective-action
   close). The release-pass grade above still stands as the drain.
+
+## register_lint's band grades every consuming corpus against a foreign house style
+
+- **Incident + basis:** ethos corpus work, 2026-09-14 (dotfiles session
+  e8f79ded; ethos fc4651c, f4cce09). Three corpus mints landed in
+  `ethos/plugin/modules/{grounding,fixing}.md`. Run against
+  `register_lint.py` (2.2.7) they exit 1 at 35.8 words/sentence and 5 em
+  dashes over 10 sentences, longest sentence 62 words. Run against the
+  whole traveling corpus, ALL SIX modules fail BOTH caps, none
+  marginally: words/sentence 33.4 / 36.0 / 38.9 / 39.0 / 39.9 / 40.7
+  against a cap of 19.0; em dashes 39 / 98 / 56 / 28 / 73 / 56 against a
+  cap of 5. The lint's own threshold comment already records this — "the
+  house sample measured 21.0-48.2 and 18-432" — so the divergence was
+  known at authoring time and the caps were set at the pstack band
+  deliberately, not by oversight. That is what makes this a DIRECTION
+  question and not a calibration bug, and it is the fact the desk got
+  wrong first: the initial reading to the operator called it a parentage
+  defect (an expectation derived from one artifact grading another) and
+  had to be corrected on reading the header.
+- **Class:** instrument scope — a mechanical check whose band is
+  global while the property it grades is per-corpus. Two failure
+  directions, and only one is visible today. LOUD: a corpus whose
+  declared idiom is dense (ethos states rule, mechanism, costume and
+  convention in one clause on purpose, so a reader cannot take the rule
+  and drop the mechanism) fails every line, and the operator learns to
+  run the lint never — the override reflex the corpus itself names
+  under Fixing, "a check that fires on a NON-defect is failing too."
+  QUIET, and the reason a bare widening is the wrong repair: caps
+  raised to whatever the house currently measures restate their basis
+  FROM the artifact they grade, so the check goes green byte-identically
+  to health and a module sliding to 60 words/sentence fires nothing.
+- **Pre-formulated fix text** (candidate home: `plugin/tools/
+  register_lint.py` thresholds + SKILL.md "Prose form and the authoring
+  pipeline", widened in place — amendment over addition): the band
+  becomes DECLARED per corpus rather than global. skill-craft's own
+  files keep 19.0/5 as the default, so a new skill is still pulled
+  toward short imperative prose. A consuming corpus declares its own
+  band in its CLAUDE.md (proposed key: `register-band:
+  <words-per-sentence> <em-dashes>`), the lint reads the declaration
+  from the graded file's repo and enforces THAT, and a file with no
+  declaration keeps the default. Prose sentence: "The band is a
+  property of the corpus, not of the tool. A corpus whose idiom is
+  deliberately dense declares its band and is graded against it; drift
+  past a declared band is the finding the global cap cannot express,
+  and a band re-derived from the graded corpus each run is no check at
+  all." RED-FIRST ARRANGEMENT the fix owes: ethos at its declared band
+  exits 0, and the same corpus with one module mutated past that band
+  exits 1 — both arms run, failures= not errors=, before the change is
+  believed.
+- **First firing:** n=1 (this incident), and it fired on three mints in
+  one session rather than once. Consumer + drain seam: the next
+  register_lint / prose-form pass; the operator has stated the
+  direction (the lint should allow what is being written) and the band
+  VALUE is theirs to set — the design above is the desk's proposal,
+  unbuilt, so this entry is the carrier and not a record of a change.
