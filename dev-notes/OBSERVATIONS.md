@@ -2349,3 +2349,31 @@ Incident+basis: two corpus sharpens shipped with 'operator-named' / 'operator pr
   direction (the lint should allow what is being written) and the band
   VALUE is theirs to set — the design above is the desk's proposal,
   unbuilt, so this entry is the carrier and not a record of a change.
+
+- 2026-09-14 (statiker-e8, f7394e04) — Enforcement's mitigation
+  order lacks its strongest member, named. Incident + basis: a
+  hand-written commit-body slot (a Pareto: line, minted into the
+  ethos maintenance doctrine that morning) was superseded the same
+  day by its computed form (a pre-commit lane that derives the
+  numbers from the diff), on the operator's stated design
+  principle — the lazy path should BE the correct path; separately
+  a capture duty measured 0-of-9 at a busy desk (dotfiles df-236)
+  even while loaded. Class: enforcement-form ranking — skill-craft
+  Enforcement ranks (1) mechanical criteria, (2) structural gates,
+  (3) fail-loud checks, but never names the pit-of-success form
+  (compute or default what the duty would have asked for; effort
+  owed only at exceptions) as the strongest shape of (1), so
+  skill authors reach for slots and gates where a computed stamp
+  was available. Pre-formulated text, for the Enforcement section
+  after the mitigation order: "The strongest instance of (1) is
+  the pit of success: the mechanism computes or defaults what the
+  duty would have asked for — a stamp derived from the diff, a
+  commit built into the verb — so the consumer's lazy path is the
+  correct path and effort is owed only at exceptions; a visible
+  slot is the fallback where nothing can compute the answer."
+  Corpus siblings landed 2026-09-14: ethos CLAUDE-maintenance.md
+  (Precipitation first) and calibration.md post-incident question
+  (1) — this entry proposes the skill-craft home per the
+  reflexivity rule; the operator has already decided the principle
+  (first-hand, statiker-e8). Consumer + drain seam: the next
+  skill-craft release review.
