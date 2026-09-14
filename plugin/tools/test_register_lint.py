@@ -355,6 +355,27 @@ def test_default_band_preserves_every_skill_craft_verdict():
     clean, so it asserts the population is non-trivial and that at
     least one file actually trips — a run over nothing reads exactly
     like a run that agreed.
+
+    WHAT THIS ARM DOES NOT ESTABLISH, stated because an assurance
+    wider than its predicate is what stops anyone looking. Every file
+    in this set sits 2.6x to 6.0x ABOVE the cap (rates 13.9-32.2
+    against 5.34), so any cap in [0, 13.88) returns these same
+    verdicts. The arm therefore shows that NOTHING CROSSED ZERO on
+    the real sample; it does not discriminate the cap's VALUE, and a
+    wrong default anywhere under 13.88 would pass it unchanged. What
+    pins the value is the derivation above
+    (test_thresholds_match_the_calibration_band, read off the
+    comparison report's own rows) plus the constructed boundary pair
+    below — and a constructed case proves the arithmetic, never the
+    sample. Both are needed and neither substitutes for the other.
+
+    It also compares the em-dash finding's PRESENCE, not the finding
+    line. The reported line is where the dash budget is crossed, and
+    the budget is now length-relative, so that anchor legitimately
+    moves: measured over this set it moved on 6 of 8 files while
+    counts and check classes held. An arm written against exit codes
+    alone would have called that "identical" — exit is two-valued, so
+    findings can move inside the red set and never show.
     """
     import pathlib
 
@@ -374,3 +395,41 @@ def test_default_band_preserves_every_skill_craft_verdict():
             f"{rl.DEFAULT_BAND.em_per_1000})={new_fires}")
         tripped += new_fires
     assert tripped > 0, "no file tripped either predicate — arm is vacuous"
+
+
+def test_cap_value_discriminates_at_the_boundary():
+    """The arm the real sample cannot give: a CONSTRUCTED pair placed
+    either side of the default cap.
+
+    The invariance arm above runs over files 2.6x-6x past the cap, so
+    it cannot tell a right default from a wrong one. This one can — it
+    fails if the cap moves in either direction by more than the gap
+    between the two fixtures. It proves the arithmetic and says
+    nothing about whether 5.34 is the right band for any real corpus;
+    that claim rests on the derivation from the pstack sample.
+    """
+    cap = rl.DEFAULT_BAND.em_per_1000
+    head = "---\nname: s\ndescription: d\n---\n\n# S\n\n"
+    filler = "The gate reads the index and returns.\n"
+
+    def at(target_rate, dashes=3):
+        """A body carrying `dashes` dashes at approximately `target_rate`."""
+        words_needed = int(dashes / target_rate * 1000)
+        body = head + "Split it — now.\n" * dashes
+        while len(body.split()) < words_needed:
+            body += filler
+        return body
+
+    just_under = at(cap * 0.8)
+    just_over = at(cap * 1.25)
+    assert "em-dash" not in {f.check for f in rl.lint("u.md", just_under)[0]}
+    assert "em-dash" in {f.check for f in rl.lint("o.md", just_over)[0]}
+
+    # ARRANGEMENT PROOF: both fixtures carry the same dash count and
+    # differ only in length, so the pair is separable by a rate and by
+    # nothing else. Without this, a pair that could not straddle the
+    # cap would return exactly what a correct pair returns.
+    assert rl.lint("u.md", just_under)[1]["em_dashes"] == \
+        rl.lint("o.md", just_over)[1]["em_dashes"]
+    assert rl.lint("u.md", just_under)[1]["em_dashes_per_1000"] < cap
+    assert rl.lint("o.md", just_over)[1]["em_dashes_per_1000"] > cap
