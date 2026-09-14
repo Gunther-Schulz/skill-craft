@@ -81,23 +81,83 @@ def test_clean_fixture_is_green():
 
 
 def test_thresholds_match_the_calibration_band():
-    assert rl.EM_DASH_MAX == 5
+    # DERIVED from the comparison report's own rows, never restated from
+    # the tool: create-verification carried 5 em dashes in 936 words, and
+    # it was the only pstack file with any, so the top of that band in
+    # the rate unit is 5/936*1000. Writing 5.34 here instead would be the
+    # fixture reading the value it grades.
+    assert rl.EM_DASH_PER_1000_MAX == round(5 / 936 * 1000, 2)
     assert rl.WORDS_PER_SENT_MAX == 19.0
+    assert rl.DEFAULT_BAND == rl.Band(19.0, rl.EM_DASH_PER_1000_MAX)
 
 
 # --- check (a): em dashes -------------------------------------------
 
-EM_DASH_POSITIVE = CLEAN + "\n" + "Split the work — then commit.\n" * 6
-EM_DASH_AT_CAP = CLEAN + "\n" + "Split the work — then commit.\n" * 5
+# The em-dash fixtures are DERIVED FROM THE BAND, not hardcoded at a
+# dash count. Under the old absolute cap "at cap" meant five dashes in
+# any file; under a rate it means a count relative to length, so a
+# fixture pinned to a number stops testing the moment the band moves —
+# which is exactly what happened to the pre-rate version of these two,
+# and the battery caught it rather than passing vacuously.
+DASH_LINE = "Split the work — then commit.\n"
+FILLER_LINE = "The gate reads the index and returns.\n"
+
+
+def _padded_to_rate(dash_lines, want_over):
+    """CLEAN + `dash_lines` dash-carrying lines, padded with dash-free
+    filler until the file's em-dash rate sits just OVER or just UNDER
+    the default band's cap.
+
+    Filler is short and dash-free so it moves the rate's denominator
+    without touching the density or tell checks — a pad that tripped a
+    second check would make the arm's red unattributable.
+    """
+    body = CLEAN + "\n" + DASH_LINE * dash_lines
+    fill = 0
+    while True:
+        text = body + FILLER_LINE * fill
+        rate = rl.lint("f.md", text)[1]["em_dashes_per_1000"]
+        over = rate > rl.DEFAULT_BAND.em_per_1000
+        if over == want_over:
+            return text
+        if not want_over and fill > 4000:
+            raise AssertionError("padding never reached the band")
+        fill += 1
+
+
+EM_DASH_POSITIVE = _padded_to_rate(6, want_over=True)
+EM_DASH_AT_CAP = _padded_to_rate(6, want_over=False)
+
+
+def test_em_dash_fixtures_straddle_the_cap():
+    """The fixtures' own arrangement proof: a planted case that could
+    not fire returns exactly what a true negative returns, so both
+    sides are shown to sit where the arm needs them BEFORE either
+    verdict is read."""
+    cap = rl.DEFAULT_BAND.em_per_1000
+    assert metrics(EM_DASH_POSITIVE)["em_dashes_per_1000"] > cap
+    assert metrics(EM_DASH_AT_CAP)["em_dashes_per_1000"] <= cap
+    assert metrics(EM_DASH_POSITIVE)["em_dashes"] == \
+        metrics(EM_DASH_AT_CAP)["em_dashes"]
 
 
 def test_em_dash_positive_goes_red():
     assert "em-dash" in classes(EM_DASH_POSITIVE)
-    assert metrics(EM_DASH_POSITIVE)["em_dashes"] == 6
 
 
 def test_em_dash_at_cap_stays_green():
-    assert metrics(EM_DASH_AT_CAP)["em_dashes"] == 5
+    assert "em-dash" not in classes(EM_DASH_AT_CAP)
+
+
+def test_em_dash_grades_the_rate_not_the_count():
+    """THE PAIR THAT SEPARATES THE TWO SHAPES. Both fixtures carry the
+    SAME number of em dashes and differ only in length, so an absolute
+    per-file cap would return the same verdict for both. One goes red
+    and one stays green, which no count-based predicate can produce —
+    the arm dies if the check ever reverts to counting."""
+    assert metrics(EM_DASH_POSITIVE)["em_dashes"] == \
+        metrics(EM_DASH_AT_CAP)["em_dashes"]
+    assert "em-dash" in classes(EM_DASH_POSITIVE)
     assert "em-dash" not in classes(EM_DASH_AT_CAP)
 
 
@@ -246,5 +306,71 @@ def test_json_output_is_parseable(tmp_path, capsys):
     p.write_text(DENSE, encoding="utf-8")
     rl.main([str(p), "--json"])
     payload = json.loads(capsys.readouterr().out)
-    assert payload["caps"]["em_dashes"] == rl.EM_DASH_MAX
+    assert payload["caps"]["em_dashes_per_1000"] == rl.EM_DASH_PER_1000_MAX
     assert payload["findings"]
+
+
+# --- check (e): the declared band ------------------------------------
+
+
+def test_band_flag_overrides_the_default():
+    """A corpus declares its own band at the invocation and is graded
+    against THAT. The same bytes that fail the pstack default pass a
+    band wide enough to hold them."""
+    findings, _ = rl.lint("f.md", EM_DASH_POSITIVE)
+    assert "em-dash" in {f.check for f in findings}
+    wide, _ = rl.lint("f.md", EM_DASH_POSITIVE, rl.Band(19.0, 500.0))
+    assert "em-dash" not in {f.check for f in wide}
+
+
+def test_band_flag_still_fires_past_the_declared_band():
+    """A declared band is a band, not an exemption: drift past what the
+    corpus declared still fires. Without this arm a wide band would be
+    indistinguishable from switching the check off."""
+    narrow, _ = rl.lint("f.md", EM_DASH_AT_CAP, rl.Band(19.0, 0.0))
+    assert "em-dash" in {f.check for f in narrow}
+
+
+def test_band_reaches_the_density_half_too(tmp_path):
+    p = tmp_path / "d.md"
+    p.write_text(DENSE, encoding="utf-8")
+    assert rl.main([str(p)]) == 1
+    assert rl.main([str(p), "--band", "500", "500"]) == 0
+    assert rl.main([str(p), "--band", "0", "500"]) == 2
+    assert rl.main([str(p), "--band", "19"]) == 2
+
+
+def test_default_band_preserves_every_skill_craft_verdict():
+    """THE INVARIANCE ARM the recalibration owes.
+
+    The em-dash check changed UNIT, so the default had to move with it,
+    and a default chosen loosely would silently re-grade the corpus the
+    tool ships inside. For each of skill-craft's own operational files
+    the old predicate (absolute count over 5) and the new one (rate over
+    the pstack-derived cap) must return the SAME verdict.
+
+    This computes the old predicate here rather than importing the old
+    build: the pre-change rule was `total > 5`, four tokens, and
+    restating it is exact. The arm would be vacuous if every file were
+    clean, so it asserts the population is non-trivial and that at
+    least one file actually trips — a run over nothing reads exactly
+    like a run that agreed.
+    """
+    import pathlib
+
+    home = pathlib.Path(rl.__file__).resolve().parents[1] / "skills" / "skill-craft"
+    files = sorted(home.glob("**/*.md"))
+    assert len(files) >= 8, f"population collapsed to {len(files)}"
+
+    tripped = 0
+    for f in files:
+        raw = f.read_text(encoding="utf-8")
+        findings, m = rl.lint(str(f), raw)
+        new_fires = "em-dash" in {x.check for x in findings}
+        old_fires = m["em_dashes"] > 5          # the pre-rate predicate
+        assert new_fires == old_fires, (
+            f"{f.name}: verdict moved — old(count {m['em_dashes']}>5)"
+            f"={old_fires}, new(rate {m['em_dashes_per_1000']:.1f}>"
+            f"{rl.DEFAULT_BAND.em_per_1000})={new_fires}")
+        tripped += new_fires
+    assert tripped > 0, "no file tripped either predicate — arm is vacuous"
