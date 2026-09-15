@@ -1,6 +1,6 @@
 schema: 2
 baseline: 14
-added: 4
+added: 5
 compacted: 0
 
 ## sc-1
@@ -64,4 +64,13 @@ goal: tend
 write-set: dispatch-guards repo (dispatch+executor SKILL.md consumer lines),begehung repo (SKILL.md:10),kaemmung repo (SKILL.md:11),statiker repo (SKILL.md:630 — rides a statiker release seam per its review cadence)
 done-criterion: each of the five consumer declarations carries an as-of era stamp in skill-craft:33-37's form; verifier: case-folded grep for 'as of' on each consumer line returns a hit; the statiker edit lands at that repo's next release seam, never as its own release
 evidence: skill-craft SKILL.md:33-37 read at the desk 2026-09-13; the five unstamped lines from the comparison report, executor:8 and statiker:630 spot-verified at source same date
+blocked-by: NONE
+
+## sc-10
+grade: READY
+requirement: WHERE A SANCTIONED MECHANISM'S OUTPUT IS FULLY DESCRIBED, THE DESCRIPTION COMPETES WITH THE MECHANISM, and the competition is won by whichever is cheaper at the moment of use, which is always the hand-built version. A route stays sanctioned only where the hand-built look-alike is impossible or fails SOFTLY; where it fails TERMINALLY the description is a trap laid by the documentation for its most careful readers. MOVED HERE from statiker st-70 on the operator's venue decision of 2026-09-15: the general form belongs at skill-craft truth-level, not at statiker's, which is where it was first measured. Provenance record: statiker dev-notes/OBSERVATIONS.md 2026-09-14, the look-alike quote block entry, GENERAL FORM paragraph and its DRAIN DISPOSITION
+goal: general-maintenance
+write-set: plugin/skills/skill-craft/SKILL.md,dev-notes/OBSERVATIONS.md
+done-criterion: The rule lands as an AMENDMENT to the existing un-fakeable-artifact guidance (SKILL.md:354-360), NOT as a new bullet, and the shape was decided at the sending desk so this one verifies rather than derives: the un-fakeable-artifact rule already reasons about what a consumer can produce WITHOUT doing the work; this is its mirror, what a consumer can produce INSTEAD of invoking the mechanism. The clause states the test a describing passage must pass: NAME the failure mode of the hand-built look-alike, and where that failure is terminal either drop the description or state the terminal consequence beside it. Verifier: the amended passage, applied to the motivating incident, forbids the passage that caused it
+evidence: ONE incident, real and costed: the statiker scoped run's arm 2, 2026-09-14, was one keystroke from the sanctioned route, took the described look-alike instead, and lost the remainder of its loop; the penalty was terminal and unrecoverable. TRANSFER PAST THAT CASE IS ARGUED RATHER THAN ASSUMED: the mechanism is that a describing passage and its mechanism compete on cost at the moment of use, which holds for any skill document whose reader executes under momentum, and statiker is merely where it was first measured. Marked as ONE observation: the reach beyond this case is a hypothesis validated by use, per this repo's own two-paths rule. GOAL SLOT chosen by the foreign desk and owned by this repo's reader
 blocked-by: NONE
