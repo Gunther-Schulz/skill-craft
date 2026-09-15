@@ -1,6 +1,6 @@
 schema: 2
 baseline: 14
-added: 5
+added: 6
 compacted: 0
 
 ## sc-1
@@ -73,4 +73,13 @@ goal: general-maintenance
 write-set: plugin/skills/skill-craft/SKILL.md,dev-notes/OBSERVATIONS.md
 done-criterion: The rule lands as an AMENDMENT to the existing un-fakeable-artifact guidance (SKILL.md:354-360), NOT as a new bullet, and the shape was decided at the sending desk so this one verifies rather than derives: the un-fakeable-artifact rule already reasons about what a consumer can produce WITHOUT doing the work; this is its mirror, what a consumer can produce INSTEAD of invoking the mechanism. The clause states the test a describing passage must pass: NAME the failure mode of the hand-built look-alike, and where that failure is terminal either drop the description or state the terminal consequence beside it. Verifier: the amended passage, applied to the motivating incident, forbids the passage that caused it
 evidence: ONE incident, real and costed: the statiker scoped run's arm 2, 2026-09-14, was one keystroke from the sanctioned route, took the described look-alike instead, and lost the remainder of its loop; the penalty was terminal and unrecoverable. TRANSFER PAST THAT CASE IS ARGUED RATHER THAN ASSUMED: the mechanism is that a describing passage and its mechanism compete on cost at the moment of use, which holds for any skill document whose reader executes under momentum, and statiker is merely where it was first measured. Marked as ONE observation: the reach beyond this case is a hypothesis validated by use, per this repo's own two-paths rule. GOAL SLOT chosen by the foreign desk and owned by this repo's reader
+blocked-by: NONE
+
+## sc-11
+grade: READY
+requirement: the register lint's sentence splitter reads a terminatorless bulleted list as ONE sentence, so the worst-offender headline can name a non-sentence: measured 2026-09-15 in statiker's lap-C scope pass, where :611's reported 229-word sentence is nine bulleted entry forms, 3 of 56 findings were this artifact, and one sat inside a block that ships verbatim and is forbidden to reword - a scope taken from the headline would have rewritten it. Record: statiker docs/audits/2026-09-15-lapC-tighten-scope.md (8d73d35), booked by statiker-9c
+goal: general-maintenance
+write-set: plugin/,tools/
+done-criterion: the splitter segments on bullet-item boundaries (or excludes terminatorless list items from run-on counting) so a bulleted list is never counted as one sentence; red-first: a fixture of the statiker :611 shape (multi-bullet, no terminal periods) goes from one 200+w finding to zero list-artifact findings while a genuine 100w prose sentence in the same fixture still fires; the worst-offender headline names only true sentences
+evidence: statiker docs/audits/2026-09-15-lapC-tighten-scope.md at 8d73d35: lint and an independent splitter agreed on 229w@611 (shared coordinate), body read shows nine bulleted forms with no terminal periods; two more of the 56 same artifact
 blocked-by: NONE
