@@ -11,6 +11,9 @@ write-set: UNKNOWN
 done-criterion: UNKNOWN
 evidence: BACKLOG.md:12-27
 blocked-by: decision the missing decision named in the source body: answer it, then re-grade
+not-derivable: a re-grade is a judgment about this one entry's source body; no ledger line, audit or declaration settles it before the desk reads that body
+amend-reason: 2026-10-05 lc-312: the migrated question was shared by every item of its branch, so one ledger answer cleared all of them; it now names this item
+amended-blocked-by: 2026-10-05 decision the missing decision named in the source body: answer it, then re-grade (item sc-1)
 
 ## sc-2
 grade: NEW
@@ -29,6 +32,9 @@ write-set: UNKNOWN
 done-criterion: UNKNOWN
 evidence: BACKLOG.md:79-91
 blocked-by: decision the missing decision named in the source body: answer it, then re-grade
+not-derivable: a re-grade is a judgment about this one entry's source body; no ledger line, audit or declaration settles it before the desk reads that body
+amend-reason: 2026-10-05 lc-312: the migrated question was shared by every item of its branch, so one ledger answer cleared all of them; it now names this item
+amended-blocked-by: 2026-10-05 decision the missing decision named in the source body: answer it, then re-grade (item sc-3)
 
 ## sc-4
 grade: NEW
@@ -38,6 +44,9 @@ write-set: UNKNOWN
 done-criterion: UNKNOWN
 evidence: BACKLOG.md:92-101
 blocked-by: decision the missing decision named in the source body: answer it, then re-grade
+not-derivable: a re-grade is a judgment about this one entry's source body; no ledger line, audit or declaration settles it before the desk reads that body
+amend-reason: 2026-10-05 lc-312: the migrated question was shared by every item of its branch, so one ledger answer cleared all of them; it now names this item
+amended-blocked-by: 2026-10-05 decision the missing decision named in the source body: answer it, then re-grade (item sc-4)
 
 ## sc-5
 grade: PARKED
